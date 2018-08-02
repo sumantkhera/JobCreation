@@ -1,0 +1,11 @@
+D:\Compass\Compass.BAL\obj\Debug\Compass.BAL.csprojAssemblyReference.cache
+D:\Compass\Compass.BAL\obj\Debug\Compass.BAL.csproj.CoreCompileInputs.cache
+D:\Compass\Compass.BAL\bin\Debug\Compass.BAL.dll
+D:\Compass\Compass.BAL\bin\Debug\Compass.BAL.pdb
+D:\Compass\Compass.BAL\bin\Debug\Compass.DAL.dll
+D:\Compass\Compass.BAL\bin\Debug\CompassBE.dll
+D:\Compass\Compass.BAL\bin\Debug\Compass.DAL.pdb
+D:\Compass\Compass.BAL\bin\Debug\CompassBE.pdb
+D:\Compass\Compass.BAL\obj\Debug\Compass.BAL.csproj.CopyComplete
+D:\Compass\Compass.BAL\obj\Debug\Compass.BAL.dll
+D:\Compass\Compass.BAL\obj\Debug\Compass.BAL.pdb
