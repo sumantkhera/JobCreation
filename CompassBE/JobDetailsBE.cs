@@ -12,6 +12,8 @@ namespace CompassBE
         {
             Attachments = new AttachmentsColllection();
         }
+
+        public string Action { get; set; }
         public int Id { get; set; }
         public int? ClientId { get; set; }
         public int PriorityID { get; set; }

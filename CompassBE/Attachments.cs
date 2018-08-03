@@ -24,8 +24,8 @@ namespace CompassBE
             var sqlRow = new SqlDataRecord(
                   new SqlMetaData("Name", SqlDbType.VarChar, 50),
                   new SqlMetaData("Path", SqlDbType.VarChar, 50),
-                  new SqlMetaData("CreatedBy", SqlDbType.Int),
-                  new SqlMetaData("CommentId", SqlDbType.Int));
+                  new SqlMetaData("CreatedBy", SqlDbType.VarChar, 50),
+                  new SqlMetaData("CommentId", SqlDbType.VarChar, 50));
 
             foreach (Attachments cust in this)
             {
