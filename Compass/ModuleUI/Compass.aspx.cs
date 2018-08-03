@@ -50,7 +50,7 @@ namespace Compass.ModuleUI
             BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "Select Priority");
 
             DataTable dtUsers = compassBAL.GetUserBAL();
-            BindDropdown(ddlUsers, "BranchName", "Id", dtUsers, "Select Priority");
+            BindDropdown(ddlUsers, "UserName", "Id", dtUsers, "Select Priority");
         }
 
         #endregion

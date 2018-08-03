@@ -2,6 +2,15 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
 /.vs/slnx.sqlite
 /.vs/ProjectSettings.json
 /.vs/VSWorkspaceState.json
@@ -16,6 +25,7 @@
 *.ide-shm
 *.ide-wal
 *.suo
+*.cache
 
 # Build results
 [Dd]ebug/
@@ -30,8 +40,25 @@ bld/
 [Oo]bj/
 bin
 obj
+bin/*
+obj/*
 packages
 x64/
 x86/
 bin/
 obj/
+*/bin/
+*/obj/
+*/bin/*
+*/obj/*
+/bin
+/Compass.BAL/bin
+/Compass.BAL/obj
+
+/Compass.DAL/bin
+/Compass.DAL/obj
+
+/CompassBE/bin
+/CompassBE/obj
+
+/packages
