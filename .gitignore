@@ -6,3 +6,9 @@
 /.vs/ProjectSettings.json
 /.vs/VSWorkspaceState.json
 /.vs/config/applicationhost.config
+*.dtbcache
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
+*.suo
