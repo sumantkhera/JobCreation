@@ -33,9 +33,6 @@
     <Reference Include="Compass.DAL">
       <HintPath>..\Compass.DAL\bin\Debug\Compass.DAL.dll</HintPath>
     </Reference>
-    <Reference Include="CompassBE">
-      <HintPath>..\CompassBE\bin\Debug\CompassBE.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,6 +45,12 @@
   <ItemGroup>
     <Compile Include="CompassBAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CompassBE\CompassBE.csproj">
+      <Project>{689653bd-a0c5-4b09-980a-9fec3a4529f9}</Project>
+      <Name>CompassBE</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
