@@ -14,7 +14,7 @@ namespace Compass.DAL
         public DataTable GetJobTypeDAL()
         {
             DataTable dt = new DataTable();
-        
+
             try
             {
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spJobType");
@@ -38,7 +38,7 @@ namespace Compass.DAL
         public DataTable GetPriorityDAL()
         {
             DataTable dt = new DataTable();
-         
+
             try
             {
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spPriorityType");
@@ -53,7 +53,7 @@ namespace Compass.DAL
         public DataTable GetBranchDAL()
         {
             DataTable dt = new DataTable();
-         
+
             try
             {
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spGetBranch");
@@ -84,13 +84,17 @@ namespace Compass.DAL
             string squery = string.Empty;
             try
             {
+                SqlParameter tvpParam = new SqlParameter("@Attachments", obj.Attachments);
+                tvpParam.SqlDbType = SqlDbType.Structured;
+                tvpParam.Direction = ParameterDirection.Input;
+
                 SqlParameter[] param =
                              {     new SqlParameter("@ClientId",obj.ClientId),
                                    new SqlParameter("@JobNumber",obj.JobNumber),
                                    new SqlParameter("@SubmitDate",obj.SubmitDate),
                                    new SqlParameter("@SubmitBy",obj.SubmitBy),
                                    new SqlParameter("@SubmittedByBranch",obj.SubmittedByBranch),
-                                   new SqlParameter("@CretaedDate",obj.CretaedDate),
+                                   new SqlParameter("@CretaedDate",obj.CreatedDate),
                                    new SqlParameter("@CreatedBy",obj.CreatedBy),
                                    new SqlParameter("@JobTypeId",obj.JobTypeId),
                                    new SqlParameter("@JobStatusId",obj.JobStatusId),
@@ -103,14 +107,11 @@ namespace Compass.DAL
                                    new SqlParameter("@PriorityID",obj.PriorityID),
                                    new SqlParameter("@IsSystemDefined",obj.IsSystemDefined),
                                    new SqlParameter("@CommentDescription",obj.CommentDescription),
-                                   new SqlParameter("@AttachmentName",obj.AttachmentName),
-                                   new SqlParameter("@AttachmentPath",obj.AttachmentPath)
+                                   tvpParam
                                };
 
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "INSERTJOBDETAILS", param);
-
                 squery = ds.Tables[0].Rows[0][0].ToString();
-
                 return squery;
             }
             catch (Exception ex)
@@ -129,7 +130,7 @@ namespace Compass.DAL
                 int index = 0;
                 SqlParameter[] param = new SqlParameter[1];
                 param[index++] = new SqlParameter("@Id", objJobDetailsBE.Id);
-                
+
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spJobDetails", param);
 
                 dt = ds.Tables[0];
@@ -145,7 +146,7 @@ namespace Compass.DAL
                     oNewJobDetailsBE.SubmitDate = Convert.ToDateTime(dr["SubmitDate"]);
                     oNewJobDetailsBE.SubmitBy = Convert.ToInt32(dr["SubmitBy"].ToString());
                     oNewJobDetailsBE.SubmittedByBranch = Convert.ToInt32(dr["SubmitByBranch"].ToString());
-                    oNewJobDetailsBE.CreatedDate= Convert.ToDateTime(dr["CreatedDate"]);
+                    oNewJobDetailsBE.CreatedDate = Convert.ToDateTime(dr["CreatedDate"]);
                     oNewJobDetailsBE.CreatedBy = Convert.ToInt32(dr["CreatedBy"].ToString());
                     oNewJobDetailsBE.JobTypeId = Convert.ToInt32(dr["JobTypeId"].ToString());
                     oNewJobDetailsBE.JobStatusId = Convert.ToInt32(dr["JobStatusId"].ToString());
@@ -163,7 +164,7 @@ namespace Compass.DAL
             }
             catch (Exception ex)
             {
-                
+
             }
             return JobDetailsBEList;
         }

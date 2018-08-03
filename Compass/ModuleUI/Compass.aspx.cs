@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Compass.BAL;
 using CompassBE;
+using Utility.Enums;
 
 namespace Compass.ModuleUI
 {
@@ -16,7 +17,10 @@ namespace Compass.ModuleUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindDropdowns();
+            if (!this.IsPostBack)
+            {
+                BindDropdowns();
+            }
         }
 
         #region Methods       
@@ -47,10 +51,10 @@ namespace Compass.ModuleUI
             BindDropdown(ddlPriority, "PriorityType", "Id", dtPriorityType, "Select Priority");
 
             DataTable dtBranch = compassBAL.GetBranchBAL();
-            BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "Select Priority");
+            BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "Select Branch");
 
             DataTable dtUsers = compassBAL.GetUserBAL();
-            BindDropdown(ddlUsers, "UserName", "Id", dtUsers, "Select Priority");
+            BindDropdown(ddlUsers, "UserName", "Id", dtUsers, "Select User");
         }
 
         #endregion
@@ -59,35 +63,59 @@ namespace Compass.ModuleUI
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             JobDetailsBE jobDetails = new JobDetailsBE();
-            jobDetails.ClientId = 0;
-            jobDetails.PriorityID = 0;
+
+            jobDetails.ClientId = null;
+
+            jobDetails.PriorityID = ddlPriority.SelectedValue != null ? Convert.ToInt32(ddlPriority.SelectedValue) : 0;
+
             jobDetails.LastUpdatedDate = DateTime.Now;
             jobDetails.LastCommentedDate = DateTime.Now;
-            jobDetails.QAUserId = 1;
+            jobDetails.QAUserId = null;
             jobDetails.AllocationDate = DateTime.Now;
-            jobDetails.AllocatedToUser = 1;
-            jobDetails.AllocatedToTeam = 1;
-            jobDetails.JobStatusId = 1;
+            jobDetails.AllocatedToUser = null;
+
+
+            jobDetails.AllocatedToTeam = null;//?
+
+
+            jobDetails.JobStatusId = Convert.ToInt32(JobStatus.Received);
             jobDetails.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
-            jobDetails.CreatedBy = 1;
+            jobDetails.CreatedBy = 1;//logged in user
+
+
             jobDetails.CreatedDate = DateTime.Now;
-            jobDetails.SubmittedByBranch = 1;
-            jobDetails.SubmitBy = 1;
+            jobDetails.SubmittedByBranch = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;
+
+            jobDetails.SubmitBy = ddlUsers.SelectedValue != null ? Convert.ToInt32(ddlUsers.SelectedValue) : 0;
             jobDetails.SubmitDate = DateTime.Now;
+
             Random random = new Random();
             int rnt = random.Next(1000, 10000000);
             jobDetails.JobNumber = "JBN" + rnt.ToString();
+
             jobDetails.IsSystemDefined = false;
             jobDetails.CommentDescription = txtComment.Text;
 
-            if (fileJobAttachment.HasFile)
+
+            AttachmentsColllection lstAttachments = new AttachmentsColllection();
+            if (fileJobAttachment.HasFiles)
             {
-                fileJobAttachment.SaveAs(Server.MapPath("~/Attachment/") + fileJobAttachment.FileName + rnt.ToString());
-                jobDetails.AttachmentName = fileJobAttachment.FileName;
-                jobDetails.AttachmentPath = fileJobAttachment.FileName + rnt.ToString();
+                foreach (HttpPostedFile uploadedFile in fileJobAttachment.PostedFiles)
+                {
+                    Attachments attachments = new Attachments();
+                    Guid random1 = new Guid();                    
+                    fileJobAttachment.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + uploadedFile.FileName));
+                    attachments.Name = fileJobAttachment.FileName;
+                    attachments.Path = random1.ToString() + fileJobAttachment.FileName;
+                    attachments.CommentId = null;
+                    attachments.CreatedBy = 1;//will logged in user
+                    lstAttachments.Add(attachments);
+                }
             }
 
-            string result= compassBAL.InsertIntoJobDetailsBAL(jobDetails);
+            jobDetails.Attachments = lstAttachments;
+
+            string result = compassBAL.InsertIntoJobDetailsBAL(jobDetails);
 
             if (result == "1")
             {
