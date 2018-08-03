@@ -9,3 +9,6 @@ D:\Compass\Compass.BAL\bin\Debug\CompassBE.pdb
 D:\Compass\Compass.BAL\obj\Debug\Compass.BAL.csproj.CopyComplete
 D:\Compass\Compass.BAL\obj\Debug\Compass.BAL.dll
 D:\Compass\Compass.BAL\obj\Debug\Compass.BAL.pdb
+D:\Projects\JobCreation\Code\Compass.BAL\obj\Debug\Compass.BAL.csprojResolveAssemblyReference.cache
+D:\Projects\JobCreation\Code\Compass.BAL\obj\Debug\Compass.BAL.dll
+D:\Projects\JobCreation\Code\Compass.BAL\obj\Debug\Compass.BAL.pdb

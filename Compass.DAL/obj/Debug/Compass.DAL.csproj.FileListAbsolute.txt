@@ -7,3 +7,6 @@ D:\Compass\Compass.DAL\obj\Debug\Compass.DAL.pdb
 D:\Compass\Compass.DAL\bin\Debug\CompassBE.dll
 D:\Compass\Compass.DAL\bin\Debug\CompassBE.pdb
 D:\Compass\Compass.DAL\obj\Debug\Compass.DAL.csproj.CopyComplete
+D:\Projects\JobCreation\Code\Compass.DAL\obj\Debug\Compass.DAL.csprojResolveAssemblyReference.cache
+D:\Projects\JobCreation\Code\Compass.DAL\obj\Debug\Compass.DAL.dll
+D:\Projects\JobCreation\Code\Compass.DAL\obj\Debug\Compass.DAL.pdb

@@ -4,3 +4,8 @@ D:\Compass\CompassBE\obj\Debug\CompassBE.csprojAssemblyReference.cache
 D:\Compass\CompassBE\obj\Debug\CompassBE.csproj.CoreCompileInputs.cache
 D:\Compass\CompassBE\obj\Debug\CompassBE.dll
 D:\Compass\CompassBE\obj\Debug\CompassBE.pdb
+D:\Projects\JobCreation\Code\CompassBE\bin\Debug\CompassBE.dll
+D:\Projects\JobCreation\Code\CompassBE\bin\Debug\CompassBE.pdb
+D:\Projects\JobCreation\Code\CompassBE\obj\Debug\CompassBE.csprojResolveAssemblyReference.cache
+D:\Projects\JobCreation\Code\CompassBE\obj\Debug\CompassBE.dll
+D:\Projects\JobCreation\Code\CompassBE\obj\Debug\CompassBE.pdb
