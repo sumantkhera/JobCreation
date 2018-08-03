@@ -63,7 +63,6 @@ namespace Compass.BAL
         public DataTable GetUserBAL()
         {
             DataTable dt = new DataTable();
-            
             try
             {
                 dt = compassDAL.GetUserDAL();
@@ -84,6 +83,7 @@ namespace Compass.BAL
             }
             catch (Exception ex)
             {
+
             }
             return squery;
         }

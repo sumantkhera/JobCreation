@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compass.DAL", "Compass.DAL\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompassBE", "CompassBE\CompassBE.csproj", "{689653BD-A0C5-4B09-980A-9FEC3A4529F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{ADBE1C47-7AFF-4070-B73C-30CC3D8FF058}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{689653BD-A0C5-4B09-980A-9FEC3A4529F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{689653BD-A0C5-4B09-980A-9FEC3A4529F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{689653BD-A0C5-4B09-980A-9FEC3A4529F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADBE1C47-7AFF-4070-B73C-30CC3D8FF058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADBE1C47-7AFF-4070-B73C-30CC3D8FF058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADBE1C47-7AFF-4070-B73C-30CC3D8FF058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADBE1C47-7AFF-4070-B73C-30CC3D8FF058}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

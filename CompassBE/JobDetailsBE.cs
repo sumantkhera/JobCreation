@@ -8,16 +8,21 @@ namespace CompassBE
 {
     public class JobDetailsBE
     {
+        public JobDetailsBE()
+        {
+            Attachments = new AttachmentsColllection();
+        }
+
         public string Action { get; set; }
         public int Id { get; set; }
-        public int ClientId { get; set; }
+        public int? ClientId { get; set; }
         public int PriorityID { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public DateTime LastCommentedDate { get; set; }
-        public int QAUserId { get; set; }
+        public int? QAUserId { get; set; }
         public DateTime AllocationDate { get; set; }
-        public int AllocatedToUser { get; set; }
-        public int AllocatedToTeam { get; set; }
+        public int? AllocatedToUser { get; set; }
+        public int? AllocatedToTeam { get; set; }
         public int JobStatusId { get; set; }
         public int JobTypeId { get; set; }
         public int CreatedBy { get; set; }
@@ -33,5 +38,6 @@ namespace CompassBE
         public string BranchName{ get; set; }
         public string SubmittedByName { get; set; }
         public string Description { get; set; }
+        public AttachmentsColllection Attachments { get; set; }      
     }
 }
