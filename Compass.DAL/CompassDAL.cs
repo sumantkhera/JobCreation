@@ -14,7 +14,7 @@ namespace Compass.DAL
         public DataTable GetJobTypeDAL()
         {
             DataTable dt = new DataTable();
-            List<JobTypeBE> lstJobTypeBE = new List<JobTypeBE>();
+        
             try
             {
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spJobType");
@@ -38,7 +38,7 @@ namespace Compass.DAL
         public DataTable GetPriorityDAL()
         {
             DataTable dt = new DataTable();
-            List<JobTypeBE> lstJobTypeBE = new List<JobTypeBE>();
+         
             try
             {
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spPriorityType");
@@ -53,7 +53,7 @@ namespace Compass.DAL
         public DataTable GetBranchDAL()
         {
             DataTable dt = new DataTable();
-            List<JobTypeBE> lstJobTypeBE = new List<JobTypeBE>();
+         
             try
             {
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spGetBranch");
@@ -68,7 +68,6 @@ namespace Compass.DAL
         public DataTable GetUserDAL()
         {
             DataTable dt = new DataTable();
-            List<JobTypeBE> lstJobTypeBE = new List<JobTypeBE>();
             try
             {
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spGetUserDetails");
