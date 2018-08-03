@@ -63,7 +63,6 @@ namespace Compass.BAL
         public DataTable GetUserBAL()
         {
             DataTable dt = new DataTable();
-            List<JobTypeBE> lstJobTypeBE = new List<JobTypeBE>();
             try
             {
                 dt = compassDAL.GetUserDAL();
