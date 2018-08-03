@@ -39,6 +39,8 @@ bld/
 [Oo]bj/
 bin
 obj
+bin/*
+obj/*
 packages
 x64/
 x86/
