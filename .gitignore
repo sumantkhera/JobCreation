@@ -46,3 +46,14 @@ bin/
 obj/
 */bin/
 */obj/
+/bin
+/Compass.BAL/bin
+/Compass.BAL/obj
+
+/Compass.DAL/bin
+/Compass.DAL/obj
+
+/CompassBE/bin
+/CompassBE/obj
+
+/packages
