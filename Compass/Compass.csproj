@@ -266,6 +266,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Attachment\" />
+    <Folder Include="css\" />
+    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
