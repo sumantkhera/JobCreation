@@ -10,9 +10,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:Panel ID="Panel1" runat="server">
-
                 <table>
-
                     <tr>
                         <td>Job Type </td>
                         <td>
@@ -20,7 +18,21 @@
                                 <asp:ListItem>Select</asp:ListItem>
                             </asp:DropDownList></td>
                     </tr>
-
+                    
+                    <tr>
+                        <td>Branch </td>
+                        <td>
+                            <asp:DropDownList ID="ddlBranch" runat="server">
+                                <asp:ListItem>Select</asp:ListItem>
+                            </asp:DropDownList></td>
+                    </tr>
+                      <tr>
+                        <td>Users </td>
+                        <td>
+                            <asp:DropDownList ID="ddlUsers" runat="server">
+                                <asp:ListItem>Select</asp:ListItem>
+                            </asp:DropDownList></td>
+                    </tr>
                     <tr>
                         <td>Job Status </td>
                         <td>
@@ -43,12 +55,12 @@
                     <tr>
                         <td>Job attachment </td>
                         <td>
-                            <asp:FileUpload ID="FileUpload1" runat="server" />
+                            <asp:FileUpload ID="fileJobAttachment" runat="server" />
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" />
+                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
                         </td>
                         <td>
                             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />

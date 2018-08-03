@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JobDetails.cs" />
     <Compile Include="JobTypeBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

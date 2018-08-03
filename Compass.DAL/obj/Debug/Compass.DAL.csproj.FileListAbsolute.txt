@@ -7,3 +7,12 @@ D:\Compass\Compass.DAL\obj\Debug\Compass.DAL.pdb
 D:\Compass\Compass.DAL\bin\Debug\CompassBE.dll
 D:\Compass\Compass.DAL\bin\Debug\CompassBE.pdb
 D:\Compass\Compass.DAL\obj\Debug\Compass.DAL.csproj.CopyComplete
+D:\Projects\Job Creation\Code\Compass.DAL\obj\Debug\Compass.DAL.csproj.CoreCompileInputs.cache
+D:\Projects\Job Creation\Code\Compass.DAL\bin\Debug\Compass.DAL.dll
+D:\Projects\Job Creation\Code\Compass.DAL\bin\Debug\Compass.DAL.pdb
+D:\Projects\Job Creation\Code\Compass.DAL\bin\Debug\CompassBE.dll
+D:\Projects\Job Creation\Code\Compass.DAL\bin\Debug\CompassBE.pdb
+D:\Projects\Job Creation\Code\Compass.DAL\obj\Debug\Compass.DAL.csproj.CopyComplete
+D:\Projects\Job Creation\Code\Compass.DAL\obj\Debug\Compass.DAL.dll
+D:\Projects\Job Creation\Code\Compass.DAL\obj\Debug\Compass.DAL.pdb
+D:\Projects\Job Creation\Code\Compass.DAL\obj\Debug\Compass.DAL.csprojAssemblyReference.cache
