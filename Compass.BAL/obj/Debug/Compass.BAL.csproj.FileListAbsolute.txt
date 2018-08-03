@@ -9,3 +9,14 @@ D:\Compass\Compass.BAL\bin\Debug\CompassBE.pdb
 D:\Compass\Compass.BAL\obj\Debug\Compass.BAL.csproj.CopyComplete
 D:\Compass\Compass.BAL\obj\Debug\Compass.BAL.dll
 D:\Compass\Compass.BAL\obj\Debug\Compass.BAL.pdb
+D:\Projects\Job Creation\Code\Compass.BAL\obj\Debug\Compass.BAL.csproj.CoreCompileInputs.cache
+D:\Projects\Job Creation\Code\Compass.BAL\obj\Debug\Compass.BAL.csprojAssemblyReference.cache
+D:\Projects\Job Creation\Code\Compass.BAL\bin\Debug\Compass.BAL.dll
+D:\Projects\Job Creation\Code\Compass.BAL\bin\Debug\Compass.BAL.pdb
+D:\Projects\Job Creation\Code\Compass.BAL\bin\Debug\Compass.DAL.dll
+D:\Projects\Job Creation\Code\Compass.BAL\bin\Debug\CompassBE.dll
+D:\Projects\Job Creation\Code\Compass.BAL\bin\Debug\Compass.DAL.pdb
+D:\Projects\Job Creation\Code\Compass.BAL\bin\Debug\CompassBE.pdb
+D:\Projects\Job Creation\Code\Compass.BAL\obj\Debug\Compass.BAL.csproj.CopyComplete
+D:\Projects\Job Creation\Code\Compass.BAL\obj\Debug\Compass.BAL.dll
+D:\Projects\Job Creation\Code\Compass.BAL\obj\Debug\Compass.BAL.pdb

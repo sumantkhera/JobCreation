@@ -14,19 +14,19 @@ namespace Compass.BAL
         CompassDAL compassDAL;
         public CompassBAL()
         {
-             compassDAL = new CompassDAL();
+            compassDAL = new CompassDAL();
         }
 
         public DataTable GetJobTypeBAL()
         {
-            DataTable dt = new DataTable();            
+            DataTable dt = new DataTable();
             try
             {
                 dt = compassDAL.GetJobTypeDAL();
             }
             catch (Exception ex)
             {
-               
+
             }
             return dt;
         }
@@ -43,6 +43,69 @@ namespace Compass.BAL
 
             }
             return dt;
+        }
+
+        public DataTable GetBranchBAL()
+        {
+            DataTable dt = new DataTable();
+            List<JobTypeBE> lstJobTypeBE = new List<JobTypeBE>();
+            try
+            {
+                dt = compassDAL.GetBranchDAL();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
+
+        public DataTable GetUserBAL()
+        {
+            DataTable dt = new DataTable();
+            List<JobTypeBE> lstJobTypeBE = new List<JobTypeBE>();
+            try
+            {
+                dt = compassDAL.GetUserDAL();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
+        
+        public string InsertIntoJobDetailsBAL(JobDetails obj)
+        {
+            string squery = string.Empty;
+            try
+            {
+                squery = compassDAL.InsertIntoJobDetailsDAL(obj);
+            }
+            catch (Exception ex)
+            {
+            }
+            return squery;
+        }
+
+        public List<JobTypeBE> GetJobDetailsBAL(JobTypeBE objJobTypeBE)
+        {
+            List<JobTypeBE> JobTypeBEList = new List<JobTypeBE>();
+
+            try
+            {
+                CompassDAL objCompassDAL = new CompassDAL();
+
+                JobTypeBEList = objCompassDAL.GetJobDetailsDAL(objJobTypeBE);
+
+                objCompassDAL = null;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally { }
+            return JobTypeBEList;
         }
     }
 }

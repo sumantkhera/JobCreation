@@ -40,6 +40,24 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.DropDownList ddlJobType;
         
         /// <summary>
+        /// ddlBranch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBranch;
+        
+        /// <summary>
+        /// ddlUsers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsers;
+        
+        /// <summary>
         /// txtComment control.
         /// </summary>
         /// <remarks>
@@ -58,13 +76,13 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
         
         /// <summary>
-        /// FileUpload1 control.
+        /// fileJobAttachment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.FileUpload fileJobAttachment;
         
         /// <summary>
         /// btnSubmit control.
