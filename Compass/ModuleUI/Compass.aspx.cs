@@ -58,7 +58,7 @@ namespace Compass.ModuleUI
         #region Events        
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            JobDetails jobDetails = new JobDetails();
+            JobDetailsBE jobDetails = new JobDetailsBE();
             jobDetails.ClientId = 0;
             jobDetails.PriorityID = 0;
             jobDetails.LastUpdatedDate = DateTime.Now;
