@@ -8,6 +8,7 @@ namespace CompassBE
 {
     public class JobDetailsBE
     {
+        public string Action { get; set; }
         public int Id { get; set; }
         public int ClientId { get; set; }
         public int PriorityID { get; set; }
@@ -29,5 +30,8 @@ namespace CompassBE
         public string CommentDescription { get; set; }
         public string AttachmentName { get; set; }
         public string AttachmentPath { get; set; }
+        public string BranchName{ get; set; }
+        public string SubmittedByName { get; set; }
+        public string Description { get; set; }
     }
 }
