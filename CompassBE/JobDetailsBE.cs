@@ -31,6 +31,11 @@ namespace CompassBE
         public string JobNumber { get; set; }
         public bool IsSystemDefined { get; set; }
         public string CommentDescription { get; set; }
+        public string AttachmentName { get; set; }
+        public string AttachmentPath { get; set; }
+        public string BranchName{ get; set; }
+        public string SubmittedByName { get; set; }
+        public string Description { get; set; }
         public AttachmentsColllection Attachments { get; set; }      
     }
 }

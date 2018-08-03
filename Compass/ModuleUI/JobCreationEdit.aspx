@@ -15,7 +15,7 @@
                     <tr>
                         <td style="width:150px">Number</td>
                         <td>
-                           <asp:TextBox ID="txtNumber" runat="server"></asp:TextBox>
+                           <asp:TextBox ID="txtJobNumber" runat="server"></asp:TextBox>
                             </td>
                         <td style="width:50px"></td>
                         
@@ -40,7 +40,7 @@
                         <td style="width:150px">Job Status </td>
                         <td style="width:150px">
                            <asp:DropDownList ID="ddlJobStatus" runat="server" Width="130px">
-                                <asp:ListItem>Select</asp:ListItem>
+                               
                             </asp:DropDownList></td>
                         </td>
                         <td></td>
@@ -55,7 +55,9 @@
                         <td style="width:150px">Team </td>
                         <td style="width:150px">
                            <asp:DropDownList ID="ddlTeam" runat="server" Width="130px">
-                                <asp:ListItem>Select</asp:ListItem>
+                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                               <asp:ListItem Value="1" Text="Client"></asp:ListItem>
+                               <asp:ListItem Value="2" Text="Damco"></asp:ListItem>
                             </asp:DropDownList></td>
                         </td>
                         <td></td>
@@ -77,7 +79,7 @@
                     <tr>
                         <td>Description </td>
                         <td>
-                            <asp:TextBox ID="txtComment" runat="server" TextMode="MultiLine" Height="50px" Width="250px"></asp:TextBox>                         
+                            <asp:TextBox ID="txtDescription" runat="server" TextMode="MultiLine" Height="50px" Width="250px"></asp:TextBox>                         
                         </td>
                     </tr>
                       <tr>
@@ -87,6 +89,14 @@
                         </td>
                     </tr>
                     <tr>
+                        <td style="width:150px">Comments </td>
+                        <td style="width:150px">
+                          <asp:TextBox ID="txtComments" runat="server" TextMode="MultiLine" Height="50px" Width="250px"></asp:TextBox>  
+                           </td>
+                        </td>
+                        <td></td>
+                        </tr>
+                    <tr>
                         <td>Attachments </td>
                         <td>
                             <asp:FileUpload ID="FileUploadAttachments" runat="server" />
@@ -94,7 +104,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" />
+                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click"/>
                         </td>
                         <td>
                             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />

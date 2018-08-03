@@ -63,7 +63,7 @@ namespace Compass.BAL
         public DataTable GetUserBAL()
         {
             DataTable dt = new DataTable();
-         
+            List<JobTypeBE> lstJobTypeBE = new List<JobTypeBE>();
             try
             {
                 dt = compassDAL.GetUserDAL();
@@ -89,24 +89,6 @@ namespace Compass.BAL
             return squery;
         }
 
-        public List<JobDetailsBE> GetJobDetailsBAL(JobDetailsBE objJobDetailsBE)
-        {
-            List<JobDetailsBE> JobDetailsBEList = new List<JobDetailsBE>();
-
-            try
-            {
-                CompassDAL objCompassDAL = new CompassDAL();
-
-                JobDetailsBEList = objCompassDAL.GetJobDetailsDAL(objJobDetailsBE);
-
-                objCompassDAL = null;
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally { }
-            return JobDetailsBEList;
-        }
+        
     }
 }
