@@ -25,15 +25,15 @@ namespace Compass.ModuleUI
 
         public void GetJobDetails()
         {
-            JobTypeBE obJobTypeBE = new JobTypeBE();
+            JobDetailsBE obJobDetailsBE = new JobDetailsBE();
             CompassBAL objCompassBAL = new CompassBAL();
 
             if (Request.QueryString["JobId"] != null)
             {
-                obJobTypeBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
+                obJobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
             }
 
-                List<JobTypeBE> lstDetails = objCompassBAL.GetJobDetailsBAL(obJobTypeBE); 
+                List<JobDetailsBE> lstDetails = objCompassBAL.GetJobDetailsBAL(obJobDetailsBE); 
 
            
         }
