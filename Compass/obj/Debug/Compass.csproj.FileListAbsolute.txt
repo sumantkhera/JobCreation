@@ -92,7 +92,6 @@ D:\Compass\Compass\bin\Compass.DAL.dll
 D:\Compass\Compass\bin\Compass.BAL.pdb
 D:\Compass\Compass\bin\CompassBE.pdb
 D:\Compass\Compass\bin\Compass.DAL.pdb
-D:\Projects\Job Creation\Code\Compass\obj\Debug\Compass.csproj.CoreCompileInputs.cache
 D:\Projects\Job Creation\Code\Compass\bin\ApplicationInsights.config
 D:\Projects\Job Creation\Code\Compass\bin\Compass.dll.config
 D:\Projects\Job Creation\Code\Compass\bin\Compass.dll
@@ -183,6 +182,7 @@ D:\Projects\Job Creation\Code\Compass\bin\Microsoft.AI.Web.xml
 D:\Projects\Job Creation\Code\Compass\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Projects\Job Creation\Code\Compass\bin\Compass.DAL.pdb
 D:\Projects\Job Creation\Code\Compass\obj\Debug\Compass.csprojAssemblyReference.cache
+D:\Projects\Job Creation\Code\Compass\obj\Debug\Compass.csproj.CoreCompileInputs.cache
 D:\Projects\Job Creation\Code\Compass\obj\Debug\Compass.csproj.CopyComplete
 D:\Projects\Job Creation\Code\Compass\obj\Debug\Compass.dll
 D:\Projects\Job Creation\Code\Compass\obj\Debug\Compass.pdb

@@ -80,7 +80,7 @@ namespace Compass.DAL
             }
             return dt;
         }
-        public string InsertIntoJobDetailsDAL(JobDetails obj)
+        public string InsertIntoJobDetailsDAL(JobDetailsBE obj)
         {
             string squery = string.Empty;
             try

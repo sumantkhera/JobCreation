@@ -75,7 +75,7 @@ namespace Compass.BAL
             return dt;
         }
         
-        public string InsertIntoJobDetailsBAL(JobDetails obj)
+        public string InsertIntoJobDetailsBAL(JobDetailsBE obj)
         {
             string squery = string.Empty;
             try
