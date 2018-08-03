@@ -120,15 +120,15 @@ namespace Compass.DAL
             }
         }
 
-        public List<JobTypeBE> GetJobDetailsDAL(JobTypeBE objJobTypeBE)
+        public List<JobDetailsBE> GetJobDetailsDAL(JobDetailsBE objJobDetailsBE)
         {
-            List<JobTypeBE> JobTypeBEList = new List<JobTypeBE>();
+            List<JobDetailsBE> JobDetailsBEList = new List<JobDetailsBE>();
             try
             {
                 DataTable dt = new DataTable();
                 int index = 0;
                 SqlParameter[] param = new SqlParameter[1];
-                param[index++] = new SqlParameter("@Action", objJobTypeBE.Id);
+                param[index++] = new SqlParameter("@Id", objJobDetailsBE.Id);
                 
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spJobDetails", param);
 
@@ -136,36 +136,36 @@ namespace Compass.DAL
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    JobTypeBE oNewJobTypeBE = new JobTypeBE();
+                    JobDetailsBE oNewJobDetailsBE = new JobDetailsBE();
 
-                    oNewJobTypeBE.Id = Convert.ToInt32(dr["Id"].ToString());
+                    oNewJobDetailsBE.Id = Convert.ToInt32(dr["Id"].ToString());
                     if (dr.Table.Columns.Contains("ClientId"))
-                        oNewJobTypeBE.ClientId = Convert.ToInt32(dr["ClientId"].ToString());
-                    oNewJobTypeBE.JobNumber = Convert.ToString(dr["JobNumber"]);
-                    oNewJobTypeBE.SubmitDate = Convert.ToDateTime(dr["SubmitDate"]);
-                    oNewJobTypeBE.SubmitBy = Convert.ToInt32(dr["SubmitBy"].ToString());
-                    oNewJobTypeBE.SubmitByBranch = Convert.ToInt32(dr["SubmitByBranch"].ToString());
-                    oNewJobTypeBE.CreatedDate= Convert.ToDateTime(dr["CreatedDate"]);
-                    oNewJobTypeBE.CreatedBy = Convert.ToInt32(dr["CreatedBy"].ToString());
-                    oNewJobTypeBE.JobTypeID = Convert.ToInt32(dr["JobTypeID"].ToString());
-                    oNewJobTypeBE.JobStatusID = Convert.ToInt32(dr["JobStatusID"].ToString());
+                        oNewJobDetailsBE.ClientId = Convert.ToInt32(dr["ClientId"].ToString());
+                    oNewJobDetailsBE.JobNumber = Convert.ToString(dr["JobNumber"]);
+                    oNewJobDetailsBE.SubmitDate = Convert.ToDateTime(dr["SubmitDate"]);
+                    oNewJobDetailsBE.SubmitBy = Convert.ToInt32(dr["SubmitBy"].ToString());
+                    oNewJobDetailsBE.SubmittedByBranch = Convert.ToInt32(dr["SubmitByBranch"].ToString());
+                    oNewJobDetailsBE.CreatedDate= Convert.ToDateTime(dr["CreatedDate"]);
+                    oNewJobDetailsBE.CreatedBy = Convert.ToInt32(dr["CreatedBy"].ToString());
+                    oNewJobDetailsBE.JobTypeId = Convert.ToInt32(dr["JobTypeId"].ToString());
+                    oNewJobDetailsBE.JobStatusId = Convert.ToInt32(dr["JobStatusId"].ToString());
 
-                    oNewJobTypeBE.AllocatedToTeam = Convert.ToInt32(dr["AllocatedToTeam"].ToString());
-                    oNewJobTypeBE.AllocatedToUser = Convert.ToInt32(dr["AllocatedToUser"].ToString());
-                    oNewJobTypeBE.AllocationDate = Convert.ToDateTime(dr["AllocationDate"]); 
-                    oNewJobTypeBE.QAUserId = Convert.ToInt32(dr["AllocatedToUser"].ToString());
-                    oNewJobTypeBE.LastCommentedDate = Convert.ToDateTime(dr["LastCommentedDate"]);
-                    oNewJobTypeBE.LastUpdatedDate = Convert.ToDateTime(dr["LastUpdatedDate"]);
-                    oNewJobTypeBE.PriorityID = Convert.ToInt32(dr["PriorityID"].ToString());
-                    oNewJobTypeBE.IsSystemDefined = Convert.ToBoolean(dr["IsSystemDefined"].ToString());
-                    JobTypeBEList.Add(oNewJobTypeBE);
+                    oNewJobDetailsBE.AllocatedToTeam = Convert.ToInt32(dr["AllocatedToTeam"].ToString());
+                    oNewJobDetailsBE.AllocatedToUser = Convert.ToInt32(dr["AllocatedToUser"].ToString());
+                    oNewJobDetailsBE.AllocationDate = Convert.ToDateTime(dr["AllocationDate"]);
+                    oNewJobDetailsBE.QAUserId = Convert.ToInt32(dr["AllocatedToUser"].ToString());
+                    oNewJobDetailsBE.LastCommentedDate = Convert.ToDateTime(dr["LastCommentedDate"]);
+                    oNewJobDetailsBE.LastUpdatedDate = Convert.ToDateTime(dr["LastUpdatedDate"]);
+                    oNewJobDetailsBE.PriorityID = Convert.ToInt32(dr["PriorityID"].ToString());
+                    oNewJobDetailsBE.IsSystemDefined = Convert.ToBoolean(dr["IsSystemDefined"].ToString());
+                    JobDetailsBEList.Add(oNewJobDetailsBE);
                 }
             }
             catch (Exception ex)
             {
                 
             }
-            return JobTypeBEList;
+            return JobDetailsBEList;
         }
 
     }

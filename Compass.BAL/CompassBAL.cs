@@ -88,15 +88,15 @@ namespace Compass.BAL
             return squery;
         }
 
-        public List<JobTypeBE> GetJobDetailsBAL(JobTypeBE objJobTypeBE)
+        public List<JobDetailsBE> GetJobDetailsBAL(JobDetailsBE objJobDetailsBE)
         {
-            List<JobTypeBE> JobTypeBEList = new List<JobTypeBE>();
+            List<JobDetailsBE> JobDetailsBEList = new List<JobDetailsBE>();
 
             try
             {
                 CompassDAL objCompassDAL = new CompassDAL();
 
-                JobTypeBEList = objCompassDAL.GetJobDetailsDAL(objJobTypeBE);
+                JobDetailsBEList = objCompassDAL.GetJobDetailsDAL(objJobDetailsBE);
 
                 objCompassDAL = null;
             }
@@ -105,7 +105,7 @@ namespace Compass.BAL
 
             }
             finally { }
-            return JobTypeBEList;
+            return JobDetailsBEList;
         }
     }
 }

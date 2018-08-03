@@ -20,7 +20,7 @@ namespace CompassBE
         public int JobStatusId { get; set; }
         public int JobTypeId { get; set; }
         public int CreatedBy { get; set; }
-        public DateTime CretaedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
         public int SubmittedByBranch { get; set; }
         public int SubmitBy { get; set; }
         public DateTime? SubmitDate { get; set; }

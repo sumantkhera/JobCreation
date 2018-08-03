@@ -70,7 +70,7 @@ namespace Compass.ModuleUI
             jobDetails.JobStatusId = 1;
             jobDetails.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
             jobDetails.CreatedBy = 1;
-            jobDetails.CretaedDate = DateTime.Now;
+            jobDetails.CreatedDate = DateTime.Now;
             jobDetails.SubmittedByBranch = 1;
             jobDetails.SubmitBy = 1;
             jobDetails.SubmitDate = DateTime.Now;
