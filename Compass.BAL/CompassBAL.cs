@@ -87,5 +87,25 @@ namespace Compass.BAL
             }
             return squery;
         }
-   }
+
+        public List<JobTypeBE> GetJobDetailsBAL(JobTypeBE objJobTypeBE)
+        {
+            List<JobTypeBE> JobTypeBEList = new List<JobTypeBE>();
+
+            try
+            {
+                CompassDAL objCompassDAL = new CompassDAL();
+
+                JobTypeBEList = objCompassDAL.GetJobDetailsDAL(objJobTypeBE);
+
+                objCompassDAL = null;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally { }
+            return JobTypeBEList;
+        }
+    }
 }
