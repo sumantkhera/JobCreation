@@ -25,6 +25,7 @@
 *.ide-shm
 *.ide-wal
 *.suo
+*.cache
 
 # Build results
 [Dd]ebug/
@@ -48,6 +49,8 @@ bin/
 obj/
 */bin/
 */obj/
+*/bin/*
+*/obj/*
 /bin
 /Compass.BAL/bin
 /Compass.BAL/obj
