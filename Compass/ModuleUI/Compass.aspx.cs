@@ -78,7 +78,7 @@ namespace Compass.ModuleUI
             jobDetails.AllocatedToTeam = null;//?
 
 
-            jobDetails.JobStatusId = Convert.ToInt32(JobStatus.Received);
+            //jobDetails.JobStatusId = Convert.ToInt32(JobStatus.Received);
             jobDetails.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
             jobDetails.CreatedBy = 1;//logged in user
 
