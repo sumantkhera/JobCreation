@@ -34,7 +34,7 @@ namespace Compass.ModuleUI
                 Session["UserTypeId"] = ds.Tables[0].Rows[0]["UserTypeId"];
                 Session["ServiceCompanyId"] = string.IsNullOrEmpty(ds.Tables[0].Rows[0]["ServiceCompanyId"].ToString()) ? 0 : ds.Tables[0].Rows[0]["ServiceCompanyId"];
 
-                Response.Redirect("~/ModuleUI/Compass.aspx");
+                Response.Redirect("/ModuleUI/Compass.aspx");
             }
         }
     }

@@ -11,8 +11,11 @@
     <form id="form1" runat="server">
         <div>
             <asp:TextBox ID="txtUserId" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator runat="server" id="reqUserId" controltovalidate="txtUserId" errormessage="Please enter username" ForeColor="Red" />
+            <asp:RegularExpressionValidator runat="server" id="rexEmail" controltovalidate="txtUserId" validationexpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" errormessage="Please enter a vaild username"  ForeColor="Red" />
             <br />
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:RequiredFieldValidator runat="server" id="reqPassword" controltovalidate="txtPassword" errormessage="Please enter password" ForeColor="Red" />
             <br />
             <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
         </div>
