@@ -10,69 +10,78 @@
 namespace Compass.ModuleUI {
     
     
-    public partial class Login {
+    public partial class Compass {
         
         /// <summary>
-        /// form1 control.
+        /// ddlJobType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlJobType;
         
         /// <summary>
-        /// txtUserId control.
+        /// ddlBranch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserId;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBranch;
         
         /// <summary>
-        /// reqUserId control.
+        /// ddlUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqUserId;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsers;
         
         /// <summary>
-        /// rexEmail control.
+        /// ddlPriority control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator rexEmail;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
         
         /// <summary>
-        /// txtPassword control.
+        /// txtComment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtComment;
         
         /// <summary>
-        /// reqPassword control.
+        /// fileJobAttachment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqPassword;
+        protected global::System.Web.UI.WebControls.FileUpload fileJobAttachment;
         
         /// <summary>
-        /// btnLogin control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }

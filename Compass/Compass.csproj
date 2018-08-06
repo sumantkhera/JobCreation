@@ -149,6 +149,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\custom.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -165,7 +168,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="ModuleUI\Compass.aspx" />
+    <Content Include="img\compass-logo.jpg" />
+    <Content Include="ModuleUI\CreateJob.aspx" />
     <Content Include="ModuleUI\JobCreationEdit.aspx" />
     <Content Include="ModuleUI\Login.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -230,12 +234,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ModuleUI\Compass.aspx.cs">
-      <DependentUpon>Compass.aspx</DependentUpon>
+    <Compile Include="ModuleUI\CreateJob.aspx.cs">
+      <DependentUpon>CreateJob.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ModuleUI\Compass.aspx.designer.cs">
-      <DependentUpon>Compass.aspx</DependentUpon>
+    <Compile Include="ModuleUI\CreateJob.aspx.designer.cs">
+      <DependentUpon>CreateJob.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModuleUI\JobCreationEdit.aspx.cs">
       <DependentUpon>JobCreationEdit.aspx</DependentUpon>
@@ -277,8 +281,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Attachment\" />
-    <Folder Include="css\" />
-    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

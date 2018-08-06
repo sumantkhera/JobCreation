@@ -97,7 +97,7 @@ namespace Compass.DAL
                                    new SqlParameter("@CretaedDate",obj.CreatedDate),
                                    new SqlParameter("@CreatedBy",obj.CreatedBy),
                                    new SqlParameter("@JobTypeId",obj.JobTypeId),
-                                   new SqlParameter("@JobStatusId",obj.JobStatusId),
+                                   //new SqlParameter("@JobStatusId",obj.JobStatusId),
                                    new SqlParameter("@AllocatedToTeam",obj.AllocatedToTeam),
                                    new SqlParameter("@AllocatedToUser",obj.AllocatedToUser),
                                    new SqlParameter("@AllocationDate",obj.AllocationDate),
@@ -110,7 +110,7 @@ namespace Compass.DAL
                                    tvpParam
                                };
 
-                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "INSERTJOBDETAILS", param);
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spCreateJob", param);
                 squery = ds.Tables[0].Rows[0][0].ToString();
                 return squery;
             }
