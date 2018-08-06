@@ -1,0 +1,49 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@font-face {
+    font-family: pala;
+    src: url(../fonts/PALA.TTF);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: pala bold;
+    src: url(../fonts/PALAB.TTF);
+    font-weight: bold;
+}
+
+/* Links */
+a,a:focus,a:hover {color: #fff;}
+
+html,body {height: 100%;font-family: 'arial', sans-serif;}
+.main-bg{background: #ebebeb;}
+.navbar-style{background-color: #fff;height: 115px;}
+.navbar-style .navbar-brand{width: 200px;height: 70px;display: inline-block;}
+.section-bg{background-color: #ebebeb}
+.add-jobs{    padding: 0 20px 20px 20px;font-size: 20px;color: #000;}
+.add-jobs img{margin-right: 10px;}
+.section-bg .form-inline{background: #fff;padding: 25px 30px;}
+.section-bg .form-inline .form-group{width: 100%;}
+.section-bg .form-inline .form-group textarea.form-control{height: 115px;}
+.section-bg .form-inline .form-group input[type="file"].form-control{height: 115px;border: 1px dashed #bcbcbc;}
+.section-bg .form-inline .form-group .form-control{width: 100%;border-radius:0;height: 45px;}
+.section-bg .form-inline .form-group.form-group-style{margin-bottom: 25px;}
+.section-bg .form-inline .form-group.form-group-style label{text-align: left;font-size: 16px;color: #000;font-weight: normal;margin-top: 10px;}
+.section-bg .form-inline{border-bottom: 2px solid #00a2ca;margin-bottom: 30px;}
+.footer-style{padding: 30px;text-align: center;border-top: 1px solid #bcbcbc;}
+.btn-style .btn-submit{background: #00a2ca;font-size: 20px;color: #fff;font-weight: normal;width: 130px;border-radius:0;margin-bottom: 5px;}
+.btn-style .btn-cancel{background: #c4c4c4;font-size: 20px;color: #585858;font-weight: normal;width: 130px;border-radius:0;margin-bottom: 5px;}
+.login-details{padding: 20px 40px;position: relative;}
+.login-details span{font-size: 16px;display: block;text-align: left;}
+.login-details span:FIRST-CHILD{font-size: 20px;}
+.login-details a{color: #000000;position: absolute;right: 10px;top: 40px;}
+.text-area-label{width: 12%;}
+.text-area-style{width: 88%;}
+
+@media only screen and (max-width: 767px) {
+.section-bg .form-inline .form-group.form-group-style{margin-bottom: 5px;}
+.navbar-style .navbar-nav{display: none;}
+.section-bg .form-inline{padding: 0}
+.text-area-style{width: 100%;}
+.text-area-label{width: 100%;}
+}
