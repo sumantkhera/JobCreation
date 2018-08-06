@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Compass.BAL;
+using CompassBE.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,7 +19,16 @@ namespace Compass.ModuleUI
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            UserLogin usr = new UserLogin();
+            usr.Username = txtUserId.Text;
+            usr.Password = txtPassword.Text;
+            UsersBAL usersBAL = new UsersBAL();
+            DataSet ds = usersBAL.UserLogins(usr);
 
+            if(ds !=null && ds.Tables.Count>0)
+            {
+                Response.Redirect("~/ModuleUI/Compass.aspx");
+            }
         }
     }
 }

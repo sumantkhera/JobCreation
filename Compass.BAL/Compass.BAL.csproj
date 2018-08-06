@@ -46,6 +46,7 @@
     <Compile Include="CompassBAL.cs" />
     <Compile Include="JobDetailsBAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsersBAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CompassBE\CompassBE.csproj">
