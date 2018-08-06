@@ -11,7 +11,8 @@ namespace Compass
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            spName.InnerText = Session["UserName"].ToString();
+            spBranch.InnerText = Session["BranchName"].ToString();
         }
     }
 }

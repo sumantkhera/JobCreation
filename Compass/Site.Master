@@ -12,19 +12,19 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="/Content/css" />
+    <webopt:BundleReference runat="server" Path="/Content/css" />
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    
+
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- The above 3 meta tags *must* come first in the head any other head content must come *after* these tags -->
-  
+
 
     <!-- Bootstrap -->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/style.css">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,14 +32,13 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-     
+
 
 </head>
 <body>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
-                
                 <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="bootstrap" />
@@ -55,38 +54,43 @@
             </Scripts>
         </asp:ScriptManager>
 
-         <nav class="navbar navbar-style">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      
-        <a class="navbar-brand" href="#">
-            <div class="logo">
-                <img src="/images/logo.jpg" />
+        <div class="main-bg">
+            <div class="container">
+
+                <header>
+            <nav class="navbar navbar-style">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#"><div class="logo"><img src="/images/logo.jpg" /></div></a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <div class="login-details"> 
+                                <span id="spName" runat="server">Michael Smith </span>
+                                <span id="spBranch" runat="server">Miami, Florida</span>
+                                <a href="#"><img alt="" src="/images/arrow.png"></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="clearfix"></div>
+        </header>
+        
+                <%--Section HTML will go inside--%>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+
+                <%--Footer HTML--%>
+                <footer>
+                    <div class="footer-style">
+                        <img src="/images/damco-logo.png" alt="Powered by damco" />
+                    </div>
+                </footer>
 
             </div>
-
-        </a>
-    </div>
-    
-    <ul class="nav navbar-nav navbar-right">
-      <li><div class="login-details"> <span>Michael Smith </span><span>Miami, Florida</span><a href="#"><img alt="" src="/images/arrow.png"></a></div>
-      
-      </li>
-    </ul>
-  </div>
-</nav>
-	<div class="clearfix"></div>
-
-
-        <div  class="footer-style">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-            <img src="/images/damco-logo.png" alt="Powered by damco" />
-        </footer>
         </div>
-
     </form>
 </body>
 </html>

@@ -149,6 +149,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\custom.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -165,6 +168,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="img\compass-logo.jpg" />
     <Content Include="ModuleUI\Compass.aspx" />
     <Content Include="ModuleUI\JobCreationEdit.aspx" />
     <Content Include="ModuleUI\Login.aspx" />
@@ -277,8 +281,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Attachment\" />
-    <Folder Include="css\" />
-    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
