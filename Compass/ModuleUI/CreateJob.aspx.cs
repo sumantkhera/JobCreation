@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using Compass.BAL;
 using CompassBE;
 using Utility.Enums;
+using System.IO;
 
 namespace Compass.ModuleUI
 {
@@ -106,11 +107,11 @@ namespace Compass.ModuleUI
                 {
                     Attachments attachments = new Attachments();
                     Guid random1 = Guid.NewGuid();                    
-                    fileJobAttachment.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + uploadedFile.FileName));
-                    attachments.Name = fileJobAttachment.FileName;
-                    attachments.Path = random1.ToString() + fileJobAttachment.FileName;
+                    fileJobAttachment.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
+                    attachments.Name = uploadedFile.FileName;
+                    attachments.Path = "/Attachment/" + random1.ToString() + Path.GetExtension(uploadedFile.FileName);
                     attachments.CommentId = null;
-                    attachments.CreatedBy = 1;//will logged in user
+                    attachments.CreatedBy = Convert.ToInt32(Session["UserId"]);
                     lstAttachments.Add(attachments);
                 }
             }

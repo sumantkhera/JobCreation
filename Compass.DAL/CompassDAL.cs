@@ -85,8 +85,9 @@ namespace Compass.DAL
             try
             {
                 SqlParameter tvpParam = new SqlParameter("@Attachments", obj.Attachments);
-                tvpParam.SqlDbType = SqlDbType.Udt;
+                tvpParam.SqlDbType = SqlDbType.Structured;
                 tvpParam.Direction = ParameterDirection.Input;
+                tvpParam.TypeName = "dbo.UT_JobAttachment";
 
                 SqlParameter[] param =
                              {     new SqlParameter("@ClientId",obj.ClientId),

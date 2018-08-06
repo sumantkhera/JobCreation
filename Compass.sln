@@ -1,13 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compass", "Compass\Compass.csproj", "{87AF7990-6328-46F4-BC18-D5DEB9D4AFCD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A13FF53E-D63A-4B5E-A108-3D7DC7AF34C0} = {A13FF53E-D63A-4B5E-A108-3D7DC7AF34C0}
+		{ADBE1C47-7AFF-4070-B73C-30CC3D8FF058} = {ADBE1C47-7AFF-4070-B73C-30CC3D8FF058}
+		{689653BD-A0C5-4B09-980A-9FEC3A4529F9} = {689653BD-A0C5-4B09-980A-9FEC3A4529F9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compass.BAL", "Compass.BAL\Compass.BAL.csproj", "{A13FF53E-D63A-4B5E-A108-3D7DC7AF34C0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B009523D-2C6B-4CA4-BACC-105BF8E52E6B} = {B009523D-2C6B-4CA4-BACC-105BF8E52E6B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compass.DAL", "Compass.DAL\Compass.DAL.csproj", "{B009523D-2C6B-4CA4-BACC-105BF8E52E6B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{689653BD-A0C5-4B09-980A-9FEC3A4529F9} = {689653BD-A0C5-4B09-980A-9FEC3A4529F9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompassBE", "CompassBE\CompassBE.csproj", "{689653BD-A0C5-4B09-980A-9FEC3A4529F9}"
 EndProject

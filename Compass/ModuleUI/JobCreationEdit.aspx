@@ -204,7 +204,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" id="divInternalUse" runat="server">
                             <div class="form-group form-group-style">
                                 <div class="col-sm-2 text-area-label">
                                     <label for="email">Internal Use</label>
