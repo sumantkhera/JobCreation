@@ -26,7 +26,7 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
 .section-bg .form-inline .form-group{width: 100%;}
 .section-bg .form-inline .form-group textarea.form-control{height: 115px;}
 .section-bg .form-inline .form-group input[type="file"].form-control{height: 115px;border: 1px dashed #bcbcbc;}
-.section-bg .form-inline .form-group .form-control{width: 100%;border-radius:0;height: 45px;}
+.section-bg .form-inline .form-group .form-control{width: 100%;border-radius:0;height: 45px;max-width: 100%;}
 .section-bg .form-inline .form-group.form-group-style{margin-bottom: 25px;}
 .section-bg .form-inline .form-group.form-group-style label{text-align: left;font-size: 16px;color: #000;font-weight: normal;margin-top: 10px;}
 .section-bg .form-inline{border-bottom: 2px solid #00a2ca;margin-bottom: 30px;}

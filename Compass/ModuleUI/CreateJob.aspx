@@ -80,7 +80,7 @@
                             <label for="email">Description </label>
                         </div>
                         <div class="col-sm-10 text-area-style">
-                            <asp:TextBox ID="txtComment" runat="server" TextMode="MultiLine" Height="50px" Width="1100px"></asp:TextBox>
+                            <asp:TextBox ID="txtComment" runat="server" TextMode="MultiLine" class="form-control"></asp:TextBox>
                         </div>
                     </div>
                 </div>
