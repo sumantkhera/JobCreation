@@ -22,15 +22,6 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// Panel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
-        
-        /// <summary>
         /// txtJobNumber control.
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace Compass.ModuleUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtJobNumber;
-        
-        /// <summary>
-        /// txtSubmitDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSubmitDate;
         
         /// <summary>
         /// txtSubmitBy control.
@@ -58,6 +40,15 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.TextBox txtSubmitBy;
         
         /// <summary>
+        /// txtSubmitDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSubmitDate;
+        
+        /// <summary>
         /// txtBranch control.
         /// </summary>
         /// <remarks>
@@ -67,15 +58,6 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.TextBox txtBranch;
         
         /// <summary>
-        /// ddlJobStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlJobStatus;
-        
-        /// <summary>
         /// ddlJobType control.
         /// </summary>
         /// <remarks>
@@ -83,6 +65,24 @@ namespace Compass.ModuleUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlJobType;
+        
+        /// <summary>
+        /// txtDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        
+        /// <summary>
+        /// ddlJobStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlJobStatus;
         
         /// <summary>
         /// ddlTeam control.
@@ -112,13 +112,13 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.DropDownList ddlQAUser;
         
         /// <summary>
-        /// txtDescription control.
+        /// txtComments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtComments;
         
         /// <summary>
         /// chkInternalUse control.
@@ -130,15 +130,6 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.CheckBox chkInternalUse;
         
         /// <summary>
-        /// txtComments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComments;
-        
-        /// <summary>
         /// FileUploadAttachments control.
         /// </summary>
         /// <remarks>
@@ -146,23 +137,5 @@ namespace Compass.ModuleUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUploadAttachments;
-        
-        /// <summary>
-        /// btnSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
-        
-        /// <summary>
-        /// btnCancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }
