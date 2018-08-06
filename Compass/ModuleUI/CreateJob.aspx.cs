@@ -17,6 +17,8 @@ namespace Compass.ModuleUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Title = "Create Job";
+
             if (!this.IsPostBack)
             {
                 BindDropdowns();

@@ -41,7 +41,7 @@ namespace Compass.ModuleUI
                 Session["ServiceCompany"] = ds.Tables[0].Rows[0]["ServiceCompany"];
                 Session["UserId"] = ds.Tables[0].Rows[0]["UserId"];
 
-                Response.Redirect("/ModuleUI/Compass.aspx");
+                Response.Redirect("/ModuleUI/CreateJob.aspx");
             }
         }
     }
