@@ -27,6 +27,13 @@ namespace Compass.ModuleUI
 
             if(ds !=null && ds.Tables.Count>0)
             {
+                //Add to session
+                Session["ClientId"] = string.IsNullOrEmpty(ds.Tables[0].Rows[0]["ClientId"].ToString()) ? 0 : ds.Tables[0].Rows[0]["ClientId"];
+                Session["UserEmailId"] = ds.Tables[0].Rows[0]["UserEmailId"];
+                Session["BranchId"] = ds.Tables[0].Rows[0]["BranchId"];
+                Session["UserTypeId"] = ds.Tables[0].Rows[0]["UserTypeId"];
+                Session["ServiceCompanyId"] = string.IsNullOrEmpty(ds.Tables[0].Rows[0]["ServiceCompanyId"].ToString()) ? 0 : ds.Tables[0].Rows[0]["ServiceCompanyId"];
+
                 Response.Redirect("~/ModuleUI/Compass.aspx");
             }
         }
