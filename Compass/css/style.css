@@ -15,7 +15,7 @@
 /* Links */
 a,a:focus,a:hover {color: #fff;}
 
-html,body {height: 100%;font-family: 'arial', sans-serif;}
+html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
 .main-bg{background: #ebebeb;}
 .navbar-style{background-color: #fff;height: 115px;}
 .navbar-style .navbar-brand{width: 200px;height: 70px;display: inline-block;}

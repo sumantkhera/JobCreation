@@ -12,6 +12,7 @@
                 </div>
             </div>
 
+            <div class="form-inline" role="form">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group form-group-style">
@@ -101,6 +102,7 @@
             </div>
 
         </div>
+            </div>
     </section>
 
 </asp:Content>

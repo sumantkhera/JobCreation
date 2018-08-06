@@ -15,7 +15,7 @@
             <div class="container">
                     <div class="row">
                         <div class="col-sm-6">
-                            <a href="#"><img src="img/compass-logo.jpg" alt=""></a>
+                            <a href="#"><img src="/img/compass-logo.jpg" alt=""></a>
                         </div>
             
                         <div class="col-sm-6">
