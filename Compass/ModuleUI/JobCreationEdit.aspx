@@ -239,7 +239,7 @@
 
 
 
-                    <div class="form-group form-group-sm">
+                    <div class="form-group form-group-sm" id="divInternalUse" runat="server">
                         <div class="col-sm-12">
                             <div class="form-group descriptionDiv">
                                 <label for="new_comments" class="col-sm-2 control-label">Internal Use </label>
@@ -273,8 +273,9 @@
                             <div class="form-group descriptionDiv">
                                 <label for="" class="col-sm-2 control-label"></label>
                                 <div class="col-sm-6">
-                                    <input type="submit" value="Add" class="btn btn-info btn-lg">
-                                    <input type="reset" value="Cancel" class="btn btn-grey btn-lg">
+                                    <asp:Button Text="Add" runat="server" class="btn btn-info btn-lg" OnClick="btnSubmit_Click"    />
+                                    <asp:Button Text="Cancel" runat="server" class="btn btn-grey btn-lg" />                                  
+
                                 </div>
 
                                 <div class="col-sm-4 text-right">
