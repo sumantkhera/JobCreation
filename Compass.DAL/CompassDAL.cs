@@ -170,5 +170,21 @@ namespace Compass.DAL
             return JobDetailsBEList;
         }
 
+        public DataTable GetJobCraetionListDAL(int id)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlParameter[] param =
+                               {     new SqlParameter("@UserId",id ) };
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spListJobs",param);
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //  LogUtility.SaveErrorLogEntry(ex);
+            }
+            return dt;
+        }
     }
 }

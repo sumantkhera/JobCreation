@@ -170,6 +170,7 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="img\compass-logo.jpg" />
     <Content Include="ModuleUI\CreateJob.aspx" />
+    <Content Include="ModuleUI\JobCraetionList.aspx" />
     <Content Include="ModuleUI\JobCreationEdit.aspx" />
     <Content Include="ModuleUI\Login.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -240,6 +241,13 @@
     </Compile>
     <Compile Include="ModuleUI\CreateJob.aspx.designer.cs">
       <DependentUpon>CreateJob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleUI\JobCraetionList.aspx.cs">
+      <DependentUpon>JobCraetionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuleUI\JobCraetionList.aspx.designer.cs">
+      <DependentUpon>JobCraetionList.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModuleUI\JobCreationEdit.aspx.cs">
       <DependentUpon>JobCreationEdit.aspx</DependentUpon>

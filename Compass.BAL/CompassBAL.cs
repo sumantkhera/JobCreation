@@ -88,6 +88,18 @@ namespace Compass.BAL
             return squery;
         }
 
-        
+        public DataTable GetJobCraetionListBAL(int id)
+        {
+            DataTable ds = new DataTable();
+            try
+            {
+                 ds = compassDAL.GetJobCraetionListDAL(id);               
+            }
+            catch (Exception ex)
+            {
+                //  LogUtility.SaveErrorLogEntry(ex);
+            }
+            return ds;
+        }
     }
 }
