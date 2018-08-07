@@ -14,6 +14,7 @@ namespace CompassBE
         public string Description { get; set; }
         public DateTime? CreatedOn { get; set; }
         public int CreatedBy{ get; set; }
+        public bool  IsInternalUse{ get; set; }
 
         public JobDetailsBE JobDetails { get; set; }
     }

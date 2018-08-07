@@ -39,7 +39,17 @@ namespace Compass.ModuleUI
                 Session["UserTypeName"] = ds.Tables[0].Rows[0]["UserTypeName"];
                 Session["UserTypeCode"] = ds.Tables[0].Rows[0]["UserTypeCode"];
 
-                Response.Redirect("/ModuleUI/CreateJob.aspx");
+                if (Session["IsServiceCompanyUser"].ToString() == "1" || Session["IsServiceCompanyUser"].ToString() == "true"
+                    || Session["IsServiceCompanyUser"].ToString() == "True")
+                {
+                    Session["ServiceCompanyId"] = string.IsNullOrEmpty(ds.Tables[0].Rows[0]["ClientId"].ToString()) ? 0 : ds.Tables[0].Rows[0]["ClientId"];
+                }
+                else
+                {
+                    Session["ServiceCompanyId"] = "0";
+                }
+
+                    Response.Redirect("/ModuleUI/CreateJob.aspx");
             }
         }
     }

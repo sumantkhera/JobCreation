@@ -8,8 +8,7 @@
              $('#<%=lblAttachmentCount.ClientID%>').html('('+ hdnAttachementCountValue + ')'); 
          });
     </script>
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
+   
             <section>
                 <asp:HiddenField  id="hdnAttachementCount"   runat="server" />
                 <div class="section-bg">
@@ -200,15 +199,16 @@
                                         <label for="email">Attachments </label>
                                     </div>
                                     <div class="col-sm-10 text-area-style">
-                                        <asp:FileUpload ID="FileUploadAttachments" runat="server" class="form-control" />
+                                        <asp:FileUpload ID="FileUploadAttachments" runat="server" AllowMultiple="true" class="form-control"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                     <div class="col-sm-6">
                                         <div class="btn-style">
-                                            <button type="submit" class="btn btn-submit">Add</button>
-                                            <button type="submit" class="btn btn-cancel">Cancel</button>
+                                            <asp:Button Text="Add" class="btn btn-submit" runat="server" OnClick="btnSubmit_Click" />
+                                            <asp:Button Text="Cancel" class="btn btn-submit" runat="server" />
+                                            
                                         </div>
                                     </div>
                                         <div class="col-sm-6 text-right">
@@ -283,8 +283,8 @@ $("#attachment").click(function(){
 </script>
             </html>
      
-        </ContentTemplate>
-    </asp:UpdatePanel>
+       
+    
 
 </asp:Content>
 

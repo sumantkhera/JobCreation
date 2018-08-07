@@ -139,37 +139,35 @@ namespace Compass.DAL
         public string EditJobDetailsDAL(JobDetailsBE jobDetailsBE)
         {
             string squery = string.Empty;
+            
             try
-            {              
+            {
+                SqlParameter tvpParam = new SqlParameter("@Attachments", jobDetailsBE.Attachments);
+                tvpParam.SqlDbType = SqlDbType.Structured;
+                tvpParam.Direction = ParameterDirection.Input;
+                tvpParam.TypeName = "dbo.UT_JobAttachment";
 
                 SqlParameter[] param =
-                             {     new SqlParameter("@ClientId",jobDetailsBE.ClientId),
-                                   new SqlParameter("@JobNumber",jobDetailsBE.JobNumber),
-                                   new SqlParameter("@SubmitDate",jobDetailsBE.SubmitDate),
-                                   new SqlParameter("@SubmitBy",jobDetailsBE.SubmitBy),
-                                   new SqlParameter("@SubmittedByBranch",jobDetailsBE.SubmittedByBranch),
-                                   new SqlParameter("@CretaedDate",jobDetailsBE.CreatedDate),
-                                   new SqlParameter("@CreatedBy",jobDetailsBE.CreatedBy),
-                                   new SqlParameter("@JobTypeId",jobDetailsBE.JobTypeId),
-                                   //new SqlParameter("@JobStatusId",obj.JobStatusId),
+                             {
+                                   new SqlParameter("@JobId",jobDetailsBE.Id),
+                                   new SqlParameter("@ClientId",jobDetailsBE.ClientId),
+                                   new SqlParameter("@CreatedBy",jobDetailsBE.Comments.CreatedBy),
+                                   new SqlParameter("@Description",jobDetailsBE.Comments.Description),
+                                   new SqlParameter("@JobStatusId",jobDetailsBE.JobStatusId),
+                                   new SqlParameter("@QAUserId",jobDetailsBE.QAUserId),
                                    new SqlParameter("@AllocatedToTeam",jobDetailsBE.AllocatedToTeam),
                                    new SqlParameter("@AllocatedToUser",jobDetailsBE.AllocatedToUser),
                                    new SqlParameter("@AllocationDate",jobDetailsBE.AllocationDate),
-                                   new SqlParameter("@QAUserId",jobDetailsBE.QAUserId),
-                                   new SqlParameter("@LastCommentedDate",jobDetailsBE.LastCommentedDate),
-                                   new SqlParameter("@LastUpdatedDate",jobDetailsBE.LastUpdatedDate),
-                                   new SqlParameter("@PriorityID",jobDetailsBE.PriorityID),
-                                   new SqlParameter("@IsSystemDefined",jobDetailsBE.IsSystemDefined),
-                                   new SqlParameter("@CommentDescription",jobDetailsBE.CommentDescription)                                   
+                                   new SqlParameter("@AllocationDate",jobDetailsBE.Comments.IsInternalUse),
+                                   tvpParam
                                };
 
-                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spCreateJob", param);
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spJobDetails", param);
                 squery = ds.Tables[0].Rows[0][0].ToString();
                 return squery;
             }
             catch (Exception ex)
-            {
-                //   GeneralFuntions.WriteErrorToLog("Handler_SR_Presales", "InsertIntoSysRequests", DateTime.Now, 5, squery, ex.Message + "\n-------\n" + ex.StackTrace);
+            {  
                 return "0";
             }
         }

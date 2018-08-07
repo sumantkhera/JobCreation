@@ -15,7 +15,7 @@ namespace Compass.ModuleUI
     public partial class JobCreationEdit : System.Web.UI.Page
     {
         CompassBAL compassBAL = new CompassBAL();
-        JobDetailsBAL jobetailsBAL = new JobDetailsBAL();
+        JobDetailsBAL jobDetailsBAL = new JobDetailsBAL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,9 +29,9 @@ namespace Compass.ModuleUI
                 BindDropdowns();
                 GetJobAttachments();
 
-                if (Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.PM))
+                if (Convert.ToString(Session["UserTypeCode"]).Trim().Equals(UserType.Enum.PM.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.DM.ToString()))
                 {
-                    GetJobDetailsForPMUserType();
+                    GetJobDetailsForPMAndDMUserType();
                 }
 
                 if(Session["IsServiceCompanyUser"] != null)
@@ -62,10 +62,10 @@ namespace Compass.ModuleUI
 
             if (Session["IsServiceCompanyUser"] != null)
             {
-                DataTable dtUsers = jobetailsBAL.GetUserForServiceCompanyBAL("GetUserForServiceCompany", Convert.ToInt32(Session["ServiceCompanyId"]));
+                DataTable dtUsers = jobDetailsBAL.GetUserForServiceCompanyBAL("GetUserForServiceCompany", Convert.ToInt32(Session["ServiceCompanyId"]));
                 BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
 
-                DataTable dtQAUsers = jobetailsBAL.GetQAUserForServiceCompanyBAL("GetQAUserForServiceCompany", Convert.ToInt32(Session["ServiceCompanyId"]));
+                DataTable dtQAUsers = jobDetailsBAL.GetQAUserForServiceCompanyBAL("GetQAUserForServiceCompany", Convert.ToInt32(Session["ServiceCompanyId"]));
                 BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
             }
             else
@@ -73,13 +73,13 @@ namespace Compass.ModuleUI
                 DataTable dtUsers = compassBAL.GetUserBAL();
                 BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
 
-                DataTable dtQAUsers = jobetailsBAL.GetQAUserBAL("GetQAUser");
+                DataTable dtQAUsers = jobDetailsBAL.GetQAUserBAL("GetQAUser");
                 BindDropdown(ddlQAUser, "UserName", "Id", dtQAUsers, "Select QA User");
             }
             DataTable dtJobType = compassBAL.GetJobTypeBAL();
             BindDropdown(ddlJobType, "jobName", "Id", dtJobType, "Select JobType");
 
-            DataTable dtJobStatusType = jobetailsBAL.GetJobStatusBAL("GetJobStatus");
+            DataTable dtJobStatusType = jobDetailsBAL.GetJobStatusBAL("GetJobStatus");
             BindDropdown(ddlJobStatus, "Status", "Id", dtJobStatusType, "Select Status");           
 
 
@@ -108,7 +108,7 @@ namespace Compass.ModuleUI
             }
         }
 
-        private void GetJobDetailsForPMUserType()
+        private void GetJobDetailsForPMAndDMUserType()
         {
             JobDetailsBE obJobDetailsBE = new JobDetailsBE();
 
@@ -123,12 +123,12 @@ namespace Compass.ModuleUI
                 obJobDetailsBE.Id = 1;
             }
 
-                List<JobDetailsBE> lstDetails = jobetailsBAL.GetJobDetailsBAL(obJobDetailsBE);
+                List<JobDetailsBE> lstDetails = jobDetailsBAL.GetJobDetailsBAL(obJobDetailsBE);
 
             if(lstDetails !=null && lstDetails.Count > 0)
             {
                 txtJobNumber.Text = lstDetails[0].JobNumber;
-                txtSubmitDate.Text = lstDetails[0].SubmitDate.ToString().Remove(11); // to display only date part
+                txtSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("mm/dd/yyyy"); // to display only date part
                 txtSubmitBy.Text = lstDetails[0].SubmittedByName;
                 txtBranch.Text = lstDetails[0].BranchName;
                 txtDescription.Text = lstDetails[0].Description;
@@ -182,73 +182,102 @@ namespace Compass.ModuleUI
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {           
-            JobDetailsBE jobDetails = new JobDetailsBE();
-            jobDetails.Comments = new CommentsBE();
-            jobDetails.ClientId = Convert.ToInt32(Session["ClientId"]);           
+            JobDetailsBE jobDetailsBE = new JobDetailsBE();
+            jobDetailsBE.Comments = new CommentsBE();
+            jobDetailsBE.ClientId = Convert.ToInt32(Session["ClientId"]);
             
-            
-            jobDetails.IsSystemDefined = false;
 
-            jobDetails.Id = Convert.ToInt32(Request.QueryString["JobId"]);
-            jobDetails.Comments.CreatedBy = Convert.ToInt32(Session["UserId"]);
+            jobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
+            jobDetailsBE.Comments.CreatedBy = Convert.ToInt32(Session["UserId"]);
 
-            if (Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.PM) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.DM))
+            jobDetailsBE.Comments.Description = txtComments.Text;
+            AttachmentsColllection lstAttachments = new AttachmentsColllection();
+            if (FileUploadAttachments.HasFiles)
             {
-                jobDetails.Comments.Description = txtComments.Text;
-                jobDetails.JobStatusId = ddlJobStatus.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
-                jobDetails.QAUserId = ddlQAUser.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
-                jobDetails.AllocatedToTeam = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
-                jobDetails.AllocationDate = DateTime.Now;
-
-                AttachmentsColllection lstAttachments = new AttachmentsColllection();
-                if (FileUploadAttachments.HasFiles)
+                foreach (HttpPostedFile uploadedFile in FileUploadAttachments.PostedFiles)
                 {
-                    foreach (HttpPostedFile uploadedFile in FileUploadAttachments.PostedFiles)
-                    {
-                        AttachmentsBE attachments = new AttachmentsBE();
-                        Guid random1 = Guid.NewGuid();
-                        FileUploadAttachments.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
-                        attachments.Name = uploadedFile.FileName;
-                        attachments.Path = "/Attachment/" + random1.ToString() + Path.GetExtension(uploadedFile.FileName);
-                        attachments.CommentId = null;
-                        attachments.CreatedBy = Convert.ToInt32(Session["UserId"]);
-                        lstAttachments.Add(attachments);
-                    }
+                    AttachmentsBE attachments = new AttachmentsBE();
+                    Guid random1 = Guid.NewGuid();
+                    FileUploadAttachments.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
+                    attachments.Name = uploadedFile.FileName;
+                    attachments.Path = "/Attachment/" + random1.ToString() + Path.GetExtension(uploadedFile.FileName);
+                    attachments.CommentId = null;
+                    attachments.CreatedBy = Convert.ToInt32(Session["UserId"]);
+                    lstAttachments.Add(attachments);
                 }
-
-                jobDetails.Attachments = lstAttachments;
             }
 
-            if (Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QA) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.MEMBER)
-                || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QAHEAD))
+            jobDetailsBE.Attachments = lstAttachments;
+
+
+            if (Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.PM.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.DM.ToString()))
             {
-                jobDetails.Comments.Description = txtComments.Text;
-                jobDetails.JobStatusId = ddlJobStatus.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
-                
-                AttachmentsColllection lstAttachments = new AttachmentsColllection();
-                if (FileUploadAttachments.HasFiles)
+                if (ddlJobStatus.SelectedValue != null || ddlJobStatus.SelectedIndex != -1)
                 {
-                    foreach (HttpPostedFile uploadedFile in FileUploadAttachments.PostedFiles)
-                    {
-                        AttachmentsBE attachments = new AttachmentsBE();
-                        Guid random1 = Guid.NewGuid();
-                        FileUploadAttachments.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
-                        attachments.Name = uploadedFile.FileName;
-                        attachments.Path = "/Attachment/" + random1.ToString() + Path.GetExtension(uploadedFile.FileName);
-                        attachments.CommentId = null;
-                        attachments.CreatedBy = Convert.ToInt32(Session["UserId"]);
-                        lstAttachments.Add(attachments);
-                    }
+                    jobDetailsBE.JobStatusId = ddlJobStatus.SelectedValue != null ? Convert.ToInt32(ddlJobStatus.SelectedValue) : 0;
+                }
+                if (ddlQAUser.SelectedValue != null || ddlQAUser.SelectedIndex != -1)
+                {
+                    jobDetailsBE.QAUserId = Convert.ToInt32(ddlQAUser.SelectedValue);
                 }
 
-                jobDetails.Attachments = lstAttachments;
+                jobDetailsBE.AllocatedToTeam = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
+                jobDetailsBE.AllocationDate = DateTime.Now;
+                jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;
+
+               
+            }
+
+            if (Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QA.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.MEMBER.ToString())
+                || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QAHEAD))
+            {
+                jobDetailsBE.Comments.Description = txtComments.Text;
+                jobDetailsBE.JobStatusId = ddlJobStatus.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
+                jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;
+                
+                //AttachmentsColllection lstAttachments = new AttachmentsColllection();
+                //if (FileUploadAttachments.HasFiles)
+                //{
+                //    foreach (HttpPostedFile uploadedFile in FileUploadAttachments.PostedFiles)
+                //    {
+                //        AttachmentsBE attachments = new AttachmentsBE();
+                //        Guid random1 = Guid.NewGuid();
+                //        FileUploadAttachments.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
+                //        attachments.Name = uploadedFile.FileName;
+                //        attachments.Path = "/Attachment/" + random1.ToString() + Path.GetExtension(uploadedFile.FileName);
+                //        attachments.CommentId = null;
+                //        attachments.CreatedBy = Convert.ToInt32(Session["UserId"]);
+                //        lstAttachments.Add(attachments);
+                //    }
+                //}
+
+                //jobDetailsBE.Attachments = lstAttachments;
             }
             if (Session["ClientId"] != null)
             {
+                jobDetailsBE.Comments.Description = txtComments.Text;
+                jobDetailsBE.JobStatusId = ddlJobStatus.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;                
 
+                //AttachmentsColllection lstAttachments = new AttachmentsColllection();
+                //if (FileUploadAttachments.HasFiles)
+                //{
+                //    foreach (HttpPostedFile uploadedFile in FileUploadAttachments.PostedFiles)
+                //    {
+                //        AttachmentsBE attachments = new AttachmentsBE();
+                //        Guid random1 = Guid.NewGuid();
+                //        FileUploadAttachments.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
+                //        attachments.Name = uploadedFile.FileName;
+                //        attachments.Path = "/Attachment/" + random1.ToString() + Path.GetExtension(uploadedFile.FileName);
+                //        attachments.CommentId = null;
+                //        attachments.CreatedBy = Convert.ToInt32(Session["UserId"]);
+                //        lstAttachments.Add(attachments);
+                //    }
+                //}
+
+                //jobDetailsBE.Attachments = lstAttachments;
             }
 
-            string result = compassBAL.InsertIntoJobDetailsBAL(jobDetails);
+            string result = jobDetailsBAL.EditJobDetailsBAL(jobDetailsBE);
 
             if (result == "1")
             {
