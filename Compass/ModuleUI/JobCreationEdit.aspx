@@ -1,9 +1,17 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="JobCreationEdit.aspx.cs" Inherits="Compass.ModuleUI.JobCreationEdit" Title="Edit Job" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+     <script language="javascript" type="text/javascript">
+         $(document).ready(function () {
+             debugger;
+             var hdnAttachementCountValue = document.getElementById('<%= hdnAttachementCount.ClientID %>').value;
+             $('#<%=lblAttachmentCount.ClientID%>').html('('+ hdnAttachementCountValue + ')'); 
+         });
+    </script>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <section>
+                <asp:HiddenField  id="hdnAttachementCount"   runat="server" />
                 <div class="section-bg">
                     <!-- container -->
                     <div class="row">
@@ -88,11 +96,15 @@
                                         <label for="email"></label>
                                     </div>
                                     <div class="col-sm-10 text-area-style">
-                                        <a class="btn btn-link" id="attachment">Attachments <span>[3]</span></a>
+                                        <a class="btn btn-link" id="attachment">Attachments 
+                                            <asp:Label ID="lblAttachmentCount"  runat="server" />
+                                        </a>
                                         <div class="attachment-download" style="display: none">
-                                                <a class="btn btn-link">Attachments <span>[1]</span></a>
+                                            <asp:Panel ID="pnlAttachment" runat="server"></asp:Panel>
+                                          
+                                                <%--<a class="btn btn-link">Attachments <span>[1]</span></a>
                                                 <a class="btn btn-link">Attachments <span>[2]</span></a>
-                                                <a class="btn btn-link">Attachments <span>[3]</span></a>
+                                                <a class="btn btn-link">Attachments <span>[3]</span></a>--%>
                                         </div>
                                     </div>
                                 </div>

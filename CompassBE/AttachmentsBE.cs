@@ -8,16 +8,21 @@ using System.Threading.Tasks;
 
 namespace CompassBE
 {
-    public class Attachments
-    {      
+    [Serializable]
+    public class AttachmentsBE
+    {
+        public string Action { get; set; }
+        public int JobAttachmentId { get; set; }
         public string Name { get; set; }
         public string Path { get; set; }      
         public int? CreatedBy { get; set; }      
-        public int? CommentId { get; set; }    
+        public int? CommentId { get; set; }
+
+        public JobDetailsBE JobDetails { get; set; } 
     }
 
 
-    public class AttachmentsColllection : List<Attachments>, IEnumerable<SqlDataRecord>
+    public class AttachmentsColllection : List<AttachmentsBE>, IEnumerable<SqlDataRecord>
     {
         IEnumerator<SqlDataRecord> IEnumerable<SqlDataRecord>.GetEnumerator()
         {
@@ -27,7 +32,7 @@ namespace CompassBE
                   new SqlMetaData("CreatedBy", SqlDbType.VarChar, 50),
                   new SqlMetaData("CommentId", SqlDbType.VarChar, 50));
 
-            foreach (Attachments cust in this)
+            foreach (AttachmentsBE cust in this)
             {
                 sqlRow.SetString(0, cust.Name);
                 sqlRow.SetString(1, cust.Path);

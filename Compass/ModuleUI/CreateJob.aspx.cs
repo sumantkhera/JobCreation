@@ -103,7 +103,7 @@ namespace Compass.ModuleUI
             {
                 foreach (HttpPostedFile uploadedFile in fileJobAttachment.PostedFiles)
                 {
-                    Attachments attachments = new Attachments();
+                    AttachmentsBE attachments = new AttachmentsBE();
                     Guid random1 = Guid.NewGuid();                    
                     fileJobAttachment.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
                     attachments.Name = uploadedFile.FileName;
