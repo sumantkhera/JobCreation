@@ -10,16 +10,7 @@
 namespace Compass.ModuleUI {
     
     
-    public partial class JobCreationEdit {
-        
-        /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+    public partial class EditJob {
         
         /// <summary>
         /// hdnAttachementCount control.
