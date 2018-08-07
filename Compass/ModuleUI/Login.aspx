@@ -6,6 +6,7 @@
 <head runat="server">
     <title>Login</title>
     <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
