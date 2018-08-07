@@ -22,8 +22,8 @@ namespace CompassBE
         IEnumerator<SqlDataRecord> IEnumerable<SqlDataRecord>.GetEnumerator()
         {
             var sqlRow = new SqlDataRecord(
-                  new SqlMetaData("Name", SqlDbType.VarChar, 50),
-                  new SqlMetaData("Path", SqlDbType.VarChar, 50),
+                  new SqlMetaData("Name", SqlDbType.NVarChar, 500),
+                  new SqlMetaData("Path", SqlDbType.NVarChar, 1000),
                   new SqlMetaData("CreatedBy", SqlDbType.VarChar, 50),
                   new SqlMetaData("CommentId", SqlDbType.VarChar, 50));
 

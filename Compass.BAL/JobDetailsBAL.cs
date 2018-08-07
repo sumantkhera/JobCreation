@@ -61,5 +61,34 @@ namespace Compass.BAL
             }
             return dt;
         }
+        public DataTable GetUserForServiceCompanyBAL(string Action, int ServiceCompanyId)
+        {
+            JobDetailsDAL objJobDetailsDAL = new JobDetailsDAL();
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = objJobDetailsDAL.GetUserForServiceCompanyDAL(Action, ServiceCompanyId);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
+
+        public DataTable GetQAUserForServiceCompanyBAL(string Action, int ServiceCompanyId)
+        {
+            JobDetailsDAL objJobDetailsDAL = new JobDetailsDAL();
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = objJobDetailsDAL.GetQAUserForServiceCompanyDAL(Action, ServiceCompanyId);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
     }
 }

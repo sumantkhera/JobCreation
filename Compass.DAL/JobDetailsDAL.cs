@@ -31,23 +31,22 @@ namespace Compass.DAL
                     JobDetailsBE oNewJobDetailsBE = new JobDetailsBE();
 
                     oNewJobDetailsBE.Id = Convert.ToInt32(dr["Id"].ToString());
-                    if (dr.Table.Columns.Contains("ClientId"))
-                        oNewJobDetailsBE.ClientId = Convert.ToInt32(dr["ClientId"].ToString());
+                    oNewJobDetailsBE.ClientId = dr["ClientId"] != DBNull.Value ? Convert.ToInt32(dr["ClientId"]) : 0; 
                     oNewJobDetailsBE.JobNumber = Convert.ToString(dr["JobNumber"]);
                     oNewJobDetailsBE.SubmitDate = Convert.ToDateTime(dr["SubmitDate"]);
-                    oNewJobDetailsBE.SubmittedByName = dr["SubmittedByName"].ToString() != null ? dr["SubmittedByName"].ToString() : null;
-                    oNewJobDetailsBE.BranchName = dr["BranchName"].ToString() != null ? dr["BranchName"].ToString() : null;
+                    oNewJobDetailsBE.SubmittedByName = dr["SubmittedByName"] != DBNull.Value ? dr["SubmittedByName"].ToString() : null;
+                    oNewJobDetailsBE.BranchName = dr["BranchName"] != DBNull.Value ? dr["BranchName"].ToString() : null;
                     oNewJobDetailsBE.JobTypeId = Convert.ToInt32(dr["JobTypeId"].ToString());
                     oNewJobDetailsBE.JobStatusId = Convert.ToInt32(dr["JobStatusId"].ToString());
-                    oNewJobDetailsBE.AllocatedToTeam = Convert.ToInt32(dr["AllocatedToTeam"].ToString());
-                    oNewJobDetailsBE.AllocatedToUser = Convert.ToInt32(dr["AllocatedToUser"].ToString());
-                    oNewJobDetailsBE.AllocationDate = Convert.ToDateTime(dr["AllocationDate"]);
-                    oNewJobDetailsBE.QAUserId = Convert.ToInt32(dr["QAUserId"].ToString());
-                    oNewJobDetailsBE.LastCommentedDate = Convert.ToDateTime(dr["LastCommentedDate"]);
-                    oNewJobDetailsBE.LastUpdatedDate = Convert.ToDateTime(dr["LastUpdatedDate"]);
-                    oNewJobDetailsBE.PriorityID = Convert.ToInt32(dr["PriorityID"].ToString());
-                    oNewJobDetailsBE.IsSystemDefined = Convert.ToBoolean(dr["IsSystemDefined"].ToString());
-                    oNewJobDetailsBE.Description = dr["Description"].ToString() != null ? dr["Description"].ToString() : null;
+                    oNewJobDetailsBE.AllocatedToTeam = dr["AllocatedToTeam"] != DBNull.Value ? Convert.ToInt32(dr["AllocatedToTeam"].ToString()) : 0;
+                    oNewJobDetailsBE.AllocatedToUser = dr["AllocatedToUser"] != DBNull.Value ? Convert.ToInt32(dr["AllocatedToUser"].ToString()) : 0; 
+                    oNewJobDetailsBE.AllocationDate = dr["AllocationDate"] != DBNull.Value ? Convert.ToDateTime(dr["AllocationDate"].ToString()) : (DateTime?)null; 
+                    oNewJobDetailsBE.QAUserId = dr["QAUserId"] != DBNull.Value ? Convert.ToInt32(dr["QAUserId"].ToString()) : 0;
+                    oNewJobDetailsBE.LastCommentedDate = dr["LastCommentedDate"] != DBNull.Value ? Convert.ToDateTime(dr["LastCommentedDate"].ToString()) : (DateTime?)null; 
+                    oNewJobDetailsBE.LastUpdatedDate = dr["LastUpdatedDate"] != DBNull.Value ? Convert.ToDateTime(dr["LastUpdatedDate"].ToString()) : (DateTime?)null; 
+                    oNewJobDetailsBE.PriorityID = dr["PriorityID"] != DBNull.Value ? Convert.ToInt32(dr["PriorityID"].ToString()) : 0;
+                    oNewJobDetailsBE.IsSystemDefined = dr["IsSystemDefined"] != DBNull.Value ? Convert.ToBoolean(dr["IsSystemDefined"].ToString()) : false;
+                    oNewJobDetailsBE.Description = dr["Description"] != DBNull.Value ? dr["Description"].ToString() : null;
 
 
                     JobDetailsBEList.Add(oNewJobDetailsBE);
@@ -89,6 +88,46 @@ namespace Compass.DAL
                 SqlParameter[] param = new SqlParameter[2];
                 param[index++] = new SqlParameter("@Action", Action);
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spJobDetails", param);                
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //  LogUtility.SaveErrorLogEntry(ex);
+            }
+            return dt;
+        }
+
+        public DataTable GetUserForServiceCompanyDAL(string Action, int ServiceCompanyId)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                int index = 0;
+                SqlParameter[] param = new SqlParameter[2];
+                param[index++] = new SqlParameter("@Action", Action);
+                param[index++] = new SqlParameter("@ServiceCompanyId", ServiceCompanyId);
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spJobDetails", param);
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //  LogUtility.SaveErrorLogEntry(ex);
+            }
+            return dt;
+        }
+
+        public DataTable GetQAUserForServiceCompanyDAL(string Action, int ServiceCompanyId)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                int index = 0;
+                SqlParameter[] param = new SqlParameter[2];
+                param[index++] = new SqlParameter("@Action", Action);
+                param[index++] = new SqlParameter("@ServiceCompanyId", ServiceCompanyId);
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spJobDetails", param);
                 dt = ds.Tables[0];
             }
             catch (Exception ex)

@@ -121,6 +121,15 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.TextBox txtComments;
         
         /// <summary>
+        /// divInternalUse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divInternalUse;
+        
+        /// <summary>
         /// chkInternalUse control.
         /// </summary>
         /// <remarks>

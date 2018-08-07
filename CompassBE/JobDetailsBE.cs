@@ -17,10 +17,10 @@ namespace CompassBE
         public int Id { get; set; }
         public int? ClientId { get; set; }
         public int PriorityID { get; set; }
-        public DateTime LastUpdatedDate { get; set; }
-        public DateTime LastCommentedDate { get; set; }
+        public DateTime? LastUpdatedDate { get; set; }
+        public DateTime? LastCommentedDate { get; set; }
         public int? QAUserId { get; set; }
-        public DateTime AllocationDate { get; set; }
+        public DateTime? AllocationDate { get; set; }
         public int? AllocatedToUser { get; set; }
         public int? AllocatedToTeam { get; set; }
         public int JobStatusId { get; set; }

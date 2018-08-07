@@ -21,8 +21,28 @@ namespace Compass.ModuleUI
             {
                 //if (Request.QueryString["JobId"] != null)
                 //{
-                    GetJobDetails();
-                    BindDropdowns();
+                Session["UserTypeId"] = "4";
+                //Session["ServiceCompanyId"] = "1";
+
+                BindDropdowns();
+
+                if (Convert.ToString(Session["UserTypeId"]).Equals("4"))
+                {
+                    GetJobDetailsForPMUserType();
+                }
+
+                if(Session["ServiceCompanyId"] != null)
+                {
+                    divInternalUse.Visible = true;
+                }
+                else
+                {
+                    divInternalUse.Visible = false;
+                }
+
+               
+                //GetJobDetails();
+                    
                 //}
                 //else
                 //{
@@ -32,19 +52,38 @@ namespace Compass.ModuleUI
         }
 
         #region Methods   
+
+
         public void BindDropdowns()
-        {
+        {           
+
+            if (Session["ServiceCompanyId"] != null)
+            {
+                DataTable dtUsers = jobetailsBAL.GetUserForServiceCompanyBAL("GetUserForServiceCompany", Convert.ToInt32(Session["ServiceCompanyId"]));
+                BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
+
+                DataTable dtQAUsers = jobetailsBAL.GetQAUserForServiceCompanyBAL("GetQAUserForServiceCompany", Convert.ToInt32(Session["ServiceCompanyId"]));
+                BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
+            }
+            else
+            {
+                DataTable dtUsers = compassBAL.GetUserBAL();
+                BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
+
+                DataTable dtQAUsers = jobetailsBAL.GetQAUserBAL("GetQAUser");
+                BindDropdown(ddlQAUser, "UserName", "Id", dtQAUsers, "Select QA User");
+            }
             DataTable dtJobType = compassBAL.GetJobTypeBAL();
             BindDropdown(ddlJobType, "jobName", "Id", dtJobType, "Select JobType");
 
             DataTable dtJobStatusType = jobetailsBAL.GetJobStatusBAL("GetJobStatus");
             BindDropdown(ddlJobStatus, "Status", "Id", dtJobStatusType, "Select Status");           
 
-            DataTable dtUsers = compassBAL.GetUserBAL();
-            BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
 
-            DataTable dtQAUsers = jobetailsBAL.GetQAUserBAL("GetQAUser");
-            BindDropdown(ddlQAUser, "UserName", "Id", dtQAUsers, "Select QA User");
+            //DataTable dtUsers = jobetailsBAL.GetUserForServiceCompanyBAL("GetUserForServiceCompany", ServiceComapnyID);
+            //BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
+
+           
         }
 
 
@@ -66,10 +105,11 @@ namespace Compass.ModuleUI
             }
         }
 
-        public void GetJobDetails()
+        public void GetJobDetailsForPMUserType()
         {
             JobDetailsBE obJobDetailsBE = new JobDetailsBE();
-            
+
+            obJobDetailsBE.Action = "GetJobDetailsById";
 
             if (Request.QueryString["JobId"] != null)
             {
@@ -85,7 +125,7 @@ namespace Compass.ModuleUI
             if(lstDetails !=null && lstDetails.Count > 0)
             {
                 txtJobNumber.Text = lstDetails[0].JobNumber;
-                txtSubmitDate.Text = lstDetails[0].SubmitDate.ToString();
+                txtSubmitDate.Text = lstDetails[0].SubmitDate.ToString().Remove(11); // to display only date part
                 txtSubmitBy.Text = lstDetails[0].SubmittedByName;
                 txtBranch.Text = lstDetails[0].BranchName;
                 txtDescription.Text = lstDetails[0].Description;
