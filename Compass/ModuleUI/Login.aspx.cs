@@ -39,7 +39,7 @@ namespace Compass.ModuleUI
                 Session["UserTypeName"] = ds.Tables[0].Rows[0]["UserTypeName"];
                 Session["UserTypeCode"] = ds.Tables[0].Rows[0]["UserTypeCode"];
 
-                Response.Redirect("/ModuleUI/CreateJob.aspx");
+                Response.Redirect("/ModuleUI/JobList.aspx");
             }
         }
     }
