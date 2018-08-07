@@ -8,8 +8,8 @@ namespace CompassBE
 {
     public class CommentsBE
     {
+        public string Action { get; set; }
         public int CommentId{ get; set; }
-        public string Action{ get; set; }       
         public int ClientId { get; set; }
         public string Description { get; set; }
         public DateTime? CreatedOn { get; set; }

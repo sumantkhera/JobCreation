@@ -91,12 +91,13 @@ namespace Compass.BAL
             return dt;
         }
 
-        public string EditJobDetailsBAL(JobDetailsBE obj)
+        public string EditJobDetailsBAL(JobDetailsBE objJobDetailsDAL)
         {
+            JobDetailsDAL jobDetailsDAL = new JobDetailsDAL();
             string squery = string.Empty;
             try
             {
-                squery = compassDAL.EditJobDetailsDAL(obj);
+                squery = jobDetailsDAL.EditJobDetailsDAL(objJobDetailsDAL);
             }
             catch (Exception ex)
             {
