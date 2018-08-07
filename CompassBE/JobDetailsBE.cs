@@ -38,6 +38,8 @@ namespace CompassBE
         public string BranchName{ get; set; }
         public string SubmittedByName { get; set; }
         public string Description { get; set; }
-        public AttachmentsColllection Attachments { get; set; }      
+        public AttachmentsColllection Attachments { get; set; }   
+        
+        public CommentsBE Comments { get; set; }   
     }
 }
