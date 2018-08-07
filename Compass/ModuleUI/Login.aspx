@@ -9,7 +9,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="login-bg-main">
+            <div class="login-inner">
+        <div class="login-logo">
+            <img alt="" src="/images/compass-logo.jpg">
+        </div>
+        <div class="login-form">
             <asp:TextBox ID="txtUserId" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator runat="server" id="reqUserId" controltovalidate="txtUserId" errormessage="Please enter username" ForeColor="Red" />
             <asp:RegularExpressionValidator runat="server" id="rexEmail" controltovalidate="txtUserId" validationexpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" errormessage="Please enter a vaild username"  ForeColor="Red" />
@@ -19,6 +24,11 @@
             <br />
             <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
         </div>
+        <div class="login-footer">
+            
+                <img alt="" src="/images/damco-logo.png">
+        </div>
+    </div></div>
     </form>
 </body>
 </html>

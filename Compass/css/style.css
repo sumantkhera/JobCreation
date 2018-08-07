@@ -36,6 +36,7 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
 .footer-style{padding: 30px;text-align: center;border-top: 1px solid #bcbcbc;}
 .btn-style .btn-submit{background: #00a2ca;font-size: 20px;color: #fff;font-weight: normal;width: 130px;border-radius:0;margin-bottom: 5px;}
 .btn-style .btn-cancel{background: #c4c4c4;font-size: 20px;color: #585858;font-weight: normal;width: 130px;border-radius:0;margin-bottom: 5px;}
+.btn-submit:hover, .btn-cancel:hover{box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
 .login-details{padding: 20px 40px;position: relative;}
 .login-details span{font-size: 16px;display: block;text-align: left;}
 .login-details span:FIRST-CHILD{font-size: 20px;}
@@ -56,10 +57,38 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
  blockquote {border-bottom: 1px dashed #b2b2b2;min-height: 70px;border-left: 0;}
  .blockquote-body p img{margin-right: 10px;margin-top: -20px;}
  
-@media only screen and (max-width: 767px) {
+ /*------listing--------------*/
+
+ .job-listing{margin-bottom: 10px;}
+ .add-job-btn{padding: 10px 20px;background-color: #00a2ca;margin-right: -20px;}
+ .add-job-btn:hover{text-decoration: none;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
+ #job-table tr {background-color: #fff;}
+ #job-table th{background-color: #c0e0e8;}
+ #job-table tr:hover{background-color: #dddddd;cursor: pointer;}
+ #job-table td{    border: 1px solid #b2b2b2;padding: 15px;}
+ .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover{background-color: #00a2ca;color: #fff;}
+ .high-color{color: #cd0000}
+ .medium-color{color: #0084a5;}
+ .low-color{color: #119400;}
+ .search-listing ul{list-style: none;margin: 0;padding: 0}
+ .search-listing ul li{padding-left: 20px;display: inline-block;width: 20%;float: left;margin-bottom: 10px;box-sizing:border-box}
+  .search-listing ul li label{font-weight: normal;color:#000;font-size: 14px;min-width: 60px;margin-top: 5px;}
+  .search-listing ul li input,.search-listing ul li select{height: 35px;border: 1px solid #c6c6c6;width: 140px;float: right}
+  .search-listing ul li .btn-style button{width: 95px;height: 35px;;font-size: 15px;padding: 5px;float: right;margin-left: 5px;}
+ 
+/*------login--------------*/
+.login-bg-main{width:100%;height:100vh;background:#ebebeb;}
+
+@media only screen and (max-width: 1024px) {
+	.search-listing ul li{width: 25%;}
+}
+@media only screen and (max-width: 768px) {	
 .section-bg .form-inline .form-group.form-group-style{margin-bottom: 5px;}
 .navbar-style .navbar-nav{display: none;}
 .section-bg .form-inline{padding: 0}
 .text-area-style{width: 100%;}
 .text-area-label{width: 100%;}
+.search-listing ul li input, .search-listing ul li select{width: 100%;padding: 0}
+.search-listing ul li{width: 50%;padding: 0}
+.search-listing ul li .btn-style{margin-top: 30px;float: left;}
 }
