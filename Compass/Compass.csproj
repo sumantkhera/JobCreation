@@ -143,15 +143,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Attachment\fb6fb09a-a69a-4aec-b4f4-087dc8f54ff6.jpg" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\custom.css" />
+    <Content Include="css\style.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -167,8 +167,25 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\PALA.TTF" />
+    <Content Include="fonts\PALAB.TTF" />
+    <Content Include="fonts\PALABI.TTF" />
+    <Content Include="fonts\PALAI.TTF" />
+    <None Include="Properties\PublishProfiles\Dev.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="img\compass-logo.jpg" />
+    <Content Include="images\add-job-white.png" />
+    <Content Include="images\arrow.png" />
+    <Content Include="images\attachment-icon.png" />
+    <Content Include="images\chat-icon.png" />
+    <Content Include="images\compass-gray.png" />
+    <Content Include="images\compass-logo.jpg" />
+    <Content Include="images\damco-logo.jpg" />
+    <Content Include="images\damco-logo.png" />
+    <Content Include="images\listing-icon.png" />
+    <Content Include="images\login-icon.png" />
+    <Content Include="images\logo.jpg" />
+    <Content Include="images\new-job-icon.png" />
+    <Content Include="images\qoute-icon.png" />
     <Content Include="ModuleUI\CreateJob.aspx" />
     <Content Include="ModuleUI\DownloadAttachment.aspx" />
     <Content Include="ModuleUI\JobList.aspx" />
@@ -296,7 +313,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Attachment\" />
+    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
