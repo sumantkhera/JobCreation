@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attachments.cs" />
+    <Compile Include="AttachmentsBE.cs" />
+    <Compile Include="CommentsBE.cs" />
     <Compile Include="JobDetailsBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\UserLogin.cs" />

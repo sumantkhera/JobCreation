@@ -90,5 +90,20 @@ namespace Compass.BAL
             }
             return dt;
         }
+
+        public string EditJobDetailsBAL(JobDetailsBE objJobDetailsDAL)
+        {
+            JobDetailsDAL jobDetailsDAL = new JobDetailsDAL();
+            string squery = string.Empty;
+            try
+            {
+                squery = jobDetailsDAL.EditJobDetailsDAL(objJobDetailsDAL);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return squery;
+        }
     }
 }

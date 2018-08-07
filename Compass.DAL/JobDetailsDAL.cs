@@ -136,5 +136,43 @@ namespace Compass.DAL
             }
             return dt;
         }
+        public string EditJobDetailsDAL(JobDetailsBE jobDetailsBE)
+        {
+            string squery = string.Empty;
+            try
+            {              
+
+                SqlParameter[] param =
+                             {     new SqlParameter("@ClientId",jobDetailsBE.ClientId),
+                                   new SqlParameter("@JobNumber",jobDetailsBE.JobNumber),
+                                   new SqlParameter("@SubmitDate",jobDetailsBE.SubmitDate),
+                                   new SqlParameter("@SubmitBy",jobDetailsBE.SubmitBy),
+                                   new SqlParameter("@SubmittedByBranch",jobDetailsBE.SubmittedByBranch),
+                                   new SqlParameter("@CretaedDate",jobDetailsBE.CreatedDate),
+                                   new SqlParameter("@CreatedBy",jobDetailsBE.CreatedBy),
+                                   new SqlParameter("@JobTypeId",jobDetailsBE.JobTypeId),
+                                   //new SqlParameter("@JobStatusId",obj.JobStatusId),
+                                   new SqlParameter("@AllocatedToTeam",jobDetailsBE.AllocatedToTeam),
+                                   new SqlParameter("@AllocatedToUser",jobDetailsBE.AllocatedToUser),
+                                   new SqlParameter("@AllocationDate",jobDetailsBE.AllocationDate),
+                                   new SqlParameter("@QAUserId",jobDetailsBE.QAUserId),
+                                   new SqlParameter("@LastCommentedDate",jobDetailsBE.LastCommentedDate),
+                                   new SqlParameter("@LastUpdatedDate",jobDetailsBE.LastUpdatedDate),
+                                   new SqlParameter("@PriorityID",jobDetailsBE.PriorityID),
+                                   new SqlParameter("@IsSystemDefined",jobDetailsBE.IsSystemDefined),
+                                   new SqlParameter("@CommentDescription",jobDetailsBE.CommentDescription)                                   
+                               };
+
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spCreateJob", param);
+                squery = ds.Tables[0].Rows[0][0].ToString();
+                return squery;
+            }
+            catch (Exception ex)
+            {
+                //   GeneralFuntions.WriteErrorToLog("Handler_SR_Presales", "InsertIntoSysRequests", DateTime.Now, 5, squery, ex.Message + "\n-------\n" + ex.StackTrace);
+                return "0";
+            }
+        }
+
     }
 }
