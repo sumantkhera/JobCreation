@@ -10,7 +10,7 @@
 namespace Compass.ModuleUI {
     
     
-    public partial class JobCraetionList {
+    public partial class JobList {
         
         /// <summary>
         /// lblID1 control.

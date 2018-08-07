@@ -1,5 +1,5 @@
-﻿<%@ Page Title="Job List" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="JobCraetionList.aspx.cs"
-    Inherits="Compass.ModuleUI.JobCraetionList"
+﻿<%@ Page Title="Job List" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="JobList.aspx.cs"
+    Inherits="Compass.ModuleUI.JobList"
     EnableEventValidation="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -48,7 +48,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField ItemStyle-Width="60px" HeaderText="Submission Date">
                     <ItemTemplate>
-                        <asp:Label ID="lblSubmitDate" runat="server" Text='<%# Eval("SubmitDate", "{0:dd MMMM yyyy}") %>'></asp:Label>
+                        <asp:Label ID="lblSubmitDate" runat="server" Text='<%# Eval("SubmitDate", "{0:MM/dd/yyyy}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField ItemStyle-Width="60px" HeaderText="Submitted By">
@@ -58,7 +58,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField ItemStyle-Width="60px" HeaderText="Last Updated">
                     <ItemTemplate>
-                        <asp:Label ID="lblLastUpdatedDate" runat="server" Text='<%# Eval("LastUpdatedDate", "{0:dd MMMM yyyy}") %>'></asp:Label>
+                        <asp:Label ID="lblLastUpdatedDate" runat="server" Text='<%# Eval("LastUpdatedDate", "{0:MM/dd/yyyy}") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace Compass.ModuleUI
 {
-    public partial class JobCraetionList : System.Web.UI.Page
+    public partial class JobList : System.Web.UI.Page
     {
         CompassBAL compassBAL = new CompassBAL();
 
@@ -25,7 +25,7 @@ namespace Compass.ModuleUI
         public void BindMethods()
         {
             int id = Convert.ToInt32(Session["UserId"]);
-            DataTable dtJobList = compassBAL.GetJobCraetionListBAL(id);
+            DataTable dtJobList = compassBAL.GetJobListBAL(id);
             grdViewJobList.DataSource = dtJobList;
             grdViewJobList.DataBind();
         }

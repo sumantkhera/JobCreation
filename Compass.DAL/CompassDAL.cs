@@ -170,7 +170,7 @@ namespace Compass.DAL
             return JobDetailsBEList;
         }
 
-        public DataTable GetJobCraetionListDAL(int id)
+        public DataTable GetJobListDAL(int id)
         {
             DataTable dt = new DataTable();
             try
