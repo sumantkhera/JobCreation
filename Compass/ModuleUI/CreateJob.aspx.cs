@@ -65,7 +65,7 @@ namespace Compass.ModuleUI
         {
             JobDetailsBE jobDetails = new JobDetailsBE();
 
-            jobDetails.ClientId = null;
+            jobDetails.ClientId = Convert.ToInt32(Session["ClientId"]);
 
             jobDetails.PriorityID = ddlPriority.SelectedValue != null ? Convert.ToInt32(ddlPriority.SelectedValue) : 0;
 
@@ -75,13 +75,10 @@ namespace Compass.ModuleUI
             jobDetails.AllocationDate = DateTime.Now;
             jobDetails.AllocatedToUser = null;
 
-
             jobDetails.AllocatedToTeam = null;//?
 
-
-            //jobDetails.JobStatusId = Convert.ToInt32(JobStatus.Received);
             jobDetails.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
-            jobDetails.CreatedBy = 1;//logged in user
+            jobDetails.CreatedBy = Convert.ToInt32(Session["UserId"]);
 
 
             jobDetails.CreatedDate = DateTime.Now;
