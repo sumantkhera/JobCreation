@@ -16,20 +16,23 @@
 a,a:focus,a:hover {color: #fff;}
 
 html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
+.padd-left-0{padding-left: 0px;}
+.padd-right-0{padding-right: 0px;}
+.padd-0{padding: 0px;}
 .main-bg{background: #ebebeb;}
-.navbar-style{background-color: #fff;height: 115px;}
+.navbar-style{background-color: #fff;height: 100px;}
 .navbar-style .navbar-brand{width: 200px;height: 70px;display: inline-block;}
-.section-bg{background-color: #ebebeb}
-.add-jobs{    padding: 0 20px 20px 20px;font-size: 20px;color: #000;}
+.section-bg{background-color: #ebebeb;/* margin: 0px 20px 0px 20px; */}
+.add-jobs{    padding: 0 20px 10px 20px;font-size: 20px;color: #000;}
 .add-jobs img{margin-right: 10px;}
 .section-bg .form-inline{background: #fff;padding: 25px 30px;}
 .section-bg .form-inline .form-group{width: 100%;}
-.section-bg .form-inline .form-group textarea.form-control{height: 115px;}
-.section-bg .form-inline .form-group input[type="file"].form-control{height: 115px;border: 1px dashed #bcbcbc;}
-.section-bg .form-inline .form-group .form-control{width: 100%;border-radius:0;height: 45px;max-width: 100%;}
-.section-bg .form-inline .form-group.form-group-style{margin-bottom: 25px;}
+.section-bg .form-inline .form-group textarea.form-control{height: 100px;}
+.section-bg .form-inline .form-group input[type="file"].form-control{height: 100px;border: 1px dashed #bcbcbc;}
+.section-bg .form-inline .form-group .form-control{width: 100%;border-radius:0;height: 35px;max-width: 100%;}
+.section-bg .form-inline .form-group.form-group-style{margin-bottom: 15px;}
 .section-bg .form-inline .form-group.form-group-style label{text-align: left;font-size: 16px;color: #000;font-weight: normal;margin-top: 10px;}
-.section-bg .form-inline{border-bottom: 2px solid #00a2ca;margin-bottom: 30px;}
+.section-bg .form-inline{border-bottom: 2px solid #00a2ca;margin-bottom: 15px;}
 .footer-style{padding: 30px;text-align: center;border-top: 1px solid #bcbcbc;}
 .btn-style .btn-submit{background: #00a2ca;font-size: 20px;color: #fff;font-weight: normal;width: 130px;border-radius:0;margin-bottom: 5px;}
 .btn-style .btn-cancel{background: #c4c4c4;font-size: 20px;color: #585858;font-weight: normal;width: 130px;border-radius:0;margin-bottom: 5px;}
@@ -39,7 +42,20 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
 .login-details a{color: #000000;position: absolute;right: 10px;top: 40px;}
 .text-area-label{width: 12%;}
 .text-area-style{width: 88%;}
-
+.submit-by{font-size: 16px;color: #8a8a8a;margin-bottom: 10px;}
+.link-underline{color: #008cae;font-size: 16px;text-decoration: underline;}
+.link-underline:hover{color: #008cae;}
+.comment-name{color: #aa0000;}
+.comment-name:hover{color: #aa0000;}
+.comment-date{color:#0096bb;}
+.comment-date:hover{color:#0096bb;}
+.blockquote-body{font-size: 16px;color: #000;}
+ .sub-head{font-size: 18px;padding-left: 20px;}
+ .internal-checkbox{float: left;margin-top: 10px;}
+ .section-bg .form-inline .form-group .form-control.txtDate{background-color: #fff;}
+ blockquote {border-bottom: 1px dashed #b2b2b2;min-height: 70px;border-left: 0;}
+ .blockquote-body p img{margin-right: 10px;margin-top: -20px;}
+ 
 @media only screen and (max-width: 767px) {
 .section-bg .form-inline .form-group.form-group-style{margin-bottom: 5px;}
 .navbar-style .navbar-nav{display: none;}

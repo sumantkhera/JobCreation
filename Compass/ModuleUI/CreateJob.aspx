@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateJob.aspx.cs" Inherits="Compass.ModuleUI.Compass" %>
+﻿<%@ Page Title="Create Job" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateJob.aspx.cs" Inherits="Compass.ModuleUI.Compass" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -53,12 +53,7 @@
                             <label for="email">Submitted On</label>
                         </div>
                         <div class="col-sm-9">
-                            <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </select>
+                            <asp:TextBox ID="txtDate" runat="server" ReadOnly="true" class="form-control txtDate"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -97,13 +92,23 @@
 
             </div>
             <div class="btn-style">
-                <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
-                <asp:Button ID="btnCancel" runat="server" Text="Clear" />
+                <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" CssClass="btn btn-submit" />
+                <asp:Button ID="btnCancel" runat="server" Text="Clear" CssClass="btn btn-cancel" />
             </div>
 
         </div>
             </div>
     </section>
 
+    <script type="text/javascript">
+    $(function () {
+        $('[id*=txtDate]').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            format: "mm/dd/yyyy",
+            language: "tr"
+        });
+    });
+    </script>
 </asp:Content>
 
