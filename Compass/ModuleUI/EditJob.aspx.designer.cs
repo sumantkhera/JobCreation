@@ -10,7 +10,7 @@
 namespace Compass.ModuleUI {
     
     
-    public partial class JobCreationEdit {
+    public partial class EditJob {
         
         /// <summary>
         /// hdnAttachementCount control.

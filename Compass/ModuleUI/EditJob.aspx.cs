@@ -12,7 +12,7 @@ using Utility.Enums;
 
 namespace Compass.ModuleUI
 {
-    public partial class JobCreationEdit : System.Web.UI.Page
+    public partial class EditJob : System.Web.UI.Page
     {
         CompassBAL compassBAL = new CompassBAL();
         JobDetailsBAL jobDetailsBAL = new JobDetailsBAL();

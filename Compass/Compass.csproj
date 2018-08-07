@@ -171,7 +171,7 @@
     <Content Include="img\compass-logo.jpg" />
     <Content Include="ModuleUI\CreateJob.aspx" />
     <Content Include="ModuleUI\DownloadAttachment.aspx" />
-    <Content Include="ModuleUI\JobCreationEdit.aspx" />
+    <Content Include="ModuleUI\EditJob.aspx" />
     <Content Include="ModuleUI\Login.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -249,12 +249,12 @@
     <Compile Include="ModuleUI\DownloadAttachment.aspx.designer.cs">
       <DependentUpon>DownloadAttachment.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ModuleUI\JobCreationEdit.aspx.cs">
-      <DependentUpon>JobCreationEdit.aspx</DependentUpon>
+    <Compile Include="ModuleUI\EditJob.aspx.cs">
+      <DependentUpon>EditJob.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ModuleUI\JobCreationEdit.aspx.designer.cs">
-      <DependentUpon>JobCreationEdit.aspx</DependentUpon>
+    <Compile Include="ModuleUI\EditJob.aspx.designer.cs">
+      <DependentUpon>EditJob.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModuleUI\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

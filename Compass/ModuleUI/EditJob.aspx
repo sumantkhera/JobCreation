@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="JobCreationEdit.aspx.cs" Inherits="Compass.ModuleUI.JobCreationEdit" Title="Edit Job" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditJob.aspx.cs" Inherits="Compass.ModuleUI.EditJob" Title="Edit Job" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <script language="javascript" type="text/javascript">
