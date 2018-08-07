@@ -17,14 +17,14 @@ namespace Compass
 
             spName.InnerText = Session["UserName"].ToString();
             //Client check
-            if (Session["ClientId"].ToString() != "0")
-            {                
-                spBranch.InnerText = Session["BranchName"].ToString();
+            if (Session["IsServiceCompanyUser"].ToString() == "1" || Session["IsServiceCompanyUser"].ToString() == "true" || Session["IsServiceCompanyUser"].ToString() == "True")
+            {
+                spBranch.InnerText = Session["ClientName"].ToString();                
             }
             else
             {
                 //Service Company
-                spBranch.InnerText = Session["ServiceCompany"].ToString();
+                spBranch.InnerText = Session["BranchName"].ToString();
             }
         }
     }

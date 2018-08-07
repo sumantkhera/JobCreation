@@ -29,12 +29,15 @@ namespace Compass.ModuleUI
                 Session["BranchId"] = ds.Tables[0].Rows[0]["BranchId"];
                 Session["BranchName"] = ds.Tables[0].Rows[0]["BranchName"];
                 Session["UserTypeId"] = ds.Tables[0].Rows[0]["UserTypeId"];
-                Session["ServiceCompanyId"] = string.IsNullOrEmpty(ds.Tables[0].Rows[0]["ServiceCompanyId"].ToString()) ? 0 : ds.Tables[0].Rows[0]["ServiceCompanyId"];
+                //Session["ServiceCompanyId"] = string.IsNullOrEmpty(ds.Tables[0].Rows[0]["ServiceCompanyId"].ToString()) ? 0 : ds.Tables[0].Rows[0]["ServiceCompanyId"];
                 Session["BranchName"] = ds.Tables[0].Rows[0]["BranchName"];
                 Session["ClientName"] = ds.Tables[0].Rows[0]["ClientName"];
                 Session["ClientLogo"] = ds.Tables[0].Rows[0]["ClientLogo"];
-                Session["ServiceCompany"] = ds.Tables[0].Rows[0]["ServiceCompany"];
+                //Session["ServiceCompany"] = ds.Tables[0].Rows[0]["ServiceCompany"];
                 Session["UserId"] = ds.Tables[0].Rows[0]["UserId"];
+                Session["IsServiceCompanyUser"] = ds.Tables[0].Rows[0]["IsServiceCompanyUser"];
+                Session["UserTypeName"] = ds.Tables[0].Rows[0]["UserTypeName"];
+                Session["UserTypeCode"] = ds.Tables[0].Rows[0]["UserTypeCode"];
 
                 Response.Redirect("/ModuleUI/CreateJob.aspx");
             }
