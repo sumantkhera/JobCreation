@@ -25,7 +25,7 @@ namespace Compass.ModuleUI
         public void BindMethods()
         {
             int id = Convert.ToInt32(Session["UserId"]);
-            DataTable dtJobList = compassBAL.GetJobCraetionListBAL(4);
+            DataTable dtJobList = compassBAL.GetJobCraetionListBAL(id);
             grdViewJobList.DataSource = dtJobList;
             grdViewJobList.DataBind();
         }
