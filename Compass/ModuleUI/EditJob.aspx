@@ -207,7 +207,7 @@
                                     <div class="col-sm-6">
                                         <div class="btn-style">
                                             <asp:Button  ID="btnAdd" Text="Add" class="btn btn-submit" runat="server" OnClick="btnSubmit_Click" />
-                                            <asp:Button  ID="btnCancel" Text="Cancel" class="btn btn-submit" OnClick="btnCancel_Click" runat="server" />
+                                            <asp:Button  ID="btnCancel" Text="Back" class="btn btn-cancel" OnClick="btnCancel_Click" runat="server" />
                                             
                                         </div>
                                     </div>

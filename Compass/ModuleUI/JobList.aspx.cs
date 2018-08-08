@@ -1,4 +1,5 @@
 ﻿using Compass.BAL;
+using CompassBE;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,6 +19,15 @@ namespace Compass.ModuleUI
         {
             if (!this.IsPostBack)
             {
+                if (Convert.ToBoolean(Session["IsServiceCompanyUser"]) == true)
+                {
+                    btnAdd.Visible = true;
+                }
+                else
+                {
+                    btnAdd.Visible = false;
+                }
+
                 BindDropdowns();
                 BindMethods();
             }
@@ -88,7 +98,6 @@ namespace Compass.ModuleUI
             if (e.Row.RowType == DataControlRowType.Header)
             {
                 e.Row.Cells[0].Style.Add(HtmlTextWriterStyle.Display, "none");
-               // e.Row.Style.Add("background-color", "#c0e0e8");
             }
 
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -113,23 +122,65 @@ namespace Compass.ModuleUI
                 {
                     lblPriorityType.CssClass = "medium-color";
                 }
-
-               // e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#fff',this.style.fontWeight='';");
-
-
-               // e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor,this.style.fontWeight='';");
-
-                //e.Row.Attributes.Add("onmouseover", "document.body.style.cursor='hand'");
-                //e.Row.Attributes.Add("onmouseout", "document.body.style.cursor='auto'");
             }
         }
-
-       
 
         protected void grdViewJobList_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             grdViewJobList.PageIndex = e.NewPageIndex;
-            BindMethods();
+            jobFilters jobFilters = new jobFilters();
+            if (jobFilters.Id == 0 || jobFilters.Id == null)
+            {
+                BindMethods();
+            }
+            else
+            {
+                jobFilters.ClientId = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlTeam.SelectedValue) : 0;
+                jobFilters.PriorityID = ddlPriority.SelectedValue != null ? Convert.ToInt32(ddlPriority.SelectedValue) : 0;
+                jobFilters.FromDate = txtFromDate.Text;
+                jobFilters.ToDate = txtToDate.Text;
+                jobFilters.JobNumber = txtJobNo.Text;
+                jobFilters.AllocatedToUser = ddlUser.SelectedValue != null ? Convert.ToInt32(ddlUser.SelectedValue) : 0;
+                jobFilters.JobStatusId = ddlStatus.SelectedValue != null ? Convert.ToInt32(ddlStatus.SelectedValue) : 0;
+                jobFilters.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
+                jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;
+
+                DataTable dtJobList = compassBAL.GetJobListByFilterBAL(jobFilters);
+                grdViewJobList.DataSource = dtJobList;
+                grdViewJobList.DataBind();
+            }
+        }
+
+        protected void btnFilter_Click(object sender, EventArgs e)
+        {
+            jobFilters jobFilters = new jobFilters();
+            jobFilters.ClientId = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlTeam.SelectedValue) : 0;
+            jobFilters.PriorityID = ddlPriority.SelectedValue != null ? Convert.ToInt32(ddlPriority.SelectedValue) : 0;
+            jobFilters.FromDate = txtFromDate.Text;
+            jobFilters.ToDate = txtToDate.Text;
+            jobFilters.JobNumber = txtJobNo.Text;
+            jobFilters.AllocatedToUser = ddlUser.SelectedValue != null ? Convert.ToInt32(ddlUser.SelectedValue) : 0;
+            jobFilters.JobStatusId = ddlStatus.SelectedValue != null ? Convert.ToInt32(ddlStatus.SelectedValue) : 0;
+            jobFilters.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
+            jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;
+
+            DataTable dtJobList = compassBAL.GetJobListByFilterBAL(jobFilters);
+            grdViewJobList.DataSource = dtJobList;
+            grdViewJobList.DataBind();
+
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            txtFromDate.Text = "";
+            txtToDate.Text = "";
+            txtJobNo.Text = "";
+            ddlTeam.SelectedValue = "0";
+            ddlPriority.SelectedValue = "0";
+            ddlUser.SelectedValue = "0";
+            ddlStatus.SelectedValue = "0";
+            ddlJobType.SelectedValue = "0";
+            ddlBranch.SelectedValue = "0";
         }
     }
 }
