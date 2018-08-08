@@ -75,69 +75,128 @@
                 </div>
             </div>
         </div>
-        <div class="table-responsive">
-            <asp:GridView ID="grdViewJobList" runat="server"
-                AutoGenerateColumns="false"
-                CssClass="table"
-                OnRowDataBound="grdViewJobList_RowDataBound"
-                AutoGenerateSelectButton="true"
-                OnSelectedIndexChanged="grdViewJobList_SelectedIndexChanged">
-                <Columns>
-                    <asp:TemplateField HeaderText="Id" Visible="false">
-                        <ItemTemplate>
-                            <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+        <asp:UpdatePanel ID="uppanel" runat="server">
+            <ContentTemplate>
+                <div class="table-responsive">
+                    <asp:GridView ID="grdViewJobList" runat="server"
+                        AutoGenerateColumns="false"
+                        CssClass="table"
+                        PageSize="5"
+                        AllowPaging="true"
+                        OnRowDataBound="grdViewJobList_RowDataBound"
+                        AutoGenerateSelectButton="true"
+                        OnSelectedIndexChanged="grdViewJobList_SelectedIndexChanged"
+                        OnPageIndexChanging="grdViewJobList_PageIndexChanging">
+                        <PagerStyle HorizontalAlign="Left" CssClass="GridPager" />
+                        <EmptyDataTemplate>No Record Found</EmptyDataTemplate>
+                        <Columns>
+                            <asp:TemplateField HeaderText="Id" Visible="false">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="Job Number">
-                        <ItemTemplate>
-                            <asp:Label ID="lblJobNumber" runat="server" Text='<%# Eval("JobNumber")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Branch">
-                        <ItemTemplate>
-                            <asp:Label ID="lblBranchName" runat="server" Text='<%#Eval("BranchName")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Job Type">
-                        <ItemTemplate>
-                            <asp:Label ID="lblJobType" runat="server" Text='<%# Eval("JobType")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Status">
-                        <ItemTemplate>
-                            <asp:Label ID="lblJobStatus" runat="server" Text='<%#Eval("JobStatus")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Allocated To">
-                        <ItemTemplate>
-                            <asp:Label ID="lblAllocatedTo" runat="server" Text='<%# Eval("AllocatedTo")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Priority">
-                        <ItemTemplate>
-                            <asp:Label ID="lblPriorityType" runat="server" Text='<%#Eval("PriorityType")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Submission Date">
-                        <ItemTemplate>
-                            <asp:Label ID="lblSubmitDate" runat="server" Text='<%# Eval("SubmitDate", "{0:MM/dd/yyyy}") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="60px" HeaderText="Submitted By">
-                        <ItemTemplate>
-                            <asp:Label ID="lblSubmitByName" runat="server" Text='<%#Eval("SubmitByName")%>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Last Updated">
-                        <ItemTemplate>
-                            <asp:Label ID="lblLastUpdatedDate" runat="server" Text='<%# Eval("LastUpdatedDate", "{0:MM/dd/yyyy}") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
-        </div>
+                            <asp:TemplateField HeaderText="Job Number">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblJobNumber" runat="server" Text='<%# Eval("JobNumber")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Branch">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblBranchName" runat="server" Text='<%#Eval("BranchName")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Job Type">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblJobType" runat="server" Text='<%# Eval("JobType")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Status">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblJobStatus" runat="server" Text='<%#Eval("JobStatus")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Allocated To">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblAllocatedTo" runat="server" Text='<%# Eval("AllocatedTo")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Priority">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblPriorityType" runat="server" Text='<%#Eval("PriorityType")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Submission Date">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblSubmitDate" runat="server" Text='<%# Eval("SubmitDate", "{0:MM/dd/yyyy}") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-Width="60px" HeaderText="Submitted By">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblSubmitByName" runat="server" Text='<%#Eval("SubmitByName")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Last Updated">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblLastUpdatedDate" runat="server" Text='<%# Eval("LastUpdatedDate", "{0:MM/dd/yyyy}") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+
+
+                    <%--  <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1"><<</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">6</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">>></a>
+                    </li>
+                </ul>
+            </nav>--%>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </section>
+
+    <style type="text/css">
+        .GridPager a,
+        .GridPager span {
+            display: inline-block;
+            padding: 0px 9px;
+            margin-right: 4px;
+            border-radius: 3px;
+            border: solid 1px #c0c0c0;
+            background: #e9e9e9;
+            box-shadow: inset 0px 1px 0px rgba(255,255,255, .8), 0px 1px 3px rgba(0,0,0, .1);
+            font-size: .875em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #717171;
+            text-shadow: 0px 1px 0px rgba(255,255,255, 1);
+        }
+
+        .GridPager a {
+            background-color: #f5f5f5;
+            color: #969696;
+            border: 1px solid #969696;
+        }
+
+        .GridPager span {
+            background: #616161;
+            box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .8);
+            color: #f0f0f0;
+            text-shadow: 0px 0px 3px rgba(0,0,0, .5);
+            border: 1px solid #3AC0F2;
+        }
+    </style>
     <script type="text/javascript">
         $(function () {
             $('[id*=txtFromDate]').datepicker({
