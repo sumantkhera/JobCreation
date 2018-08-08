@@ -78,8 +78,8 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
   .search-listing ul li .btn-style input.btn{width: 95px;height: 35px;;font-size: 15px;padding: 5px;float: right;margin-left: 5px;}
  
 .GridPager .table td {background-color: #00a2ca;color: #fff;}
-.GridPager a {padding: 10px}
-.GridPager span {padding: 10px}
+.GridPager .table td a {padding: 10px}
+.GridPager .table td span {padding: 10px}
  
 /*------login--------------*/
 .login-bg-main{width:100%;height:100vh;background:#ebebeb;position:relative}
