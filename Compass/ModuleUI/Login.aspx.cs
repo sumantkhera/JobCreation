@@ -49,7 +49,7 @@ namespace Compass.ModuleUI
                     Session["ServiceCompanyId"] = "0";
                 }
 
-                    Response.Redirect("/ModuleUI/CreateJob.aspx");
+                    Response.Redirect("/ModuleUI/joblist.aspx");
             }
         }
     }
