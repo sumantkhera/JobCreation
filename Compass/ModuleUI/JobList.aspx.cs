@@ -164,6 +164,8 @@ namespace Compass.ModuleUI
             ddlStatus.SelectedValue = "0";
             ddlJobType.SelectedValue = "0";
             ddlBranch.SelectedValue = "0";
+
+            BindMethods();
         }
     }
 }
