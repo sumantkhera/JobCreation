@@ -39,6 +39,7 @@ namespace CompassBE
         public string SubmittedByName { get; set; }
         public string Description { get; set; }
         public bool IsInternalUse{ get; set; }
+        public string UserName{ get; set; }
         public AttachmentsColllection Attachments { get; set; }   
         
         public CommentsBE Comments { get; set; }   
