@@ -67,9 +67,18 @@
                             <div class="login-details"> 
                                 <span id="spName" runat="server">Michael Smith </span>
                                 <span id="spBranch" runat="server">Miami, Florida</span>
-                                <a href="#"><img alt="" src="/images/arrow.png"></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="" src="/images/arrow.png"></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <asp:LinkButton id="lnkLogout" runat="server" OnClick="lnkLogout_Click">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></asp:LinkButton>
+                                    <%--<a href="#" ></a>--%>
+                                </li>
+                                <div class="clearfix"></div>
+                            </ul>
                             </div>
+                           
                         </li>
+                         
                     </ul>
                 </div>
             </nav>
