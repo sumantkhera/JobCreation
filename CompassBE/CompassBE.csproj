@@ -43,6 +43,8 @@
     <Compile Include="AttachmentsBE.cs" />
     <Compile Include="CommentsBE.cs" />
     <Compile Include="JobDetailsBE.cs" />
+    <Compile Include="Models\HashObject.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\UserLogin.cs" />
   </ItemGroup>

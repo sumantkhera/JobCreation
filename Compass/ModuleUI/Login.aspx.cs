@@ -20,7 +20,7 @@ namespace Compass.ModuleUI
             UsersBAL usersBAL = new UsersBAL();
             DataSet ds = usersBAL.UserLogins(usr);
 
-            if(ds !=null && ds.Tables.Count>0)
+            if (ds != null && ds.Tables.Count > 0)
             {
                 //Add to session
                 Session["ClientId"] = string.IsNullOrEmpty(ds.Tables[0].Rows[0]["ClientId"].ToString()) ? 0 : ds.Tables[0].Rows[0]["ClientId"];
@@ -50,6 +50,9 @@ namespace Compass.ModuleUI
                 }
 
                     Response.Redirect("/ModuleUI/joblist.aspx");
+            }
+            else {
+
             }
         }
     }

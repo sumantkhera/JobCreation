@@ -54,6 +54,10 @@
       <Project>{689653bd-a0c5-4b09-980a-9fec3a4529f9}</Project>
       <Name>CompassBE</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{adbe1c47-7aff-4070-b73c-30cc3d8ff058}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
