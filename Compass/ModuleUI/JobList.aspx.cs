@@ -78,8 +78,25 @@ namespace Compass.ModuleUI
         #region Methods       
         public void BindMethods()
         {
-            int id = Convert.ToInt32(Session["UserId"]);
-            DataTable dtJobList = compassBAL.GetJobListBAL(id);
+            //int id = Convert.ToInt32(Session["UserId"]);
+            //DataTable dtJobList = compassBAL.GetJobListBAL(id);
+            //grdViewJobList.DataSource = dtJobList;
+            //grdViewJobList.DataBind();
+
+
+            jobFilters jobFilters = new jobFilters();
+            jobFilters.Id = Convert.ToInt32(Session["UserId"]);
+            jobFilters.ClientId = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlTeam.SelectedValue) : 0;
+            jobFilters.PriorityID = ddlPriority.SelectedValue != null ? Convert.ToInt32(ddlPriority.SelectedValue) : 0;
+            jobFilters.FromDate = !string.IsNullOrEmpty(txtFromDate.Text) ? txtFromDate.Text : "01/01/1900";
+            jobFilters.ToDate = !string.IsNullOrEmpty(txtToDate.Text) ? txtToDate.Text : "01/01/1900"; ;
+            jobFilters.JobNumber = txtJobNo.Text;
+            jobFilters.AllocatedToUser = ddlUser.SelectedValue != null ? Convert.ToInt32(ddlUser.SelectedValue) : 0;
+            jobFilters.JobStatusId = ddlStatus.SelectedValue != null ? Convert.ToInt32(ddlStatus.SelectedValue) : 0;
+            jobFilters.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
+            jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;
+
+            DataTable dtJobList = compassBAL.GetJobListByFilterBAL(jobFilters);
             grdViewJobList.DataSource = dtJobList;
             grdViewJobList.DataBind();
         }
@@ -127,48 +144,13 @@ namespace Compass.ModuleUI
 
         protected void grdViewJobList_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            grdViewJobList.PageIndex = e.NewPageIndex;
-            jobFilters jobFilters = new jobFilters();
-            if (jobFilters.Id == 0 || jobFilters.Id == null)
-            {
-                BindMethods();
-            }
-            else
-            {
-                jobFilters.ClientId = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlTeam.SelectedValue) : 0;
-                jobFilters.PriorityID = ddlPriority.SelectedValue != null ? Convert.ToInt32(ddlPriority.SelectedValue) : 0;
-                jobFilters.FromDate = txtFromDate.Text;
-                jobFilters.ToDate = txtToDate.Text;
-                jobFilters.JobNumber = txtJobNo.Text;
-                jobFilters.AllocatedToUser = ddlUser.SelectedValue != null ? Convert.ToInt32(ddlUser.SelectedValue) : 0;
-                jobFilters.JobStatusId = ddlStatus.SelectedValue != null ? Convert.ToInt32(ddlStatus.SelectedValue) : 0;
-                jobFilters.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
-                jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;
-
-                DataTable dtJobList = compassBAL.GetJobListByFilterBAL(jobFilters);
-                grdViewJobList.DataSource = dtJobList;
-                grdViewJobList.DataBind();
-            }
+            grdViewJobList.PageIndex = e.NewPageIndex;           
+            BindMethods();           
         }
 
         protected void btnFilter_Click(object sender, EventArgs e)
         {
-            jobFilters jobFilters = new jobFilters();
-            jobFilters.Id = Convert.ToInt32(Session["UserId"]);
-            jobFilters.ClientId = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlTeam.SelectedValue) : 0;
-            jobFilters.PriorityID = ddlPriority.SelectedValue != null ? Convert.ToInt32(ddlPriority.SelectedValue) : 0;
-            jobFilters.FromDate = txtFromDate.Text;
-            jobFilters.ToDate = txtToDate.Text;
-            jobFilters.JobNumber = txtJobNo.Text;
-            jobFilters.AllocatedToUser = ddlUser.SelectedValue != null ? Convert.ToInt32(ddlUser.SelectedValue) : 0;
-            jobFilters.JobStatusId = ddlStatus.SelectedValue != null ? Convert.ToInt32(ddlStatus.SelectedValue) : 0;
-            jobFilters.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
-            jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;
-
-            DataTable dtJobList = compassBAL.GetJobListByFilterBAL(jobFilters);
-            grdViewJobList.DataSource = dtJobList;
-            grdViewJobList.DataBind();
-
+            BindMethods();
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
