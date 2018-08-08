@@ -20,14 +20,22 @@ namespace Compass.ModuleUI
                 }
             }
         }
-       
+
 
         private void DownloadFile(string filePath, string fileName)
         {
-            Response.ContentType = "application/octet-stream";
-            Response.AddHeader("Content-Disposition", "attachment;filename=" + fileName);
-            Response.TransmitFile(string.Format("{0}{1}", Server.MapPath(Request.ApplicationPath), filePath));
-            Response.End();
-        }
+            try
+            {
+                Response.ContentType = "application/octet-stream";
+                Response.AddHeader("Content-Disposition", "attachment;filename=" + fileName);
+                Response.TransmitFile(string.Format("{0}{1}", Server.MapPath(Request.ApplicationPath), filePath));
+                Response.End();
+            }
+            catch(Exception ex)
+            {
+
+
+            }
+       }
     }
 }
