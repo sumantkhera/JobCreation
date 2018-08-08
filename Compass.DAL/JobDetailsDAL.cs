@@ -158,7 +158,7 @@ namespace Compass.DAL
                                    new SqlParameter("@QAUserId",jobDetailsBE.QAUserId),
                                    new SqlParameter("@AllocatedToTeam",jobDetailsBE.AllocatedToTeam),
                                    new SqlParameter("@AllocatedToUser",jobDetailsBE.AllocatedToUser),
-                                   new SqlParameter("@AllocationDate",jobDetailsBE.AllocationDate),
+                                   new SqlParameter("@AllocationDate",jobDetailsBE.AllocationDate != null? jobDetailsBE.AllocationDate : DateTime.Now),
                                    new SqlParameter("@IsInternalUse",jobDetailsBE.Comments.IsInternalUse),
                                    tvpParam
                                };

@@ -59,14 +59,14 @@ namespace Compass.ModuleUI
                     GetJobDetailsForQA_Member_QAHeadUserType();
                 }
 
-                if (Session["IsServiceCompanyUser"] != null)
-                {
-                    divInternalUse.Visible = true;
-                }
-                else
-                {
-                    divInternalUse.Visible = false;
-                }
+                //if (Session["IsServiceCompanyUser"] != null)
+                //{
+                //    divInternalUse.Visible = true;
+                //}
+                //else
+                //{
+                //    divInternalUse.Visible = false;
+                //}
 
                
                 //GetJobDetails();
@@ -240,6 +240,10 @@ namespace Compass.ModuleUI
                 txtDescription.Text = lstDetails[0].Description;
                 ddlJobStatus.Items.FindByValue (lstDetails[0].JobStatusId.ToString()).Selected = true;
                 ddlJobType.Items.FindByValue(lstDetails[0].JobTypeId.ToString()).Selected = true;
+                ddlTeam.Items.FindByValue(lstDetails[0].AllocatedToTeam.ToString()).Selected = true;
+                ddlUser.Items.FindByValue(lstDetails[0].AllocatedToUser.ToString()).Selected = true;
+                ddlQAUser.Items.FindByValue(lstDetails[0].QAUserId.ToString()).Selected = true;
+
             }        
         }
 
@@ -454,8 +458,9 @@ namespace Compass.ModuleUI
                 {
                     if (ddlJobStatus.SelectedValue != null || ddlJobStatus.SelectedIndex != 0 || ddlJobStatus.SelectedIndex != -1)
                     {
-                        jobDetailsBE.JobStatusId = Convert.ToInt32(ddlJobStatus.SelectedValue);
+                        jobDetailsBE.JobStatusId = Convert.ToInt32(ddlJobStatus.SelectedValue);                        
                     }
+                    jobDetailsBE.AllocationDate = DateTime.Now;
                 }
             }
 
