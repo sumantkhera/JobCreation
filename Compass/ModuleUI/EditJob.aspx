@@ -30,8 +30,8 @@
                                         <label for="email">Number</label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <asp:Label ID="lblJobNumber" runat="server" cssClass="form-control" />  
-                                        <%--<asp:TextBox ID="txtJobNumber" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>--%>
+                                        <%--<asp:Label ID="lblJobNumber" runat="server" cssClass="form-control" />  --%>
+                                        <asp:TextBox ID="txtJobNumber" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -41,8 +41,8 @@
                                         <label for="email">Submit Date</label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <asp:Label  ID ="lblSubmitDate" runat="server" cssClass="form-control" />  
-                                        <%--<asp:TextBox ID="txtSubmitDate" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>--%>
+                                        <%--<asp:Label  ID ="lblSubmitDate" runat="server" cssClass="form-control" />  --%>
+                                        <asp:TextBox ID="txtSubmitDate" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -52,8 +52,8 @@
                                         <label for="email">Branch</label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <asp:Label ID="lblBranch" runat="server" cssClass="form-control" />
-                                        <%--<asp:TextBox ID="txtBranch" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>--%>
+                                        <%--<asp:Label ID="lblBranch" runat="server" cssClass="form-control" />--%>
+                                        <asp:TextBox ID="txtBranch" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>
 
                                     </div>
                                 </div>
@@ -64,8 +64,8 @@
                                         <label for="email">Submitted By</label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <asp:Label  ID="lblSubmitBy" runat="server" cssClass="form-control" />
-                                        <%--<asp:TextBox ID="txtSubmitBy" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>--%>
+                                        <%--<asp:Label  ID="lblSubmitBy" runat="server" cssClass="form-control" />--%>
+                                        <asp:TextBox ID="txtSubmitBy" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>

@@ -22,40 +22,40 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.HiddenField hdnAttachementCount;
         
         /// <summary>
-        /// lblJobNumber control.
+        /// txtJobNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblJobNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtJobNumber;
         
         /// <summary>
-        /// lblSubmitDate control.
+        /// txtSubmitDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSubmitDate;
+        protected global::System.Web.UI.WebControls.TextBox txtSubmitDate;
         
         /// <summary>
-        /// lblBranch control.
+        /// txtBranch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBranch;
+        protected global::System.Web.UI.WebControls.TextBox txtBranch;
         
         /// <summary>
-        /// lblSubmitBy control.
+        /// txtSubmitBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSubmitBy;
+        protected global::System.Web.UI.WebControls.TextBox txtSubmitBy;
         
         /// <summary>
         /// ddlJobType control.
