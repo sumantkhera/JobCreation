@@ -74,7 +74,7 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
  .search-listing ul{list-style: none;margin: 0;padding: 0}
  .search-listing ul li{padding-left: 20px;display: inline-block;width: 20%;float: left;margin-bottom: 10px;box-sizing:border-box}
   .search-listing ul li label{font-weight: normal;color:#000;font-size: 14px;min-width: 60px;margin-top: 5px;}
-  .search-listing ul li input,.search-listing ul li select{height: 35px;border: 1px solid #c6c6c6;width: 140px;float: right;border-radius: 0px;}
+  .search-listing ul li input, .search-listing ul li select{height: 35px;border: 1px solid #c6c6c6;width: 140px;float: right;border-radius: 0px;font-size: 12px;}
   .search-listing ul li .btn-style input.btn{width: 95px;height: 35px;;font-size: 15px;padding: 5px;float: right;margin-left: 5px;}
  
 /*------login--------------*/
