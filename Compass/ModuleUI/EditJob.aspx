@@ -295,14 +295,7 @@ $("#link-underline1").click(function(){
     $(".attachment-download1").slideToggle();
 });
 $('#attachment span').click(function() {
-    var $this = $(this);
-    if ($this.hasClass('plus-icon')) {
-        $this.removeClass();
-    } else if ($this.hasClass('minus-icon')) {
-        $this.removeClass('minus-icon').addClass('plus-icon');
-    } else {
-        $this.addClass('minus-icon');
-    }
+    $(".minus-attach").Toggle();
 });
 </script>
             </html>
