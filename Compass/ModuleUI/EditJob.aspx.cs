@@ -228,21 +228,45 @@ namespace Compass.ModuleUI
 
             List<CommentsBE> lstAttachments = attachmentBAL.GetJobCommentsWithAttachmentsBAL(commentBE);
 
-            if (lstAttachments.Count > 0)
-            {
-                //hdnAttachementCount.Value = Convert.ToString(lstAttachments.Count());
-                //attachment.InnerHtml = "Attachment " + lstAttachments.Count().ToString();
+            //if (lstAttachments.Count > 0)
+            //{
+            //    for (int i = 0; i < lstAttachments.Count(); i++)
+            //    {
+            //        Panel pnl = new Panel();
+            //        pnl.ID = "pnl" + i;
+            //        pnl.GroupingText = "Added by: " + Convert.ToString(lstAttachments[i].usr.Username) + " on " + lstAttachments[i].CreatedOn.Value.ToString("MM/dd/yyyy");
+            //        pnl.CssClass = "fieldset-form";
+            //        Label lbl = new Label();
+            //        lbl.ID = "lbl" + i;
+            //        lbl.Text = Convert.ToString(lstAttachments[i].Description);
+            //        lbl.CssClass = "col-sm-10 blockquote-body";                    
+            //        pnl.Controls.Add(lbl);
+            //        pnlComments.Controls.Add(pnl);
 
-                //foreach (var item in lstAttachments)
-                //{
-                //    HyperLink hplnk = new HyperLink();
-                //    hplnk.Text = item.Attachment.Name;
-                //    hplnk.ID = Convert.ToString(item.Attachment.JobAttachmentId);
-                //    hplnk.CssClass = "btn btn-link";
-                //    hplnk.NavigateUrl = "~/ModuleUI/DownloadAttachment.aspx?FilePath=" + item.Attachment.Path + "&FileName=" + item.Attachment.Name;
-                //    pnlAttachment.Controls.Add(hplnk);
-                //}
-            }
+            //        HyperLink hplnk = new HyperLink();
+            //        hplnk.Text = lstAttachments[i].Attachment.Name;
+            //        hplnk.ID = Convert.ToString(lstAttachments[i].Attachment.JobAttachmentId);
+            //        hplnk.CssClass = "btn btn-link col-sm-2 text-right";
+            //        hplnk.NavigateUrl = "~/ModuleUI/DownloadAttachment.aspx?FilePath=" + lstAttachments[i].Attachment.Path + "&FileName=" + lstAttachments[i].Attachment.Name;
+            //        pnlComments.Controls.Add(hplnk);
+
+            //    }
+
+            //}
+
+                    //hdnAttachementCount.Value = Convert.ToString(lstAttachments.Count());
+                    //attachment.InnerHtml = "Attachment " + lstAttachments.Count().ToString();
+
+                    //foreach (var item in lstAttachments)
+                    //{
+                    //    HyperLink hplnk = new HyperLink();
+                    //    hplnk.Text = item.Attachment.Name;
+                    //    hplnk.ID = Convert.ToString(item.Attachment.JobAttachmentId);
+                    //    hplnk.CssClass = "btn btn-link";
+                    //    hplnk.NavigateUrl = "~/ModuleUI/DownloadAttachment.aspx?FilePath=" + item.Attachment.Path + "&FileName=" + item.Attachment.Name;
+                    //    pnlAttachment.Controls.Add(hplnk);
+                    //}
+                
         }
         private void GetJobAttachments()
         {

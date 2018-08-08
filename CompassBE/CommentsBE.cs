@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CompassBE.ViewModel;
 
 namespace CompassBE
 {
@@ -15,7 +16,7 @@ namespace CompassBE
         public DateTime? CreatedOn { get; set; }
         public int CreatedBy{ get; set; }
         public bool  IsInternalUse{ get; set; }
-
+        public UserLogin usr { get; set; }
         public JobDetailsBE JobDetails { get; set; }
         public AttachmentsBE Attachment { get; set; }
     }
