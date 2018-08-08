@@ -154,6 +154,7 @@ namespace Compass.ModuleUI
         protected void btnFilter_Click(object sender, EventArgs e)
         {
             jobFilters jobFilters = new jobFilters();
+            jobFilters.Id = Convert.ToInt32(Session["UserId"]);
             jobFilters.ClientId = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlTeam.SelectedValue) : 0;
             jobFilters.PriorityID = ddlPriority.SelectedValue != null ? Convert.ToInt32(ddlPriority.SelectedValue) : 0;
             jobFilters.FromDate = txtFromDate.Text;
