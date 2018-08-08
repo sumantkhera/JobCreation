@@ -28,5 +28,11 @@ namespace Compass
                 spBranch.InnerText = Session["BranchName"].ToString();
             }
         }
+
+        protected void lnkLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("/login.aspx");
+        }
     }
 }

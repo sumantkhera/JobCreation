@@ -17,5 +17,6 @@ namespace CompassBE
         public bool  IsInternalUse{ get; set; }
 
         public JobDetailsBE JobDetails { get; set; }
+        public AttachmentsBE Attachment { get; set; }
     }
 }

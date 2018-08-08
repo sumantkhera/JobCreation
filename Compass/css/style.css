@@ -89,6 +89,10 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
 .login-logo{margin-bottom:50px;}
 .validate-login{height:0;display:block;}
 
+.login-details .dropdown-menu{height: 30px;}
+.login-details .dropdown-menu li a{top:0;width: 100%;right: 0}
+.GridPager table td{padding: 0;}
+
 @media only screen and (max-width: 1024px) {
 	.search-listing ul li{width: 25%;}
 }

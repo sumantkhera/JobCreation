@@ -27,14 +27,28 @@ namespace Compass.ModuleUI
                 
 
                 BindDropdowns();
-                GetJobAttachments();
+
+                if (Request.QueryString["JobId"] != null)
+                {
+                    GetJobAttachments();
+                    GetJobCommentsWithAttachments();
+                }
+                else
+                {
+                    Response.Redirect("~/ModuleUI/JobList.aspx");
+                }
+               
 
                 if (Convert.ToString(Session["UserTypeCode"]).Trim().Equals(UserType.Enum.PM.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.DM.ToString()))
                 {
                     GetJobDetailsForPMAndDMUserType();
                 }
+                if (Convert.ToString(Session["UserTypeCode"]).Trim().Equals(UserType.Enum.QA.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.DM.ToString()))
+                {
+                    GetJobDetailsForQA_Member_QAHeadUserType();
+                }
 
-                if(Session["IsServiceCompanyUser"] != null)
+                if (Session["IsServiceCompanyUser"] != null)
                 {
                     divInternalUse.Visible = true;
                 }
@@ -66,7 +80,7 @@ namespace Compass.ModuleUI
                 BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
 
                 DataTable dtQAUsers = jobDetailsBAL.GetQAUserForServiceCompanyBAL("GetQAUserForServiceCompany", Convert.ToInt32(Session["ServiceCompanyId"]));
-                BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
+                BindDropdown(ddlQAUser, "UserName", "Id", dtQAUsers, "Select User");
             }
             else
             {
@@ -117,16 +131,28 @@ namespace Compass.ModuleUI
             if (Request.QueryString["JobId"] != null)
             {
                 obJobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
-            }
-            else
-            {
-                obJobDetailsBE.Id = 1;
-            }
+            }            
 
-                List<JobDetailsBE> lstDetails = jobDetailsBAL.GetJobDetailsBAL(obJobDetailsBE);
+            List<JobDetailsBE> lstDetails = jobDetailsBAL.GetJobDetailsBAL(obJobDetailsBE);
 
             if(lstDetails !=null && lstDetails.Count > 0)
             {
+                if (Session["IsServiceCompanyUser"] != null)
+                {
+                    if (Session["IsServiceCompanyUser"].ToString() == "True" || lstDetails[0].IsInternalUse == true)
+                    {
+                        divInternalUse.Visible = true;
+                    }
+                    else
+                    {
+                        divInternalUse.Visible = false;
+                    }
+                }
+                else
+                {
+                    divInternalUse.Visible = false;
+                }
+
                 txtJobNumber.Text = lstDetails[0].JobNumber;
                 txtSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
                 txtSubmitBy.Text = lstDetails[0].SubmittedByName;
@@ -134,11 +160,90 @@ namespace Compass.ModuleUI
                 txtDescription.Text = lstDetails[0].Description;
                 ddlJobStatus.Items.FindByValue (lstDetails[0].JobStatusId.ToString()).Selected = true;
                 ddlJobType.Items.FindByValue(lstDetails[0].JobTypeId.ToString()).Selected = true;
-            }
-            
-                     
+            }        
         }
 
+        private void GetJobDetailsForQA_Member_QAHeadUserType()
+        {
+            JobDetailsBE obJobDetailsBE = new JobDetailsBE();
+
+            obJobDetailsBE.Action = "GetJobDetailsById";
+
+            if (Request.QueryString["JobId"] != null)
+            {
+                obJobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
+            }
+
+            List<JobDetailsBE> lstDetails = jobDetailsBAL.GetJobDetailsBAL(obJobDetailsBE);
+
+            if (lstDetails != null && lstDetails.Count > 0)
+            {
+                if (Session["IsServiceCompanyUser"] != null)
+                {
+                    if (Session["IsServiceCompanyUser"].ToString() == "True" || lstDetails[0].IsInternalUse == true)
+                    {
+                        divInternalUse.Visible = true;
+                    }
+                    else
+                    {
+                        divInternalUse.Visible = false;
+                    }
+                }
+                else
+                {
+                    divInternalUse.Visible = false;
+                }
+
+                txtJobNumber.Text = lstDetails[0].JobNumber;
+                txtSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
+                txtSubmitBy.Text = lstDetails[0].SubmittedByName;
+                txtBranch.Text = lstDetails[0].BranchName;
+                txtDescription.Text = lstDetails[0].Description;
+                ddlJobStatus.Items.FindByValue(lstDetails[0].JobStatusId.ToString()).Selected = true;
+                ddlJobType.Items.FindByValue(lstDetails[0].JobTypeId.ToString()).Selected = true;
+                ddlTeam.Items.FindByValue(lstDetails[0].AllocatedToTeam.ToString()).Selected = true;
+                ddlUser.Items.FindByValue(lstDetails[0].AllocatedToUser.ToString()).Selected = true;
+                ddlQAUser.Items.FindByValue(lstDetails[0].QAUserId.ToString()).Selected = true;
+
+                ddlJobType.Enabled = false;
+                ddlQAUser.Enabled = false;
+                
+
+            }
+        }
+
+        private void GetJobCommentsWithAttachments()
+        {
+            CommentsBE commentBE = new CommentsBE();
+            AttachmentsBAL attachmentBAL = new AttachmentsBAL();
+
+            commentBE.JobDetails = new JobDetailsBE();
+
+            commentBE.Action = "GetJobCommentsWithAttachmentsByJobId";
+
+            if (Request.QueryString["JobId"] != null)
+            {
+                commentBE.JobDetails.Id = Convert.ToInt32(Request.QueryString["JobId"]);
+            }
+
+            List<CommentsBE> lstAttachments = attachmentBAL.GetJobCommentsWithAttachmentsBAL(commentBE);
+
+            if (lstAttachments.Count > 0)
+            {
+                //hdnAttachementCount.Value = Convert.ToString(lstAttachments.Count());
+                //attachment.InnerHtml = "Attachment " + lstAttachments.Count().ToString();
+
+                //foreach (var item in lstAttachments)
+                //{
+                //    HyperLink hplnk = new HyperLink();
+                //    hplnk.Text = item.Attachment.Name;
+                //    hplnk.ID = Convert.ToString(item.Attachment.JobAttachmentId);
+                //    hplnk.CssClass = "btn btn-link";
+                //    hplnk.NavigateUrl = "~/ModuleUI/DownloadAttachment.aspx?FilePath=" + item.Attachment.Path + "&FileName=" + item.Attachment.Name;
+                //    pnlAttachment.Controls.Add(hplnk);
+                //}
+            }
+        }
         private void GetJobAttachments()
         {
             AttachmentsBE attachmentsBE = new AttachmentsBE();
@@ -151,11 +256,7 @@ namespace Compass.ModuleUI
             if (Request.QueryString["JobId"] != null)
             {
                 attachmentsBE.JobDetails.Id =  Convert.ToInt32(Request.QueryString["JobId"]);
-            }
-            else
-            {
-                attachmentsBE.JobDetails.Id = 8;
-            }
+            }            
 
             List<AttachmentsBE> lstAttachments = attachmentBAL.GetJobAttachmentsBAL(attachmentsBE);
 
@@ -184,13 +285,15 @@ namespace Compass.ModuleUI
         {           
             JobDetailsBE jobDetailsBE = new JobDetailsBE();
             jobDetailsBE.Comments = new CommentsBE();
-            jobDetailsBE.ClientId = Convert.ToInt32(Session["ClientId"]);
+
+            jobDetailsBE.Action = "EditJobDetails";
+            jobDetailsBE.ClientId = Convert.ToInt32(Session["ClientId"]); 
+            jobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);            
+            jobDetailsBE.Comments.CreatedBy = Convert.ToInt32(Session["UserId"]);
             
 
-            jobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
-            jobDetailsBE.Comments.CreatedBy = Convert.ToInt32(Session["UserId"]);
+            jobDetailsBE.Comments.Description = txtComments.Text.Trim();
 
-            jobDetailsBE.Comments.Description = txtComments.Text;
             AttachmentsColllection lstAttachments = new AttachmentsColllection();
             if (FileUploadAttachments.HasFiles)
             {
@@ -206,75 +309,51 @@ namespace Compass.ModuleUI
                     lstAttachments.Add(attachments);
                 }
             }
-
             jobDetailsBE.Attachments = lstAttachments;
 
 
             if (Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.PM.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.DM.ToString()))
             {
-                if (ddlJobStatus.SelectedValue != null || ddlJobStatus.SelectedIndex != -1)
+                if (ddlJobStatus.SelectedValue != null || ddlJobStatus.SelectedIndex != 0 || ddlJobStatus.SelectedIndex != -1)
                 {
-                    jobDetailsBE.JobStatusId = ddlJobStatus.SelectedValue != null ? Convert.ToInt32(ddlJobStatus.SelectedValue) : 0;
+                    jobDetailsBE.JobStatusId = Convert.ToInt32(ddlJobStatus.SelectedValue);
                 }
-                if (ddlQAUser.SelectedValue != null || ddlQAUser.SelectedIndex != -1)
+                if (ddlQAUser.SelectedValue != null || ddlQAUser.SelectedIndex != 0 || ddlQAUser.SelectedIndex != -1)
                 {
                     jobDetailsBE.QAUserId = Convert.ToInt32(ddlQAUser.SelectedValue);
                 }
+                if (ddlTeam.SelectedValue != null || ddlTeam.SelectedIndex != 0  || ddlTeam.SelectedIndex != -1)
+                {
+                    jobDetailsBE.AllocatedToTeam = Convert.ToInt32(ddlTeam.SelectedValue);
+                    jobDetailsBE.AllocationDate = DateTime.Now;
+                }
+                if (ddlUser.SelectedValue != null || ddlUser.SelectedIndex != 0 || ddlUser.SelectedIndex != -1)
+                {
+                    jobDetailsBE.AllocatedToUser = Convert.ToInt32(ddlUser.SelectedValue);
+                }
 
-                jobDetailsBE.AllocatedToTeam = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
-                jobDetailsBE.AllocationDate = DateTime.Now;
-                jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;
-
-               
+                    jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;               
             }
 
             if (Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QA.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.MEMBER.ToString())
                 || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QAHEAD))
             {
-                jobDetailsBE.Comments.Description = txtComments.Text;
-                jobDetailsBE.JobStatusId = ddlJobStatus.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
-                jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;
-                
-                //AttachmentsColllection lstAttachments = new AttachmentsColllection();
-                //if (FileUploadAttachments.HasFiles)
-                //{
-                //    foreach (HttpPostedFile uploadedFile in FileUploadAttachments.PostedFiles)
-                //    {
-                //        AttachmentsBE attachments = new AttachmentsBE();
-                //        Guid random1 = Guid.NewGuid();
-                //        FileUploadAttachments.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
-                //        attachments.Name = uploadedFile.FileName;
-                //        attachments.Path = "/Attachment/" + random1.ToString() + Path.GetExtension(uploadedFile.FileName);
-                //        attachments.CommentId = null;
-                //        attachments.CreatedBy = Convert.ToInt32(Session["UserId"]);
-                //        lstAttachments.Add(attachments);
-                //    }
-                //}
-
-                //jobDetailsBE.Attachments = lstAttachments;
+                if (ddlJobStatus.SelectedValue != null || ddlJobStatus.SelectedIndex != 0 || ddlJobStatus.SelectedIndex != -1)
+                {
+                    jobDetailsBE.JobStatusId = Convert.ToInt32(ddlJobStatus.SelectedValue);
+                }
+                    jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;                
+               
             }
             if (Session["ClientId"] != null)
             {
-                jobDetailsBE.Comments.Description = txtComments.Text;
-                jobDetailsBE.JobStatusId = ddlJobStatus.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;                
-
-                //AttachmentsColllection lstAttachments = new AttachmentsColllection();
-                //if (FileUploadAttachments.HasFiles)
-                //{
-                //    foreach (HttpPostedFile uploadedFile in FileUploadAttachments.PostedFiles)
-                //    {
-                //        AttachmentsBE attachments = new AttachmentsBE();
-                //        Guid random1 = Guid.NewGuid();
-                //        FileUploadAttachments.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
-                //        attachments.Name = uploadedFile.FileName;
-                //        attachments.Path = "/Attachment/" + random1.ToString() + Path.GetExtension(uploadedFile.FileName);
-                //        attachments.CommentId = null;
-                //        attachments.CreatedBy = Convert.ToInt32(Session["UserId"]);
-                //        lstAttachments.Add(attachments);
-                //    }
-                //}
-
-                //jobDetailsBE.Attachments = lstAttachments;
+                if (Convert.ToInt32(Session["ClientId"]) == 1)
+                {
+                    if (ddlJobStatus.SelectedValue != null || ddlJobStatus.SelectedIndex != 0 || ddlJobStatus.SelectedIndex != -1)
+                    {
+                        jobDetailsBE.JobStatusId = Convert.ToInt32(ddlJobStatus.SelectedValue);
+                    }
+                }
             }
 
             string result = jobDetailsBAL.EditJobDetailsBAL(jobDetailsBE);
@@ -282,8 +361,14 @@ namespace Compass.ModuleUI
             if (result == "1")
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "", "<script>alert('Editted Succesfully');</script>", false);
+                Response.Redirect("~/ModuleUI/JobList.aspx");
             }
         }
         #endregion
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ModuleUI/JobList.aspx");
+        }
     }
 }

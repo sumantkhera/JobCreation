@@ -206,8 +206,8 @@
                             <div class="col-sm-12">
                                     <div class="col-sm-6">
                                         <div class="btn-style">
-                                            <asp:Button Text="Add" class="btn btn-submit" runat="server" OnClick="btnSubmit_Click" />
-                                            <asp:Button Text="Cancel" class="btn btn-submit" runat="server" />
+                                            <asp:Button  ID="btnAdd" Text="Add" class="btn btn-submit" runat="server" OnClick="btnSubmit_Click" />
+                                            <asp:Button  ID="btnCancel" Text="Cancel" class="btn btn-submit" OnClick="btnCancel_Click" runat="server" />
                                             
                                         </div>
                                     </div>
@@ -219,9 +219,10 @@
                                 <!-- blockquote -->
                                 <blockquote>
                                         <div class="submit-by">
+                                            <asp:Panel ID="pnlComments" runat="server"></asp:Panel>
                                             Added By:
-                                        <a href="#" class="comment-name">Anupam Bhardwaj</a> on
-                                        <a href="#" class="comment-date">6th July 2018</a>
+                                        <%--<a href="#" class="comment-name">Anupam Bhardwaj</a> on
+                                        <a href="#" class="comment-date">6th July 2018</a>--%>
                                         </div>
                                         <div class="col-sm-10 blockquote-body">
                                             <p><img alt="" src="/images/qoute-icon.png"> Here is the new password for your mailbox. [ Acxse94458 ], and find attachment for details.</p>
