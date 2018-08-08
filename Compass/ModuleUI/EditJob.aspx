@@ -294,8 +294,8 @@ $("#attachment").click(function(){
 $("#link-underline1").click(function(){
     $(".attachment-download1").slideToggle();
 });
-$('#attachment span').click(function() {
-    $(".minus-attach").Toggle();
+$('#attachment ').click(function() {
+    $("span.plus-attach").toggleClass("minus-attach");
 });
 </script>
             </html>
