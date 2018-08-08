@@ -142,5 +142,19 @@ namespace Compass.BAL
             }
             return dt;
         }
+
+        public DataTable GetUserBAL(int clientid)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = compassDAL.GetUserDAL(clientid);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
     }
 }

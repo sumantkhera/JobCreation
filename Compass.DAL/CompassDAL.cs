@@ -243,6 +243,24 @@ namespace Compass.DAL
             }
             return dt;
         }
-
+        public DataTable GetUserDAL(int clientid)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlParameter[] param =
+                {
+                                        new SqlParameter("@ClientId",clientid) 
+                                      
+                 };
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spGetUserDetailsByClientId", param);
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //  LogUtility.SaveErrorLogEntry(ex);
+            }
+            return dt;
+        }
     }
 }
