@@ -19,9 +19,7 @@ namespace Compass.ModuleUI
         {
             if (!this.IsPostBack)
             {
-                BindDropdowns();
-                BindMethods();
-                if (Convert.ToBoolean(value: Session["ServiceCompanyId"]) == true)
+                if (Convert.ToBoolean(Session["IsServiceCompanyUser"]) == false)
                 {
                     btnAdd.Visible = true;
                 }
@@ -29,6 +27,9 @@ namespace Compass.ModuleUI
                 {
                     btnAdd.Visible = false;
                 }
+
+                BindDropdowns();
+                BindMethods();
             }
         }
 
