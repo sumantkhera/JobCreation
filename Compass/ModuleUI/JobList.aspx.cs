@@ -88,12 +88,15 @@ namespace Compass.ModuleUI
             if (e.Row.RowType == DataControlRowType.Header)
             {
                 e.Row.Cells[0].Style.Add(HtmlTextWriterStyle.Display, "none");
+               // e.Row.Style.Add("background-color", "#c0e0e8");
             }
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 e.Row.Cells[0].Style.Add(HtmlTextWriterStyle.Display, "none");
                 e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(this.grdViewJobList, "Select$" + e.Row.RowIndex);
+
+                e.Row.Style.Add("cursor", "pointer");
 
                 GridViewRow row = e.Row;
                 Label lblPriorityType = (Label)row.FindControl("lblPriorityType");
@@ -110,7 +113,23 @@ namespace Compass.ModuleUI
                 {
                     lblPriorityType.CssClass = "medium-color";
                 }
+
+               // e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#fff',this.style.fontWeight='';");
+
+
+               // e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor,this.style.fontWeight='';");
+
+                //e.Row.Attributes.Add("onmouseover", "document.body.style.cursor='hand'");
+                //e.Row.Attributes.Add("onmouseout", "document.body.style.cursor='auto'");
             }
+        }
+
+       
+
+        protected void grdViewJobList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdViewJobList.PageIndex = e.NewPageIndex;
+            BindMethods();
         }
     }
 }
