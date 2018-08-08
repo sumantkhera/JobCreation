@@ -32,7 +32,7 @@ namespace Compass
         protected void lnkLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("/login.aspx");
+            Response.Redirect("/ModuleUI/login.aspx");
         }
     }
 }
