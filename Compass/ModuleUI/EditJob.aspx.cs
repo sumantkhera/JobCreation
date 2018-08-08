@@ -27,6 +27,7 @@ namespace Compass.ModuleUI
                 
 
                 BindDropdowns();
+               
 
                 if (Request.QueryString["JobId"] != null)
                 {
@@ -37,13 +38,23 @@ namespace Compass.ModuleUI
                 {
                     Response.Redirect("~/ModuleUI/JobList.aspx");
                 }
-               
+
+                if (Convert.ToString(Session["UserTypeCode"]).Trim().Equals(UserType.Enum.HO.ToString()))
+                {
+                    GetJobDetailsForHOUserType();
+                }
+
+                if (Convert.ToString(Session["UserTypeCode"]).Trim().Equals(UserType.Enum.BRANCH.ToString()))
+                {
+                    GetJobDetailsForBranchUserType();
+                }
 
                 if (Convert.ToString(Session["UserTypeCode"]).Trim().Equals(UserType.Enum.PM.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.DM.ToString()))
                 {
                     GetJobDetailsForPMAndDMUserType();
                 }
-                if (Convert.ToString(Session["UserTypeCode"]).Trim().Equals(UserType.Enum.QA.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.DM.ToString()))
+                if (Convert.ToString(Session["UserTypeCode"]).Trim().Equals(UserType.Enum.QA.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.MEMBER.ToString())
+                    || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QAHEAD.ToString()))
                 {
                     GetJobDetailsForQA_Member_QAHeadUserType();
                 }
@@ -122,6 +133,75 @@ namespace Compass.ModuleUI
             }
         }
 
+        private void GetJobDetailsForBranchUserType()
+        {
+            JobDetailsBE obJobDetailsBE = new JobDetailsBE();
+
+            obJobDetailsBE.Action = "GetJobDetailsById";
+
+            if (Request.QueryString["JobId"] != null)
+            {
+                obJobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
+            }
+
+            List<JobDetailsBE> lstDetails = jobDetailsBAL.GetJobDetailsBAL(obJobDetailsBE);
+
+            if (lstDetails != null && lstDetails.Count > 0)
+            {
+                divInternalUse.Visible = false;
+
+                lblJobNumber.Text = lstDetails[0].JobNumber;
+                lblSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
+                lblSubmitBy.Text = lstDetails[0].SubmittedByName;
+                lblBranch.Text = lstDetails[0].BranchName;
+                txtDescription.Text = lstDetails[0].Description;
+                ddlJobStatus.Items.FindByValue(lstDetails[0].JobStatusId.ToString()).Selected = true;
+                ddlJobType.Items.FindByValue(lstDetails[0].JobTypeId.ToString()).Selected = true;
+                ddlTeam.Items.FindByValue(lstDetails[0].AllocatedToTeam.ToString()).Selected = true;
+
+                ddlJobType.Enabled = false;
+                ddlQAUser.Style.Add("display", "none");
+                lblQAUser.Style.Add("display", "none");
+                ddlUser.Style.Add("display", "none");
+                lblUser.Style.Add("display", "none");
+            }
+        }
+        
+
+        private void GetJobDetailsForHOUserType()
+        {
+            JobDetailsBE obJobDetailsBE = new JobDetailsBE();
+
+            obJobDetailsBE.Action = "GetJobDetailsById";
+
+            if (Request.QueryString["JobId"] != null)
+            {
+                obJobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
+            }
+
+            List<JobDetailsBE> lstDetails = jobDetailsBAL.GetJobDetailsBAL(obJobDetailsBE);
+
+            if (lstDetails != null && lstDetails.Count > 0)
+            {                
+               divInternalUse.Visible = false;
+
+                lblJobNumber.Text = lstDetails[0].JobNumber;
+                lblSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
+                lblSubmitBy.Text = lstDetails[0].SubmittedByName;
+                lblBranch.Text = lstDetails[0].BranchName;
+                txtDescription.Text = lstDetails[0].Description;
+                ddlJobStatus.Items.FindByValue(lstDetails[0].JobStatusId.ToString()).Selected = true;
+                ddlJobType.Items.FindByValue(lstDetails[0].JobTypeId.ToString()).Selected = true;
+                ddlTeam.Items.FindByValue(lstDetails[0].AllocatedToTeam.ToString()).Selected = true;
+
+                ddlJobType.Enabled = false;
+                ddlQAUser.Style.Add("display", "none");
+                lblQAUser.Style.Add("display", "none");
+                ddlUser.Style.Add("display", "none");
+                lblUser.Style.Add("display", "none");
+            }
+        }
+
         private void GetJobDetailsForPMAndDMUserType()
         {
             JobDetailsBE obJobDetailsBE = new JobDetailsBE();
@@ -153,10 +233,10 @@ namespace Compass.ModuleUI
                     divInternalUse.Visible = false;
                 }
 
-                txtJobNumber.Text = lstDetails[0].JobNumber;
-                txtSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
-                txtSubmitBy.Text = lstDetails[0].SubmittedByName;
-                txtBranch.Text = lstDetails[0].BranchName;
+                lblJobNumber.Text = lstDetails[0].JobNumber;
+                lblSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
+                lblSubmitBy.Text = lstDetails[0].SubmittedByName;
+                lblBranch.Text = lstDetails[0].BranchName;
                 txtDescription.Text = lstDetails[0].Description;
                 ddlJobStatus.Items.FindByValue (lstDetails[0].JobStatusId.ToString()).Selected = true;
                 ddlJobType.Items.FindByValue(lstDetails[0].JobTypeId.ToString()).Selected = true;
@@ -194,10 +274,10 @@ namespace Compass.ModuleUI
                     divInternalUse.Visible = false;
                 }
 
-                txtJobNumber.Text = lstDetails[0].JobNumber;
-                txtSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
-                txtSubmitBy.Text = lstDetails[0].SubmittedByName;
-                txtBranch.Text = lstDetails[0].BranchName;
+                lblJobNumber.Text = lstDetails[0].JobNumber;
+                lblSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
+                lblSubmitBy.Text = lstDetails[0].SubmittedByName;
+                lblBranch.Text = lstDetails[0].BranchName;
                 txtDescription.Text = lstDetails[0].Description;
                 ddlJobStatus.Items.FindByValue(lstDetails[0].JobStatusId.ToString()).Selected = true;
                 ddlJobType.Items.FindByValue(lstDetails[0].JobTypeId.ToString()).Selected = true;
@@ -206,8 +286,7 @@ namespace Compass.ModuleUI
                 ddlQAUser.Items.FindByValue(lstDetails[0].QAUserId.ToString()).Selected = true;
 
                 ddlJobType.Enabled = false;
-                ddlQAUser.Enabled = false;
-                
+                ddlQAUser.Enabled = false;               
 
             }
         }
