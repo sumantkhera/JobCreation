@@ -18,7 +18,7 @@ namespace Compass.ModuleUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Convert.ToBoolean(value: Session["ServiceCompanyId"]) == false)
+            if (Convert.ToBoolean(Session["IsServiceCompanyUser"]) == false)
             {
                 Response.Redirect("/ModuleUI/joblist.aspx");
             }
