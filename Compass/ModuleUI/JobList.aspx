@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-sm-6  col-xs-6 text-right">
                     <div class="add-jobs">
-                        <a href="CreateJob.aspx" class="add-job-btn">
+                        <a href="CreateJob.aspx" class="add-job-btn" runat="server" id="btnAdd">
                             <img alt="" src="../images/add-job-white.png">
                             Add Job</a>
                     </div>
@@ -66,8 +66,8 @@
                             </li>
                             <li>
                                 <div class="btn-style">
-                                    <asp:Button ID="btnFilter" runat="server" Text="Filter" class="btn btn-submit" />
-                                    <asp:Button ID="btnCancel" runat="server" Text="Reset" class="btn btn-cancel" />
+                                    <asp:Button ID="btnFilter" runat="server" Text="Filter" class="btn btn-submit" OnClick="btnFilter_Click" />
+                                    <asp:Button ID="btnCancel" runat="server" Text="Reset" class="btn btn-cancel" OnClick="btnCancel_Click"/>
                                 </div>
                             </li>
                         </ul>

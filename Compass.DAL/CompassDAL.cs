@@ -177,7 +177,7 @@ namespace Compass.DAL
             {
                 SqlParameter[] param =
                                {     new SqlParameter("@UserId",id ) };
-                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spListJobs",param);
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spListJobs", param);
                 dt = ds.Tables[0];
             }
             catch (Exception ex)
@@ -186,7 +186,7 @@ namespace Compass.DAL
             }
             return dt;
         }
-          
+
         public DataTable GetStatusDAL()
         {
             DataTable dt = new DataTable();
@@ -216,6 +216,33 @@ namespace Compass.DAL
             return dt;
         }
 
-        
+        public DataTable GetJobListByFilterDAL(jobFilters jobFilters)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlParameter[] param =
+                {
+                                        new SqlParameter("@UserId",jobFilters.Id ) ,
+                                        new SqlParameter("@ClientIds",jobFilters.ClientId ) ,
+                                        new SqlParameter("@PriorityID",jobFilters.PriorityID ) ,
+                                        new SqlParameter("@AllocatedToUser",jobFilters.AllocatedToUser ) ,
+                                        new SqlParameter("@JobStatusId",jobFilters.JobStatusId ) ,
+                                        new SqlParameter("@JobTypeId",jobFilters.JobTypeId ) ,
+                                        new SqlParameter("@BranchId",jobFilters.BranchId ) ,
+                                        new SqlParameter("@StartDate",jobFilters.FromDate ) ,
+                                        new SqlParameter("@EndDate",jobFilters.ToDate ) ,
+                                        new SqlParameter("@JobNumber",jobFilters.JobNumber )
+                 };
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spListJobs", param);
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //  LogUtility.SaveErrorLogEntry(ex);
+            }
+            return dt;
+        }
+
     }
 }

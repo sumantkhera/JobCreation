@@ -13,6 +13,15 @@ namespace Compass.ModuleUI {
     public partial class JobList {
         
         /// <summary>
+        /// btnAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnAdd;
+        
+        /// <summary>
         /// txtJobNo control.
         /// </summary>
         /// <remarks>

@@ -18,6 +18,11 @@ namespace Compass.ModuleUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Convert.ToBoolean(value: Session["ServiceCompanyId"]) == false)
+            {
+                Response.Redirect("/ModuleUI/joblist.aspx");
+            }
+
             if (!this.IsPostBack)
             {
                 BindDropdowns();
@@ -101,7 +106,7 @@ namespace Compass.ModuleUI
                 foreach (HttpPostedFile uploadedFile in fileJobAttachment.PostedFiles)
                 {
                     AttachmentsBE attachments = new AttachmentsBE();
-                    Guid random1 = Guid.NewGuid();                    
+                    Guid random1 = Guid.NewGuid();
                     fileJobAttachment.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
                     attachments.Name = uploadedFile.FileName;
                     attachments.Path = "/Attachment/" + random1.ToString() + Path.GetExtension(uploadedFile.FileName);
