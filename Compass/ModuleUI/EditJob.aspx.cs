@@ -150,10 +150,10 @@ namespace Compass.ModuleUI
             {
                 divInternalUse.Visible = false;
 
-                lblJobNumber.Text = lstDetails[0].JobNumber;
-                lblSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
-                lblSubmitBy.Text = lstDetails[0].SubmittedByName;
-                lblBranch.Text = lstDetails[0].BranchName;
+                txtJobNumber.Text = lstDetails[0].JobNumber;
+                txtSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
+                txtSubmitBy.Text = lstDetails[0].SubmittedByName;
+                txtBranch.Text = lstDetails[0].BranchName;
                 txtDescription.Text = lstDetails[0].Description;
                 ddlJobStatus.Items.FindByValue(lstDetails[0].JobStatusId.ToString()).Selected = true;
                 ddlJobType.Items.FindByValue(lstDetails[0].JobTypeId.ToString()).Selected = true;
@@ -185,10 +185,10 @@ namespace Compass.ModuleUI
             {                
                divInternalUse.Visible = false;
 
-                lblJobNumber.Text = lstDetails[0].JobNumber;
-                lblSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
-                lblSubmitBy.Text = lstDetails[0].SubmittedByName;
-                lblBranch.Text = lstDetails[0].BranchName;
+                txtJobNumber.Text = lstDetails[0].JobNumber;
+                txtSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
+                txtSubmitBy.Text = lstDetails[0].SubmittedByName;
+                txtBranch.Text = lstDetails[0].BranchName;
                 txtDescription.Text = lstDetails[0].Description;
                 ddlJobStatus.Items.FindByValue(lstDetails[0].JobStatusId.ToString()).Selected = true;
                 ddlJobType.Items.FindByValue(lstDetails[0].JobTypeId.ToString()).Selected = true;
@@ -233,10 +233,10 @@ namespace Compass.ModuleUI
                     divInternalUse.Visible = false;
                 }
 
-                lblJobNumber.Text = lstDetails[0].JobNumber;
-                lblSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
-                lblSubmitBy.Text = lstDetails[0].SubmittedByName;
-                lblBranch.Text = lstDetails[0].BranchName;
+                txtJobNumber.Text = lstDetails[0].JobNumber;
+                txtSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
+                txtSubmitBy.Text = lstDetails[0].SubmittedByName;
+                txtBranch.Text = lstDetails[0].BranchName;
                 txtDescription.Text = lstDetails[0].Description;
                 ddlJobStatus.Items.FindByValue (lstDetails[0].JobStatusId.ToString()).Selected = true;
                 ddlJobType.Items.FindByValue(lstDetails[0].JobTypeId.ToString()).Selected = true;
@@ -274,10 +274,10 @@ namespace Compass.ModuleUI
                     divInternalUse.Visible = false;
                 }
 
-                lblJobNumber.Text = lstDetails[0].JobNumber;
-                lblSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
-                lblSubmitBy.Text = lstDetails[0].SubmittedByName;
-                lblBranch.Text = lstDetails[0].BranchName;
+                txtJobNumber.Text = lstDetails[0].JobNumber;
+                txtSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
+                txtSubmitBy.Text = lstDetails[0].SubmittedByName;
+                txtBranch.Text = lstDetails[0].BranchName;
                 txtDescription.Text = lstDetails[0].Description;
                 ddlJobStatus.Items.FindByValue(lstDetails[0].JobStatusId.ToString()).Selected = true;
                 ddlJobType.Items.FindByValue(lstDetails[0].JobTypeId.ToString()).Selected = true;
