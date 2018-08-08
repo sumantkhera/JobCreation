@@ -129,5 +129,18 @@ namespace Compass.BAL
             return dt;
         }
 
+        public DataTable GetJobListByFilterBAL(jobFilters jobFilters)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = compassDAL.GetJobListByFilterDAL(jobFilters);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
     }
 }
