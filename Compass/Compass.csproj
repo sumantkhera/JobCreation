@@ -149,9 +149,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\custom.css" />
     <Content Include="css\style.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -169,6 +167,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\Thumbs.db" />
+    <Content Include="fonts\PALA.TTF" />
+    <Content Include="fonts\PALAB.TTF" />
+    <Content Include="fonts\PALABI.TTF" />
+    <Content Include="fonts\PALAI.TTF" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="images\add-job-white.png" />
     <Content Include="images\arrow.png" />
@@ -182,12 +184,10 @@
     <Content Include="images\logo.jpg" />
     <Content Include="images\new-job-icon.png" />
     <Content Include="images\qoute-icon.png" />
-    <Content Include="img\compass-logo.jpg" />
     <Content Include="ModuleUI\CreateJob.aspx" />
     <Content Include="ModuleUI\DownloadAttachment.aspx" />
     <Content Include="ModuleUI\EditJob.aspx" />
     <Content Include="ModuleUI\JobList.aspx" />
-    <Content Include="ModuleUI\JobCreationEdit.aspx" />
     <Content Include="ModuleUI\Login.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -312,6 +312,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Attachment\" />
+    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
