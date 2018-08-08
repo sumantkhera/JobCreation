@@ -112,13 +112,13 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.DropDownList ddlTeam;
         
         /// <summary>
-        /// lblUser control.
+        /// divUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUser;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUser;
         
         /// <summary>
         /// ddlUser control.
@@ -130,13 +130,13 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.DropDownList ddlUser;
         
         /// <summary>
-        /// lblQAUser control.
+        /// divQaUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQAUser;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divQaUser;
         
         /// <summary>
         /// ddlQAUser control.

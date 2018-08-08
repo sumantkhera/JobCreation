@@ -146,10 +146,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div id="divUser" class="col-sm-4" runat="server">
                                 <div class="form-group form-group-style">
                                     <div class="col-sm-4">
-                                        <asp:Label ID="lblUser" Text="User" runat="server" />
+                                        <label for="email">User</label>
+                                        <%--<asp:Label ID="lblUser" Text="User" runat="server" />--%>
                                         
                                     </div>
                                     <div class="col-sm-8">
@@ -159,10 +160,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div id="divQaUser" class="col-sm-4" runat="server">
                                 <div class="form-group form-group-style">
                                     <div class="col-sm-4">
-                                        <asp:Label ID="lblQAUser" Text="QA User" runat="server" />
+                                        <label for="email">QA User</label>
+                                        <%--<asp:Label ID="lblQAUser" Text="QA User" runat="server" />--%>
                                         
                                     </div>
                                     <div class="col-sm-8">
@@ -218,7 +220,7 @@
                                         </div>
                                     </div>
                                         <div class="col-sm-6 text-right">
-                                            <a href="#" class="link-underline">History</a>
+                                            <a href="#" data-toggle="modal" data-target="#history" class="link-underline">History</a>
                                         </div>
                             </div>
                             <div class="col-sm-12">
@@ -287,6 +289,68 @@
                     <!-- container -->
                 </div>
             </section>
+
+            
+            
+            <!-- Modal -->
+            <div id="history" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+            
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                  </div>
+                  <div class="modal-body">
+                        <div class="table-responsive">          
+                                <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <th>#</th>
+                                      <th>Firstname</th>
+                                      <th>Lastname</th>
+                                      <th>Age</th>
+                                      <th>City</th>
+                                      <th>Country</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                        <tr>
+                                                <td>1</td>
+                                                <td>Anna</td>
+                                                <td>Pitt</td>
+                                                <td>35</td>
+                                                <td>New York</td>
+                                                <td>USA</td>
+                                              </tr>
+                                              <tr>
+                                                    <td>1</td>
+                                                    <td>Anna</td>
+                                                    <td>Pitt</td>
+                                                    <td>35</td>
+                                                    <td>New York</td>
+                                                    <td>USA</td>
+                                                  </tr>
+                                                  <tr>
+                                                        <td>1</td>
+                                                        <td>Anna</td>
+                                                        <td>Pitt</td>
+                                                        <td>35</td>
+                                                        <td>New York</td>
+                                                        <td>USA</td>
+                                                      </tr>
+                                  </tbody>
+                                </table>
+                                </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+            
+              </div>
+            </div>
 <script>
 $("#attachment").click(function(){
     $(".attachment-download").slideToggle();

@@ -21,13 +21,7 @@ namespace Compass.ModuleUI
         {
             if (!IsPostBack)
             {
-                //if (Request.QueryString["JobId"] != null)
-                //{
-                
-                
-
-                BindDropdowns();
-               
+                BindDropdowns();               
 
                 if (Request.QueryString["JobId"] != null)
                 {
@@ -58,24 +52,6 @@ namespace Compass.ModuleUI
                 {
                     GetJobDetailsForQA_Member_QAHeadUserType();
                 }
-
-                //if (Session["IsServiceCompanyUser"] != null)
-                //{
-                //    divInternalUse.Visible = true;
-                //}
-                //else
-                //{
-                //    divInternalUse.Visible = false;
-                //}
-
-               
-                //GetJobDetails();
-                    
-                //}
-                //else
-                //{
-                //    GetJobDetails
-                //}
             }
         }
 
@@ -105,12 +81,7 @@ namespace Compass.ModuleUI
             BindDropdown(ddlJobType, "jobName", "Id", dtJobType, "Select JobType");
 
             DataTable dtJobStatusType = jobDetailsBAL.GetJobStatusBAL("GetJobStatus");
-            BindDropdown(ddlJobStatus, "Status", "Id", dtJobStatusType, "Select Status");           
-
-
-            //DataTable dtUsers = jobetailsBAL.GetUserForServiceCompanyBAL("GetUserForServiceCompany", ServiceComapnyID);
-            //BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
-
+            BindDropdown(ddlJobStatus, "Status", "Id", dtJobStatusType, "Select Status");  
            
         }
 
@@ -160,10 +131,10 @@ namespace Compass.ModuleUI
                 ddlTeam.Items.FindByValue(lstDetails[0].AllocatedToTeam.ToString()).Selected = true;
 
                 ddlJobType.Enabled = false;
-                ddlQAUser.Style.Add("display", "none");
-                lblQAUser.Style.Add("display", "none");
-                ddlUser.Style.Add("display", "none");
-                lblUser.Style.Add("display", "none");
+                //ddlQAUser.Style.Add("display", "none");
+                divQaUser.Style.Add("display", "none");
+                //ddlUser.Style.Add("display", "none");
+                divUser.Style.Add("display", "none");
             }
         }
         
@@ -195,10 +166,10 @@ namespace Compass.ModuleUI
                 ddlTeam.Items.FindByValue(lstDetails[0].AllocatedToTeam.ToString()).Selected = true;
 
                 ddlJobType.Enabled = false;
-                ddlQAUser.Style.Add("display", "none");
-                lblQAUser.Style.Add("display", "none");
-                ddlUser.Style.Add("display", "none");
-                lblUser.Style.Add("display", "none");
+                //ddlQAUser.Style.Add("display", "none");
+                divQaUser.Style.Add("display", "none");
+                //ddlUser.Style.Add("display", "none");
+                divUser.Style.Add("display", "none");
             }
         }
 
@@ -290,8 +261,18 @@ namespace Compass.ModuleUI
                 ddlQAUser.Items.FindByValue(lstDetails[0].QAUserId.ToString()).Selected = true;
 
                 ddlJobType.Enabled = false;
-                ddlQAUser.Enabled = false;               
 
+                if (
+                    Convert.ToString(Session["UserTypeCode"]).Trim().Equals(UserType.Enum.QA.ToString()) || 
+                    Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.MEMBER.ToString())
+                    )
+                {
+                    ddlUser.Enabled = false;
+                    ddlUser.CssClass = "aspNetDisabled form-control";
+
+                    ddlQAUser.Enabled = false;
+                    ddlQAUser.CssClass = "aspNetDisabled form-control";
+                }
             }
         }
 
