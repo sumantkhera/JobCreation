@@ -48,7 +48,7 @@ namespace Compass.BAL
         public DataTable GetBranchBAL()
         {
             DataTable dt = new DataTable();
-            
+
             try
             {
                 dt = compassDAL.GetBranchDAL();
@@ -73,7 +73,7 @@ namespace Compass.BAL
             }
             return dt;
         }
-        
+
         public string InsertIntoJobDetailsBAL(JobDetailsBE obj)
         {
             string squery = string.Empty;
@@ -93,7 +93,7 @@ namespace Compass.BAL
             DataTable ds = new DataTable();
             try
             {
-                 ds = compassDAL.GetJobListDAL(id);               
+                ds = compassDAL.GetJobListDAL(id);
             }
             catch (Exception ex)
             {
@@ -101,5 +101,33 @@ namespace Compass.BAL
             }
             return ds;
         }
+
+        public DataTable GetStatusBAL()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = compassDAL.GetStatusDAL();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
+        public DataTable GetTeamBAL()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = compassDAL.GetTeamDAL();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
+
     }
 }

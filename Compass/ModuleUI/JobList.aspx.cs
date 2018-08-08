@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,9 +18,52 @@ namespace Compass.ModuleUI
         {
             if (!this.IsPostBack)
             {
+                BindDropdowns();
                 BindMethods();
             }
         }
+
+        #region Methods       
+        private static void BindDropdown(DropDownList ddl, string text, string value, DataTable dt, string selection)
+        {
+            try
+            {
+                if (dt.Rows.Count < 1)
+                    dt.Rows.Add(new string[] { "0", "No Entries Present" });
+                ddl.DataSource = dt;
+                ddl.DataTextField = text;
+                ddl.DataValueField = value;
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem(selection, "0"));
+            }
+            catch (Exception ex)
+            {
+                // ex.Message;
+            }
+        }
+
+        public void BindDropdowns()
+        {
+            DataTable dtJobType = compassBAL.GetJobTypeBAL();
+            BindDropdown(ddlJobType, "jobName", "Id", dtJobType, "Select JobType");
+
+            DataTable dtPriorityType = compassBAL.GetPriorityBAL();
+            BindDropdown(ddlPriority, "PriorityType", "Id", dtPriorityType, "Select Priority");
+
+            DataTable dtBranch = compassBAL.GetBranchBAL();
+            BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "Select Branch");
+
+            DataTable dtUsers = compassBAL.GetUserBAL();
+            BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
+
+            DataTable dtStatus = compassBAL.GetStatusBAL();
+            BindDropdown(ddlStatus, "Status", "Id", dtStatus, "Select Status");
+
+            DataTable dtTeam = compassBAL.GetTeamBAL();
+            BindDropdown(ddlTeam, "Name", "Id", dtTeam, "Select Team");
+        }
+
+        #endregion
 
         #region Methods       
         public void BindMethods()
@@ -41,7 +85,6 @@ namespace Compass.ModuleUI
 
         protected void grdViewJobList_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
             if (e.Row.RowType == DataControlRowType.Header)
             {
                 e.Row.Cells[0].Style.Add(HtmlTextWriterStyle.Display, "none");
@@ -50,11 +93,24 @@ namespace Compass.ModuleUI
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 e.Row.Cells[0].Style.Add(HtmlTextWriterStyle.Display, "none");
-                e.Row.Attributes["onclick"] =
-                  ClientScript.GetPostBackClientHyperlink(this.grdViewJobList, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(this.grdViewJobList, "Select$" + e.Row.RowIndex);
+
+                GridViewRow row = e.Row;
+                Label lblPriorityType = (Label)row.FindControl("lblPriorityType");
+
+                if (lblPriorityType.Text == "High")
+                {
+                    lblPriorityType.CssClass = "high-color";
+                }
+                if (lblPriorityType.Text == "Low")
+                {
+                    lblPriorityType.CssClass = "low-color";
+                }
+                if (lblPriorityType.Text == "Medium")
+                {
+                    lblPriorityType.CssClass = "medium-color";
+                }
             }
         }
-
-
     }
 }

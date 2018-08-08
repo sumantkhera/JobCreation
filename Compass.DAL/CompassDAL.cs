@@ -186,5 +186,36 @@ namespace Compass.DAL
             }
             return dt;
         }
+          
+        public DataTable GetStatusDAL()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spJobStatus");
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //  LogUtility.SaveErrorLogEntry(ex);
+            }
+            return dt;
+        }
+        public DataTable GetTeamDAL()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spTeam");
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //  LogUtility.SaveErrorLogEntry(ex);
+            }
+            return dt;
+        }
+
+        
     }
 }

@@ -117,10 +117,17 @@ namespace Compass.ModuleUI
 
             if (result == "1")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "<script>alert('Submitted Succesfully');</script>", false);
+                // ScriptManager.RegisterStartupScript(this, this.GetType(), "", "<script>alert('Submitted Succesfully');</script>", false);
+
+                Response.Redirect("/ModuleUI/joblist.aspx");
             }
         }
 
         #endregion
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/ModuleUI/joblist.aspx");
+        }
     }
 }

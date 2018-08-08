@@ -28,69 +28,46 @@
                         <ul>
                             <li>
                                 <label>Job No.</label>
-                                <input type="text" /></li>
+                                <asp:TextBox ID="txtJobNo" runat="server" class="form-control" placeholder="Job No"></asp:TextBox>
+                            </li>
                             <li>
                                 <label>Branch</label>
-                                <select type="text" />
-                                <option value="0">Select JobType</option>
-                                <option value="1">Purchase Order</option>
-                                <option value="2">Merchandise Transfer</option>
-                                </select>
+                                <asp:DropDownList ID="ddlBranch" runat="server" class="form-control"></asp:DropDownList>
+
                             </li>
                             <li>
                                 <label>From</label>
-                                <select type="text" />
-                                <option value="0">Select JobType</option>
-                                <option value="1">Purchase Order</option>
-                                <option value="2">Merchandise Transfer</option>
-                                </select>
+                                <asp:TextBox ID="txtFromDate" runat="server" class="form-control txtDate" placeholder="From date"></asp:TextBox>
                             </li>
                             <li>
                                 <label>To</label>
-                                <select type="text" />
-                                <option value="0">Select JobType</option>
-                                <option value="1">Purchase Order</option>
-                                <option value="2">Merchandise Transfer</option>
-                                </select>
+                                <asp:TextBox ID="txtToDate" runat="server" class="form-control txtDate" placeholder="To date"></asp:TextBox>
                             </li>
                             <li>
                                 <label>Status</label>
-                                <select type="text" />
-                                <option value="0">Select JobType</option>
-                                <option value="1">Purchase Order</option>
-                                <option value="2">Merchandise Transfer</option>
-                                </select>
+                                <asp:DropDownList ID="ddlStatus" runat="server" class="form-control"></asp:DropDownList>
                             </li>
                             <li>
                                 <label>Team</label>
-                                <select type="text" />
-                                <option value="0">Select JobType</option>
-                                <option value="1">Purchase Order</option>
-                                <option value="2">Merchandise Transfer</option>
-                                </select></li>
+                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control"></asp:DropDownList>
+
+                            </li>
                             <li>
                                 <label>User</label>
-                                <input type="text" /></li>
+                                <asp:DropDownList ID="ddlUser" runat="server" class="form-control"></asp:DropDownList>
+                            </li>
                             <li>
                                 <label>Priority</label>
-                                <select type="text" />
-                                <option value="0">Select JobType</option>
-                                <option value="1">Purchase Order</option>
-                                <option value="2">Merchandise Transfer</option>
-                                </select>
+                                <asp:DropDownList ID="ddlPriority" runat="server" class="form-control"></asp:DropDownList>
                             </li>
                             <li>
                                 <label>Job Type</label>
-                                <select type="text" />
-                                <option value="0">Select JobType</option>
-                                <option value="1">Purchase Order</option>
-                                <option value="2">Merchandise Transfer</option>
-                                </select>
+                                <asp:DropDownList ID="ddlJobType" runat="server" class="form-control"></asp:DropDownList>
                             </li>
                             <li>
                                 <div class="btn-style">
-                                    <button type="submit" class="btn btn-submit">Filter</button>
-                                    <button type="submit" class="btn btn-cancel">Reset</button>
+                                    <asp:Button ID="btnFilter" runat="server" Text="Filter" class="btn btn-submit" />
+                                    <asp:Button ID="btnCancel" runat="server" Text="Reset" class="btn btn-cancel" />
                                 </div>
                             </li>
                         </ul>
@@ -161,4 +138,20 @@
             </asp:GridView>
         </div>
     </section>
+    <script type="text/javascript">
+        $(function () {
+            $('[id*=txtFromDate]').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                format: "mm/dd/yyyy",
+                language: "tr"
+            });
+            $('[id*=txtToDate]').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                format: "mm/dd/yyyy",
+                language: "tr"
+            });
+        });
+    </script>
 </asp:Content>
