@@ -77,9 +77,10 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
   .search-listing ul li input, .search-listing ul li select{height: 35px;border: 1px solid #c6c6c6;width: 140px;float: right;border-radius: 0px;font-size: 12px;}
   .search-listing ul li .btn-style input.btn{width: 95px;height: 35px;;font-size: 15px;padding: 5px;float: right;margin-left: 5px;}
  
-.GridPager .table td {background-color: #00a2ca;color: #fff;}
-.GridPager .table td a {padding: 10px}
-.GridPager .table td span {padding: 10px}
+.GridPager table td{border: 0}
+.GridPager table td a, .GridPager table td span {position: relative;float: left;padding: 6px 12px;margin-left: -1px;line-height: 1.42857143;color: #337ab7;text-decoration: none;background-color: #fff;border: 1px solid #ddd;}
+ .GridPager table td span{background-color: #00a2ca;color: #fff;border: 1px solid #00a2ca}
+ .table>tbody>tr>th{border-top: 1px solid #b5aeae;font-size: 12px;width: 10%;}
  
 /*------login--------------*/
 .login-bg-main{width:100%;height:100vh;background:#ebebeb;position:relative}
@@ -94,7 +95,7 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
 .login-logo{margin-bottom:50px;}
 .validate-login{height:0;display:block;}
 
-.login-details .dropdown-menu{height: 30px;}
+.login-details .dropdown-menu{height: 30px;top: 70px;box-shadow: none;min-width: 185px;}
 .login-details .dropdown-menu li a{top:0;width: 100%;right: 0}
 .GridPager table td{padding: 0;}
 .login-details.open .drop-arrow{ transform: rotate(-180deg); transition: transform 1s;}

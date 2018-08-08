@@ -59,7 +59,9 @@ namespace Compass.ModuleUI
             DataTable dtBranch = compassBAL.GetBranchBAL();
             BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "Select Branch");
 
-            DataTable dtUsers = compassBAL.GetUserBAL();
+            var clientid = Convert.ToInt32(Session["ClientId"]);
+
+            DataTable dtUsers = compassBAL.GetUserBAL(clientid);
             BindDropdown(ddlUsers, "UserName", "Id", dtUsers, "Select User");
         }
 
