@@ -19,7 +19,7 @@ namespace Compass.ModuleUI
         {
             if (!this.IsPostBack)
             {
-                if (Convert.ToBoolean(Session["IsServiceCompanyUser"]) == true)
+                if (Convert.ToBoolean(Session["IsServiceCompanyUser"]) == false)
                 {
                     btnAdd.Visible = true;
                 }
