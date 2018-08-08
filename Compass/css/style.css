@@ -45,7 +45,7 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
 .text-area-style{width: 88%;}
 .submit-by{font-size: 16px;color: #8a8a8a;margin-bottom: 10px;}
 .link-underline{color: #008cae;font-size: 16px;text-decoration: underline;}
-.link-underline:hover{color: #008cae;}
+.link-underline:hover,.link-underline:focus{color: #008cae;}
 .comment-name{color: #aa0000;}
 .comment-name:hover{color: #aa0000;}
 .comment-date{color:#0096bb;}
@@ -54,8 +54,9 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
  .sub-head{font-size: 18px;padding-left: 20px;}
  .internal-checkbox{float: left;margin-top: 10px;}
  .section-bg .form-inline .form-group .form-control.txtDate{background-color: #fff;}
- blockquote {border-bottom: 1px dashed #b2b2b2;min-height: 70px;border-left: 0;}
+ blockquote {border-bottom: 1px dashed #b2b2b2;min-height: 100px;border-left: 0;}
  .blockquote-body p img{margin-right: 10px;margin-top: -20px;}
+ .attachment-download1{min-width: 400px;position: absolute;right: 0;}
  
  /*------listing--------------*/
 
@@ -73,8 +74,12 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
  .search-listing ul{list-style: none;margin: 0;padding: 0}
  .search-listing ul li{padding-left: 20px;display: inline-block;width: 20%;float: left;margin-bottom: 10px;box-sizing:border-box}
   .search-listing ul li label{font-weight: normal;color:#000;font-size: 14px;min-width: 60px;margin-top: 5px;}
-  .search-listing ul li input,.search-listing ul li select{height: 35px;border: 1px solid #c6c6c6;width: 140px;float: right}
+  .search-listing ul li input, .search-listing ul li select{height: 35px;border: 1px solid #c6c6c6;width: 140px;float: right;border-radius: 0px;font-size: 12px;}
   .search-listing ul li .btn-style input.btn{width: 95px;height: 35px;;font-size: 15px;padding: 5px;float: right;margin-left: 5px;}
+ 
+.GridPager .table td {background-color: #00a2ca;color: #fff;}
+.GridPager .table td a {padding: 10px}
+.GridPager .table td span {padding: 10px}
  
 /*------login--------------*/
 .login-bg-main{width:100%;height:100vh;background:#ebebeb;position:relative}
@@ -92,6 +97,28 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
 .login-details .dropdown-menu{height: 30px;}
 .login-details .dropdown-menu li a{top:0;width: 100%;right: 0}
 .GridPager table td{padding: 0;}
+.login-details.open .drop-arrow{ transform: rotate(-180deg); transition: transform 1s;}
+
+.login-details ul.dropdown-menu:before {
+    content: "";
+    border-bottom: 10px solid #fff;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    z-index: 10;
+}
+.login-details ul.dropdown-menu:after {
+    content: "";
+    border-bottom: 12px solid #ccc;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    position: absolute;
+    top: -12px;
+    right: 14px;
+    z-index: 9;
+}
 
 @media only screen and (max-width: 1024px) {
 	.search-listing ul li{width: 25%;}
