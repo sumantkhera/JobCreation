@@ -17,8 +17,7 @@ namespace Compass.DAL
             try
             {
                 SqlParameter[] param =
-                            {     new SqlParameter("@username", usr.Username),
-                                   new SqlParameter("@password", usr.Password)
+                            {     new SqlParameter("@username", usr.Username)
                             };
 
                  ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spLogin", param);
