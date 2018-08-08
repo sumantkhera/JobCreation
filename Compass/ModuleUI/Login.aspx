@@ -23,7 +23,7 @@
             <div class="col-sm-12">
                 <label for="uname"><b>Username</b></label>  
             <asp:TextBox ID="txtUserId" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" id="reqUserId" controltovalidate="txtUserId" errormessage="Please enter username" ForeColor="Red" />
+            <asp:RequiredFieldValidator runat="server" id="reqUserId" controltovalidate="txtUserId" errormessage="Please enter username" ForeColor="Red" cssClass="validate-login" />
             <asp:RegularExpressionValidator runat="server" id="rexEmail" controltovalidate="txtUserId" validationexpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" errormessage="Please enter a vaild username"  ForeColor="Red" />
         </div>
         <div class="col-sm-12">
