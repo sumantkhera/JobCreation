@@ -22,40 +22,40 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.HiddenField hdnAttachementCount;
         
         /// <summary>
-        /// txtJobNumber control.
+        /// lblJobNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtJobNumber;
+        protected global::System.Web.UI.WebControls.Label lblJobNumber;
         
         /// <summary>
-        /// txtSubmitDate control.
+        /// lblSubmitDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSubmitDate;
+        protected global::System.Web.UI.WebControls.Label lblSubmitDate;
         
         /// <summary>
-        /// txtBranch control.
+        /// lblBranch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBranch;
+        protected global::System.Web.UI.WebControls.Label lblBranch;
         
         /// <summary>
-        /// txtSubmitBy control.
+        /// lblSubmitBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSubmitBy;
+        protected global::System.Web.UI.WebControls.Label lblSubmitBy;
         
         /// <summary>
         /// ddlJobType control.
@@ -112,6 +112,15 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.DropDownList ddlTeam;
         
         /// <summary>
+        /// lblUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUser;
+        
+        /// <summary>
         /// ddlUser control.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,15 @@ namespace Compass.ModuleUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlUser;
+        
+        /// <summary>
+        /// lblQAUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblQAUser;
         
         /// <summary>
         /// ddlQAUser control.

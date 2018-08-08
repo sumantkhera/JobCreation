@@ -30,7 +30,8 @@
                                         <label for="email">Number</label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <asp:TextBox ID="txtJobNumber" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>
+                                        <asp:Label ID="lblJobNumber" runat="server" cssClass="form-control" />  
+                                        <%--<asp:TextBox ID="txtJobNumber" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>--%>
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +41,8 @@
                                         <label for="email">Submit Date</label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <asp:TextBox ID="txtSubmitDate" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>
+                                        <asp:Label  ID ="lblSubmitDate" runat="server" cssClass="form-control" />  
+                                        <%--<asp:TextBox ID="txtSubmitDate" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>--%>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +52,8 @@
                                         <label for="email">Branch</label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <asp:TextBox ID="txtBranch" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>
+                                        <asp:Label ID="lblBranch" runat="server" cssClass="form-control" />
+                                        <%--<asp:TextBox ID="txtBranch" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>--%>
 
                                     </div>
                                 </div>
@@ -61,7 +64,8 @@
                                         <label for="email">Submitted By</label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <asp:TextBox ID="txtSubmitBy" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>
+                                        <asp:Label  ID="lblSubmitBy" runat="server" cssClass="form-control" />
+                                        <%--<asp:TextBox ID="txtSubmitBy" runat="server" cssClass="form-control" Enabled="false"></asp:TextBox>--%>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +73,7 @@
 
                             <div class="col-sm-12">
                                 <div class="form-group form-group-style">
-                                    <div class="col-sm-2 text-area-label">
+                                    <div class="col-sm-2 text-area-label">                                        
                                         <label for="email">Job Type </label>
                                     </div>
                                     <div class="col-sm-10 text-area-style">
@@ -145,7 +149,8 @@
                             <div class="col-sm-4">
                                 <div class="form-group form-group-style">
                                     <div class="col-sm-4">
-                                        <label for="email">User</label>
+                                        <asp:Label ID="lblUser" Text="User" runat="server" />
+                                        
                                     </div>
                                     <div class="col-sm-8">
                                         <asp:DropDownList ID="ddlUser" runat="server" class="form-control">
@@ -157,7 +162,8 @@
                             <div class="col-sm-4">
                                 <div class="form-group form-group-style">
                                     <div class="col-sm-4">
-                                        <label for="email">QA User</label>
+                                        <asp:Label ID="lblQAUser" Text="QA User" runat="server" />
+                                        
                                     </div>
                                     <div class="col-sm-8">
                                         <asp:DropDownList ID="ddlQAUser" runat="server" class="form-control">
