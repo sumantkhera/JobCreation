@@ -236,7 +236,7 @@
     
                                         <div class="col-sm-2 text-right">
                                             <i class="fa fa-paperclip fa-rotate-270" aria-hidden="true"></i>
-                                            <a  class="link-underline"><img alt="" src="/images/attachment-icon.png"> Attachments [5]</a>
+                                            <a  class="link-underline" id="link-underline1"><img alt="" src="/images/attachment-icon.png"> Attachments [5]</a>
                                             <div class="attachment-download1" style="display: none">
                                                   <a class="btn btn-link">Attachments <span>[1]</span></a>
                                                         <a class="btn btn-link">Attachments <span>[2]</span></a>
@@ -291,10 +291,19 @@
 $("#attachment").click(function(){
     $(".attachment-download").slideToggle();
 });
-$(".link-underline").click(function(){
+$("#link-underline1").click(function(){
     $(".attachment-download1").slideToggle();
 });
-
+$('#attachment span').click(function() {
+    var $this = $(this);
+    if ($this.hasClass('plus-icon')) {
+        $this.removeClass();
+    } else if ($this.hasClass('minus-icon')) {
+        $this.removeClass('minus-icon').addClass('plus-icon');
+    } else {
+        $this.addClass('minus-icon');
+    }
+});
 </script>
             </html>
      
