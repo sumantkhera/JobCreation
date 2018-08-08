@@ -95,7 +95,7 @@
                                         <label for="email"></label>
                                     </div>
                                     <div class="col-sm-10 text-area-style">
-                                        <a class="btn btn-link" id="attachment">Attachments 
+                                        <a class="btn btn-link" id="attachment"><span class="plus-attach"></span>Attachments <img alt="" src="/images/attachment-icon.png"> 
                                             <asp:Label ID="lblAttachmentCount"  runat="server" />
                                         </a>
                                         <div class="attachment-download" style="display: none">
@@ -230,7 +230,12 @@
     
                                         <div class="col-sm-2 text-right">
                                             <i class="fa fa-paperclip fa-rotate-270" aria-hidden="true"></i>
-                                            <a href="#" class="link-underline"><img alt="" src="/images/attachment-icon.png"> Attachments [5]</a>
+                                            <a  class="link-underline"><img alt="" src="/images/attachment-icon.png"> Attachments [5]</a>
+                                            <div class="attachment-download1" style="display: none">
+                                                  <a class="btn btn-link">Attachments <span>[1]</span></a>
+                                                        <a class="btn btn-link">Attachments <span>[2]</span></a>
+                                                        <a class="btn btn-link">Attachments <span>[3]</span></a>
+                                                </div>
                                         </div>
                                     </blockquote>
                                     <!-- /blockquote -->
@@ -247,7 +252,7 @@
     
                                         <div class="col-sm-2 text-right">
                                             <i class="fa fa-paperclip fa-rotate-270" aria-hidden="true"></i>
-                                            <a href="#" class="link-underline"><img alt="" src="/images/attachment-icon.png"> Attachments [5]</a>
+                                            <a  class="link-underline"><img alt="" src="/images/attachment-icon.png"> Attachments [5]</a>
                                         </div>
                                     </blockquote>
                                     <!-- /blockquote -->
@@ -264,7 +269,7 @@
     
                                         <div class="col-sm-2 text-right">
                                             <i class="fa fa-paperclip fa-rotate-270" aria-hidden="true"></i>
-                                            <a href="#" class="link-underline"><img alt="" src="/images/attachment-icon.png"> Attachments [5]</a>
+                                            <a  class="link-underline"><img alt="" src="/images/attachment-icon.png"> Attachments [5]</a>
                                         </div>
                                     </blockquote>
                                     <!-- /blockquote -->
@@ -279,6 +284,9 @@
 <script>
 $("#attachment").click(function(){
     $(".attachment-download").slideToggle();
+});
+$(".link-underline").click(function(){
+    $(".attachment-download1").slideToggle();
 });
 
 </script>
