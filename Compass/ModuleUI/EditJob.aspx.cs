@@ -128,7 +128,7 @@ namespace Compass.ModuleUI
             if(lstDetails !=null && lstDetails.Count > 0)
             {
                 txtJobNumber.Text = lstDetails[0].JobNumber;
-                txtSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("mm/dd/yyyy"); // to display only date part
+                txtSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
                 txtSubmitBy.Text = lstDetails[0].SubmittedByName;
                 txtBranch.Text = lstDetails[0].BranchName;
                 txtDescription.Text = lstDetails[0].Description;

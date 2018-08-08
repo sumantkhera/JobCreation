@@ -149,9 +149,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\custom.css" />
     <Content Include="css\style.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -168,7 +166,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\Thumbs.db" />
+    <Content Include="images\login-icon.png" />
+    <Content Include="fonts\PALA.TTF" />
+    <Content Include="fonts\PALAB.TTF" />
+    <Content Include="fonts\PALABI.TTF" />
+    <Content Include="fonts\PALAI.TTF" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="images\add-job-white.png" />
     <Content Include="images\arrow.png" />
@@ -182,7 +184,6 @@
     <Content Include="images\logo.jpg" />
     <Content Include="images\new-job-icon.png" />
     <Content Include="images\qoute-icon.png" />
-    <Content Include="img\compass-logo.jpg" />
     <Content Include="ModuleUI\CreateJob.aspx" />
     <Content Include="ModuleUI\DownloadAttachment.aspx" />
     <Content Include="ModuleUI\EditJob.aspx" />
@@ -264,10 +265,6 @@
     <Compile Include="ModuleUI\DownloadAttachment.aspx.designer.cs">
       <DependentUpon>DownloadAttachment.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ModuleUI\EditJob.aspx.cs">
-      <DependentUpon>EditJob.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="ModuleUI\EditJob.aspx.designer.cs">
       <DependentUpon>EditJob.aspx</DependentUpon>
     </Compile>
@@ -277,6 +274,10 @@
     </Compile>
     <Compile Include="ModuleUI\JobList.aspx.designer.cs">
       <DependentUpon>JobList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleUI\EditJob.aspx.cs">
+      <DependentUpon>EditJob.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ModuleUI\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -311,6 +312,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Attachment\" />
+    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

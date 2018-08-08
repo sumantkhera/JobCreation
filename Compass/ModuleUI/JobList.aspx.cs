@@ -36,7 +36,7 @@ namespace Compass.ModuleUI
             // Get the currently selected row using the SelectedRow property.
             GridViewRow row = grdViewJobList.SelectedRow;
             Label lblID = (Label)row.FindControl("lblID");
-            Response.Redirect("~/ModuleUI/JobCreationEdit.aspx/" + lblID.Text);
+            Response.Redirect("~/ModuleUI/EditJob.aspx?JobId=" + lblID.Text);
         }
 
         protected void grdViewJobList_RowDataBound(object sender, GridViewRowEventArgs e)

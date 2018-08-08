@@ -87,6 +87,7 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
 .login-head img{margin-right:25px;display:inline-block;}
 .login-footer{margin-top:30px;}
 .login-logo{margin-bottom:50px;}
+.validate-login{height:0;width:0;display:block;}
 
 @media only screen and (max-width: 1024px) {
 	.search-listing ul li{width: 25%;}
