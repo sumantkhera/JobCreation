@@ -28,5 +28,23 @@ namespace Compass.BAL
             finally { }
             return AttachmentBEList;
         }
+
+        public List<CommentsBE> GetJobCommentsWithAttachmentsBAL(CommentsBE commentBE)
+        {
+            List<CommentsBE> CommentBEList = new List<CommentsBE>();
+
+            try
+            {
+                AttachmentDAL attachmentDAL = new AttachmentDAL();
+
+                CommentBEList = attachmentDAL.GetJobCommentsWithAttachmentsDAL(commentBE);
+                attachmentDAL = null;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally { }
+            return CommentBEList;
+        }
     }
 }

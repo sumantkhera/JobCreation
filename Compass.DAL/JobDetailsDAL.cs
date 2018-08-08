@@ -47,7 +47,7 @@ namespace Compass.DAL
                     oNewJobDetailsBE.PriorityID = dr["PriorityID"] != DBNull.Value ? Convert.ToInt32(dr["PriorityID"].ToString()) : 0;
                     oNewJobDetailsBE.IsSystemDefined = dr["IsSystemDefined"] != DBNull.Value ? Convert.ToBoolean(dr["IsSystemDefined"].ToString()) : false;
                     oNewJobDetailsBE.Description = dr["Description"] != DBNull.Value ? dr["Description"].ToString() : null;
-
+                    oNewJobDetailsBE.IsInternalUse = dr["IsInternal"] != DBNull.Value ? Convert.ToBoolean(dr["IsInternal"].ToString()) : false;
 
                     JobDetailsBEList.Add(oNewJobDetailsBE);
                 }
@@ -149,6 +149,7 @@ namespace Compass.DAL
 
                 SqlParameter[] param =
                              {
+                    new SqlParameter("@Action",jobDetailsBE.Action),
                                    new SqlParameter("@JobId",jobDetailsBE.Id),
                                    new SqlParameter("@ClientId",jobDetailsBE.ClientId),
                                    new SqlParameter("@CreatedBy",jobDetailsBE.Comments.CreatedBy),
