@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -21,7 +22,7 @@ namespace Compass.ModuleUI
         {
             if (!IsPostBack)
             {
-                BindDropdowns();               
+                BindDropdowns();
 
                 if (Request.QueryString["JobId"] != null)
                 {
@@ -59,7 +60,7 @@ namespace Compass.ModuleUI
 
 
         public void BindDropdowns()
-        {           
+        {
 
             if (Session["IsServiceCompanyUser"] != null)
             {
@@ -81,8 +82,8 @@ namespace Compass.ModuleUI
             BindDropdown(ddlJobType, "jobName", "Id", dtJobType, "Select JobType");
 
             DataTable dtJobStatusType = jobDetailsBAL.GetJobStatusBAL("GetJobStatus");
-            BindDropdown(ddlJobStatus, "Status", "Id", dtJobStatusType, "Select Status");  
-           
+            BindDropdown(ddlJobStatus, "Status", "Id", dtJobStatusType, "Select Status");
+
         }
 
 
@@ -137,7 +138,7 @@ namespace Compass.ModuleUI
                 divUser.Style.Add("display", "none");
             }
         }
-        
+
 
         private void GetJobDetailsForHOUserType()
         {
@@ -153,8 +154,8 @@ namespace Compass.ModuleUI
             List<JobDetailsBE> lstDetails = jobDetailsBAL.GetJobDetailsBAL(obJobDetailsBE);
 
             if (lstDetails != null && lstDetails.Count > 0)
-            {                
-               divInternalUse.Visible = false;
+            {
+                divInternalUse.Visible = false;
 
                 txtJobNumber.Text = lstDetails[0].JobNumber;
                 txtSubmitDate.Text = lstDetails[0].SubmitDate.Value.ToString("MM/dd/yyyy"); // to display only date part
@@ -182,11 +183,11 @@ namespace Compass.ModuleUI
             if (Request.QueryString["JobId"] != null)
             {
                 obJobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
-            }            
+            }
 
             List<JobDetailsBE> lstDetails = jobDetailsBAL.GetJobDetailsBAL(obJobDetailsBE);
 
-            if(lstDetails !=null && lstDetails.Count > 0)
+            if (lstDetails != null && lstDetails.Count > 0)
             {
                 if (Session["IsServiceCompanyUser"] != null)
                 {
@@ -209,13 +210,13 @@ namespace Compass.ModuleUI
                 txtSubmitBy.Text = lstDetails[0].SubmittedByName;
                 txtBranch.Text = lstDetails[0].BranchName;
                 txtDescription.Text = lstDetails[0].Description;
-                ddlJobStatus.Items.FindByValue (lstDetails[0].JobStatusId.ToString()).Selected = true;
+                ddlJobStatus.Items.FindByValue(lstDetails[0].JobStatusId.ToString()).Selected = true;
                 ddlJobType.Items.FindByValue(lstDetails[0].JobTypeId.ToString()).Selected = true;
                 ddlTeam.Items.FindByValue(lstDetails[0].AllocatedToTeam.ToString()).Selected = true;
                 ddlUser.Items.FindByValue(lstDetails[0].AllocatedToUser.ToString()).Selected = true;
                 ddlQAUser.Items.FindByValue(lstDetails[0].QAUserId.ToString()).Selected = true;
 
-            }        
+            }
         }
 
         private void GetJobDetailsForQA_Member_QAHeadUserType()
@@ -263,7 +264,7 @@ namespace Compass.ModuleUI
                 ddlJobType.Enabled = false;
 
                 if (
-                    Convert.ToString(Session["UserTypeCode"]).Trim().Equals(UserType.Enum.QA.ToString()) || 
+                    Convert.ToString(Session["UserTypeCode"]).Trim().Equals(UserType.Enum.QA.ToString()) ||
                     Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.MEMBER.ToString())
                     )
                 {
@@ -283,6 +284,8 @@ namespace Compass.ModuleUI
 
             commentBE.JobDetails = new JobDetailsBE();
 
+            StringBuilder sHTML = new StringBuilder();
+
             commentBE.Action = "GetJobCommentsWithAttachmentsByJobId";
 
             if (Request.QueryString["JobId"] != null)
@@ -292,46 +295,60 @@ namespace Compass.ModuleUI
 
             List<CommentsBE> lstAttachments = attachmentBAL.GetJobCommentsWithAttachmentsBAL(commentBE);
 
-            //if (lstAttachments.Count > 0)
-            //{
-            //    for (int i = 0; i < lstAttachments.Count(); i++)
-            //    {
-            //        Panel pnl = new Panel();
-            //        pnl.ID = "pnl" + i;
-            //        pnl.GroupingText = "Added by: " + Convert.ToString(lstAttachments[i].usr.Username) + " on " + lstAttachments[i].CreatedOn.Value.ToString("MM/dd/yyyy");
-            //        pnl.CssClass = "fieldset-form";
-            //        Label lbl = new Label();
-            //        lbl.ID = "lbl" + i;
-            //        lbl.Text = Convert.ToString(lstAttachments[i].Description);
-            //        lbl.CssClass = "col-sm-10 blockquote-body";                    
-            //        pnl.Controls.Add(lbl);
-            //        pnlComments.Controls.Add(pnl);
+            if (lstAttachments.Count > 0)
+            {
+                int previous = 0; 
 
-            //        HyperLink hplnk = new HyperLink();
-            //        hplnk.Text = lstAttachments[i].Attachment.Name;
-            //        hplnk.ID = Convert.ToString(lstAttachments[i].Attachment.JobAttachmentId);
-            //        hplnk.CssClass = "btn btn-link col-sm-2 text-right";
-            //        hplnk.NavigateUrl = "~/ModuleUI/DownloadAttachment.aspx?FilePath=" + lstAttachments[i].Attachment.Path + "&FileName=" + lstAttachments[i].Attachment.Name;
-            //        pnlComments.Controls.Add(hplnk);
 
-            //    }
+                for (int i = 0; i < lstAttachments.Count(); i++)
+                {
+                    if (i != 0 && previous != lstAttachments[i].CommentId)
+                    {
+                        sHTML.Append("</div></blockquote>");
+                    }
 
-            //}
+                    if (previous != lstAttachments[i].CommentId)
+                    {
+                        sHTML.Append("<blockquote>");
+                        sHTML.Append("<div class='submit-by'> Added By: ");
+                        sHTML.Append("<span class='comment-name'>");
+                        sHTML.Append(lstAttachments[i].usr.Username);
+                        sHTML.Append("</span>");
+                        sHTML.Append(" on ");
+                        sHTML.Append("<span class='comment-date'>");
+                        sHTML.Append(lstAttachments[i].CreatedOn.Value.ToString("MM/dd/yyyy"));
+                        sHTML.Append("</span>");                        
+                        sHTML.Append("</div>");
+                        sHTML.Append("<div class='col-sm-10 blockquote-body'>");
+                        sHTML.Append("<p> <img alt='' src='/images/qoute-icon.png'>");
+                        sHTML.Append(lstAttachments[i].Description);
+                        sHTML.Append("</p>");
+                        sHTML.Append("</div>");
+                        sHTML.Append("<div class='col-sm-2 text-right'>");
+                        sHTML.Append("<i class='fa fa-paperclip fa-rotate-270' aria-hidden='true'></i>");
+                        sHTML.Append("<a class='ink-underline' id='link-underline1'><img alt = '' src='/images/attachment-icon.png' />");
+                        sHTML.Append("Attachments " + "[" + lstAttachments.Count() + "]");
+                        sHTML.Append("</a>");
+                        sHTML.Append("<div class='attachment-download1' style='display: none'>");
 
-                    //hdnAttachementCount.Value = Convert.ToString(lstAttachments.Count());
-                    //attachment.InnerHtml = "Attachment " + lstAttachments.Count().ToString();
+                        previous = lstAttachments[i].CommentId;
+                    }                    
+                    
+                    sHTML.Append(String.Format("<a class='btn btn-link' href='~/ModuleUI/DownloadAttachment.aspx?FilePath={0} &FileName={1}'></a>", lstAttachments[i].Attachment.Path, lstAttachments[i].Attachment.Name));
+                    sHTML.Append(lstAttachments[i].Attachment.Name);
+                    sHTML.Append("</div>");  
+                }
 
-                    //foreach (var item in lstAttachments)
-                    //{
-                    //    HyperLink hplnk = new HyperLink();
-                    //    hplnk.Text = item.Attachment.Name;
-                    //    hplnk.ID = Convert.ToString(item.Attachment.JobAttachmentId);
-                    //    hplnk.CssClass = "btn btn-link";
-                    //    hplnk.NavigateUrl = "~/ModuleUI/DownloadAttachment.aspx?FilePath=" + item.Attachment.Path + "&FileName=" + item.Attachment.Name;
-                    //    pnlAttachment.Controls.Add(hplnk);
-                    //}
-                
+            }
+
+            if (lstAttachments.Count > 0)
+            {
+                sHTML.Append("</div></blockquote>"); 
+            }
+
+            divComments.InnerHtml = sHTML.ToString();
         }
+  
         private void GetJobAttachments()
         {
             AttachmentsBE attachmentsBE = new AttachmentsBE();
@@ -389,7 +406,7 @@ namespace Compass.ModuleUI
                 {
                     AttachmentsBE attachments = new AttachmentsBE();
                     Guid random1 = Guid.NewGuid();
-                    FileUploadAttachments.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
+                    uploadedFile.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
                     attachments.Name = uploadedFile.FileName;
                     attachments.Path = "/Attachment/" + random1.ToString() + Path.GetExtension(uploadedFile.FileName);
                     attachments.CommentId = null;

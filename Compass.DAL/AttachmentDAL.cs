@@ -53,8 +53,7 @@ namespace Compass.DAL
             List<CommentsBE> CommentBEList = new List<CommentsBE>();
             try
             {
-                DataTable dtComment = new DataTable();
-                DataTable dtAttachment = new DataTable();
+                DataTable dt = new DataTable();              
                 int index = 0;
                 SqlParameter[] param = new SqlParameter[2];
                 param[index++] = new SqlParameter("@Action", commentBE.Action);
@@ -62,33 +61,25 @@ namespace Compass.DAL
 
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spJobAttachments", param);
 
-                dtComment = ds.Tables[0];
+                dt = ds.Tables[0]; 
 
-                dtAttachment = ds.Tables[1];
-
-                CommentsBE oNewCommentBE = new CommentsBE();
-                oNewCommentBE.Attachment = new AttachmentsBE();
-                oNewCommentBE.JobDetails = new JobDetailsBE();
-                oNewCommentBE.usr = new UserLogin();
-
-                foreach (DataRow dr in dtComment.Rows)
-                { 
+                foreach (DataRow dr in dt.Rows)
+                {
+                    CommentsBE oNewCommentBE = new CommentsBE();
+                    oNewCommentBE.Attachment = new AttachmentsBE();
+                    oNewCommentBE.JobDetails = new JobDetailsBE();
+                    oNewCommentBE.usr = new UserLogin();
                     oNewCommentBE.CommentId = Convert.ToInt32(dr["CommentId"].ToString());
                     oNewCommentBE.JobDetails.Id = dr["JobId"] != DBNull.Value ? Convert.ToInt32(dr["JobId"]) : 0;
                     oNewCommentBE.ClientId = Convert.ToInt32(dr["ClientId"].ToString());                    
                     oNewCommentBE.Description = Convert.ToString(dr["CommentDescription"]); 
                     oNewCommentBE.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
-                    oNewCommentBE.usr.Username = Convert.ToString(dr["UserName"]); 
-                    CommentBEList.Add(oNewCommentBE);
-                }
-
-                foreach (DataRow dr  in dtAttachment.Rows)
-                {
+                    oNewCommentBE.usr.Username = Convert.ToString(dr["UserName"]);
                     oNewCommentBE.Attachment.JobAttachmentId = Convert.ToInt32(dr["JobAttachmentId"].ToString());
                     oNewCommentBE.Attachment.Name = Convert.ToString(dr["AttachmentName"]);
                     oNewCommentBE.Attachment.Path = Convert.ToString(dr["Path"]);
                     CommentBEList.Add(oNewCommentBE);
-                }
+                }              
             }
             catch (Exception ex)
             {
