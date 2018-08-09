@@ -229,7 +229,7 @@ namespace Compass.DAL
                 SqlParameter[] param =
                 {
                                         new SqlParameter("@UserId",jobFilters.Id ) ,
-                                        new SqlParameter("@ClientIds",jobFilters.ClientId ) ,
+                                        new SqlParameter("@TeamId",jobFilters.TeamId ) ,
                                         new SqlParameter("@PriorityID",jobFilters.PriorityID ) ,
                                         new SqlParameter("@AllocatedToUser",jobFilters.AllocatedToUser ),
                                         new SqlParameter("@JobTypeId",jobFilters.JobTypeId ) ,

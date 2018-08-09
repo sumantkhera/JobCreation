@@ -83,7 +83,7 @@ namespace Compass.ModuleUI
         {
             jobFiltersBE jobFilters = new jobFiltersBE();
             jobFilters.Id = Convert.ToInt32(Session["UserId"]);
-            jobFilters.ClientId = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlTeam.SelectedValue) : 0;
+            jobFilters.TeamId = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlTeam.SelectedValue) : 0;
             jobFilters.PriorityID = ddlPriority.SelectedValue != null ? Convert.ToInt32(ddlPriority.SelectedValue) : 0;
             jobFilters.FromDate = !string.IsNullOrEmpty(txtFromDate.Text) ? txtFromDate.Text : "01/01/1900";
             jobFilters.ToDate = !string.IsNullOrEmpty(txtToDate.Text) ? txtToDate.Text : "01/01/1900"; ;
