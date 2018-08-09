@@ -27,6 +27,7 @@
 *.ide-wal
 *.suo
 *.cache
+*.user
 
 # Build results
 [Dd]ebug/
