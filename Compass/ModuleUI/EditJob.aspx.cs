@@ -326,7 +326,7 @@ namespace Compass.ModuleUI
                         sHTML.Append("</div>");
                         sHTML.Append("<div class='col-sm-2 text-right'>");
                         sHTML.Append("<i class='fa fa-paperclip fa-rotate-270' aria-hidden='true'></i>");
-                        sHTML.Append("<a class='ink-underline' id='link-underline1'><img alt = '' src='/images/attachment-icon.png'>");
+                        sHTML.Append("<a class='ink-underline' id='link-underline1'><img alt = '' src='/images/attachment-icon.png' />");
                         sHTML.Append("Attachments " + "[" + lstAttachments.Count() + "]");
                         sHTML.Append("</a>");
                         sHTML.Append("<div class='attachment-download1' style='display: none'>");
@@ -334,7 +334,7 @@ namespace Compass.ModuleUI
                         previous = lstAttachments[i].CommentId;
                     }                    
                     
-                    sHTML.Append(String.Format("<a class='btn btn-link' href='~/ModuleUI/DownloadAttachment.aspx?FilePath={0} &FileName={1}'><a>", lstAttachments[i].Attachment.Path, lstAttachments[i].Attachment.Name));
+                    sHTML.Append(String.Format("<a class='btn btn-link' href='~/ModuleUI/DownloadAttachment.aspx?FilePath={0} &FileName={1}'></a>", lstAttachments[i].Attachment.Path, lstAttachments[i].Attachment.Name));
                     sHTML.Append(lstAttachments[i].Attachment.Name);
                     sHTML.Append("</div>");  
                 }
