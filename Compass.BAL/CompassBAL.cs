@@ -157,12 +157,12 @@ namespace Compass.BAL
             return dt;
         }
 
-        public DataTable GetUserForServiceCompanyBAL()
+        public DataTable GetUserForServiceCompanyBAL(int teamid)
         {
             DataTable dt = new DataTable();
             try
             {
-                dt = compassDAL.GetUserForServiceCompanyDAL();
+                dt = compassDAL.GetUserForServiceCompanyDAL(teamid);
             }
             catch (Exception ex)
             {

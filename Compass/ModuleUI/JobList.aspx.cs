@@ -63,12 +63,12 @@ namespace Compass.ModuleUI
             DataTable dtBranch = compassBAL.GetBranchBAL();
             BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "All Branch");
 
-
             bool IsServiceCompanyUser = Convert.ToBoolean(Session["IsServiceCompanyUser"]);
 
             if (IsServiceCompanyUser)
             {
-                DataTable dtUsers = compassBAL.GetUserForServiceCompanyBAL();
+                DataTable dtUsers = compassBAL.GetUserForServiceCompanyBAL(0);
+                ddlUser.Enabled = true;
                 BindDropdown(ddlUser, "UserName", "Id", dtUsers, "All User");
             }
             else
@@ -191,11 +191,22 @@ namespace Compass.ModuleUI
 
         protected void ddlTeam_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Convert.ToBoolean(Session["IsServiceCompanyUser"]) && Convert.ToInt32(ddlTeam.SelectedValue) > 1)
+            if (Convert.ToBoolean(Session["IsServiceCompanyUser"]))
             {
-                DataTable dtUsers = compassBAL.GetUserForServiceCompanyBAL();
-                BindDropdown(ddlUser, "UserName", "Id", dtUsers, "All User");
-                ddlUser.Enabled = true;
+                DataTable dtUsers = compassBAL.GetUserForServiceCompanyBAL(Convert.ToInt32(ddlTeam.SelectedValue));
+                if (dtUsers.Rows.Count > 0)
+                {
+                    BindDropdown(ddlUser, "UserName", "Id", dtUsers, "All User");
+                    ddlUser.Enabled = true;
+                }
+                else
+                {
+                    ddlUser.Enabled = false;
+                    ddlUser.Items.Clear();
+                    ddlUser.Enabled = false;
+
+                    ddlUser.Items.Insert(0, new ListItem("All Users", "0"));
+                }
             }
             else
             {
@@ -204,6 +215,7 @@ namespace Compass.ModuleUI
                 ddlUser.Enabled = false;
                 ddlUser.Items.Insert(0, new ListItem("All Users", "0"));
             }
+            ddlUser.CssClass = "aspNetDisabled form - control";
         }
     }
 }

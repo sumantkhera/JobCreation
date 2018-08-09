@@ -273,12 +273,16 @@ namespace Compass.DAL
             return dt;
         }
 
-        public DataTable GetUserForServiceCompanyDAL()
+        public DataTable GetUserForServiceCompanyDAL(int teamid)
         {
             DataTable dt = new DataTable();
             try
             {
-                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spGetUserDetailForServiceCompany");
+                SqlParameter[] param =
+                 {
+                    new SqlParameter("@Teamid",teamid)
+                };
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spGetUserDetailForServiceCompany", param);
                 dt = ds.Tables[0];
             }
             catch (Exception ex)
