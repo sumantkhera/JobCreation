@@ -225,7 +225,7 @@ namespace Compass.DAL
                 tvpParam.SqlDbType = SqlDbType.Structured;
                 tvpParam.Direction = ParameterDirection.Input;
                 tvpParam.TypeName = "[dbo].[UT_JobStatus]";
-             
+
                 SqlParameter[] param =
                 {
                                         new SqlParameter("@UserId",jobFilters.Id ) ,
@@ -240,8 +240,10 @@ namespace Compass.DAL
                                         tvpParam
                  };
 
-               // param.Where(w=>w.)
-
+                if (jobFilters.JobStatus.Count == 0)
+                {
+                    param = param.RemoveFromArray(tvpParam);
+                }
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spListJobs", param);
                 dt = ds.Tables[0];
             }
@@ -269,6 +271,24 @@ namespace Compass.DAL
                 //  LogUtility.SaveErrorLogEntry(ex);
             }
             return dt;
+        }
+
+    }
+
+
+    public static class Extensions
+    {
+        //=========================================================================
+        // Removes all instances of [itemToRemove] from array [original]
+        // Returns the new array, without modifying [original] directly
+        // .Net2.0-compatible
+        public static T[] RemoveFromArray<T>(this T[] original, T itemToRemove)
+        {
+            int numIdx = System.Array.IndexOf(original, itemToRemove);
+            if (numIdx == -1) return original;
+            List<T> tmp = new List<T>(original);
+            tmp.RemoveAt(numIdx);
+            return tmp.ToArray();
         }
     }
 }

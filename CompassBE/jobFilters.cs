@@ -16,7 +16,7 @@ namespace CompassBE
         }
         public int? Id { get; set; }
         public int? ClientId { get; set; }
-        public int PriorityID { get; set; }      
+        public int PriorityID { get; set; }
         public int? AllocatedToUser { get; set; }
         public int JobTypeId { get; set; }
         public int? BranchId { get; set; }
@@ -32,17 +32,9 @@ namespace CompassBE
         IEnumerator<SqlDataRecord> IEnumerable<SqlDataRecord>.GetEnumerator()
         {
             var sqlRow = new SqlDataRecord(new SqlMetaData("JobStatusId", SqlDbType.NVarChar, 500));
-            if (this.Count > 0)
+            foreach (JobStatusBE cust in this)
             {
-                foreach (JobStatusBE cust in this)
-                {
-                    sqlRow.SetString(0, cust.JobStatusId.ToString());
-                    yield return sqlRow;
-                }
-            }
-            else
-            {
-                sqlRow.SetString(0, "0");
+                sqlRow.SetString(0, cust.JobStatusId.ToString());
                 yield return sqlRow;
             }
         }
@@ -50,7 +42,7 @@ namespace CompassBE
 
     public class JobStatusBE
     {
-        public  int? JobStatusId { get; set; }
+        public int? JobStatusId { get; set; }
         public jobFiltersBE jobFilters { get; set; }
     }
 }
