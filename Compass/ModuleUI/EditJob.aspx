@@ -223,14 +223,14 @@
                                             <a href="#" data-toggle="modal" data-target="#history" class="link-underline">History</a>
                                         </div>
                             </div>
-                            <div class="col-sm-12">
+                            <div id="divComments" class="col-sm-12" runat="server">
                                 <!-- blockquote -->
                                 <blockquote>
                                         <div class="submit-by">
-                                            <asp:Panel ID="pnlComments" runat="server"></asp:Panel>
+                                            <%--<asp:Panel ID="pnlComments" runat="server"></asp:Panel>--%>
                                             Added By:
-                                        <%--<a href="#" class="comment-name">Anupam Bhardwaj</a> on
-                                        <a href="#" class="comment-date">6th July 2018</a>--%>
+                                        <a href="#" class="comment-name">Anupam Bhardwaj</a> on
+                                        <a href="#" class="comment-date">6th July 2018</a>
                                         </div>
                                         <div class="col-sm-10 blockquote-body">
                                             <p><img alt="" src="/images/qoute-icon.png"> Here is the new password for your mailbox. [ Acxse94458 ], and find attachment for details.</p>
