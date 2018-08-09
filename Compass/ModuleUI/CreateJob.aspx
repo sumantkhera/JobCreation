@@ -32,7 +32,7 @@
                                 <label for="email">Branch</label>
                             </div>
                             <div class="col-sm-9">
-                                <asp:DropDownList ID="ddlBranch" runat="server" class="form-control">
+                                <asp:DropDownList ID="ddlBranch" runat="server" class="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddlBranch_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </div>
                         </div>
