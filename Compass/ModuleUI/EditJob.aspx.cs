@@ -297,18 +297,22 @@ namespace Compass.ModuleUI
 
             if (lstAttachments.Count > 0)
             {
-                int previous = 0; 
+                int previous = 0, AttachmentCountByCommentID = 0;
+
 
 
                 for (int i = 0; i < lstAttachments.Count(); i++)
                 {
                     if (i != 0 && previous != lstAttachments[i].CommentId)
                     {
+                        sHTML.Append("</div>");
                         sHTML.Append("</div></blockquote>");
                     }
 
                     if (previous != lstAttachments[i].CommentId)
                     {
+                        AttachmentCountByCommentID = lstAttachments.Where(x => x.CommentId == lstAttachments[i].CommentId).Count();                      
+
                         sHTML.Append("<blockquote>");
                         sHTML.Append("<div class='submit-by'> Added By: ");
                         sHTML.Append("<span class='comment-name'>");
@@ -326,17 +330,18 @@ namespace Compass.ModuleUI
                         sHTML.Append("</div>");
                         sHTML.Append("<div class='col-sm-2 text-right'>");
                         sHTML.Append("<i class='fa fa-paperclip fa-rotate-270' aria-hidden='true'></i>");
-                        sHTML.Append("<a class='ink-underline' id='link-underline1'><img alt = '' src='/images/attachment-icon.png' />");
-                        sHTML.Append("Attachments " + "[" + lstAttachments.Count() + "]");
+                        sHTML.Append("<a class='link-underline togglea' id='link-underline" + (i+1).ToString()+"'><img alt = '' src='/images/attachment-icon.png' />");
+                        sHTML.Append("Attachments " + "[" + AttachmentCountByCommentID + "]");
                         sHTML.Append("</a>");
-                        sHTML.Append("<div class='attachment-download1' style='display: none'>");
+                        sHTML.Append("<div class='attachment-download" + (i + 1).ToString() + "' style='display: none'>");
 
                         previous = lstAttachments[i].CommentId;
                     }                    
                     
-                    sHTML.Append(String.Format("<a class='btn btn-link' href='~/ModuleUI/DownloadAttachment.aspx?FilePath={0} &FileName={1}'></a>", lstAttachments[i].Attachment.Path, lstAttachments[i].Attachment.Name));
+                    sHTML.Append(String.Format("<a class='btn btn-link' href='DownloadAttachment.aspx?FilePath={0} &FileName={1}'>", lstAttachments[i].Attachment.Path, lstAttachments[i].Attachment.Name));
                     sHTML.Append(lstAttachments[i].Attachment.Name);
-                    sHTML.Append("</div>");  
+                    sHTML.Append("</a>");
+                      
                 }
 
             }
