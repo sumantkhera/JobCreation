@@ -109,7 +109,7 @@ namespace Compass.ModuleUI
                 {
                     AttachmentsBE attachments = new AttachmentsBE();
                     Guid random1 = Guid.NewGuid();
-                    fileJobAttachment.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
+                    uploadedFile.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Attachment/"), random1.ToString() + Path.GetExtension(uploadedFile.FileName)));
                     attachments.Name = uploadedFile.FileName;
                     attachments.Path = "/Attachment/" + random1.ToString() + Path.GetExtension(uploadedFile.FileName);
                     attachments.CommentId = null;
