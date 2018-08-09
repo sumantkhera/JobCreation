@@ -55,16 +55,28 @@ namespace Compass.ModuleUI
         public void BindDropdowns()
         {
             DataTable dtJobType = compassBAL.GetJobTypeBAL();
-            BindDropdown(ddlJobType, "jobName", "Id", dtJobType, "Select JobType");
+            BindDropdown(ddlJobType, "jobName", "Id", dtJobType, "All JobType");
 
             DataTable dtPriorityType = compassBAL.GetPriorityBAL();
-            BindDropdown(ddlPriority, "PriorityType", "Id", dtPriorityType, "Select Priority");
+            BindDropdown(ddlPriority, "PriorityType", "Id", dtPriorityType, "All Priority");
 
             DataTable dtBranch = compassBAL.GetBranchBAL();
-            BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "Select Branch");
+            BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "All Branch");
 
-            DataTable dtUsers = compassBAL.GetUserBAL();
-            BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
+
+            bool IsServiceCompanyUser = Convert.ToBoolean(Session["IsServiceCompanyUser"]);
+
+            if (IsServiceCompanyUser)
+            {
+                DataTable dtUsers = compassBAL.GetUserForServiceCompanyBAL();
+                BindDropdown(ddlUser, "UserName", "Id", dtUsers, "All User");
+            }
+            else
+            {
+                BindDropdown(ddlUser, "UserName", "Id", null, "All User");
+                ddlUser.Enabled = false;
+                ddlUser.Items.Insert(0, new ListItem("All Users", "0"));
+            }
 
             DataTable dtStatus = compassBAL.GetStatusBAL();
             lstStatus.DataSource = dtStatus;
@@ -73,7 +85,7 @@ namespace Compass.ModuleUI
             lstStatus.DataBind();
 
             DataTable dtTeam = compassBAL.GetTeamBAL();
-            BindDropdown(ddlTeam, "Name", "Id", dtTeam, "Select Team");
+            BindDropdown(ddlTeam, "Name", "Id", dtTeam, "All Team");
         }
 
         #endregion
@@ -88,7 +100,8 @@ namespace Compass.ModuleUI
             jobFilters.FromDate = !string.IsNullOrEmpty(txtFromDate.Text) ? txtFromDate.Text : "01/01/1900";
             jobFilters.ToDate = !string.IsNullOrEmpty(txtToDate.Text) ? txtToDate.Text : "01/01/1900"; ;
             jobFilters.JobNumber = txtJobNo.Text;
-            jobFilters.AllocatedToUser = ddlUser.SelectedValue != null ? Convert.ToInt32(ddlUser.SelectedValue) : 0;
+            if (Convert.ToBoolean(Session["IsServiceCompanyUser"]))
+                jobFilters.AllocatedToUser = ddlUser.SelectedValue != null ? Convert.ToInt32(ddlUser.SelectedValue) : 0;
             jobFilters.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
             jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;
 
@@ -174,6 +187,23 @@ namespace Compass.ModuleUI
             ddlJobType.SelectedValue = "0";
             ddlBranch.SelectedValue = "0";
             BindMethods();
+        }
+
+        protected void ddlTeam_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToBoolean(Session["IsServiceCompanyUser"]) && Convert.ToInt32(ddlTeam.SelectedValue) > 1)
+            {
+                DataTable dtUsers = compassBAL.GetUserForServiceCompanyBAL();
+                BindDropdown(ddlUser, "UserName", "Id", dtUsers, "All User");
+                ddlUser.Enabled = true;
+            }
+            else
+            {
+                ddlUser.Enabled = false;
+                ddlUser.Items.Clear();
+                ddlUser.Enabled = false;
+                ddlUser.Items.Insert(0, new ListItem("All Users", "0"));
+            }
         }
     }
 }

@@ -65,11 +65,11 @@ namespace Compass.DAL
             }
             return dt;
         }
-        public DataTable GetUserDAL()
+        public DataTable GetUserDAL( )
         {
             DataTable dt = new DataTable();
             try
-            {
+            {               
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spGetUserDetails");
                 dt = ds.Tables[0];
             }
@@ -264,6 +264,21 @@ namespace Compass.DAL
                     new SqlParameter("@BranchId",branchId)
                 };
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spGetUserDetailsByClientId", param);
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //  LogUtility.SaveErrorLogEntry(ex);
+            }
+            return dt;
+        }
+
+        public DataTable GetUserForServiceCompanyDAL()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spGetUserDetailForServiceCompany");
                 dt = ds.Tables[0];
             }
             catch (Exception ex)
