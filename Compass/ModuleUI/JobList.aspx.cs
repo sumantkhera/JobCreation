@@ -67,7 +67,10 @@ namespace Compass.ModuleUI
             BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
 
             DataTable dtStatus = compassBAL.GetStatusBAL();
-            BindDropdown(ddlStatus, "Status", "Id", dtStatus, "Select Status");
+            lstStatus.DataSource = dtStatus;
+            lstStatus.DataTextField = "Status";
+            lstStatus.DataValueField = "Id";
+            lstStatus.DataBind();
 
             DataTable dtTeam = compassBAL.GetTeamBAL();
             BindDropdown(ddlTeam, "Name", "Id", dtTeam, "Select Team");
@@ -78,13 +81,7 @@ namespace Compass.ModuleUI
         #region Methods       
         public void BindMethods()
         {
-            //int id = Convert.ToInt32(Session["UserId"]);
-            //DataTable dtJobList = compassBAL.GetJobListBAL(id);
-            //grdViewJobList.DataSource = dtJobList;
-            //grdViewJobList.DataBind();
-
-
-            jobFilters jobFilters = new jobFilters();
+            jobFiltersBE jobFilters = new jobFiltersBE();
             jobFilters.Id = Convert.ToInt32(Session["UserId"]);
             jobFilters.ClientId = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlTeam.SelectedValue) : 0;
             jobFilters.PriorityID = ddlPriority.SelectedValue != null ? Convert.ToInt32(ddlPriority.SelectedValue) : 0;
@@ -92,9 +89,22 @@ namespace Compass.ModuleUI
             jobFilters.ToDate = !string.IsNullOrEmpty(txtToDate.Text) ? txtToDate.Text : "01/01/1900"; ;
             jobFilters.JobNumber = txtJobNo.Text;
             jobFilters.AllocatedToUser = ddlUser.SelectedValue != null ? Convert.ToInt32(ddlUser.SelectedValue) : 0;
-            jobFilters.JobStatusId = ddlStatus.SelectedValue != null ? Convert.ToInt32(ddlStatus.SelectedValue) : 0;
             jobFilters.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
             jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;
+
+            JobStatusColllection LstJobStatus = new JobStatusColllection();
+
+            foreach (ListItem item in lstStatus.Items)
+            {
+                if (item.Selected)
+                {
+                    JobStatusBE jobStatus = new JobStatusBE();
+                    jobStatus.JobStatusId = item.Value != null ? Convert.ToInt32(item.Value) : 0;
+                    LstJobStatus.Add(jobStatus);
+                }
+            }
+
+            jobFilters.JobStatus = LstJobStatus;
 
             DataTable dtJobList = compassBAL.GetJobListByFilterBAL(jobFilters);
             grdViewJobList.DataSource = dtJobList;
@@ -144,8 +154,8 @@ namespace Compass.ModuleUI
 
         protected void grdViewJobList_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            grdViewJobList.PageIndex = e.NewPageIndex;           
-            BindMethods();           
+            grdViewJobList.PageIndex = e.NewPageIndex;
+            BindMethods();
         }
 
         protected void btnFilter_Click(object sender, EventArgs e)
@@ -161,10 +171,8 @@ namespace Compass.ModuleUI
             ddlTeam.SelectedValue = "0";
             ddlPriority.SelectedValue = "0";
             ddlUser.SelectedValue = "0";
-            ddlStatus.SelectedValue = "0";
             ddlJobType.SelectedValue = "0";
             ddlBranch.SelectedValue = "0";
-
             BindMethods();
         }
     }

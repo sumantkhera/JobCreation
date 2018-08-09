@@ -216,24 +216,32 @@ namespace Compass.DAL
             return dt;
         }
 
-        public DataTable GetJobListByFilterDAL(jobFilters jobFilters)
+        public DataTable GetJobListByFilterDAL(jobFiltersBE jobFilters)
         {
             DataTable dt = new DataTable();
             try
             {
+                SqlParameter tvpParam = new SqlParameter("@JobStatus", jobFilters.JobStatus);
+                tvpParam.SqlDbType = SqlDbType.Structured;
+                tvpParam.Direction = ParameterDirection.Input;
+                tvpParam.TypeName = "[dbo].[UT_JobStatus]";
+             
                 SqlParameter[] param =
                 {
                                         new SqlParameter("@UserId",jobFilters.Id ) ,
                                         new SqlParameter("@ClientIds",jobFilters.ClientId ) ,
                                         new SqlParameter("@PriorityID",jobFilters.PriorityID ) ,
-                                        new SqlParameter("@AllocatedToUser",jobFilters.AllocatedToUser ) ,
-                                        new SqlParameter("@JobStatusId",jobFilters.JobStatusId ) ,
+                                        new SqlParameter("@AllocatedToUser",jobFilters.AllocatedToUser ),
                                         new SqlParameter("@JobTypeId",jobFilters.JobTypeId ) ,
                                         new SqlParameter("@BranchId",jobFilters.BranchId ) ,
                                         new SqlParameter("@StartDate",jobFilters.FromDate ) ,
                                         new SqlParameter("@EndDate",jobFilters.ToDate ) ,
-                                        new SqlParameter("@JobNumber",jobFilters.JobNumber )
+                                        new SqlParameter("@JobNumber",jobFilters.JobNumber ),
+                                        tvpParam
                  };
+
+               // param.Where(w=>w.)
+
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spListJobs", param);
                 dt = ds.Tables[0];
             }

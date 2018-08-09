@@ -186,6 +186,8 @@
     <Content Include="ModuleUI\EditJob.aspx" />
     <Content Include="ModuleUI\JobList.aspx" />
     <Content Include="ModuleUI\Login.aspx" />
+    <Content Include="Scripts\bootstrap-multiselect.css" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

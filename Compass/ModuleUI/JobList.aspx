@@ -2,10 +2,15 @@
     Inherits="Compass.ModuleUI.JobList"
     EnableEventValidation="true" %>
 
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <section>
+    <section>        
+        <script type="text/javascript">
+            $(function () {
+                $('[id*=lstStatus]').multiselect({
+                    includeSelectAllOption: true
+                });
+            });
+        </script>
         <div class="section-bg">
             <div class="row job-listing">
                 <div class="col-sm-6 col-xs-6">
@@ -45,7 +50,9 @@
                             </li>
                             <li>
                                 <label>Status</label>
-                                <asp:DropDownList ID="ddlStatus" runat="server" class="form-control"></asp:DropDownList>
+                                <asp:ListBox ID="lstStatus" runat="server" Height="50px" SelectionMode="Multiple"></asp:ListBox>
+
+                                <%--<asp:DropDownList ID="ddlStatus" runat="server" class="form-control" multiple="multiple"></asp:DropDownList>--%>
                             </li>
                             <li>
                                 <label>Team</label>
@@ -67,7 +74,7 @@
                             <li>
                                 <div class="btn-style">
                                     <asp:Button ID="btnFilter" runat="server" Text="Filter" class="btn btn-submit" OnClick="btnFilter_Click" />
-                                    <asp:Button ID="btnCancel" runat="server" Text="Reset" class="btn btn-cancel" OnClick="btnCancel_Click"/>
+                                    <asp:Button ID="btnCancel" runat="server" Text="Reset" class="btn btn-cancel" OnClick="btnCancel_Click" />
                                 </div>
                             </li>
                         </ul>
@@ -166,7 +173,7 @@
         </asp:UpdatePanel>
     </section>
 
-   
+
     <script type="text/javascript">
         $(function () {
             $('[id*=txtFromDate]').datepicker({

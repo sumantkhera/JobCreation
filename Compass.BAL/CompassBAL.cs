@@ -129,7 +129,7 @@ namespace Compass.BAL
             return dt;
         }
 
-        public DataTable GetJobListByFilterBAL(jobFilters jobFilters)
+        public DataTable GetJobListByFilterBAL(jobFiltersBE jobFilters)
         {
             DataTable dt = new DataTable();
             try
