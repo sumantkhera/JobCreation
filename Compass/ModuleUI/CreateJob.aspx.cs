@@ -59,9 +59,19 @@ namespace Compass.ModuleUI
             DataTable dtBranch = compassBAL.GetBranchBAL();
             BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "Select Branch");
 
+            //Set Branch Id (for client user login)
+            int branchId = 0;
+            if (int.TryParse(Session["BranchId"].ToString(), out branchId))
+            {
+                if (ddlBranch.Items.FindByValue(branchId.ToString()) != null)
+                {
+                    ddlBranch.SelectedValue = branchId.ToString();
+                }
+            }
+
             var clientid = Convert.ToInt32(Session["ClientId"]);
 
-            DataTable dtUsers = compassBAL.GetUserBAL(clientid);
+            DataTable dtUsers = compassBAL.GetUserBAL(clientid, branchId);
             BindDropdown(ddlUsers, "UserName", "Id", dtUsers, "Select User");
         }
 
@@ -135,6 +145,15 @@ namespace Compass.ModuleUI
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("/ModuleUI/joblist.aspx");
+        }
+
+        protected void ddlBranch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int branchId = Convert.ToInt32(ddlBranch.SelectedValue);
+            var clientid = Convert.ToInt32(Session["ClientId"]);
+
+            DataTable dtUsers = compassBAL.GetUserBAL(clientid, branchId);
+            BindDropdown(ddlUsers, "UserName", "Id", dtUsers, "Select User");
         }
     }
 }
