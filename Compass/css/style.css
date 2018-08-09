@@ -56,12 +56,13 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
  .section-bg .form-inline .form-group .form-control.txtDate{background-color: #fff;}
  blockquote {border-bottom: 1px dashed #b2b2b2;min-height: 100px;border-left: 0;}
  .blockquote-body p img{margin-right: 10px;margin-top: -20px;}
- .attachment-download1{min-width: 400px;position: absolute;right: 0;}
- 
+ .attachment-download1{min-width: 500px;position: absolute;right: 0;font-size: 15px;}
+ .ink-underline{color: #337ab7;}
+ .ink-underline:hover{color: #337ab7;}
  /*------listing--------------*/
 
  .job-listing{margin-bottom: 10px;}
- .add-job-btn{padding: 10px 20px;background-color: #00a2ca;margin-right: -20px;}
+ .add-job-btn{padding: 10px 20px;background-color: #00a2ca;/* margin-right: -20px; */}
  .add-job-btn:hover{text-decoration: none;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
  .table tr {background-color: #fff;}
  .table tr>th{background-color: #c0e0e8;}
@@ -71,11 +72,14 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
  .high-color{color: #cd0000}
  .medium-color{color: #0084a5;}
  .low-color{color: #119400;}
- .search-listing ul{list-style: none;margin: 0;padding: 0}
- .search-listing ul li{padding-left: 20px;display: inline-block;width: 20%;float: left;margin-bottom: 10px;box-sizing:border-box}
-  .search-listing ul li label{font-weight: normal;color:#000;font-size: 14px;min-width: 60px;margin-top: 5px;}
-  .search-listing ul li input, .search-listing ul li select{height: 35px;border: 1px solid #c6c6c6;width: 140px;float: right;border-radius: 0px;font-size: 12px;}
-  .search-listing ul li .btn-style input.btn{width: 95px;height: 35px;;font-size: 15px;padding: 5px;float: right;margin-left: 5px;}
+ .search-listing{padding-right: 20px;}
+ .search-listing>ul{list-style: none;margin: 0;padding: 0}
+ .search-listing>ul>li{padding-left: 20px;display: inline-block;width: 20%;float: left;margin-bottom: 10px;box-sizing:border-box}
+  .search-listing>ul>li label{font-weight: normal;color:#000;font-size: 14px;min-width: 60px;margin-top: 5px;}
+  .search-listing>ul>li input[type="text"], .search-listing>ul>li select{height: 35px;border: 1px solid #c6c6c6;width: 140px;float: right;border-radius: 0px;font-size: 12px;padding: 6px;}
+  .search-listing>ul>li .btn-style input.btn{width: 95px;height: 35px;;font-size: 15px;padding: 5px;float: right;margin-left: 5px;}
+ .multiselect-native-select button.multiselect {height: 35px;width: 140px;border-radius:0;overflow: hidden;}
+ 
  
 .GridPager table td{border: 0}
 .GridPager table td a, .GridPager table td span {position: relative;float: left;padding: 6px 12px;margin-left: -1px;line-height: 1.42857143;color: #337ab7;text-decoration: none;background-color: #fff;border: 1px solid #ddd;}
