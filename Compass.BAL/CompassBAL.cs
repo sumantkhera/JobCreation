@@ -156,5 +156,19 @@ namespace Compass.BAL
             }
             return dt;
         }
+
+        public DataTable GetUserForServiceCompanyBAL()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = compassDAL.GetUserForServiceCompanyDAL();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
     }
 }

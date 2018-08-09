@@ -3,7 +3,7 @@
     EnableEventValidation="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <section>        
+    <section>
         <script type="text/javascript">
             $(function () {
                 $('[id*=lstStatus]').multiselect({
@@ -51,16 +51,14 @@
                             <li>
                                 <label>Status</label>
                                 <asp:ListBox ID="lstStatus" runat="server" Height="50px" SelectionMode="Multiple"></asp:ListBox>
-
-                                <%--<asp:DropDownList ID="ddlStatus" runat="server" class="form-control" multiple="multiple"></asp:DropDownList>--%>
                             </li>
                             <li>
                                 <label>Team</label>
-                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlTeam_SelectedIndexChanged"></asp:DropDownList>
 
                             </li>
                             <li>
-                                <label>User</label>
+                                <label>Allocated</label>
                                 <asp:DropDownList ID="ddlUser" runat="server" class="form-control"></asp:DropDownList>
                             </li>
                             <li>

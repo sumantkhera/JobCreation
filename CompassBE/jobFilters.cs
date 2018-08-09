@@ -15,7 +15,7 @@ namespace CompassBE
             JobStatus = new JobStatusColllection();
         }
         public int? Id { get; set; }
-        public int? ClientId { get; set; }
+        public int? TeamId { get; set; }
         public int PriorityID { get; set; }
         public int? AllocatedToUser { get; set; }
         public int JobTypeId { get; set; }
