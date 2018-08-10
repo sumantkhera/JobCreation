@@ -1,0 +1,13 @@
+
+
+exec spSYS_SlotTime @Action=N'ShowAll'
+exec spMASSIT_Booking @Action=N'AllBookingFixedSlotDetails',@SiteID=6,@ScheduleDate='2018-05-22 00:00:00',@SelectedScheduleDate='2018-05-23 00:00:00'
+exec spMASSIT_Booking @Action=N'AllBookingFixedSlotDetails',@SiteID=6,@ScheduleDate='2018-05-23 00:00:00',@SelectedScheduleDate='2018-05-23 00:00:00'
+exec spMASSIT_DoorOpenTime @Action=N'GetDoorNoAndType',@SiteID=6,@PurchaseNumbers=NULL
+exec spMASSIT_WeekSetup @Action=N'ShowAll',@SiteScheduleDiaryID=NULL,@SiteID=6,@EndWeekday=N'Wednesday',@DayDisabledFor=NULL,@StartWeekday=NULL,@ScheduleDate='2018-05-23 00:00:00'
+exec spMASSIT_WeekSetup @Action=N'GetSpecificWeek',@SiteScheduleDiaryID=NULL,@SiteID=6,@EndWeekday=N'Wednesday',@DayDisabledFor=NULL,@StartWeekday=NULL,@ScheduleDate='2018-05-23 00:00:00'
+exec spMASSIT_VehicleDoorMatrix @Action=N'ShowAll',@VehicleTypeDoorTypeID=0,@DoorTypeID=0,@VehicleTypeID=0,@SiteID=6,@Priority=0,@IsActive=0
+exec spMASSIT_DoorOpenTime @Action=N'GetDoorConstraints',@SiteID=6,@Weekday=N'Wednesday',@StartWeekDay=NULL
+exec spMASSIT_DoorOpenTimeSpecific @Action=N'GetDoorConstraintsSpecific',@SiteID=6,@Weekday=N'Wednesday',@StartWeekday=NULL,@WeekStartDate='2018-05-21 00:00:00'
+exec spMASSIT_WeekSetup @Action=N'GetSpecificWeek',@SiteScheduleDiaryID=NULL,@SiteID=6,@EndWeekday=N'Wednesday',@DayDisabledFor=NULL,@StartWeekday=NULL,@ScheduleDate='2018-05-23 00:00:00'
+exec spMASSIT_Booking @Action=N'GetNonTimeBooking',@SiteID=6,@ScheduleDate='2018-05-23 00:00:00'

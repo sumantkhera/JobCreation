@@ -111,6 +111,12 @@ namespace Compass.DAL
                                    tvpParam
                                };
 
+
+                if (obj.Attachments.Count == 0)
+                {
+                    param = param.RemoveFromArray(tvpParam);
+                }
+
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spCreateJob", param);
                 squery = ds.Tables[0].Rows[0][0].ToString();
                 return squery;
