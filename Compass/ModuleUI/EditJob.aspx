@@ -140,7 +140,7 @@
                                 <label for="email">Allocated to Team</label>
                             </div>
                             <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">                                   
+                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -172,12 +172,12 @@
                         </div>
                     </div>
 
-                     <div class="col-sm-12">
+                    <div class="col-sm-12">
                         <div class="col-sm-6">
                             <div class="btn-style">
                                 <asp:Button ID="btnUpdate" Text="Update" class="btn btn-submit" runat="server" OnClick="btnUpdate_Click" />
                             </div>
-                        </div>                       
+                        </div>
                     </div>
 
                 </div>
@@ -185,7 +185,8 @@
 
             <p class="sub-head">
                 <img alt="" src="/images/chat-icon.png">
-                Job Comments</p>
+                Job Comments
+            </p>
             <div class="form-inline" role="form">
                 <div class="row">
                     <div class="col-sm-12">
@@ -231,75 +232,7 @@
                             <a href="#" data-toggle="modal" data-target="#history" class="link-underline">History</a>
                         </div>
                     </div>
-                    <div id="divComments" class="col-sm-12" runat="server">
-                        <!-- blockquote -->
-                      <%--  <blockquote>
-                            <div class="submit-by">
-                                <asp:Panel ID="pnlComments" runat="server"></asp:Panel>
-                                            Added By:
-                                        <a href="#" class="comment-name">Anupam Bhardwaj</a> on
-                                        <a href="#" class="comment-date">6th July 2018</a>
-                            </div>
-                            <div class="col-sm-10 blockquote-body">
-                                <p>
-                                    <img alt="" src="/images/qoute-icon.png">
-                                    Here is the new password for your mailbox. [ Acxse94458 ], and find attachment for details.</p>
-                            </div>
-
-                            <div class="col-sm-2 text-right">
-                                <i class="fa fa-paperclip fa-rotate-270" aria-hidden="true"></i>
-                                <a class="link-underline" id="link-underline1">
-                                    <img alt="" src="/images/attachment-icon.png">
-                                    Attachments [5]</a>
-                                <div class="attachment-download1" style="display: none">
-                                    <a class="btn btn-link">Attachments <span>[1]</span></a>
-                                    <a class="btn btn-link">Attachments <span>[2]</span></a>
-                                    <a class="btn btn-link">Attachments <span>[3]</span></a>
-                                </div>
-                            </div>
-                        </blockquote>--%>
-                        <!-- /blockquote -->
-                        <!-- blockquote -->
-                        <%--<blockquote>
-                            <div class="submit-by">
-                                Added By:
-                                        <a href="#" class="comment-name">Anupam Bhardwaj</a> on
-                                        <a href="#" class="comment-date">6th July 2018</a>
-                            </div>
-                            <div class="col-sm-10 blockquote-body">
-                                <p>
-                                    <img alt="" src="/images/qoute-icon.png">Here is the new password for your mailbox. [ Acxse94458 ], and find attachment for details.</p>
-                            </div>
-
-                            <div class="col-sm-2 text-right">
-                                <i class="fa fa-paperclip fa-rotate-270" aria-hidden="true"></i>
-                                <a class="link-underline">
-                                    <img alt="" src="/images/attachment-icon.png">
-                                    Attachments [5]</a>
-                            </div>
-                        </blockquote>--%>
-                        <!-- /blockquote -->
-                        <!-- blockquote -->
-                        <%--<blockquote>
-                            <div class="submit-by">
-                                Added By:
-                                        <a href="#" class="comment-name">Anupam Bhardwaj</a> on
-                                        <a href="#" class="comment-date">6th July 2018</a>
-                            </div>
-                            <div class="col-sm-10 blockquote-body">
-                                <p>
-                                    <img alt="" src="/images/qoute-icon.png">Here is the new password for your mailbox. [ Acxse94458 ], and find attachment for details.</p>
-                            </div>
-
-                            <div class="col-sm-2 text-right">
-                                <i class="fa fa-paperclip fa-rotate-270" aria-hidden="true"></i>
-                                <a class="link-underline">
-                                    <img alt="" src="/images/attachment-icon.png">
-                                    Attachments [5]</a>
-                            </div>
-                        </blockquote>--%>
-                        <!-- /blockquote -->
-
+                    <div id="divComments" class="col-sm-12" runat="server">                    
 
                     </div>
                 </div>
@@ -355,8 +288,7 @@
     </script>
     <script type="text/javascript">
 
-        function ToggleAttachments(obj)
-        {
+        function ToggleAttachments(obj) {
             var sibling = obj.nextSibling;
             $(sibling).slideToggle();
         }
