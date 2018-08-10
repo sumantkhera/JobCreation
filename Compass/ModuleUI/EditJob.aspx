@@ -138,10 +138,7 @@
                                 <label for="email">Allocated to Team</label>
                             </div>
                             <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">
-                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                    <asp:ListItem Value="1" Text="Client"></asp:ListItem>
-                                    <asp:ListItem Value="2" Text="Damco"></asp:ListItem>
+                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">                                   
                                 </asp:DropDownList>
                             </div>
                         </div>
