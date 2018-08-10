@@ -98,11 +98,11 @@
                                 <label for="email"></label>
                             </div>
                             <div class="col-sm-10 text-area-style">
-                                <a class="btn btn-link" id="attachment"><span class="plus-attach"></span>Attachments
+                                <a class="btn btn-link" id="attachment"><span class="minus-attach"></span>Attachments
                                     <img alt="" src="/images/attachment-icon.png">
                                     <asp:Label ID="lblAttachmentCount" runat="server" />
                                 </a>
-                                <div class="attachment-download" style="display: none">
+                                <div class="attachment-download" style="display: block">
                                     <asp:Panel ID="pnlAttachment" runat="server"></asp:Panel>
 
                                     <%--<a class="btn btn-link">Attachments <span>[1]</span></a>
@@ -375,7 +375,7 @@
         //    $(".attachment-download1").slideToggle();
         //});
         $('#attachment ').click(function () {
-            $("span.plus-attach").toggleClass("minus-attach");
+            $("span.minus-attach").toggleClass("plus-attach");
         });        
 
     </script>
