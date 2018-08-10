@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compass", "Compass\Compass.csproj", "{87AF7990-6328-46F4-BC18-D5DEB9D4AFCD}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -23,6 +23,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompassBE", "CompassBE\CompassBE.csproj", "{689653BD-A0C5-4B09-980A-9FEC3A4529F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{ADBE1C47-7AFF-4070-B73C-30CC3D8FF058}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "JobAllocationDatabase", "JobAllocationDatabase\JobAllocationDatabase.sqlproj", "{7A9FCE37-4B07-4E02-AD3F-3F494D191B5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{ADBE1C47-7AFF-4070-B73C-30CC3D8FF058}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADBE1C47-7AFF-4070-B73C-30CC3D8FF058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADBE1C47-7AFF-4070-B73C-30CC3D8FF058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A9FCE37-4B07-4E02-AD3F-3F494D191B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A9FCE37-4B07-4E02-AD3F-3F494D191B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A9FCE37-4B07-4E02-AD3F-3F494D191B5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A9FCE37-4B07-4E02-AD3F-3F494D191B5B}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

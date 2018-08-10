@@ -13,6 +13,15 @@ namespace Compass.ModuleUI {
     public partial class JobList {
         
         /// <summary>
+        /// uppanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel uppanel;
+        
+        /// <summary>
         /// btnAdd control.
         /// </summary>
         /// <remarks>
@@ -103,15 +112,6 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.DropDownList ddlJobType;
         
         /// <summary>
-        /// btnFilter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFilter;
-        
-        /// <summary>
         /// btnCancel control.
         /// </summary>
         /// <remarks>
@@ -121,13 +121,13 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.Button btnCancel;
         
         /// <summary>
-        /// uppanel control.
+        /// btnFilter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uppanel;
+        protected global::System.Web.UI.WebControls.Button btnFilter;
         
         /// <summary>
         /// grdViewJobList control.

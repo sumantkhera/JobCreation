@@ -55,25 +55,25 @@ namespace Compass.ModuleUI
         public void BindDropdowns()
         {
             DataTable dtJobType = compassBAL.GetJobTypeBAL();
-            BindDropdown(ddlJobType, "jobName", "Id", dtJobType, "All JobType");
+            BindDropdown(ddlJobType, "jobName", "Id", dtJobType, "All JobTypes");
 
             DataTable dtPriorityType = compassBAL.GetPriorityBAL();
-            BindDropdown(ddlPriority, "PriorityType", "Id", dtPriorityType, "All Priority");
+            BindDropdown(ddlPriority, "PriorityType", "Id", dtPriorityType, "All Priorities");
 
             DataTable dtBranch = compassBAL.GetBranchBAL();
-            BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "All Branch");
-
+            BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "All Branches");
 
             bool IsServiceCompanyUser = Convert.ToBoolean(Session["IsServiceCompanyUser"]);
 
             if (IsServiceCompanyUser)
             {
-                DataTable dtUsers = compassBAL.GetUserForServiceCompanyBAL();
-                BindDropdown(ddlUser, "UserName", "Id", dtUsers, "All User");
+                DataTable dtUsers = compassBAL.GetUserForServiceCompanyBAL(0);
+                ddlUser.Enabled = true;
+                BindDropdown(ddlUser, "UserName", "Id", dtUsers, "All Users");
             }
             else
             {
-                BindDropdown(ddlUser, "UserName", "Id", null, "All User");
+                BindDropdown(ddlUser, "UserName", "Id", null, "All Users");
                 ddlUser.Enabled = false;
                 ddlUser.Items.Insert(0, new ListItem("All Users", "0"));
             }
@@ -85,7 +85,7 @@ namespace Compass.ModuleUI
             lstStatus.DataBind();
 
             DataTable dtTeam = compassBAL.GetTeamBAL();
-            BindDropdown(ddlTeam, "Name", "Id", dtTeam, "All Team");
+            BindDropdown(ddlTeam, "Name", "Id", dtTeam, "All Teams");
         }
 
         #endregion
@@ -191,11 +191,22 @@ namespace Compass.ModuleUI
 
         protected void ddlTeam_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Convert.ToBoolean(Session["IsServiceCompanyUser"]) && Convert.ToInt32(ddlTeam.SelectedValue) > 1)
+            if (Convert.ToBoolean(Session["IsServiceCompanyUser"]))
             {
-                DataTable dtUsers = compassBAL.GetUserForServiceCompanyBAL();
-                BindDropdown(ddlUser, "UserName", "Id", dtUsers, "All User");
-                ddlUser.Enabled = true;
+                DataTable dtUsers = compassBAL.GetUserForServiceCompanyBAL(Convert.ToInt32(ddlTeam.SelectedValue));
+                if (dtUsers.Rows.Count > 0)
+                {
+                    BindDropdown(ddlUser, "UserName", "Id", dtUsers, "All User");
+                    ddlUser.Enabled = true;
+                }
+                else
+                {
+                    ddlUser.Enabled = false;
+                    ddlUser.Items.Clear();
+                    ddlUser.Enabled = false;
+
+                    ddlUser.Items.Insert(0, new ListItem("All Users", "0"));
+                }
             }
             else
             {
@@ -204,6 +215,7 @@ namespace Compass.ModuleUI
                 ddlUser.Enabled = false;
                 ddlUser.Items.Insert(0, new ListItem("All Users", "0"));
             }
+            ddlUser.CssClass = "aspNetDisabled form - control";
         }
     }
 }
