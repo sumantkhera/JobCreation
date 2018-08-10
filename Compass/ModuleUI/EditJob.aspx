@@ -16,9 +16,9 @@
                 <div class="col-sm-12">
                     <div class="add-jobs">
                         <span>
-                            <img alt="" src="/images/new-job-icon.png"></span> View Job Details
+                            <img class="rectangle-icon"  alt="" src="/images/new-job-icon.png"></span> View Job Details
                     </div>
-                    <p class="sub-head">Job Request Details</p>
+                    <p class="sub-head"> <img class="rectangle-icon" alt="" src="/images/reqtangle.jpg"> Job Request Details</p>
                 </div>
             </div>
             <div class="form-inline" role="form">
@@ -116,73 +116,111 @@
                 </div>
             </div>
 
-            <p class="sub-head">Job Status and Allocation Details</p>
-            <div class="form-inline" role="form">
-                <div class="row">
+            <p class="sub-head">  <img class="rectangle-icon" alt="" src="/images/reqtangle.jpg"> Job Status and Allocation Details</p>
+            <asp:UpdatePanel ID="up" runat="server">
+                <ContentTemplate>
+                    <div class="form-inline" role="form">
+                        <div class="row">
 
 
-                    <div class="col-sm-12">
-                        <div class="form-group form-group-style">
-                            <div class="col-sm-2 text-area-label">
-                                <label for="email">Job Status </label>
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-style">
+                                    <div class="col-sm-2 text-area-label">
+                                        <label for="email">Job Status </label>
+                                    </div>
+                                    <div class="col-sm-10 text-area-style padd-left-0">
+                                        <asp:DropDownList ID="ddlJobStatus" runat="server" class="form-control">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-10 text-area-style padd-left-0">
-                                <asp:DropDownList ID="ddlJobStatus" runat="server" class="form-control">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group form-group-style">
                             <div class="col-sm-4">
-                                <label for="email">Allocated to Team</label>
+                                <div class="form-group form-group-style">
+                                    <div class="col-sm-4">
+                                        <label for="email">Allocated to Team</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">
-                                </asp:DropDownList>
+                            <div id="divUser" class="col-sm-4" runat="server">
+                                <div class="form-group form-group-style">
+                                    <div class="col-sm-4">
+                                        <label for="email">User</label>
+                                        <%--<asp:Label ID="lblUser" Text="User" runat="server" />--%>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="ddlUser" runat="server" class="form-control">
+                                            <asp:ListItem>Select</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div id="divUser" class="col-sm-4" runat="server">
-                        <div class="form-group form-group-style">
-                            <div class="col-sm-4">
-                                <label for="email">User</label>
-                                <%--<asp:Label ID="lblUser" Text="User" runat="server" />--%>
-                            </div>
-                            <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlUser" runat="server" class="form-control">
-                                    <asp:ListItem>Select</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="divQaUser" class="col-sm-4" runat="server">
-                        <div class="form-group form-group-style">
-                            <div class="col-sm-4">
-                                <label for="email">QA User</label>
-                                <%--<asp:Label ID="lblQAUser" Text="QA User" runat="server" />--%>
-                            </div>
-                            <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlQAUser" runat="server" class="form-control">
-                                    <asp:ListItem>Select</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-sm-12">
-                        <div class="col-sm-6">
-                            <div class="btn-style">
-                                <asp:Button ID="btnUpdate" Text="Update" class="btn btn-submit" runat="server" OnClick="btnUpdate_Click" />
+                            <div id="divQaUser" class="col-sm-4" runat="server">
+                                <div class="form-group form-group-style">
+                                    <div class="col-sm-4">
+                                        <label for="email">QA User</label>
+                                        <%--<asp:Label ID="lblQAUser" Text="QA User" runat="server" />--%>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="ddlQAUser" runat="server" class="form-control">
+                                            <asp:ListItem>Select</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <div class="btn-style">
+                                        <asp:Button ID="btnUpdate" Text="Update" class="btn btn-submit" runat="server" OnClick="btnUpdate_Click" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div id="history" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">History</h4>
+                                </div>
+                                <div class="table-responsive">
+                                    <div class="history-table">
+                                        <asp:GridView ID="grdHistory" runat="server" CssClass="table"
+                                            AutoGenerateColumns="false" Font-Names="Arial" ShowFooter="false"
+                                            Font-Size="11pt">
+                                            <Columns>
+                                                <asp:BoundField  DataField="Type" HeaderText="Type" />
+                                                <asp:BoundField DataField="Previous" HeaderText="Previous" />
+                                                <asp:BoundField  DataField="Current" HeaderText="Current" />
+                                                <asp:BoundField  DataField="ChangedBy" HeaderText="ChangedBy" />
+                                                <asp:BoundField  DataField="ChangedOn" HeaderText="ChangedOn" DataFormatString="{0:MM/dd/yyyy}" />
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
-            </div>
-
+                </ContentTemplate>
+                <Triggers>
+                    <asp:PostBackTrigger ControlID="grdHistory" />
+                </Triggers>
+            </asp:UpdatePanel>
             <p class="sub-head">
-                <img alt="" src="/images/chat-icon.png">
+                <img class="rectangle-icon"  alt="" src="/images/chat-icon.png">
                 Job Comments
             </p>
             <div class="form-inline" role="form">
@@ -237,41 +275,6 @@
             <!-- container -->
         </div>
     </section>
-
-
-
-    <!-- Modal -->
-    <div id="history" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">History</h4>
-                </div>
-                <div class="table-responsive">
-                    <div style="height: 200px; width: 600px;">
-                        <asp:GridView ID="grdHistory" runat="server" CssClass="table"
-                            AutoGenerateColumns="false" Font-Names="Arial" ShowFooter="false"
-                            Font-Size="11pt">
-                            <Columns>
-                                <asp:BoundField ItemStyle-Width="150px" DataField="Type" HeaderText="Type" />
-                                <asp:BoundField ItemStyle-Width="150px" DataField="Previous" HeaderText="Previous" />
-                                <asp:BoundField ItemStyle-Width="150px" DataField="Current" HeaderText="Current" />
-                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedBy" HeaderText="ChangedBy" />
-                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedOn" HeaderText="ChangedOn" DataFormatString="{0:MM/dd/yyyy}" />
-                            </Columns>
-                        </asp:GridView>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
     <script>
         $("#attachment").click(function () {
             $(".attachment-download").slideToggle();
@@ -304,21 +307,19 @@
     </script>
 
     <style type="text/css">
-        div#gridPanel 
-{
-   width:900px;
-   overflow:scroll;
-   position:relative;
-}
+        div#gridPanel {
+            width: 900px;
+            overflow: scroll;
+            position: relative;
+        }
 
 
-div#gridPanel th
-{  
-   top: expression(document.getElementById("gridPanel").scrollTop-2);
-left:expression(parentNode.parentNode.parentNode.parentNode.scrollLeft);
-   position: relative;
-   z-index: 20;
-}
+            div#gridPanel th {
+                top: expression(document.getElementById("gridPanel").scrollTop-2);
+                left: expression(parentNode.parentNode.parentNode.parentNode.scrollLeft);
+                position: relative;
+                z-index: 20;
+            }
     </style>
 </asp:Content>
 

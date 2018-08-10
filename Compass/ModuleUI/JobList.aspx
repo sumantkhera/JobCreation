@@ -11,7 +11,7 @@
                         <div class="col-sm-6 col-xs-6">
                             <div class="add-jobs">
                                 <img alt="" src="../images/listing-icon.png">
-                                Job Listings
+                                Search Jobs 
                             </div>
                         </div>
                         <div class="col-sm-6  col-xs-6 text-right">

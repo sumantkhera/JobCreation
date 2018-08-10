@@ -328,12 +328,12 @@ namespace Compass.ModuleUI
                         sHTML.Append(lstAttachments[i].CreatedOn.Value.ToString("MM/dd/yyyy"));
                         sHTML.Append("</span>");
                         sHTML.Append("</div>");
-                        sHTML.Append("<div class='row'><div class='col-sm-8 blockquote-body'>");
+                        sHTML.Append("<div class='row'><div class='col-sm-6 blockquote-body'>");
                         sHTML.Append("<p> <img alt='' src='/images/qoute-icon.png'>");
                         sHTML.Append(lstAttachments[i].Description);
                         sHTML.Append("</p>");
                         sHTML.Append("</div>");
-                        sHTML.Append("<div class='col-sm-4 text-right'>");
+                        sHTML.Append("<div class='col-sm-6 text-right'>");
                         sHTML.Append("<i class='fa fa-paperclip fa-rotate-270' aria-hidden='true'></i>");
                         sHTML.Append("<a class='link-underline' id='link-underline" + (i + 1).ToString() + "' onclick='return ToggleAttachments(this) ';><img alt = '' src='/images/attachment-icon.png' />");
                         sHTML.Append("Attachments " + "[" + AttachmentCountByCommentID + "]");
@@ -405,7 +405,7 @@ namespace Compass.ModuleUI
             jobDetailsBE.ClientId = Convert.ToInt32(Session["ClientId"]);
             jobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
             jobDetailsBE.Comments.CreatedBy = Convert.ToInt32(Session["UserId"]);
-
+            jobDetailsBE.UserId = Convert.ToInt32(Session["UserId"]);
 
             jobDetailsBE.Comments.Description = txtComments.Text.Trim();
 
@@ -472,6 +472,7 @@ namespace Compass.ModuleUI
 
             jobDetailsBE.Action = "EditJobStatusAndAllocationDetails";
             jobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
+            jobDetailsBE.UserId = Convert.ToInt32(Session["UserId"]);
 
             if (
                 Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.PM.ToString())
