@@ -253,7 +253,7 @@
                 <div class="table-responsive">
                     <div style="height: 200px; width: 600px;">
                         <asp:GridView ID="grdHistory" runat="server" CssClass="table"
-                            AutoGenerateColumns="false" Font-Names="Arial"
+                            AutoGenerateColumns="false" Font-Names="Arial" ShowFooter="false"
                             Font-Size="11pt">
                             <Columns>
                                 <asp:BoundField ItemStyle-Width="150px" DataField="Type" HeaderText="Type" />
@@ -302,5 +302,23 @@
         //});       
 
     </script>
+
+    <style type="text/css">
+        div#gridPanel 
+{
+   width:900px;
+   overflow:scroll;
+   position:relative;
+}
+
+
+div#gridPanel th
+{  
+   top: expression(document.getElementById("gridPanel").scrollTop-2);
+left:expression(parentNode.parentNode.parentNode.parentNode.scrollLeft);
+   position: relative;
+   z-index: 20;
+}
+    </style>
 </asp:Content>
 
