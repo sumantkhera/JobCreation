@@ -187,6 +187,7 @@
     <Content Include="images\new-job-icon.png" />
     <Content Include="images\qoute-icon.png" />
     <Content Include="ModuleUI\CreateJob.aspx" />
+    <Content Include="ModuleUI\Dashboard.aspx" />
     <Content Include="ModuleUI\DownloadAttachment.aspx" />
     <Content Include="ModuleUI\EditJob.aspx" />
     <Content Include="ModuleUI\JobList.aspx" />
@@ -261,6 +262,13 @@
     </Compile>
     <Compile Include="ModuleUI\CreateJob.aspx.designer.cs">
       <DependentUpon>CreateJob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleUI\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuleUI\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModuleUI\DownloadAttachment.aspx.cs">
       <DependentUpon>DownloadAttachment.aspx</DependentUpon>

@@ -1,13 +1,11 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditJob.aspx.cs" Inherits="Compass.ModuleUI.EditJob" Title="View Job Details" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
             var hdnAttachementCountValue = document.getElementById('<%= hdnAttachementCount.ClientID %>').value;
-            $('#<%=lblAttachmentCount.ClientID%>').html('(' + hdnAttachementCountValue + ')');
-        });
+             $('#<%=lblAttachmentCount.ClientID%>').html('(' + hdnAttachementCountValue + ')');
+         });
     </script>
 
     <section>
@@ -100,11 +98,11 @@
                                 <label for="email"></label>
                             </div>
                             <div class="col-sm-10 text-area-style">
-                                <a class="btn btn-link" id="attachment"><span class="plus-attach"></span>Attachments
+                                <a class="btn btn-link" id="attachment"><span class="minus-attach"></span>Attachments
                                     <img alt="" src="/images/attachment-icon.png">
                                     <asp:Label ID="lblAttachmentCount" runat="server" />
                                 </a>
-                                <div class="attachment-download" style="display: none">
+                                <div class="attachment-download" style="display: block">
                                     <asp:Panel ID="pnlAttachment" runat="server"></asp:Panel>
 
                                     <%--<a class="btn btn-link">Attachments <span>[1]</span></a>
@@ -140,7 +138,7 @@
                                 <label for="email">Allocated to Team</label>
                             </div>
                             <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">
+                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">                                   
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -172,12 +170,12 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-12">
+                     <div class="col-sm-12">
                         <div class="col-sm-6">
                             <div class="btn-style">
                                 <asp:Button ID="btnUpdate" Text="Update" class="btn btn-submit" runat="server" OnClick="btnUpdate_Click" />
                             </div>
-                        </div>
+                        </div>                       
                     </div>
 
                 </div>
@@ -185,8 +183,7 @@
 
             <p class="sub-head">
                 <img alt="" src="/images/chat-icon.png">
-                Job Comments
-            </p>
+                Job Comments</p>
             <div class="form-inline" role="form">
                 <div class="row">
                     <div class="col-sm-12">
@@ -272,6 +269,7 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
+
         </div>
     </div>
     <script>
@@ -283,12 +281,13 @@
         //});
         $('#attachment ').click(function () {
             $("span.plus-attach").toggleClass("minus-attach");
-        });
+        });        
 
     </script>
-    <script type="text/javascript">
+    <script type="text/javascript">       
 
-        function ToggleAttachments(obj) {
+        function ToggleAttachments(obj)
+        {
             var sibling = obj.nextSibling;
             $(sibling).slideToggle();
         }

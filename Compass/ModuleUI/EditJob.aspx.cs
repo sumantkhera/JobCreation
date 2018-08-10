@@ -328,17 +328,17 @@ namespace Compass.ModuleUI
                         sHTML.Append(lstAttachments[i].CreatedOn.Value.ToString("MM/dd/yyyy"));
                         sHTML.Append("</span>");
                         sHTML.Append("</div>");
-                        sHTML.Append("<div class='col-sm-10 blockquote-body'>");
+                        sHTML.Append("<div class='col-sm-8 blockquote-body'>");
                         sHTML.Append("<p> <img alt='' src='/images/qoute-icon.png'>");
                         sHTML.Append(lstAttachments[i].Description);
                         sHTML.Append("</p>");
                         sHTML.Append("</div>");
-                        sHTML.Append("<div class='col-sm-2 text-right'>");
+                        sHTML.Append("<div class='col-sm-4 text-right'>");
                         sHTML.Append("<i class='fa fa-paperclip fa-rotate-270' aria-hidden='true'></i>");
                         sHTML.Append("<a class='link-underline' id='link-underline" + (i+1).ToString()+ "' onclick='return ToggleAttachments(this) ';><img alt = '' src='/images/attachment-icon.png' />");
                         sHTML.Append("Attachments " + "[" + AttachmentCountByCommentID + "]");
                         sHTML.Append("</a>");
-                        sHTML.Append("<div class='attachment-download" + (i + 1).ToString() + "' style='display: none'>");
+                        sHTML.Append("<div class='down-attach attachment-download" + (i + 1).ToString() + "' style='display: none'>");
 
                         previous = lstAttachments[i].CommentId;
                     }                    
