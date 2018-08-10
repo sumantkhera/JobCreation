@@ -1,11 +1,13 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditJob.aspx.cs" Inherits="Compass.ModuleUI.EditJob" Title="Edit Job" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
             var hdnAttachementCountValue = document.getElementById('<%= hdnAttachementCount.ClientID %>').value;
-             $('#<%=lblAttachmentCount.ClientID%>').html('(' + hdnAttachementCountValue + ')');
-         });
+            $('#<%=lblAttachmentCount.ClientID%>').html('(' + hdnAttachementCountValue + ')');
+        });
     </script>
 
     <section>
@@ -177,7 +179,8 @@
 
             <p class="sub-head">
                 <img alt="" src="/images/chat-icon.png">
-                Comment</p>
+                Comment
+            </p>
             <div class="form-inline" role="form">
                 <div class="row">
                     <div class="col-sm-12">
@@ -235,7 +238,8 @@
                             <div class="col-sm-10 blockquote-body">
                                 <p>
                                     <img alt="" src="/images/qoute-icon.png">
-                                    Here is the new password for your mailbox. [ Acxse94458 ], and find attachment for details.</p>
+                                    Here is the new password for your mailbox. [ Acxse94458 ], and find attachment for details.
+                                </p>
                             </div>
 
                             <div class="col-sm-2 text-right">
@@ -260,7 +264,8 @@
                             </div>
                             <div class="col-sm-10 blockquote-body">
                                 <p>
-                                    <img alt="" src="/images/qoute-icon.png">Here is the new password for your mailbox. [ Acxse94458 ], and find attachment for details.</p>
+                                    <img alt="" src="/images/qoute-icon.png">Here is the new password for your mailbox. [ Acxse94458 ], and find attachment for details.
+                                </p>
                             </div>
 
                             <div class="col-sm-2 text-right">
@@ -280,7 +285,8 @@
                             </div>
                             <div class="col-sm-10 blockquote-body">
                                 <p>
-                                    <img alt="" src="/images/qoute-icon.png">Here is the new password for your mailbox. [ Acxse94458 ], and find attachment for details.</p>
+                                    <img alt="" src="/images/qoute-icon.png">Here is the new password for your mailbox. [ Acxse94458 ], and find attachment for details.
+                                </p>
                             </div>
 
                             <div class="col-sm-2 text-right">
@@ -305,60 +311,31 @@
     <!-- Modal -->
     <div id="history" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
+                    <h4 class="modal-title">History</h4>
                 </div>
-                <div class="modal-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Firstname</th>
-                                    <th>Lastname</th>
-                                    <th>Age</th>
-                                    <th>City</th>
-                                    <th>Country</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Anna</td>
-                                    <td>Pitt</td>
-                                    <td>35</td>
-                                    <td>New York</td>
-                                    <td>USA</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Anna</td>
-                                    <td>Pitt</td>
-                                    <td>35</td>
-                                    <td>New York</td>
-                                    <td>USA</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Anna</td>
-                                    <td>Pitt</td>
-                                    <td>35</td>
-                                    <td>New York</td>
-                                    <td>USA</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="table-responsive">
+                    <div style="height: 200px; width: 600px;">
+                        <asp:GridView ID="grdHistory" runat="server" CssClass="table"
+                            AutoGenerateColumns="false" Font-Names="Arial" ShowHeader="false"
+                            Font-Size="11pt" AlternatingRowStyle-BackColor="#C2D69B">
+                            <Columns>
+                                <asp:BoundField ItemStyle-Width="150px" DataField="Type" />
+                                <asp:BoundField ItemStyle-Width="150px" DataField="Previous" />
+                                <asp:BoundField ItemStyle-Width="150px" DataField="Current" />
+                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedBy" />
+                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedOn" />
+                            </Columns>
+                        </asp:GridView>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
-
         </div>
     </div>
     <script>
@@ -370,12 +347,12 @@
         //});
         $('#attachment ').click(function () {
             $("span.plus-attach").toggleClass("minus-attach");
-        });        
+        });
 
     </script>
-    <script type="text/javascript">       
+    <script type="text/javascript">
 
-        $(".togglea").click(function () {           
+        $(".togglea").click(function () {
             var items = $(".togglea");
             for (i = 0; i < items.length; i++) {
                 var sibling = items[0].nextSibling;

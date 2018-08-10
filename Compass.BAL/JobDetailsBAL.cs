@@ -10,7 +10,7 @@ using System.Data;
 namespace Compass.BAL
 {
     public class JobDetailsBAL
-    {    
+    {
 
         public List<JobDetailsBE> GetJobDetailsBAL(JobDetailsBE objJobDetailsBE)
         {
@@ -105,5 +105,21 @@ namespace Compass.BAL
             }
             return squery;
         }
+
+        public DataTable GetJobHistoryDAL(int JobId)
+        {
+            JobDetailsDAL jobDetailsDAL = new JobDetailsDAL();
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = jobDetailsDAL.GetJobHistoryDAL(JobId);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
+
     }
 }

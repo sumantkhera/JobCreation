@@ -28,6 +28,8 @@ namespace Compass.ModuleUI
                 {
                     GetJobAttachments();
                     GetJobCommentsWithAttachments();
+                    grdHistory.DataSource = jobDetailsBAL.GetJobHistoryDAL(Convert.ToInt32(Request.QueryString["JobId"]));
+                    grdHistory.DataBind();
                 }
                 else
                 {
@@ -311,7 +313,7 @@ namespace Compass.ModuleUI
 
                     if (previous != lstAttachments[i].CommentId)
                     {
-                        AttachmentCountByCommentID = lstAttachments.Where(x => x.CommentId == lstAttachments[i].CommentId).Count();                      
+                        AttachmentCountByCommentID = lstAttachments.Where(x => x.CommentId == lstAttachments[i].CommentId).Count();
 
                         sHTML.Append("<blockquote>");
                         sHTML.Append("<div class='submit-by'> Added By: ");
@@ -321,7 +323,7 @@ namespace Compass.ModuleUI
                         sHTML.Append(" on ");
                         sHTML.Append("<span class='comment-date'>");
                         sHTML.Append(lstAttachments[i].CreatedOn.Value.ToString("MM/dd/yyyy"));
-                        sHTML.Append("</span>");                        
+                        sHTML.Append("</span>");
                         sHTML.Append("</div>");
                         sHTML.Append("<div class='col-sm-10 blockquote-body'>");
                         sHTML.Append("<p> <img alt='' src='/images/qoute-icon.png'>");
@@ -330,30 +332,30 @@ namespace Compass.ModuleUI
                         sHTML.Append("</div>");
                         sHTML.Append("<div class='col-sm-2 text-right'>");
                         sHTML.Append("<i class='fa fa-paperclip fa-rotate-270' aria-hidden='true'></i>");
-                        sHTML.Append("<a class='link-underline togglea' id='link-underline" + (i+1).ToString()+"'><img alt = '' src='/images/attachment-icon.png' />");
+                        sHTML.Append("<a class='link-underline togglea' id='link-underline" + (i + 1).ToString() + "'><img alt = '' src='/images/attachment-icon.png' />");
                         sHTML.Append("Attachments " + "[" + AttachmentCountByCommentID + "]");
                         sHTML.Append("</a>");
                         sHTML.Append("<div class='attachment-download" + (i + 1).ToString() + "' style='display: none'>");
 
                         previous = lstAttachments[i].CommentId;
-                    }                    
-                    
+                    }
+
                     sHTML.Append(String.Format("<a class='btn btn-link' href='DownloadAttachment.aspx?FilePath={0} &FileName={1}'>", lstAttachments[i].Attachment.Path, lstAttachments[i].Attachment.Name));
                     sHTML.Append(lstAttachments[i].Attachment.Name);
                     sHTML.Append("</a>");
-                      
+
                 }
 
             }
 
             if (lstAttachments.Count > 0)
             {
-                sHTML.Append("</div></blockquote>"); 
+                sHTML.Append("</div></blockquote>");
             }
 
             divComments.InnerHtml = sHTML.ToString();
         }
-  
+
         private void GetJobAttachments()
         {
             AttachmentsBE attachmentsBE = new AttachmentsBE();
@@ -365,12 +367,12 @@ namespace Compass.ModuleUI
 
             if (Request.QueryString["JobId"] != null)
             {
-                attachmentsBE.JobDetails.Id =  Convert.ToInt32(Request.QueryString["JobId"]);
-            }            
+                attachmentsBE.JobDetails.Id = Convert.ToInt32(Request.QueryString["JobId"]);
+            }
 
             List<AttachmentsBE> lstAttachments = attachmentBAL.GetJobAttachmentsBAL(attachmentsBE);
 
-            if(lstAttachments.Count > 0)
+            if (lstAttachments.Count > 0)
             {
                 hdnAttachementCount.Value = Convert.ToString(lstAttachments.Count());
                 //attachment.InnerHtml = "Attachment " + lstAttachments.Count().ToString();
@@ -379,12 +381,12 @@ namespace Compass.ModuleUI
                 {
                     HyperLink hplnk = new HyperLink();
                     hplnk.Text = item.Name;
-                    hplnk.ID= Convert.ToString(item.JobAttachmentId);
+                    hplnk.ID = Convert.ToString(item.JobAttachmentId);
                     hplnk.CssClass = "btn btn-link";
                     hplnk.NavigateUrl = "~/ModuleUI/DownloadAttachment.aspx?FilePath=" + item.Path + "&FileName=" + item.Name;
-                    pnlAttachment.Controls.Add(hplnk); 
-                }               
-            }          
+                    pnlAttachment.Controls.Add(hplnk);
+                }
+            }
         }
 
         #endregion
@@ -392,15 +394,15 @@ namespace Compass.ModuleUI
         #region Events   
 
         protected void btnSubmit_Click(object sender, EventArgs e)
-        {           
+        {
             JobDetailsBE jobDetailsBE = new JobDetailsBE();
             jobDetailsBE.Comments = new CommentsBE();
 
             jobDetailsBE.Action = "EditJobDetails";
-            jobDetailsBE.ClientId = Convert.ToInt32(Session["ClientId"]); 
-            jobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);            
+            jobDetailsBE.ClientId = Convert.ToInt32(Session["ClientId"]);
+            jobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
             jobDetailsBE.Comments.CreatedBy = Convert.ToInt32(Session["UserId"]);
-            
+
 
             jobDetailsBE.Comments.Description = txtComments.Text.Trim();
 
@@ -432,7 +434,7 @@ namespace Compass.ModuleUI
                 {
                     jobDetailsBE.QAUserId = Convert.ToInt32(ddlQAUser.SelectedValue);
                 }
-                if (ddlTeam.SelectedValue != null || ddlTeam.SelectedIndex != 0  || ddlTeam.SelectedIndex != -1)
+                if (ddlTeam.SelectedValue != null || ddlTeam.SelectedIndex != 0 || ddlTeam.SelectedIndex != -1)
                 {
                     jobDetailsBE.AllocatedToTeam = Convert.ToInt32(ddlTeam.SelectedValue);
                     jobDetailsBE.AllocationDate = DateTime.Now;
@@ -442,7 +444,7 @@ namespace Compass.ModuleUI
                     jobDetailsBE.AllocatedToUser = Convert.ToInt32(ddlUser.SelectedValue);
                 }
 
-                    jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;               
+                jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;
             }
 
             if (Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QA.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.MEMBER.ToString())
@@ -452,8 +454,8 @@ namespace Compass.ModuleUI
                 {
                     jobDetailsBE.JobStatusId = Convert.ToInt32(ddlJobStatus.SelectedValue);
                 }
-                    jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;                
-               
+                jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;
+
             }
             if (Session["ClientId"] != null)
             {
@@ -461,7 +463,7 @@ namespace Compass.ModuleUI
                 {
                     if (ddlJobStatus.SelectedValue != null || ddlJobStatus.SelectedIndex != 0 || ddlJobStatus.SelectedIndex != -1)
                     {
-                        jobDetailsBE.JobStatusId = Convert.ToInt32(ddlJobStatus.SelectedValue);                        
+                        jobDetailsBE.JobStatusId = Convert.ToInt32(ddlJobStatus.SelectedValue);
                     }
                     jobDetailsBE.AllocationDate = DateTime.Now;
                 }
