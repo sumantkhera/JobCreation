@@ -64,3 +64,4 @@ obj/
 /CompassBE/obj
 
 /packages
+*.dbmdl
