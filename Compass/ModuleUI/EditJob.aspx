@@ -4,8 +4,8 @@
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
             var hdnAttachementCountValue = document.getElementById('<%= hdnAttachementCount.ClientID %>').value;
-             $('#<%=lblAttachmentCount.ClientID%>').html('(' + hdnAttachementCountValue + ')');
-         });
+            $('#<%=lblAttachmentCount.ClientID%>').html('(' + hdnAttachementCountValue + ')');
+        });
     </script>
 
     <section>
@@ -138,7 +138,7 @@
                                 <label for="email">Allocated to Team</label>
                             </div>
                             <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">                                   
+                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -170,12 +170,12 @@
                         </div>
                     </div>
 
-                     <div class="col-sm-12">
+                    <div class="col-sm-12">
                         <div class="col-sm-6">
                             <div class="btn-style">
                                 <asp:Button ID="btnUpdate" Text="Update" class="btn btn-submit" runat="server" OnClick="btnUpdate_Click" />
                             </div>
-                        </div>                       
+                        </div>
                     </div>
 
                 </div>
@@ -183,7 +183,8 @@
 
             <p class="sub-head">
                 <img alt="" src="/images/chat-icon.png">
-                Job Comments</p>
+                Job Comments
+            </p>
             <div class="form-inline" role="form">
                 <div class="row">
                     <div class="col-sm-12">
@@ -229,8 +230,7 @@
                             <a href="#" data-toggle="modal" data-target="#history" class="link-underline">History</a>
                         </div>
                     </div>
-                    <div id="divComments" class="col-sm-12" runat="server">                    
-
+                    <div id="divComments" class="col-sm-12" runat="server">
                     </div>
                 </div>
             </div>
@@ -253,14 +253,14 @@
                 <div class="table-responsive">
                     <div style="height: 200px; width: 600px;">
                         <asp:GridView ID="grdHistory" runat="server" CssClass="table"
-                            AutoGenerateColumns="false" Font-Names="Arial" ShowHeader="false"
-                            Font-Size="11pt" AlternatingRowStyle-BackColor="#C2D69B">
+                            AutoGenerateColumns="false" Font-Names="Arial"
+                            Font-Size="11pt">
                             <Columns>
-                                <asp:BoundField ItemStyle-Width="150px" DataField="Type" />
-                                <asp:BoundField ItemStyle-Width="150px" DataField="Previous" />
-                                <asp:BoundField ItemStyle-Width="150px" DataField="Current" />
-                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedBy" />
-                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedOn" />
+                                <asp:BoundField ItemStyle-Width="150px" DataField="Type" HeaderText="Type" />
+                                <asp:BoundField ItemStyle-Width="150px" DataField="Previous" HeaderText="Previous" />
+                                <asp:BoundField ItemStyle-Width="150px" DataField="Current" HeaderText="Current" />
+                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedBy" HeaderText="ChangedBy" />
+                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedOn" HeaderText="ChangedOn" DataFormatString="{0:MM/dd/yyyy}" />
                             </Columns>
                         </asp:GridView>
                     </div>
@@ -284,10 +284,9 @@
         });
 
     </script>
-    <script type="text/javascript">       
+    <script type="text/javascript">
 
-        function ToggleAttachments(obj)
-        {
+        function ToggleAttachments(obj) {
             var sibling = obj.nextSibling;
             $(sibling).slideToggle();
         }
