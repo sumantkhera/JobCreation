@@ -526,17 +526,17 @@ namespace Compass.ModuleUI
                 }
             }
 
+            jobDetailsBE.CreatedBy = Convert.ToInt32(Session["UserId"]);
+
             string result = jobDetailsBAL.EditJobStatusAndAllocationDetailsBAL(jobDetailsBE);
 
             if (result == "1")
             {
+                grdHistory.DataSource = jobDetailsBAL.GetJobHistoryDAL(Convert.ToInt32(Request.QueryString["JobId"]));
+                grdHistory.DataBind();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "", "<script>alert('Job Status And Allocation Details Edited Succesfully');</script>", false);
             }
-
         }
-
         #endregion
-
-
     }
 }
