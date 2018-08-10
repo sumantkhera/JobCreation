@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Job List" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="JobList.aspx.cs"
+﻿<%@ Page Title="Search Jobs”" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="JobList.aspx.cs"
     Inherits="Compass.ModuleUI.JobList"
     EnableEventValidation="true" %>
 
@@ -37,11 +37,11 @@
                                     </li>
                                     <li>
                                         <label>From</label>
-                                        <asp:TextBox ID="txtFromDate" runat="server" class="form-control txtDate" placeholder="From date"></asp:TextBox>
+                                        <asp:TextBox ID="txtFromDate" runat="server" class="form-control txtDate" placeholder="From Date"></asp:TextBox>
                                     </li>
                                     <li>
                                         <label>To</label>
-                                        <asp:TextBox ID="txtToDate" runat="server" class="form-control txtDate" placeholder="To date"></asp:TextBox>
+                                        <asp:TextBox ID="txtToDate" runat="server" class="form-control txtDate" placeholder="To Date"></asp:TextBox>
                                     </li>
                                     <li>
                                         <label>Status</label>
@@ -53,7 +53,7 @@
 
                                     </li>
                                     <li>
-                                        <label>Allocated</label>
+                                        <label>Allocated To</label>
                                         <asp:DropDownList ID="ddlUser" runat="server" class="form-control"></asp:DropDownList>
                                     </li>
                                     <li>
@@ -80,7 +80,7 @@
                     <asp:GridView ID="grdViewJobList" runat="server"
                         AutoGenerateColumns="false"
                         CssClass="table"
-                        PageSize="5"
+                        PageSize="15"
                         AllowPaging="true"
                         OnRowDataBound="grdViewJobList_RowDataBound"
                         AutoGenerateSelectButton="true"
