@@ -280,8 +280,8 @@
         //    $(".attachment-download1").slideToggle();
         //});
         $('#attachment ').click(function () {
-            $("span.plus-attach").toggleClass("minus-attach");
-        });        
+            $("span.minus-attach").toggleClass("plus-attach");
+        });
 
     </script>
     <script type="text/javascript">       
@@ -300,8 +300,7 @@
         //        //$(sibling.className).slideToggle();
         //        $(sibling).slideToggle();
         //    }
-        //});
-
+        //});       
 
     </script>
 </asp:Content>
