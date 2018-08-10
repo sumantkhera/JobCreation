@@ -13,6 +13,7 @@ namespace CompassBE
             Attachments = new AttachmentsColllection();
         }
 
+        public int UserId { get; set; }
         public string Action { get; set; }
         public int Id { get; set; }
         public int? ClientId { get; set; }

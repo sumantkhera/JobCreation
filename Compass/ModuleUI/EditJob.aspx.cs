@@ -405,7 +405,7 @@ namespace Compass.ModuleUI
             jobDetailsBE.ClientId = Convert.ToInt32(Session["ClientId"]);
             jobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
             jobDetailsBE.Comments.CreatedBy = Convert.ToInt32(Session["UserId"]);
-
+            jobDetailsBE.UserId = Convert.ToInt32(Session["UserId"]);
 
             jobDetailsBE.Comments.Description = txtComments.Text.Trim();
 
@@ -472,6 +472,7 @@ namespace Compass.ModuleUI
 
             jobDetailsBE.Action = "EditJobStatusAndAllocationDetails";
             jobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
+            jobDetailsBE.UserId = Convert.ToInt32(Session["UserId"]);
 
             if (
                 Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.PM.ToString())
