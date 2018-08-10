@@ -311,7 +311,7 @@ namespace Compass.ModuleUI
                     if (i != 0 && previous != lstAttachments[i].CommentId)
                     {
                         sHTML.Append("</div>");
-                        sHTML.Append("</div></blockquote>");
+                        sHTML.Append("</div></div></blockquote>");
                     }
 
                     if (previous != lstAttachments[i].CommentId)
@@ -328,7 +328,7 @@ namespace Compass.ModuleUI
                         sHTML.Append(lstAttachments[i].CreatedOn.Value.ToString("MM/dd/yyyy"));
                         sHTML.Append("</span>");
                         sHTML.Append("</div>");
-                        sHTML.Append("<div class='col-sm-8 blockquote-body'>");
+                        sHTML.Append("<div class='row'><div class='col-sm-8 blockquote-body'>");
                         sHTML.Append("<p> <img alt='' src='/images/qoute-icon.png'>");
                         sHTML.Append(lstAttachments[i].Description);
                         sHTML.Append("</p>");
@@ -353,7 +353,7 @@ namespace Compass.ModuleUI
 
             if (lstAttachments.Count > 0)
             {
-                sHTML.Append("</div></blockquote>"); 
+                sHTML.Append("</div></div></blockquote>"); 
             }
 
             divComments.InnerHtml = sHTML.ToString();
