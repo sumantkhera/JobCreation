@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Search Jobs”" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="JobList.aspx.cs"
+﻿<%@ Page Title="Search Jobs" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="JobList.aspx.cs"
     Inherits="Compass.ModuleUI.JobList"
     EnableEventValidation="true" %>
 
