@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[Sys_Comments] (
+    [Comment_ID]                    INT             IDENTITY (1, 1) NOT NULL,
+    [Request_id]                    INT             NULL,
+    [Comment_Date]                  DATETIME        NULL,
+    [Comment_AddedBy]               VARCHAR (80)    CONSTRAINT [DF_Sys_Comments_Comment_AddedBy] DEFAULT ('') NOT NULL,
+    [Comment_Text]                  TEXT            CONSTRAINT [DF_Sys_Comments_Comment_Text] DEFAULT ('') NOT NULL,
+    [comment_AddedByUserid]         VARCHAR (40)    DEFAULT ('') NOT NULL,
+    [comment_PresalesStatus]        VARCHAR (100)   DEFAULT ('') NOT NULL,
+    [Comment_Status]                INT             DEFAULT ((0)) NOT NULL,
+    [Comment_Hours]                 NUMERIC (18, 2) DEFAULT ((0)) NOT NULL,
+    [Comment_SalesStatus]           VARCHAR (100)   DEFAULT ('') NOT NULL,
+    [Comment_Budget]                VARCHAR (100)   DEFAULT ('') NULL,
+    [Comment_Currency]              INT             DEFAULT ((0)) NULL,
+    [Comment_Competitors]           VARCHAR (4000)  DEFAULT ('') NULL,
+    [Comment_BudgetRemarks]         VARCHAR (1000)  DEFAULT ('') NULL,
+    [Comment_CompetitorsRemarks]    VARCHAR (1000)  DEFAULT ('') NULL,
+    [Comment_SRType_ID]             INT             DEFAULT ((0)) NULL,
+    [Comment_ActionDueDate]         DATETIME        NULL,
+    [Comment_IsLeadOrOpportunity]   VARCHAR (50)    DEFAULT ('') NULL,
+    [Comment_SalesStageID]          INT             DEFAULT ((0)) NULL,
+    [Comment_SalesStageRatingID]    INT             DEFAULT ((0)) NULL,
+    [Comment_RemarksForEarlyUpdate] VARCHAR (5000)  DEFAULT ('') NOT NULL,
+    [Comment_PresalesCordinator]    VARCHAR (100)   DEFAULT ('') NOT NULL,
+    [Comment_TechnicalCordinator]   VARCHAR (100)   DEFAULT ('') NOT NULL,
+    CONSTRAINT [PK_Sys_Comments] PRIMARY KEY CLUSTERED ([Comment_ID] ASC) WITH (FILLFACTOR = 90)
+);
+
