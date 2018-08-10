@@ -530,7 +530,7 @@ namespace Compass.ModuleUI
 
             if (result == "1")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "<script>alert('Job Status And Allocatio nDetails Editted Succesfully');</script>", false);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "<script>alert('Job Status And Allocation Details Edited Succesfully');</script>", false);
             }
 
         }
