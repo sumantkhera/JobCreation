@@ -183,7 +183,41 @@
 
                         </div>
                     </div>
+                    <!-- Modal -->
+                    <div id="history" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">History</h4>
+                                </div>
+                                <div class="table-responsive">
+                                    <div style="height: 200px; width: 600px;">
+                                        <asp:GridView ID="grdHistory" runat="server" CssClass="table"
+                                            AutoGenerateColumns="false" Font-Names="Arial" ShowFooter="false"
+                                            Font-Size="11pt">
+                                            <Columns>
+                                                <asp:BoundField ItemStyle-Width="150px" DataField="Type" HeaderText="Type" />
+                                                <asp:BoundField ItemStyle-Width="150px" DataField="Previous" HeaderText="Previous" />
+                                                <asp:BoundField ItemStyle-Width="150px" DataField="Current" HeaderText="Current" />
+                                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedBy" HeaderText="ChangedBy" />
+                                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedOn" HeaderText="ChangedOn" DataFormatString="{0:MM/dd/yyyy}" />
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </ContentTemplate>
+                <Triggers>
+                    <asp:PostBackTrigger ControlID="grdHistory" />
+                </Triggers>
             </asp:UpdatePanel>
             <p class="sub-head">
                 <img alt="" src="/images/chat-icon.png">
@@ -241,41 +275,6 @@
             <!-- container -->
         </div>
     </section>
-
-
-
-    <!-- Modal -->
-    <div id="history" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">History</h4>
-                </div>
-                <div class="table-responsive">
-                    <div style="height: 200px; width: 600px;">
-                        <asp:GridView ID="grdHistory" runat="server" CssClass="table"
-                            AutoGenerateColumns="false" Font-Names="Arial" ShowFooter="false"
-                            Font-Size="11pt">
-                            <Columns>
-                                <asp:BoundField ItemStyle-Width="150px" DataField="Type" HeaderText="Type" />
-                                <asp:BoundField ItemStyle-Width="150px" DataField="Previous" HeaderText="Previous" />
-                                <asp:BoundField ItemStyle-Width="150px" DataField="Current" HeaderText="Current" />
-                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedBy" HeaderText="ChangedBy" />
-                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedOn" HeaderText="ChangedOn" DataFormatString="{0:MM/dd/yyyy}" />
-                            </Columns>
-                        </asp:GridView>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
     <script>
         $("#attachment").click(function () {
             $(".attachment-download").slideToggle();
@@ -286,7 +285,7 @@
         $('#attachment ').click(function () {
             $("span.minus-attach").toggleClass("plus-attach");
         });
-       
+
     </script>
     <script type="text/javascript">
 
