@@ -18,7 +18,7 @@
                         <span>
                             <img alt="" src="/images/new-job-icon.png"></span> View Job Details
                     </div>
-                    <p class="sub-head">Job Request Details</p>
+                    <p class="sub-head"> <img alt="" src="/images/reqtangle.jpg"> Job Request Details</p>
                 </div>
             </div>
             <div class="form-inline" role="form">
@@ -116,7 +116,7 @@
                 </div>
             </div>
 
-            <p class="sub-head">Job Status and Allocation Details</p>
+            <p class="sub-head">  <img alt="" src="/images/reqtangle.jpg"> Job Status and Allocation Details</p>
             <asp:UpdatePanel ID="up" runat="server">
                 <ContentTemplate>
                     <div class="form-inline" role="form">
