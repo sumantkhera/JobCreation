@@ -253,7 +253,7 @@
                 <div class="table-responsive">
                     <div style="height: 200px; width: 600px;">
                         <asp:GridView ID="grdHistory" runat="server" CssClass="table"
-                            AutoGenerateColumns="false" Font-Names="Arial"
+                            AutoGenerateColumns="false" Font-Names="Arial" ShowFooter="false"
                             Font-Size="11pt">
                             <Columns>
                                 <asp:BoundField ItemStyle-Width="150px" DataField="Type" HeaderText="Type" />
