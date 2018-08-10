@@ -117,70 +117,74 @@
             </div>
 
             <p class="sub-head">Job Status and Allocation Details</p>
-            <div class="form-inline" role="form">
-                <div class="row">
+            <asp:UpdatePanel ID="up" runat="server">
+                <ContentTemplate>
+                    <div class="form-inline" role="form">
+                        <div class="row">
 
 
-                    <div class="col-sm-12">
-                        <div class="form-group form-group-style">
-                            <div class="col-sm-2 text-area-label">
-                                <label for="email">Job Status </label>
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-style">
+                                    <div class="col-sm-2 text-area-label">
+                                        <label for="email">Job Status </label>
+                                    </div>
+                                    <div class="col-sm-10 text-area-style padd-left-0">
+                                        <asp:DropDownList ID="ddlJobStatus" runat="server" class="form-control">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-10 text-area-style padd-left-0">
-                                <asp:DropDownList ID="ddlJobStatus" runat="server" class="form-control">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group form-group-style">
                             <div class="col-sm-4">
-                                <label for="email">Allocated to Team</label>
+                                <div class="form-group form-group-style">
+                                    <div class="col-sm-4">
+                                        <label for="email">Allocated to Team</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">
-                                </asp:DropDownList>
+                            <div id="divUser" class="col-sm-4" runat="server">
+                                <div class="form-group form-group-style">
+                                    <div class="col-sm-4">
+                                        <label for="email">User</label>
+                                        <%--<asp:Label ID="lblUser" Text="User" runat="server" />--%>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="ddlUser" runat="server" class="form-control">
+                                            <asp:ListItem>Select</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div id="divUser" class="col-sm-4" runat="server">
-                        <div class="form-group form-group-style">
-                            <div class="col-sm-4">
-                                <label for="email">User</label>
-                                <%--<asp:Label ID="lblUser" Text="User" runat="server" />--%>
-                            </div>
-                            <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlUser" runat="server" class="form-control">
-                                    <asp:ListItem>Select</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="divQaUser" class="col-sm-4" runat="server">
-                        <div class="form-group form-group-style">
-                            <div class="col-sm-4">
-                                <label for="email">QA User</label>
-                                <%--<asp:Label ID="lblQAUser" Text="QA User" runat="server" />--%>
-                            </div>
-                            <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlQAUser" runat="server" class="form-control">
-                                    <asp:ListItem>Select</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-sm-12">
-                        <div class="col-sm-6">
-                            <div class="btn-style">
-                                <asp:Button ID="btnUpdate" Text="Update" class="btn btn-submit" runat="server" OnClick="btnUpdate_Click" />
+                            <div id="divQaUser" class="col-sm-4" runat="server">
+                                <div class="form-group form-group-style">
+                                    <div class="col-sm-4">
+                                        <label for="email">QA User</label>
+                                        <%--<asp:Label ID="lblQAUser" Text="QA User" runat="server" />--%>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="ddlQAUser" runat="server" class="form-control">
+                                            <asp:ListItem>Select</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <div class="btn-style">
+                                        <asp:Button ID="btnUpdate" Text="Update" class="btn btn-submit" runat="server" OnClick="btnUpdate_Click" />
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-
-                </div>
-            </div>
-
+                </ContentTemplate>
+            </asp:UpdatePanel>
             <p class="sub-head">
                 <img alt="" src="/images/chat-icon.png">
                 Job Comments
@@ -282,7 +286,7 @@
         $('#attachment ').click(function () {
             $("span.minus-attach").toggleClass("plus-attach");
         });
-
+       
     </script>
     <script type="text/javascript">
 
@@ -304,21 +308,19 @@
     </script>
 
     <style type="text/css">
-        div#gridPanel 
-{
-   width:900px;
-   overflow:scroll;
-   position:relative;
-}
+        div#gridPanel {
+            width: 900px;
+            overflow: scroll;
+            position: relative;
+        }
 
 
-div#gridPanel th
-{  
-   top: expression(document.getElementById("gridPanel").scrollTop-2);
-left:expression(parentNode.parentNode.parentNode.parentNode.scrollLeft);
-   position: relative;
-   z-index: 20;
-}
+            div#gridPanel th {
+                top: expression(document.getElementById("gridPanel").scrollTop-2);
+                left: expression(parentNode.parentNode.parentNode.parentNode.scrollLeft);
+                position: relative;
+                z-index: 20;
+            }
     </style>
 </asp:Content>
 
