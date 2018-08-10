@@ -304,8 +304,6 @@ namespace Compass.ModuleUI
             {
                 int previous = 0, AttachmentCountByCommentID = 0;
 
-
-
                 for (int i = 0; i < lstAttachments.Count(); i++)
                 {
                     if (i != 0 && previous != lstAttachments[i].CommentId)
@@ -316,7 +314,7 @@ namespace Compass.ModuleUI
 
                     if (previous != lstAttachments[i].CommentId)
                     {
-                        AttachmentCountByCommentID = lstAttachments.Where(x => x.CommentId == lstAttachments[i].CommentId).Count();
+                        AttachmentCountByCommentID = lstAttachments.Where(x => x.CommentId == lstAttachments[i].CommentId && x.Attachment.JobAttachmentId > 0).Count();
 
                         sHTML.Append("<blockquote>");
                         sHTML.Append("<div class='submit-by'> Added By: ");
@@ -343,10 +341,12 @@ namespace Compass.ModuleUI
                         previous = lstAttachments[i].CommentId;
                     }
 
-                    sHTML.Append(String.Format("<a class='btn btn-link' href='DownloadAttachment.aspx?FilePath={0} &FileName={1}'>", lstAttachments[i].Attachment.Path, lstAttachments[i].Attachment.Name));
-                    sHTML.Append(lstAttachments[i].Attachment.Name);
-                    sHTML.Append("</a>");
-
+                    if (lstAttachments[i].Attachment.JobAttachmentId > 0)
+                    {
+                        sHTML.Append(String.Format("<a class='btn btn-link' href='DownloadAttachment.aspx?FilePath={0} &FileName={1}'>", lstAttachments[i].Attachment.Path, lstAttachments[i].Attachment.Name));
+                        sHTML.Append(lstAttachments[i].Attachment.Name);
+                        sHTML.Append("</a>");
+                    }
                 }
 
             }
