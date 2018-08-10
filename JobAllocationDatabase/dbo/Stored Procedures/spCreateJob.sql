@@ -37,14 +37,18 @@ BEGIN
 	DECLARE @JobId INT
 	SET @JobId = @@identity
 
-	--INSERT INTO Comments (JobId, ClientId, Description, CreatedOn, CreatedBy)
-	--	VALUES (@JobId, @ClientId, @CommentDescription, @CretaedDate, @CreatedBy)
-
-	--DECLARE @CommentId INT
-	--SET @CommentId = @@identity
-
 	INSERT INTO JobAttachments (Name, Path, CreatedOn, CreatedBy, JobId, CommentId)
 	SELECT  attachment.Name ,  attachment.Path , getdate(), attachment.CreatedBy ,  @JobId ,  attachment.CommentId  from @Attachments attachment
+
+	-----Add record for History STARTS----	
+	--Status change
+	INSERT INTO JobStatusChangedHistory (JobId, PrevStatus, NewStatus, ChangedBy, ChangedOn) VALUES
+	(@JobId, NULL, @JobStatusId, @SubmitBy, GETDATE())
+
+	--Team changes
+	INSERT INTO JobAllocationChangedHistory (JobId, PrevTeam, NewTeam, ChangedBy, ChangedOn) VALUES
+	(@JobId, NULL, @AllocatedToTeam, @SubmitBy, GETDATE())
+	-----Add record for History ENDS----
 
 	SELECT
 		1 AS MSG
