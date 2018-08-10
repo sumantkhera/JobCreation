@@ -170,5 +170,19 @@ namespace Compass.BAL
             }
             return dt;
         }
+
+        public DataTable GetBranchWiseJobStatusReportBAL(jobFiltersBE jobFilters)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = compassDAL.GetBranchWiseJobStatusReportDAL(jobFilters);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
     }
 }

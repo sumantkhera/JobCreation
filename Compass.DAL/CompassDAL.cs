@@ -292,6 +292,30 @@ namespace Compass.DAL
             return dt;
         }
 
+        public DataTable GetBranchWiseJobStatusReportDAL(jobFiltersBE jobFilters)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlParameter[] param =
+                {
+                                        new SqlParameter("@UserId",jobFilters.Id ) ,                                       
+                                        new SqlParameter("@BranchId",jobFilters.BranchId ) ,
+                                        new SqlParameter("@StartDate",jobFilters.FromDate ) ,
+                                        new SqlParameter("@EndDate",jobFilters.ToDate ) ,
+                                        
+                 };
+               
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spListJobs", param);
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //  LogUtility.SaveErrorLogEntry(ex);
+            }
+            return dt;
+        }
+
     }
 
 

@@ -401,7 +401,7 @@ namespace Compass.ModuleUI
             JobDetailsBE jobDetailsBE = new JobDetailsBE();
             jobDetailsBE.Comments = new CommentsBE();
 
-            jobDetailsBE.Action = "EditJobDetails";
+            jobDetailsBE.Action = "AddJobComments";
             jobDetailsBE.ClientId = Convert.ToInt32(Session["ClientId"]);
             jobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
             jobDetailsBE.Comments.CreatedBy = Convert.ToInt32(Session["UserId"]);
