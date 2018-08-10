@@ -16,9 +16,9 @@
                 <div class="col-sm-12">
                     <div class="add-jobs">
                         <span>
-                            <img alt="" src="/images/new-job-icon.png"></span> View Job Details
+                            <img class="rectangle-icon"  alt="" src="/images/new-job-icon.png"></span> View Job Details
                     </div>
-                    <p class="sub-head"> <img alt="" src="/images/reqtangle.jpg"> Job Request Details</p>
+                    <p class="sub-head"> <img class="rectangle-icon" alt="" src="/images/reqtangle.jpg"> Job Request Details</p>
                 </div>
             </div>
             <div class="form-inline" role="form">
@@ -116,7 +116,7 @@
                 </div>
             </div>
 
-            <p class="sub-head">  <img alt="" src="/images/reqtangle.jpg"> Job Status and Allocation Details</p>
+            <p class="sub-head">  <img class="rectangle-icon" alt="" src="/images/reqtangle.jpg"> Job Status and Allocation Details</p>
             <asp:UpdatePanel ID="up" runat="server">
                 <ContentTemplate>
                     <div class="form-inline" role="form">
@@ -220,7 +220,7 @@
                 </Triggers>
             </asp:UpdatePanel>
             <p class="sub-head">
-                <img alt="" src="/images/chat-icon.png">
+                <img class="rectangle-icon"  alt="" src="/images/chat-icon.png">
                 Job Comments
             </p>
             <div class="form-inline" role="form">
