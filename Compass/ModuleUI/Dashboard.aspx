@@ -34,7 +34,7 @@
 
 
                 <div class="table-responsive">
-                    <asp:GridView ID="grdViewJobList" runat="server"
+                    <asp:GridView ID="gvBranchWiseJobStatus" runat="server"
                         AutoGenerateColumns="false"
                         CssClass="table">
                         <Columns>
@@ -46,7 +46,7 @@
 
                             <asp:TemplateField HeaderText="PO">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblPO" runat="server" Text='<%# Eval("JobNumber")%>'></asp:Label>
+                                    <asp:Label ID="lblPO" runat="server" Text='<%# Eval("PO")%>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Merchandise Tarnsfer">
@@ -70,6 +70,8 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </section>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -103,6 +105,34 @@
                 });               
             });
         });
+
+        google.load('visualization', '1', { packages: ['corechart'] });
+
+        function OverallPerformanceGraphScore() {
+
+        }
+
+        function drawChart() {         
+            var data = google.visualization.arrayToDataTable([  
+            ['Status', 'PO'], ""]);
+            }
+
+        $(function () {  
+      
+        $.ajax({
+            type: "POST",
+            url: "Dashboard.aspx/GetBranchWiseJobStatusReportData?",
+            data: '{vendorId:' + vendorId + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                OverallPerformanceGraphScore(response.d.CurrentPerformance);
+                DrawAllScores(response.d.HistroicPerformance);
+                SetVendorInfo(response.d.VendorInfo);
+            }
+        });
+    });
+
     </script>
 
 </asp:Content>

@@ -69,15 +69,15 @@ namespace Compass.DAL
                     oNewCommentBE.Attachment = new AttachmentsBE();
                     oNewCommentBE.JobDetails = new JobDetailsBE();
                     oNewCommentBE.usr = new UserLogin();
-                    oNewCommentBE.CommentId = Convert.ToInt32(dr["CommentId"].ToString());
+                    oNewCommentBE.CommentId = dr["CommentId"] != DBNull.Value ? Convert.ToInt32(dr["CommentId"]) : 0; 
                     oNewCommentBE.JobDetails.Id = dr["JobId"] != DBNull.Value ? Convert.ToInt32(dr["JobId"]) : 0;
                     oNewCommentBE.ClientId = Convert.ToInt32(dr["ClientId"].ToString());                    
-                    oNewCommentBE.Description = Convert.ToString(dr["CommentDescription"]); 
+                    oNewCommentBE.Description = dr["CommentDescription"] != DBNull.Value ? Convert.ToString(dr["CommentDescription"]) : null;
                     oNewCommentBE.CreatedOn = Convert.ToDateTime(dr["CreatedOn"]);
                     oNewCommentBE.usr.Username = Convert.ToString(dr["UserName"]);
-                    oNewCommentBE.Attachment.JobAttachmentId = Convert.ToInt32(dr["JobAttachmentId"].ToString());
-                    oNewCommentBE.Attachment.Name = Convert.ToString(dr["AttachmentName"]);
-                    oNewCommentBE.Attachment.Path = Convert.ToString(dr["Path"]);
+                    oNewCommentBE.Attachment.JobAttachmentId = dr["JobAttachmentId"] != DBNull.Value ? Convert.ToInt32(dr["JobAttachmentId"]) : 0; 
+                    oNewCommentBE.Attachment.Name = dr["AttachmentName"] != DBNull.Value ? Convert.ToString(dr["AttachmentName"]) : null;
+                    oNewCommentBE.Attachment.Path = dr["Path"] != DBNull.Value ? Convert.ToString(dr["Path"]) : null; 
                     CommentBEList.Add(oNewCommentBE);
                 }              
             }

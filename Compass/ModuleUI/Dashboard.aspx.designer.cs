@@ -58,12 +58,12 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl chart_div;
         
         /// <summary>
-        /// grdViewJobList control.
+        /// gvBranchWiseJobStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdViewJobList;
+        protected global::System.Web.UI.WebControls.GridView gvBranchWiseJobStatus;
     }
 }

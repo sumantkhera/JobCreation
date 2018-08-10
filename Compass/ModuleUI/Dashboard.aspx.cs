@@ -1,4 +1,5 @@
 ﻿using Compass.BAL;
+using CompassBE;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,6 +18,7 @@ namespace Compass.ModuleUI
             if (!this.IsPostBack)
             {
                 BindDropdowns();
+                BindBranchWiseJobStatusReport();
             }
         }
 
@@ -45,6 +47,60 @@ namespace Compass.ModuleUI
                 // ex.Message;
             }
         }
+
+        public void BindBranchWiseJobStatusReport()
+        {
+            jobFiltersBE jobFilters = new jobFiltersBE();
+            DashboardDataDisplay Dasboarddatadisplay = new DashboardDataDisplay();
+            jobFilters.Id = Convert.ToInt32(Session["UserId"]);        
+            jobFilters.FromDate = !string.IsNullOrEmpty(txtFromDate.Text) ? txtFromDate.Text : "01/01/1900";
+            jobFilters.ToDate = !string.IsNullOrEmpty(txtToDate.Text) ? txtToDate.Text : "01/01/1900"; 
+            jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;            
+
+            DataTable dtBranchWiseJobStatus = compassBAL.GetBranchWiseJobStatusReportBAL(jobFilters);
+
+            //var dtBranchWiseJobStatusFinal = (from c in dtBranchWiseJobStatus.AsEnumerable()
+            //                            group c by new
+            //                            {
+            //                                Status = c.Field<string>("JobStatus"),
+            //                                PO = c.Field<int>("PO"),
+            //                                MerchandiseTransfer = c.Field<int>("MerchandiseTransfer"),
+            //                                WeekelyCashReport = c.Field<int>("WeekelyCashReport"),
+            //                                Other = c.Field<int>("Other")                                            
+            //                            } into g
+            //                            select new DashboardDataDisplay
+            //                            {
+            //                                Status = g.Key.Status,
+            //                                PO = g.Key.PO,
+            //                                MerchandiseTransfer =g.Key.MerchandiseTransfer,
+            //                                WeekelyCashReport = g.Key.WeekelyCashReport,
+            //                                Other = g.Key.Other
+            //                            }).ToList();
+
+            //DataTable dt = new DataTable();
+            //dt.Columns.Add("Col A", typeof(int));
+            //dt.Columns.Add("Col B", typeof(string));
+            //dt.Columns.Add("Amount", typeof(int));
+
+            //dtBranchWiseJobStatus.AsEnumerable().GroupBy(x => x.Field<string>("JobStatus")).Select( x=>
+            //    new
+            //    {
+            //        DashboardDataDisplay.Status 
+            //    });
+            ////x => x.Field<string>("JobStatus"));
+            //gvBranchWiseJobStatus.DataSource = dtBranchWiseJobStatusFinal;
+            //gvBranchWiseJobStatus.DataBind();
+        }
+
+        public class DashboardDataDisplay
+        {
+            public string Status { get; set; }
+            public int PO{ get; set; }
+            public int MerchandiseTransfer { get; set; }
+            public int WeekelyCashReport { get; set; }
+            public int Other { get; set; }
+        }
+    
 
         #endregion
     }

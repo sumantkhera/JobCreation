@@ -16,9 +16,9 @@
                 <div class="col-sm-12">
                     <div class="add-jobs">
                         <span>
-                            <img alt="" src="/images/new-job-icon.png"></span> View Job Details
+                            <img class="rectangle-icon"  alt="" src="/images/new-job-icon.png"></span> View Job Details
                     </div>
-                    <p class="sub-head"> <img alt="" src="/images/reqtangle.jpg"> Job Request Details</p>
+                    <p class="sub-head"> <img class="rectangle-icon" alt="" src="/images/reqtangle.jpg"> Job Request Details</p>
                 </div>
             </div>
             <div class="form-inline" role="form">
@@ -116,7 +116,7 @@
                 </div>
             </div>
 
-            <p class="sub-head">  <img alt="" src="/images/reqtangle.jpg"> Job Status and Allocation Details</p>
+            <p class="sub-head">  <img class="rectangle-icon" alt="" src="/images/reqtangle.jpg"> Job Status and Allocation Details</p>
             <asp:UpdatePanel ID="up" runat="server">
                 <ContentTemplate>
                     <div class="form-inline" role="form">
@@ -194,16 +194,16 @@
                                     <h4 class="modal-title">History</h4>
                                 </div>
                                 <div class="table-responsive">
-                                    <div style="height: 200px; width: 600px;">
+                                    <div class="history-table">
                                         <asp:GridView ID="grdHistory" runat="server" CssClass="table"
                                             AutoGenerateColumns="false" Font-Names="Arial" ShowFooter="false"
                                             Font-Size="11pt">
                                             <Columns>
-                                                <asp:BoundField ItemStyle-Width="150px" DataField="Type" HeaderText="Type" />
-                                                <asp:BoundField ItemStyle-Width="150px" DataField="Previous" HeaderText="Previous" />
-                                                <asp:BoundField ItemStyle-Width="150px" DataField="Current" HeaderText="Current" />
-                                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedBy" HeaderText="ChangedBy" />
-                                                <asp:BoundField ItemStyle-Width="150px" DataField="ChangedOn" HeaderText="ChangedOn" DataFormatString="{0:MM/dd/yyyy}" />
+                                                <asp:BoundField  DataField="Type" HeaderText="Type" />
+                                                <asp:BoundField DataField="Previous" HeaderText="Previous" />
+                                                <asp:BoundField  DataField="Current" HeaderText="Current" />
+                                                <asp:BoundField  DataField="ChangedBy" HeaderText="ChangedBy" />
+                                                <asp:BoundField  DataField="ChangedOn" HeaderText="ChangedOn" DataFormatString="{0:MM/dd/yyyy}" />
                                             </Columns>
                                         </asp:GridView>
                                     </div>
@@ -220,7 +220,7 @@
                 </Triggers>
             </asp:UpdatePanel>
             <p class="sub-head">
-                <img alt="" src="/images/chat-icon.png">
+                <img class="rectangle-icon"  alt="" src="/images/chat-icon.png">
                 Job Comments
             </p>
             <div class="form-inline" role="form">

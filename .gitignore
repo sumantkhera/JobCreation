@@ -65,3 +65,4 @@ obj/
 
 /packages
 *.dbmdl
+*.jfm
