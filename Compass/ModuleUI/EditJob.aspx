@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditJob.aspx.cs" Inherits="Compass.ModuleUI.EditJob" Title="Edit Job" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditJob.aspx.cs" Inherits="Compass.ModuleUI.EditJob" Title="View Job Details" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script language="javascript" type="text/javascript">
@@ -16,9 +16,9 @@
                 <div class="col-sm-12">
                     <div class="add-jobs">
                         <span>
-                            <img alt="" src="/images/new-job-icon.png"></span> Edit Job
+                            <img alt="" src="/images/new-job-icon.png"></span> View Job Details
                     </div>
-                    <p class="sub-head">Job Description</p>
+                    <p class="sub-head">Job Request Details</p>
                 </div>
             </div>
             <div class="form-inline" role="form">
@@ -116,7 +116,7 @@
                 </div>
             </div>
 
-            <p class="sub-head">Allocation</p>
+            <p class="sub-head">Job Status and Allocation Details</p>
             <div class="form-inline" role="form">
                 <div class="row">
 
@@ -135,7 +135,7 @@
                     <div class="col-sm-4">
                         <div class="form-group form-group-style">
                             <div class="col-sm-4">
-                                <label for="email">Team</label>
+                                <label for="email">Allocated to Team</label>
                             </div>
                             <div class="col-sm-8">
                                 <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">
@@ -172,12 +172,21 @@
                             </div>
                         </div>
                     </div>
+
+                     <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="btn-style">
+                                <asp:Button ID="btnUpdate" Text="Update" class="btn btn-submit" runat="server" OnClick="btnUpdate_Click" />
+                            </div>
+                        </div>                       
+                    </div>
+
                 </div>
             </div>
 
             <p class="sub-head">
                 <img alt="" src="/images/chat-icon.png">
-                Comment</p>
+                Job Comments</p>
             <div class="form-inline" role="form">
                 <div class="row">
                     <div class="col-sm-12">
@@ -225,9 +234,9 @@
                     </div>
                     <div id="divComments" class="col-sm-12" runat="server">
                         <!-- blockquote -->
-                        <blockquote>
+                      <%--  <blockquote>
                             <div class="submit-by">
-                                <%--<asp:Panel ID="pnlComments" runat="server"></asp:Panel>--%>
+                                <asp:Panel ID="pnlComments" runat="server"></asp:Panel>
                                             Added By:
                                         <a href="#" class="comment-name">Anupam Bhardwaj</a> on
                                         <a href="#" class="comment-date">6th July 2018</a>
@@ -249,10 +258,10 @@
                                     <a class="btn btn-link">Attachments <span>[3]</span></a>
                                 </div>
                             </div>
-                        </blockquote>
+                        </blockquote>--%>
                         <!-- /blockquote -->
                         <!-- blockquote -->
-                        <blockquote>
+                        <%--<blockquote>
                             <div class="submit-by">
                                 Added By:
                                         <a href="#" class="comment-name">Anupam Bhardwaj</a> on
@@ -269,10 +278,10 @@
                                     <img alt="" src="/images/attachment-icon.png">
                                     Attachments [5]</a>
                             </div>
-                        </blockquote>
+                        </blockquote>--%>
                         <!-- /blockquote -->
                         <!-- blockquote -->
-                        <blockquote>
+                        <%--<blockquote>
                             <div class="submit-by">
                                 Added By:
                                         <a href="#" class="comment-name">Anupam Bhardwaj</a> on
@@ -289,7 +298,7 @@
                                     <img alt="" src="/images/attachment-icon.png">
                                     Attachments [5]</a>
                             </div>
-                        </blockquote>
+                        </blockquote>--%>
                         <!-- /blockquote -->
 
 
@@ -375,13 +384,21 @@
     </script>
     <script type="text/javascript">       
 
-        $(".togglea").click(function () {           
-            var items = $(".togglea");
-            for (i = 0; i < items.length; i++) {
-                var sibling = items[0].nextSibling;
-                $(sibling.className).slideToggle();
-            }
-        });
+        function ToggleAttachments(obj)
+        {
+            var sibling = obj.nextSibling;
+            $(sibling).slideToggle();
+        }
+
+        //$(".togglea").click(function () {           
+        //    var items = $(".togglea");
+        //    for (i = 0; i < items.length; i++) {
+        //        debugger;
+        //        var sibling = items[0].nextSibling;
+        //        //$(sibling.className).slideToggle();
+        //        $(sibling).slideToggle();
+        //    }
+        //});
 
 
     </script>

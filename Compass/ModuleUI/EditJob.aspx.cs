@@ -84,6 +84,9 @@ namespace Compass.ModuleUI
             DataTable dtJobStatusType = jobDetailsBAL.GetJobStatusBAL("GetJobStatus");
             BindDropdown(ddlJobStatus, "Status", "Id", dtJobStatusType, "Select Status");
 
+            DataTable dtTeam = jobDetailsBAL.GetTeamBAL("GetTeam");
+            BindDropdown(ddlTeam, "Name", "Id", dtTeam, "Select");
+            
         }
 
 
@@ -330,7 +333,7 @@ namespace Compass.ModuleUI
                         sHTML.Append("</div>");
                         sHTML.Append("<div class='col-sm-2 text-right'>");
                         sHTML.Append("<i class='fa fa-paperclip fa-rotate-270' aria-hidden='true'></i>");
-                        sHTML.Append("<a class='link-underline togglea' id='link-underline" + (i+1).ToString()+"'><img alt = '' src='/images/attachment-icon.png' />");
+                        sHTML.Append("<a class='link-underline' id='link-underline" + (i+1).ToString()+ "' onclick='return ToggleAttachments(this) ';><img alt = '' src='/images/attachment-icon.png' />");
                         sHTML.Append("Attachments " + "[" + AttachmentCountByCommentID + "]");
                         sHTML.Append("</a>");
                         sHTML.Append("<div class='attachment-download" + (i + 1).ToString() + "' style='display: none'>");
@@ -396,7 +399,7 @@ namespace Compass.ModuleUI
             JobDetailsBE jobDetailsBE = new JobDetailsBE();
             jobDetailsBE.Comments = new CommentsBE();
 
-            jobDetailsBE.Action = "EditJobDetails";
+            jobDetailsBE.Action = "EditJobComments";
             jobDetailsBE.ClientId = Convert.ToInt32(Session["ClientId"]); 
             jobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);            
             jobDetailsBE.Comments.CreatedBy = Convert.ToInt32(Session["UserId"]);
@@ -422,7 +425,53 @@ namespace Compass.ModuleUI
             jobDetailsBE.Attachments = lstAttachments;
 
 
-            if (Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.PM.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.DM.ToString()))
+            if (
+                Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.PM.ToString()) 
+                || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.DM.ToString())
+                || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QA.ToString())
+                || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.MEMBER.ToString())
+                || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QAHEAD)
+               )
+            { 
+                jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;               
+            }
+
+            //if (Session["ClientId"] != null)
+            //{
+            //    if (Convert.ToInt32(Session["ClientId"]) == 1)
+            //    {
+            //        if (ddlJobStatus.SelectedValue != null || ddlJobStatus.SelectedIndex != 0 || ddlJobStatus.SelectedIndex != -1)
+            //        {
+            //            jobDetailsBE.JobStatusId = Convert.ToInt32(ddlJobStatus.SelectedValue);                        
+            //        }
+            //        jobDetailsBE.AllocationDate = DateTime.Now;
+            //    }
+            //}
+
+            string result = jobDetailsBAL.AddJobCommentsBAL(jobDetailsBE);
+
+            if (result == "1")
+            {                
+                Response.Redirect("~/ModuleUI/JobList.aspx");
+            }
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ModuleUI/JobList.aspx");
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            JobDetailsBE jobDetailsBE = new JobDetailsBE();
+
+            jobDetailsBE.Action = "EditJobStatusAndAllocationDetails";
+            jobDetailsBE.Id = Convert.ToInt32(Request.QueryString["JobId"]);
+
+            if (
+                Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.PM.ToString()) 
+                || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.DM.ToString())
+               )
             {
                 if (ddlJobStatus.SelectedValue != null || ddlJobStatus.SelectedIndex != 0 || ddlJobStatus.SelectedIndex != -1)
                 {
@@ -432,7 +481,7 @@ namespace Compass.ModuleUI
                 {
                     jobDetailsBE.QAUserId = Convert.ToInt32(ddlQAUser.SelectedValue);
                 }
-                if (ddlTeam.SelectedValue != null || ddlTeam.SelectedIndex != 0  || ddlTeam.SelectedIndex != -1)
+                if (ddlTeam.SelectedValue != null || ddlTeam.SelectedIndex != 0 || ddlTeam.SelectedIndex != -1)
                 {
                     jobDetailsBE.AllocatedToTeam = Convert.ToInt32(ddlTeam.SelectedValue);
                     jobDetailsBE.AllocationDate = DateTime.Now;
@@ -441,45 +490,48 @@ namespace Compass.ModuleUI
                 {
                     jobDetailsBE.AllocatedToUser = Convert.ToInt32(ddlUser.SelectedValue);
                 }
-
-                    jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;               
             }
 
-            if (Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QA.ToString()) || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.MEMBER.ToString())
-                || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QAHEAD))
+            if (
+                Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QA.ToString())
+                || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.MEMBER.ToString())
+                || Convert.ToString(Session["UserTypeCode"]).Equals(UserType.Enum.QAHEAD)
+               )
             {
                 if (ddlJobStatus.SelectedValue != null || ddlJobStatus.SelectedIndex != 0 || ddlJobStatus.SelectedIndex != -1)
                 {
                     jobDetailsBE.JobStatusId = Convert.ToInt32(ddlJobStatus.SelectedValue);
                 }
-                    jobDetailsBE.Comments.IsInternalUse = chkInternalUse.Checked ? true : false;                
-               
             }
+
             if (Session["ClientId"] != null)
             {
                 if (Convert.ToInt32(Session["ClientId"]) == 1)
                 {
                     if (ddlJobStatus.SelectedValue != null || ddlJobStatus.SelectedIndex != 0 || ddlJobStatus.SelectedIndex != -1)
                     {
-                        jobDetailsBE.JobStatusId = Convert.ToInt32(ddlJobStatus.SelectedValue);                        
+                        jobDetailsBE.JobStatusId = Convert.ToInt32(ddlJobStatus.SelectedValue);
                     }
-                    jobDetailsBE.AllocationDate = DateTime.Now;
+
+                    if (ddlTeam.SelectedValue != null || ddlTeam.SelectedIndex != 0 || ddlTeam.SelectedIndex != -1)
+                    {
+                        jobDetailsBE.AllocatedToTeam = Convert.ToInt32(ddlTeam.SelectedValue);
+                        jobDetailsBE.AllocationDate = DateTime.Now;
+                    }                   
                 }
             }
 
-            string result = jobDetailsBAL.EditJobDetailsBAL(jobDetailsBE);
+            string result = jobDetailsBAL.EditJobStatusAndAllocationDetailsBAL(jobDetailsBE);
 
             if (result == "1")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "<script>alert('Editted Succesfully');</script>", false);
-                Response.Redirect("~/ModuleUI/JobList.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "<script>alert('Job Status And Allocatio nDetails Editted Succesfully');</script>", false);
             }
+
         }
+
         #endregion
 
-        protected void btnCancel_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/ModuleUI/JobList.aspx");
-        }
+
     }
 }

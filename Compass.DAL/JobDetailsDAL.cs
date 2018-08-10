@@ -136,7 +136,7 @@ namespace Compass.DAL
             }
             return dt;
         }
-        public string EditJobDetailsDAL(JobDetailsBE jobDetailsBE)
+        public string AddJobCommentsDAL(JobDetailsBE jobDetailsBE)
         {
             string squery = string.Empty;
             
@@ -171,6 +171,52 @@ namespace Compass.DAL
             {  
                 return "0";
             }
+        }
+
+        public string EditJobStatusAndAllocationDetailsDAL(JobDetailsBE jobDetailsBE)
+        {
+            string squery = string.Empty;
+
+            try
+            {
+                SqlParameter[] param =
+                             {
+                                   new SqlParameter("@Action",jobDetailsBE.Action),
+                                   new SqlParameter("@JobId",jobDetailsBE.Id), 
+                                   new SqlParameter("@JobStatusId",jobDetailsBE.JobStatusId),
+                                   new SqlParameter("@QAUserId",jobDetailsBE.QAUserId),
+                                   new SqlParameter("@AllocatedToTeam",jobDetailsBE.AllocatedToTeam),
+                                   new SqlParameter("@AllocatedToUser",jobDetailsBE.AllocatedToUser),
+                                   new SqlParameter("@AllocationDate",jobDetailsBE.AllocationDate != null? jobDetailsBE.AllocationDate : DateTime.Now)                                  
+                               };
+
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spJobDetails", param);
+                squery = ds.Tables[0].Rows[0][0].ToString();
+                return squery;
+            }
+            catch (Exception ex)
+            {
+                return "0";
+            }
+        }
+
+        public DataTable GetTeamDAL(string Action)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                int index = 0;
+                SqlParameter[] param = new SqlParameter[2];
+                param[index++] = new SqlParameter("@Action", Action);
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spJobDetails", param);
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //  LogUtility.SaveErrorLogEntry(ex);
+            }
+            return dt;
         }
 
     }

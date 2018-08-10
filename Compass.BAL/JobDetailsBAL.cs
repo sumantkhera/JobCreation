@@ -91,19 +91,49 @@ namespace Compass.BAL
             return dt;
         }
 
-        public string EditJobDetailsBAL(JobDetailsBE objJobDetailsDAL)
+        public string AddJobCommentsBAL(JobDetailsBE objJobDetailsDAL)
         {
             JobDetailsDAL jobDetailsDAL = new JobDetailsDAL();
             string squery = string.Empty;
             try
             {
-                squery = jobDetailsDAL.EditJobDetailsDAL(objJobDetailsDAL);
+                squery = jobDetailsDAL.AddJobCommentsDAL(objJobDetailsDAL);
             }
             catch (Exception ex)
             {
 
             }
             return squery;
+        }
+
+        public string EditJobStatusAndAllocationDetailsBAL(JobDetailsBE objJobDetailsDAL)
+        {
+            JobDetailsDAL jobDetailsDAL = new JobDetailsDAL();
+            string squery = string.Empty;
+            try
+            {
+                squery = jobDetailsDAL.EditJobStatusAndAllocationDetailsDAL(objJobDetailsDAL);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return squery;
+        }
+
+        public DataTable GetTeamBAL(string Action)
+        {
+            JobDetailsDAL objJobDetailsDAL = new JobDetailsDAL();
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = objJobDetailsDAL.GetTeamDAL(Action);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
         }
     }
 }
