@@ -163,6 +163,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\allocation-icon.png" />
+    <Content Include="images\job-disc-icon.png" />
     <Content Include="images\login-icon.png" />
     <Content Include="fonts\PALA.TTF" />
     <Content Include="fonts\PALAB.TTF" />
@@ -183,6 +185,7 @@
     <Content Include="images\new-job-icon.png" />
     <Content Include="images\plus-icon.png" />
     <Content Include="images\qoute-icon.png" />
+    <Content Include="images\reqtangle.jpg" />
     <Content Include="ModuleUI\CreateJob.aspx" />
     <Content Include="ModuleUI\Dashboard.aspx" />
     <Content Include="ModuleUI\DownloadAttachment.aspx" />
