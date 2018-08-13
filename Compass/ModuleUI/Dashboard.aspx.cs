@@ -60,33 +60,33 @@ namespace Compass.ModuleUI
             DataTable dtBranchWiseJobStatus = compassBAL.GetBranchWiseJobStatusReportBAL(jobFilters);
 
             //var dtBranchWiseJobStatusFinal = (from c in dtBranchWiseJobStatus.AsEnumerable()
-            //                            group c by new
-            //                            {
-            //                                Status = c.Field<string>("JobStatus"),
-            //                                PO = c.Field<int>("PO"),
-            //                                MerchandiseTransfer = c.Field<int>("MerchandiseTransfer"),
-            //                                WeekelyCashReport = c.Field<int>("WeekelyCashReport"),
-            //                                Other = c.Field<int>("Other")                                            
-            //                            } into g
-            //                            select new DashboardDataDisplay
-            //                            {
-            //                                Status = g.Key.Status,
-            //                                PO = g.Key.PO,
-            //                                MerchandiseTransfer =g.Key.MerchandiseTransfer,
-            //                                WeekelyCashReport = g.Key.WeekelyCashReport,
-            //                                Other = g.Key.Other
-            //                            }).ToList();
+            //                                  group c by new
+            //                                  {
+            //                                      Status = c.Field<string>("JobStatus"),
+            //                                      PO = c.Field<int>("PO"),
+            //                                      MerchandiseTransfer = c.Field<int>("MerchandiseTransfer"),
+            //                                      WeekelyCashReport = c.Field<int>("WeekelyCashReport"),
+            //                                      Other = c.Field<int>("Other")
+            //                                  } into g
+            //                                  select new DashboardDataDisplay
+            //                                  {
+            //                                      Status = g.Key.Status,
+            //                                      PO = g.Key.PO,
+            //                                      MerchandiseTransfer = g.Key.MerchandiseTransfer,
+            //                                      WeekelyCashReport = g.Key.WeekelyCashReport,
+            //                                      Other = g.Key.Other
+            //                                  }).ToList();
 
             //DataTable dt = new DataTable();
             //dt.Columns.Add("Col A", typeof(int));
             //dt.Columns.Add("Col B", typeof(string));
             //dt.Columns.Add("Amount", typeof(int));
 
-            //dtBranchWiseJobStatus.AsEnumerable().GroupBy(x => x.Field<string>("JobStatus")).Select( x=>
-            //    new
-            //    {
-            //        DashboardDataDisplay.Status 
-            //    });
+            //dtBranchWiseJobStatus.AsEnumerable().GroupBy(x => x.Field<string>("JobStatus")).Select(x =>
+            //   new DashboardDataDisplay
+            //   {
+            //       Status = x.Field<string>("JobStatus")
+            //   });
             ////x => x.Field<string>("JobStatus"));
             //gvBranchWiseJobStatus.DataSource = dtBranchWiseJobStatusFinal;
             //gvBranchWiseJobStatus.DataBind();

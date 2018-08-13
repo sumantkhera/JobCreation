@@ -163,6 +163,8 @@
             $('[id*=lstStatus]').multiselect({
                 includeSelectAllOption: true
             })
+            $('.multiselect-selected-text').text('All selected (12)');
+            $('[type="checkbox"]').prop('checked', true);
         });
         var parameter = Sys.WebForms.PageRequestManager.getInstance();
         parameter.add_endRequest(function () {
