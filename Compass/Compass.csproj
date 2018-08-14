@@ -161,7 +161,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\add-job-nav.png" />
+    <Content Include="images\add-jobs-nav.png" />
+    <Content Include="images\all-jobs-nav.png" />
     <Content Include="images\allocation-icon.png" />
+    <Content Include="images\home-nav.png" />
     <Content Include="images\job-disc-icon.png" />
     <Content Include="images\login-icon.png" />
     <Content Include="fonts\PALA.TTF" />
