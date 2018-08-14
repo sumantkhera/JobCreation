@@ -114,6 +114,20 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
 .history-table .table tr:hover{cursor: default;}
 
 
+/*------Dashboard--------------*/
+.section-bg .form-inline.dashboard-style{background: transparent;border: 0}
+#chartdiv {width: 100%;height: 500px;}	
+.side-toggle{font-size:30px;cursor:pointer;position: absolute;top: 30px;}
+.logo-side-nav{margin-left: 40px;    padding-top: 2px; padding-bottom: 15px;}	
+.sidenav .closebtn {position: absolute;top: 5px;left: 20px;font-size: 36px;    padding: 25px 10px;cursor:pointer}
+.sidenav {height: 100%;width: 0;position: fixed;z-index: 1;top: 0;left: 0;background-color: #fff;overflow-x: hidden;transition: 0.5s;}
+.sidenav a {padding: 8px 8px 8px 32px;text-decoration: none;font-size: 16px;color: #000;display: block;transition: 0.3s;border-top: 1px solid #ccc;}
+.sidenav a:hover {background-color: #ebe8b4;color: #6b5801;}
+.sidenav a img{margin-right: 10px;}
+ .logo-side-nav img{width: 160px; padding: 20px 0 10px 30px;}
+ .sidenav a:first-child{background-color:transperent!important;}
+ .logo>img{width:180px;margin-left:30px;}
+
 @media only screen and (max-width: 1024px) {
 	.search-listing ul li{width: 25%;}
 }
