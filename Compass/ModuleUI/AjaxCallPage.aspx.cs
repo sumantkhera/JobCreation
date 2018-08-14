@@ -29,6 +29,7 @@ namespace Compass.ModuleUI
             //Here MyDatabaseEntities  is our dbContext  
 
             DashboardBE dashboardBE = new DashboardBE();
+            dashboardBE.jobFilters = new jobFiltersBE();
             dashboardBE.Action = "GetChartDataPO";
             dashboardBE.jobFilters.Id = UserId;
             dashboardBE.jobFilters.FromDate = !string.IsNullOrEmpty(FromDate) ? FromDate : "01/01/1900";

@@ -103,15 +103,6 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.Button btnFilter;
         
         /// <summary>
-        /// chart_div control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl chart_div;
-        
-        /// <summary>
         /// divTable control.
         /// </summary>
         /// <remarks>

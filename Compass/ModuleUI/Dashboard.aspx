@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Compass.ModuleUI.Dashboard" MasterPageFile="~/Site.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Compass.ModuleUI.Dashboard" MasterPageFile="~/Site.Master" Title="Dashboard" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -39,12 +39,12 @@
                         </div>
                     </div>
                 </div>
-                <div id="chart_div" class="col-xs-12 col-sm-12 col-md-6 col-lg-4" runat="server">
+
+                <div id="chart_div" class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="width: 900px; height: 200px;">
                 </div>
 
                 <div id="divTable"  runat="server">
                 </div>
-
 
                 <%--<div class="table-responsive">
                     <asp:GridView ID="gvBranchWiseJobStatus" runat="server"
@@ -131,15 +131,16 @@
         google.load("visualization", "1", { packages: ["corechart"] });
         // Here We will fill chartData  
 
-     <%--    $(function () {
-
-           var UserId = '<%= UserId %>';
+        $(function () {
+           var UserId = '<%= UserID %>';
             var BranchId = '<%= BranchId %>';
             var FromDate = '<%= FromDate %>';
             var ToDate = '<%= ToDate %>';
 
             $(document).ready(function () {
+                debugger;
                 $.ajax({
+
                     url: "AjaxCallPage.aspx/GetChartData",
                     data: "{'UserId':'" + UserId + "', 'BranchId':'" + BranchId + "', 'FromDate':'" + FromDate + "', 'ToDate':'" + ToDate + "'}",
                     dataType: "json",
@@ -153,19 +154,35 @@
                     }
                 }).done(function () {
                     // after complete loading data  
-                    google.setOnLoadCallback(drawChart);
+                    google.setOnLoadCallback(drawChartPO);
                     drawChartPO();
                 });
             });
-        });--%>
+        });
 
         function drawChartPO() {
+            debugger;
             var data = google.visualization.arrayToDataTable(chartData);
+
+            //var data = google.visualization.arrayToDataTable([
+            //  ['AAA', 'XXX'],
+            //  ['Work', 11],
+            //  ['Eat', 2],
+            //  ['Commute', 2],
+            //  ['Watch TV', 2],
+            //  ['Sleep', 7]
+            //]);
 
             var options = {
                 title: "PO",
-                pointSize: 5
+                pointSize: 5,
+                is3D: true,
             };
+
+            //var options = {
+            //    title: 'My Daily Activities'
+            //};
+
             var pieChart = new google.visualization.PieChart(document.getElementById('chart_div'));
             pieChart.draw(data, options);
 

@@ -17,10 +17,10 @@ namespace Compass.ModuleUI
     public partial class Dashboard : System.Web.UI.Page
     {
         CompassBAL compassBAL = new CompassBAL();
-        int? UserID = 0;
-        int? BranchId = 0;
-        string FromDate = null;
-        string ToDate = null;
+        protected int? UserID = 0;
+        protected int? BranchId = 0;
+        protected string FromDate = null;
+        protected string ToDate = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
