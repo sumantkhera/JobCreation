@@ -94,9 +94,9 @@
 <div id="mySidenav" class="sidenav">
 <div class="logo-side-nav"><img src="/images/logo.jpg"></div>
   <div class="closebtn" onclick="closeNav()">&#9776;</div>
-  <a href="#"><img src="/images/home-nav.png"> Home</a>
-  <a href="#"><img src="/images/all-jobs-nav.png"> All Jobs</a>
-  <a href="#"><img src="/images/add-jobs-nav.png"> Add Jobs</a>
+  <a href="dashboard"><img src="/images/home-nav.png"> Home</a>
+  <a href="joblist"><img src="/images/all-jobs-nav.png"> All Jobs</a>
+  <a href="CreateJob"><img src="/images/add-jobs-nav.png">Create Job</a>
  
 </div>
 
