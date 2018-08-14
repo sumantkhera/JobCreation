@@ -95,7 +95,7 @@
 <div class="logo-side-nav"><img src="/images/logo.jpg"></div>
   <div class="closebtn" onclick="closeNav()">&#9776;</div>
   <a href="dashboard"><img src="/images/home-nav.png"> Home</a>
-  <a href="joblist"><img src="/images/all-jobs-nav.png"> All Jobs</a>
+  <a href="joblist"><img src="/images/all-jobs-nav.png"> Search Jobs</a>
   <a href="CreateJob"><img src="/images/add-jobs-nav.png">Create Job</a>
  
 </div>
