@@ -74,7 +74,7 @@
                                             <img class="drop-arrow" alt="" src="/images/arrow.png"></a>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></asp:LinkButton>
+                                                
                                                 <%--<a href="#" ></a>--%>
                                             </li>
                                             <div class="clearfix"></div>
@@ -91,14 +91,14 @@
 
 <%--Menu bar--%>
 
-<div id="mySidenav" class="sidenav">
-<div class="logo-side-nav"><img src="/images/logo.jpg"></div>
-  <div class="closebtn" onclick="closeNav()">&#9776;</div>
-  <a href="dashboard"><img src="/images/home-nav.png"> Home</a>
-  <a href="joblist"><img src="/images/all-jobs-nav.png"> Search Jobs</a>
-  <a href="CreateJob"><img src="/images/add-jobs-nav.png">Create Job</a>
- 
-</div>
+                <div id="mySidenav" class="sidenav">
+                <div class="logo-side-nav"><img src="/images/logo.jpg"></div>
+                    <div class="closebtn" onclick="closeNav()">&#9776;</div>
+                    <a href="dashboard"><img src="/images/home-nav.png"> Home</a>
+                    <a href="joblist"><img src="/images/all-jobs-nav.png"> Search Jobs</a>
+                    <a href="CreateJob"><img src="/images/add-jobs-nav.png">Create Job</a>
+                    <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">Sign Out</asp:LinkButton>
+                </div>
 
                 <%--Section HTML will go inside--%>
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
