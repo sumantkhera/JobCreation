@@ -22,6 +22,42 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.UpdatePanel uppanel;
         
         /// <summary>
+        /// hdntxtFromDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdntxtFromDate;
+        
+        /// <summary>
+        /// hdntxtToDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdntxtToDate;
+        
+        /// <summary>
+        /// hdnUserId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnUserId;
+        
+        /// <summary>
+        /// hdnBranch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnBranch;
+        
+        /// <summary>
         /// ddlBranch control.
         /// </summary>
         /// <remarks>
@@ -49,6 +85,24 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.WebControls.TextBox txtToDate;
         
         /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
+        
+        /// <summary>
+        /// btnFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFilter;
+        
+        /// <summary>
         /// chart_div control.
         /// </summary>
         /// <remarks>
@@ -58,12 +112,12 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl chart_div;
         
         /// <summary>
-        /// gvBranchWiseJobStatus control.
+        /// divTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvBranchWiseJobStatus;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTable;
     }
 }

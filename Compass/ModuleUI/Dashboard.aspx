@@ -6,6 +6,10 @@
     <section>
         <asp:UpdatePanel ID="uppanel" runat="server">
             <ContentTemplate>
+                <asp:HiddenField  ID="hdntxtFromDate" runat  ="server" />
+                <asp:HiddenField  ID="hdntxtToDate" runat  ="server" />
+                <asp:HiddenField  ID="hdnUserId" runat  ="server" />
+                <asp:HiddenField  ID="hdnBranch" runat  ="server" />
                 <div class="section-bg">                    
                     <div class="row ">
                         <div class="col-sm-12">
@@ -24,6 +28,12 @@
                                         <label>Date To</label>
                                         <asp:TextBox ID="txtToDate" runat="server" class="form-control txtDate" placeholder="To Date"></asp:TextBox>
                                     </li>
+                                    <li>
+                                        <div class="btn-style">
+                                            <asp:Button ID="btnCancel" runat="server" Text="Reset" class="btn btn-cancel" OnClick ="btnCancel_Click"/>
+                                            <asp:Button ID="btnFilter" runat="server" Text="Filter" class="btn btn-submit" OnClick="btnFilter_Click" />
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -32,8 +42,11 @@
                 <div id="chart_div" class="col-xs-12 col-sm-12 col-md-6 col-lg-4" runat="server">
                 </div>
 
+                <div id="divTable"  runat="server">
+                </div>
 
-                <div class="table-responsive">
+
+                <%--<div class="table-responsive">
                     <asp:GridView ID="gvBranchWiseJobStatus" runat="server"
                         AutoGenerateColumns="false"
                         CssClass="table">
@@ -66,14 +79,15 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
-                </div>
+                </div>--%>
             </ContentTemplate>
         </asp:UpdatePanel>
     </section>
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+
         $(document).ready(function () {
             $('[id*=txtFromDate]').datepicker({
                 changeMonth: true,
@@ -88,6 +102,7 @@
                 language: "tr"
             });           
         });
+
         var parameter = Sys.WebForms.PageRequestManager.getInstance();
         parameter.add_endRequest(function () {
             $(document).ready(function () {
@@ -104,34 +119,57 @@
                     language: "tr"
                 });               
             });
+        });      
+
+        $(document).ready(function () {
+             var hdntxtFromDate = document.getElementById('<%= hdntxtFromDate.ClientID %>').value;
         });
 
-        google.load('visualization', '1', { packages: ['corechart'] });
+       
 
-        function OverallPerformanceGraphScore() {
+        var chartData; // global variable for hold chart data  
+        google.load("visualization", "1", { packages: ["corechart"] });
+        // Here We will fill chartData  
 
-        }
+     <%--    $(function () {
 
-        function drawChart() {         
-            var data = google.visualization.arrayToDataTable([  
-            ['Status', 'PO'], ""]);
-            }
+           var UserId = '<%= UserId %>';
+            var BranchId = '<%= BranchId %>';
+            var FromDate = '<%= FromDate %>';
+            var ToDate = '<%= ToDate %>';
 
-        $(function () {  
-      
-        $.ajax({
-            type: "POST",
-            url: "Dashboard.aspx/GetBranchWiseJobStatusReportData?",
-            data: '{vendorId:' + vendorId + '}',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (response) {
-                OverallPerformanceGraphScore(response.d.CurrentPerformance);
-                DrawAllScores(response.d.HistroicPerformance);
-                SetVendorInfo(response.d.VendorInfo);
-            }
-        });
-    });
+            $(document).ready(function () {
+                $.ajax({
+                    url: "AjaxCallPage.aspx/GetChartData",
+                    data: "{'UserId':'" + UserId + "', 'BranchId':'" + BranchId + "', 'FromDate':'" + FromDate + "', 'ToDate':'" + ToDate + "'}",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; chartset=utf-8",
+                    success: function (data) {
+                        chartData = data.d;
+                    },
+                    error: function () {
+                        alert("Error loading data! Please try again.");
+                    }
+                }).done(function () {
+                    // after complete loading data  
+                    google.setOnLoadCallback(drawChart);
+                    drawChartPO();
+                });
+            });
+        });--%>
+
+        function drawChartPO() {
+            var data = google.visualization.arrayToDataTable(chartData);
+
+            var options = {
+                title: "PO",
+                pointSize: 5
+            };
+            var pieChart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            pieChart.draw(data, options);
+
+        }     
 
     </script>
 

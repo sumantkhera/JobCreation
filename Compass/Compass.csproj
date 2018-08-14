@@ -186,6 +186,7 @@
     <Content Include="images\plus-icon.png" />
     <Content Include="images\qoute-icon.png" />
     <Content Include="images\reqtangle.jpg" />
+    <Content Include="ModuleUI\AjaxCallPage.aspx" />
     <Content Include="ModuleUI\CreateJob.aspx" />
     <Content Include="ModuleUI\Dashboard.aspx" />
     <Content Include="ModuleUI\DownloadAttachment.aspx" />
@@ -255,6 +256,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleUI\AjaxCallPage.aspx.cs">
+      <DependentUpon>AjaxCallPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuleUI\AjaxCallPage.aspx.designer.cs">
+      <DependentUpon>AjaxCallPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModuleUI\CreateJob.aspx.cs">
       <DependentUpon>CreateJob.aspx</DependentUpon>

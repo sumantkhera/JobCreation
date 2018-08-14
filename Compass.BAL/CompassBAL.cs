@@ -171,12 +171,27 @@ namespace Compass.BAL
             return dt;
         }
 
-        public DataTable GetBranchWiseJobStatusReportBAL(jobFiltersBE jobFilters)
+        public DataTable GetBranchWiseJobStatusReportBAL(DashboardBE dashboardBE)
         {
             DataTable dt = new DataTable();
             try
             {
-                dt = compassDAL.GetBranchWiseJobStatusReportDAL(jobFilters);
+                dt = compassDAL.GetBranchWiseJobStatusReportDAL(dashboardBE);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
+
+
+        public DataTable GetBranchWiseJobStatusDataForPOChartBAL(DashboardBE dashboardBE)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = compassDAL.GetBranchWiseJobStatusDataForPOChartDAL(dashboardBE);
             }
             catch (Exception ex)
             {

@@ -298,21 +298,46 @@ namespace Compass.DAL
             return dt;
         }
 
-        public DataTable GetBranchWiseJobStatusReportDAL(jobFiltersBE jobFilters)
+        public DataTable GetBranchWiseJobStatusReportDAL(DashboardBE dashboardBE)
         {
             DataTable dt = new DataTable();
             try
             {
                 SqlParameter[] param =
                 {
-                                        new SqlParameter("@UserId",jobFilters.Id ) ,                                       
-                                        new SqlParameter("@BranchId",jobFilters.BranchId ) ,
-                                        new SqlParameter("@StartDate",jobFilters.FromDate ) ,
-                                        new SqlParameter("@EndDate",jobFilters.ToDate ) ,
+                                        new SqlParameter("@UserId",dashboardBE.jobFilters.Id ) ,                                       
+                                        new SqlParameter("@BranchId",dashboardBE.jobFilters.BranchId ) ,
+                                        new SqlParameter("@StartDate",dashboardBE.jobFilters.FromDate ) ,
+                                        new SqlParameter("@EndDate",dashboardBE.jobFilters.ToDate ) ,
                                         
                  };
                
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spListJobs", param);
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                //  LogUtility.SaveErrorLogEntry(ex);
+            }
+            return dt;
+        }
+
+        public DataTable GetBranchWiseJobStatusDataForPOChartDAL(DashboardBE dashboardBE)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlParameter[] param =
+                {
+                                        new SqlParameter("@Action",dashboardBE.Action ),
+                                        new SqlParameter("@UserId",dashboardBE.jobFilters.Id ) ,
+                                        new SqlParameter("@BranchId",dashboardBE.jobFilters.BranchId ) ,
+                                        new SqlParameter("@StartDate",dashboardBE.jobFilters.FromDate ) ,
+                                        new SqlParameter("@EndDate",dashboardBE.jobFilters.ToDate ) ,
+
+                 };
+
+                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spChartData", param);
                 dt = ds.Tables[0];
             }
             catch (Exception ex)
