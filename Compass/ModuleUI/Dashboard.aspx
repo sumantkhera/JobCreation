@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                <div id="chart_div" class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="width: 900px; height: 200px;">
+                <div id="chart_div" class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="width: 400px; height: 200px;">
                 </div>
 
                 <div id="divTable"  runat="server">
@@ -174,7 +174,7 @@
             //]);
 
             var options = {
-                title: "PO",
+                title: "Purchase Order",
                 pointSize: 5,
                 is3D: true,
             };
