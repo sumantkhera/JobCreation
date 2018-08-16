@@ -127,6 +127,8 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
  .logo-side-nav img{width: 160px; padding: 20px 0 10px 30px;}
  .sidenav a:first-child{background-color:transperent!important;}
  .logo>img{width:180px;margin-left:30px;}
+ #lnkLogout{position: absolute;bottom: 0;width: 100%;background-color:#d7d7d7}
+ #lnkLogout:hover{background-color:#c9c9c9;}
 
 @media only screen and (max-width: 1024px) {
 	.search-listing ul li{width: 25%;}
