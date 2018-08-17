@@ -70,8 +70,7 @@
                                     <div class="login-details">
                                         <span id="spName" runat="server">Michael Smith </span>
                                         <span id="spBranch" runat="server">Miami, Florida</span>
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <img class="drop-arrow" alt="" src="/images/arrow.png"></a>
+                                        
                                         <ul class="dropdown-menu">
                                             <li>
                                                 

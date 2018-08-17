@@ -3,9 +3,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+   
     <section>
+
         <asp:UpdatePanel ID="uppanel" runat="server">
-            <ContentTemplate>                
+            <ContentTemplate>
                 <div class="section-bg">
                     <div class="row ">
                         <div class="col-sm-12">
@@ -34,20 +36,26 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="chart_div0" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="width: 400px; height: 200px; visibility:hidden" >
-                </div>
-                <div id="chart_div1" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="width: 400px; height: 200px; visibility:hidden ">
-                </div>
-                <div id="chart_div2" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="width: 400px; height: 200px; visibility:hidden">
-                </div>
-                <div id="chart_div3" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="width: 400px; height: 200px; visibility:hidden">
-                </div>
+                    <div class="row">
 
-                <div id="divTable" runat="server">
+                        <div id="chart_div0" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: none; height:200px; margin-bottom:30px">
+                        </div>
+                        <div id="chart_div1" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: none; height:200px; margin-bottom:30px">
+                        </div>
+                        <div id="chart_div2" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: none; height:200px; margin-bottom:30px">
+                        </div>
+                        <div id="chart_div3" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: none; height:200px; margin-bottom:30px">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                    <div id="divTable" class="table-responsive" runat="server">
+                        <asp:Label ID="lblNoRecordsFound" Text="No Record Found" runat="server" Visible="false"/>
+                    </div>
+                            </div>
+                        </div>
                 </div>
-
                 <%--<div class="table-responsive">
                     <asp:GridView ID="gvBranchWiseJobStatus" runat="server"
                         AutoGenerateColumns="false"
@@ -121,7 +129,7 @@
                     language: "tr"
                 });
             });
-        });     
+        });
 
 
         var chartData; // global variable for hold chart data  
@@ -134,7 +142,7 @@
             var FromDate = '<%= FromDate %>';
             var ToDate = '<%= ToDate %>';
 
-            $(document).ready(function () { 
+            $(document).ready(function () {
                 BindDataForChart(UserId, BranchId, FromDate, ToDate); // Binding data for chart with default filters by calling Ajax Web method
             });
         });
@@ -150,12 +158,11 @@
         })--%>
 
 
-        function BindDataForChart(UserId, BranchId, FromDate, ToDate)
-        {
-            $("#chart_div0").css("visibility", "hidden");
-            $("#chart_div1").css("visibility", "hidden");
-            $("#chart_div2").css("visibility", "hidden");
-            $("#chart_div3").css("visibility", "hidden");
+        function BindDataForChart(UserId, BranchId, FromDate, ToDate) {
+            $("#chart_div0").css("display", "none");
+            $("#chart_div1").css("display", "none");
+            $("#chart_div2").css("display", "none");
+            $("#chart_div3").css("display", "none");
 
             $.ajax({
                 url: "AjaxCallPage.aspx/GetChartData",
@@ -178,8 +185,8 @@
             });
         }
 
-  
-        function drawChart(name, data, ChartDivCount) {            
+
+        function drawChart(name, data, ChartDivCount) {
             var dataTable = new google.visualization.DataTable();
             dataTable.addColumn('string', 'Status');
             dataTable.addColumn('number', 'Count');
@@ -195,7 +202,7 @@
                 is3D: true,
             };
 
-            $("#chart_div" + ChartDivCount).css("visibility","visible"); // setting Chart div visible to true with ChartDivCount
+            $("#chart_div" + ChartDivCount).css("display", "block"); // setting Chart div visible to true with ChartDivCount
             var pieChart = new google.visualization.PieChart(document.getElementById('chart_div' + ChartDivCount)); // finding control of chart div to display the chart
             pieChart.draw(dataTable, options);
 
