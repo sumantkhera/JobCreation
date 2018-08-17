@@ -22,42 +22,6 @@ namespace Compass.ModuleUI {
         protected global::System.Web.UI.UpdatePanel uppanel;
         
         /// <summary>
-        /// hdntxtFromDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdntxtFromDate;
-        
-        /// <summary>
-        /// hdntxtToDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdntxtToDate;
-        
-        /// <summary>
-        /// hdnUserId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnUserId;
-        
-        /// <summary>
-        /// hdnBranch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnBranch;
-        
-        /// <summary>
         /// ddlBranch control.
         /// </summary>
         /// <remarks>

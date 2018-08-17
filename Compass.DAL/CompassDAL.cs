@@ -320,33 +320,7 @@ namespace Compass.DAL
                 //  LogUtility.SaveErrorLogEntry(ex);
             }
             return dt;
-        }
-
-        public DataTable GetBranchWiseJobStatusDataForPOChartDAL(DashboardBE dashboardBE)
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                SqlParameter[] param =
-                {
-                                        new SqlParameter("@Action",dashboardBE.Action ),
-                                        new SqlParameter("@UserId",dashboardBE.jobFilters.Id ) ,
-                                        new SqlParameter("@BranchId",dashboardBE.jobFilters.BranchId ) ,
-                                        new SqlParameter("@StartDate",dashboardBE.jobFilters.FromDate ) ,
-                                        new SqlParameter("@EndDate",dashboardBE.jobFilters.ToDate ) ,
-
-                 };
-
-                DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spChartData", param);
-                dt = ds.Tables[0];
-            }
-            catch (Exception ex)
-            {
-                //  LogUtility.SaveErrorLogEntry(ex);
-            }
-            return dt;
-        }
-
+        } 
     }
 
 

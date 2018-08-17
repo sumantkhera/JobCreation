@@ -5,16 +5,12 @@
 
     <section>
         <asp:UpdatePanel ID="uppanel" runat="server">
-            <ContentTemplate>
-                <asp:HiddenField  ID="hdntxtFromDate" runat  ="server" />
-                <asp:HiddenField  ID="hdntxtToDate" runat  ="server" />
-                <asp:HiddenField  ID="hdnUserId" runat  ="server" />
-                <asp:HiddenField  ID="hdnBranch" runat  ="server" />
-                <div class="section-bg">                    
+            <ContentTemplate>                
+                <div class="section-bg">
                     <div class="row ">
                         <div class="col-sm-12">
                             <div class="search-listing">
-                                <ul>                                   
+                                <ul>
                                     <li>
                                         <label>Branch</label>
                                         <asp:DropDownList ID="ddlBranch" runat="server" class="form-control"></asp:DropDownList>
@@ -30,7 +26,7 @@
                                     </li>
                                     <li>
                                         <div class="btn-style">
-                                            <asp:Button ID="btnCancel" runat="server" Text="Reset" class="btn btn-cancel" OnClick ="btnCancel_Click"/>
+                                            <asp:Button ID="btnCancel" runat="server" Text="Reset" class="btn btn-cancel" OnClick="btnCancel_Click" />
                                             <asp:Button ID="btnFilter" runat="server" Text="Filter" class="btn btn-submit" OnClick="btnFilter_Click" />
                                         </div>
                                     </li>
@@ -40,10 +36,16 @@
                     </div>
                 </div>
 
-                <div id="chart_div" class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="width: 400px; height: 200px;">
+                <div id="chart_div0" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="width: 400px; height: 200px; visibility:hidden" >
+                </div>
+                <div id="chart_div1" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="width: 400px; height: 200px; visibility:hidden ">
+                </div>
+                <div id="chart_div2" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="width: 400px; height: 200px; visibility:hidden">
+                </div>
+                <div id="chart_div3" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="width: 400px; height: 200px; visibility:hidden">
                 </div>
 
-                <div id="divTable"  runat="server">
+                <div id="divTable" runat="server">
                 </div>
 
                 <%--<div class="table-responsive">
@@ -100,7 +102,7 @@
                 changeYear: true,
                 format: "mm/dd/yyyy",
                 language: "tr"
-            });           
+            });
         });
 
         var parameter = Sys.WebForms.PageRequestManager.getInstance();
@@ -117,76 +119,87 @@
                     changeYear: true,
                     format: "mm/dd/yyyy",
                     language: "tr"
-                });               
+                });
             });
-        });      
+        });     
 
-        $(document).ready(function () {
-             var hdntxtFromDate = document.getElementById('<%= hdntxtFromDate.ClientID %>').value;
-        });
-
-       
 
         var chartData; // global variable for hold chart data  
         google.load("visualization", "1", { packages: ["corechart"] });
         // Here We will fill chartData  
 
         $(function () {
-           var UserId = '<%= UserID %>';
+            var UserId = '<%= UserID %>';
             var BranchId = '<%= BranchId %>';
             var FromDate = '<%= FromDate %>';
             var ToDate = '<%= ToDate %>';
 
-            $(document).ready(function () {
-                debugger;
-                $.ajax({
-
-                    url: "AjaxCallPage.aspx/GetChartData",
-                    data: "{'UserId':'" + UserId + "', 'BranchId':'" + BranchId + "', 'FromDate':'" + FromDate + "', 'ToDate':'" + ToDate + "'}",
-                    dataType: "json",
-                    type: "POST",
-                    contentType: "application/json; chartset=utf-8",
-                    success: function (data) {
-                        chartData = data.d;
-                    },
-                    error: function () {
-                        alert("Error loading data! Please try again.");
-                    }
-                }).done(function () {
-                    // after complete loading data  
-                    google.setOnLoadCallback(drawChartPO);
-                    drawChartPO();
-                });
+            $(document).ready(function () { 
+                BindDataForChart(UserId, BranchId, FromDate, ToDate); // Binding data for chart with default filters by calling Ajax Web method
             });
         });
 
-        function drawChartPO() {
+        <%--$('#<%=btnFilter.ClientID %>').click(function () {
             debugger;
-            var data = google.visualization.arrayToDataTable(chartData);
+            var UserId = '<%= UserID %>';
+            var BranchId = $('#<%=ddlBranch.ClientID %>').val(); 
+            var FromDate = $('#<%=txtFromDate.ClientID %>').val();
+            var ToDate = $('#<%=txtToDate.ClientID %>').val();
 
-            //var data = google.visualization.arrayToDataTable([
-            //  ['AAA', 'XXX'],
-            //  ['Work', 11],
-            //  ['Eat', 2],
-            //  ['Commute', 2],
-            //  ['Watch TV', 2],
-            //  ['Sleep', 7]
-            //]);
+            BindDataForChart(UserId, BranchId, FromDate, ToDate);
+        })--%>
+
+
+        function BindDataForChart(UserId, BranchId, FromDate, ToDate)
+        {
+            $("#chart_div0").css("visibility", "hidden");
+            $("#chart_div1").css("visibility", "hidden");
+            $("#chart_div2").css("visibility", "hidden");
+            $("#chart_div3").css("visibility", "hidden");
+
+            $.ajax({
+                url: "AjaxCallPage.aspx/GetChartData",
+                data: "{'UserId':'" + UserId + "', 'BranchId':'" + BranchId + "', 'FromDate':'" + FromDate + "', 'ToDate':'" + ToDate + "'}",
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json; chartset=utf-8",
+                success: function (data) {
+                    chartData = data.d;
+                },
+                error: function () {
+                    alert("Error loading data! Please try again.");
+                }
+            }).done(function () {
+                // after complete loading data                      
+                google.setOnLoadCallback(drawChart);
+                for (var i = 0; i < chartData.length; i++) {
+                    drawChart(chartData[i].Name, chartData[i].StatusCount, i); // used for drawing the chart
+                }
+            });
+        }
+
+  
+        function drawChart(name, data, ChartDivCount) {            
+            var dataTable = new google.visualization.DataTable();
+            dataTable.addColumn('string', 'Status');
+            dataTable.addColumn('number', 'Count');
+
+            for (i = 0; i < data.length; i++)
+                dataTable.addRow([data[i].Status, data[i].Count]);
+
+            //var chartData = google.visualization.arrayToDataTable(dataTable);
 
             var options = {
-                title: "Purchase Order",
+                title: name,
                 pointSize: 5,
                 is3D: true,
             };
 
-            //var options = {
-            //    title: 'My Daily Activities'
-            //};
+            $("#chart_div" + ChartDivCount).css("visibility","visible"); // setting Chart div visible to true with ChartDivCount
+            var pieChart = new google.visualization.PieChart(document.getElementById('chart_div' + ChartDivCount)); // finding control of chart div to display the chart
+            pieChart.draw(dataTable, options);
 
-            var pieChart = new google.visualization.PieChart(document.getElementById('chart_div'));
-            pieChart.draw(data, options);
-
-        }     
+        }
 
     </script>
 

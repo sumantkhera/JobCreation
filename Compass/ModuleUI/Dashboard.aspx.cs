@@ -20,18 +20,14 @@ namespace Compass.ModuleUI
         protected int? UserID = 0;
         protected int? BranchId = 0;
         protected string FromDate = null;
-        protected string ToDate = null;
+        protected string ToDate = null;       
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
-            {
+            {  
                 BindDropdowns();
-                BindBranchWiseJobStatusReport();
-                hdntxtFromDate.Value = txtFromDate.Text;
-                hdntxtToDate.Value = txtToDate.Text;
-                hdnUserId.Value = Convert.ToString(Session["UserId"]);
-
+                BindBranchWiseJobStatusReport();               
             }
         }
 
@@ -72,8 +68,7 @@ namespace Compass.ModuleUI
             dashboardBE.jobFilters.FromDate = !string.IsNullOrEmpty(txtFromDate.Text) ? txtFromDate.Text : "01/01/1900";
             dashboardBE.jobFilters.ToDate = !string.IsNullOrEmpty(txtToDate.Text) ? txtToDate.Text : "01/01/1900";
             dashboardBE.jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;
-
-
+            
             UserID = dashboardBE.jobFilters.Id;
             BranchId = dashboardBE.jobFilters.BranchId;
             FromDate = dashboardBE.jobFilters.FromDate;
@@ -88,11 +83,13 @@ namespace Compass.ModuleUI
                 //TypeId = s.Field<int>("")
             });
 
-            StringBuilder sHTML = new StringBuilder();
+            StringBuilder sHTML = new StringBuilder(); 
 
             var statuses = jobCountByType.Select(s => s.Status).Distinct().OrderBy(o => o);
             var types = jobCountByType.Select(s => s.Type).Distinct().OrderBy(o => o);
-            
+
+            // Logic used for creating table of Dashboard Data
+
             if (statuses.Count() > 0 && types.Count() > 0)
             {
                 sHTML.Append("<table>");
@@ -137,9 +134,13 @@ namespace Compass.ModuleUI
 
         #endregion
 
+        #region Events
+
         protected void btnFilter_Click(object sender, EventArgs e)
-        {
+        {            
             BindBranchWiseJobStatusReport();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "", "<script> BindDataForChart('" + Convert.ToString(Session["UserId"]) 
+                + "', " + ddlBranch.SelectedValue.ToString() + ", '" + txtFromDate.Text + "', '" + txtToDate.Text + "');</script> ", false); // used for calling Ajax Web method to draw charts
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
@@ -148,6 +149,11 @@ namespace Compass.ModuleUI
             txtToDate.Text = "";           
             ddlBranch.SelectedValue = "0";
             BindBranchWiseJobStatusReport();
+
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "", "<script> BindDataForChart('" + Convert.ToString(Session["UserId"])
+                + "', " + ddlBranch.SelectedValue.ToString() + ", '" + txtFromDate.Text + "', '" + txtToDate.Text + "');</script> ", false); // used for calling Ajax Web method to draw charts
         }
+
+        #endregion
     }
 }

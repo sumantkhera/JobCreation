@@ -183,21 +183,6 @@ namespace Compass.BAL
 
             }
             return dt;
-        }
-
-
-        public DataTable GetBranchWiseJobStatusDataForPOChartBAL(DashboardBE dashboardBE)
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                dt = compassDAL.GetBranchWiseJobStatusDataForPOChartDAL(dashboardBE);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return dt;
-        }
+        }       
     }
 }

@@ -14,4 +14,14 @@ namespace CompassBE.ViewModel
         public string Status { get; set; }
         public int StatusId { get; set; }
     }
+
+    public class StatusCount {
+        public string Status { get; set; }
+        public int Count { get; set; }
+    }
+
+    public class JobStatusChart {
+        public string Name { get; set; }
+        public List<StatusCount> StatusCount { get; set; }
+    }
 }
