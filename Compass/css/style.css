@@ -129,9 +129,13 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
  .logo>img{width:180px;margin-left:30px;}
  #lnkLogout{position: absolute;bottom: 0;width: 100%;background-color:#d7d7d7}
  #lnkLogout:hover{background-color:#c9c9c9;}
+.hide-menu{position: absolute;top:0;left:0;z-index: 1;width: 0px;height: 100%;-webkit-transform: translate3d(0,0,300px);-moz-transform: translate3d(0,0,300px);-o-transform: translate3d(0,0,300px);-ms-transform: translate3d(0,0,300px);transform: translate3d(0,0,300px,);     -webkit-transition: all 0.3s linear;-moz-transition: all 0.3s linear;-ms-transition: all 0.3s linear;-o-transition: all 0.3s linear;transition: all 0.3s linear;}
+.show-menu{width: 300px;-webkit-transform: translate3d(0,0,0);-moz-transform: translate3d(0,0,0);-o-transform: translate3d(0,0,0);-ms-transform: translate3d(0,0,0);transform: translate3d(0,0,0); }  
+
 
 @media only screen and (max-width: 1024px) {
-	.search-listing ul li{width: 25%;}
+	.search-listing ul li{width: 33%;}
+	.multiselect-native-select{float: right}
 }
 @media only screen and (max-width: 768px) {	
 .section-bg .form-inline .form-group.form-group-style{margin-bottom: 5px;}
@@ -140,6 +144,13 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
 .text-area-style{width: 100%;}
 .text-area-label{width: 100%;}
 .search-listing ul li input, .search-listing ul li select{width: 100%;padding: 0}
-.search-listing ul li{width: 50%;padding: 0}
-.search-listing ul li .btn-style{margin-top: 30px;float: left;}
+.search-listing ul li{width: 33%;/* padding: 0 */}
+.search-listing ul li .btn-style{/* margin-top: 30px; */margin-top: 10px;float: left;}
+.search-listing>ul>li input[type="text"], .search-listing>ul>li select{width: 100%;}
+.multiselect-native-select button.multiselect{width: 100%;}
+}
+
+@media only screen and (max-width: 767px) {	
+	
+.search-listing ul li{width: 100%;padding: 0}
 }

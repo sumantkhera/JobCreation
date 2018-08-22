@@ -58,7 +58,7 @@
                     <nav class="navbar navbar-style">
                         <div class="container-fluid">
                             <div class="navbar-header">
-                            <span class="side-toggle" onclick="openNav()">&#9776;</span
+                            <span class="side-toggle" id="menu-button">&#9776;</span
                                 <a class="navbar-brand" href="#">
                                     <div class="logo">
                                         <img src="/images/logo.jpg" /></div>
@@ -90,9 +90,9 @@
 
 <%--Menu bar--%>
 
-                <div id="mySidenav" class="sidenav">
+                <div id="hide-menu" class="sidenav hide-menu">
                 <div class="logo-side-nav"><img src="/images/logo.jpg"></div>
-                    <div class="closebtn" onclick="closeNav()">&#9776;</div>
+                    <div class="closebtn">&#9776;</div>
                     <a href="dashboard"><img src="/images/home-nav-black.png"> Home</a>
                     <a href="joblist"><img src="/images/all-jobs-nav.png"> Search Jobs</a>
                     <a href="CreateJob"><img src="/images/add-jobs-nav.png">Create Job</a>
@@ -118,13 +118,16 @@
         <script src="/Scripts/bootstrap-multiselect.js"></script>
         <script>
 
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
+$('#menu-button,.closebtn').click(function(e){
+    e.stopPropagation();
+     $('#hide-menu').toggleClass('show-menu');
+});
+$('#hide-menu').click(function(e){
+    e.stopPropagation();
+});
+$('body,html').click(function(e){
+       $('#hide-menu').removeClass('show-menu');
+});
 </script>
     <link href="/Scripts/bootstrap-multiselect.css" rel="stylesheet" />
 </body>
