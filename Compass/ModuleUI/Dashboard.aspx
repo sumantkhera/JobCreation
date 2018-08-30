@@ -11,7 +11,7 @@
                 <div class="section-bg">
                     <div class="row ">
                         <div class="col-sm-12">
-                            <div class="search-listing">
+                            <div class="search-listing search-list-dashboard">
                                 <ul>
                                     <li>
                                         <label>Branch</label>

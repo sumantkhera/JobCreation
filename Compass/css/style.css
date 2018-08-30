@@ -131,7 +131,9 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
  #lnkLogout:hover{background-color:#c9c9c9;}
 .hide-menu{position: absolute;top:0;left:0;z-index: 1;width: 0px;height: 100%;-webkit-transform: translate3d(0,0,300px);-moz-transform: translate3d(0,0,300px);-o-transform: translate3d(0,0,300px);-ms-transform: translate3d(0,0,300px);transform: translate3d(0,0,300px,);     -webkit-transition: all 0.3s linear;-moz-transition: all 0.3s linear;-ms-transition: all 0.3s linear;-o-transition: all 0.3s linear;transition: all 0.3s linear;}
 .show-menu{width: 300px;-webkit-transform: translate3d(0,0,0);-moz-transform: translate3d(0,0,0);-o-transform: translate3d(0,0,0);-ms-transform: translate3d(0,0,0);transform: translate3d(0,0,0); }  
-
+.search-list-dashboard.search-listing>ul>li{width: 25%;}
+.search-list-dashboard.search-listing>ul>li label{width: 80px;text-align: center;}
+#MainContent_divTable{padding:2px;}
 
 @media only screen and (max-width: 1024px) {
 	.search-listing ul li{width: 33%;}
@@ -148,9 +150,13 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
 .search-listing ul li .btn-style{/* margin-top: 30px; */margin-top: 10px;float: left;}
 .search-listing>ul>li input[type="text"], .search-listing>ul>li select{width: 100%;}
 .multiselect-native-select button.multiselect{width: 100%;}
+.search-list-dashboard.search-listing>ul>li .btn-style input.btn{width: 80px}
+.search-list-dashboard.search-listing ul li .btn-style{margin-top: 0}
+.search-list-dashboard.search-listing>ul>li{padding-left: 5px;}
 }
 
 @media only screen and (max-width: 767px) {	
 	
 .search-listing ul li{width: 100%;padding: 0}
+.search-list-dashboard.search-listing>ul>li{width: 100%;}
 }
