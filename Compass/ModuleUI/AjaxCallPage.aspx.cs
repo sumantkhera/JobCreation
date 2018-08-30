@@ -51,11 +51,14 @@ namespace Compass.ModuleUI
             var statuses = jobCountByType.Select(s => s.Status).Distinct().OrderBy(o => o);
             var types = jobCountByType.Select(s => s.Type).Distinct().OrderBy(o => o);
 
-            var Jobdata = new object[statuses.Count() + 1, types.Count() + 1];
+            var typeList = types.Where(s => s != "Other").ToList();
+            typeList.Add(types.Where(s => s == "Other").FirstOrDefault());
+
+            var Jobdata = new object[statuses.Count() + 1, typeList.Count() + 1];
 
             List<JobStatusChart> lstChartData = new List<JobStatusChart>();
 
-            foreach (var type in types)
+            foreach (var type in typeList)
             {
                 var statusData = jobCountByType.Where(w => w.Type == type)
                     .GroupBy(g => g.Status)

@@ -91,9 +91,12 @@ namespace Compass.ModuleUI
                 var statuses = jobCountByType.Select(s => s.Status).Distinct().OrderBy(o => o);
                 var types = jobCountByType.Select(s => s.Type).Distinct().OrderBy(o => o);
 
+                var typeList = types.Where(s => s != "Other").ToList();
+                typeList.Add(types.Where(s => s == "Other").FirstOrDefault());
+
                 // Logic used for creating table of Dashboard Data
 
-                if (statuses.Count() > 0 && types.Count() > 0)
+                if (statuses.Count() > 0 && typeList.Count() > 0)
                 {
                     sHTML.Append("<table class='table'>");
 
@@ -102,7 +105,7 @@ namespace Compass.ModuleUI
                     sHTML.Append("<th>");
                     sHTML.Append("Status");
                     sHTML.Append("</th>");
-                    foreach (var type in types)
+                    foreach (var type in typeList)
                     {
                         sHTML.Append("<th>");
                         sHTML.Append(type);
@@ -118,7 +121,7 @@ namespace Compass.ModuleUI
                         sHTML.Append(status);
                         sHTML.Append("</td>");
 
-                        foreach (var type in types)
+                        foreach (var type in typeList)
                         {
                             var count = jobCountByType.Where(w => w.Status == status && w.Type == type).Count();
 
