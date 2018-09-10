@@ -243,6 +243,7 @@ namespace Compass.DAL
                                         new SqlParameter("@StartDate",jobFilters.FromDate ) ,
                                         new SqlParameter("@EndDate",jobFilters.ToDate ) ,
                                         new SqlParameter("@JobNumber",jobFilters.JobNumber ),
+                                        new SqlParameter("@SubmitBy",jobFilters.jobDetails.SubmitBy ),
                                         tvpParam
                  };
 

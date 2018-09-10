@@ -25,6 +25,8 @@ namespace CompassBE
         public string JobNumber { get; set; }
 
         public JobStatusColllection JobStatus { get; set; }
+
+        public JobDetailsBE jobDetails;
     }
 
     public class JobStatusColllection : List<JobStatusBE>, IEnumerable<SqlDataRecord>

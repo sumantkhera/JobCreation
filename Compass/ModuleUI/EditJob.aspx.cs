@@ -69,6 +69,8 @@ namespace Compass.ModuleUI
                 DataTable dtUsers = jobDetailsBAL.GetUserForServiceCompanyBAL("GetUserForServiceCompany", Convert.ToInt32(Session["ServiceCompanyId"]));
                 BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
 
+                //ddlUser.Items.Remove(ddlUser.Items.FindByText(Convert.ToString(Session["UserName"])));
+
                 DataTable dtQAUsers = jobDetailsBAL.GetQAUserForServiceCompanyBAL("GetQAUserForServiceCompany", Convert.ToInt32(Session["ServiceCompanyId"]));
                 BindDropdown(ddlQAUser, "UserName", "Id", dtQAUsers, "Select User");
             }

@@ -127,16 +127,24 @@ namespace Compass.ModuleUI
                     lstAttachments.Add(attachments);
                 }
             }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please choose an attachment');", true);
+                return ;
+            }
 
             jobDetails.Attachments = lstAttachments;
 
             string result = compassBAL.InsertIntoJobDetailsBAL(jobDetails);
 
             if (result == "1")
+            {                
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Submitted Succesfully'); window.location='/ModuleUI/JobList.aspx'", true);
+            }
+            else
             {
-                // ScriptManager.RegisterStartupScript(this, this.GetType(), "", "<script>alert('Submitted Succesfully');</script>", false);
-
-                Response.Redirect("/ModuleUI/joblist.aspx");
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Job not submitted / Incomplete Information');", true);
+                return;
             }
         }
 

@@ -12,6 +12,7 @@
                             <div class="add-jobs">
                                 <img alt="" src="../images/listing-icon.png">
                                 Search Jobs 
+                           
                             </div>
                         </div>
                         <div class="col-sm-6  col-xs-6 text-right">
@@ -36,45 +37,53 @@
 
                                     </li>
                                     <li>
-                                        <label>From</label>
-                                        <asp:TextBox ID="txtFromDate" runat="server" class="form-control txtDate" placeholder="From Date"></asp:TextBox>
-                                    </li>
-                                    <li>
-                                        <label>To</label>
-                                        <asp:TextBox ID="txtToDate" runat="server" class="form-control txtDate" placeholder="To Date"></asp:TextBox>
-                                    </li>
-                                    <li>
-                                        <label>Status</label>
-                                        <asp:ListBox ID="lstStatus" runat="server" Height="50px" SelectionMode="Multiple"></asp:ListBox>
-                                    </li>
-                                    <li>
-                                        <label>Team</label>
-                                        <asp:DropDownList ID="ddlTeam" runat="server" class="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlTeam_SelectedIndexChanged"></asp:DropDownList>
+                                        <label >Submitted By</label>
+                                        <asp:DropDownList ID="ddlUserSubmittedBy" runat="server" class="form-control">
+                                        </asp:DropDownList>
+                                    </li>                           
+                        <li>
+                            <label>From</label>
+                            <asp:TextBox ID="txtFromDate" runat="server" class="form-control txtDate" placeholder="From Date"></asp:TextBox>
+                        </li>
+                        <li>
+                            <label>To</label>
+                            <asp:TextBox ID="txtToDate" runat="server" class="form-control txtDate" placeholder="To Date"></asp:TextBox>
+                        </li>
+                        <li>
+                            <label>Status</label>
+                            <asp:ListBox ID="lstStatus" runat="server" Height="50px" SelectionMode="Multiple"></asp:ListBox>
+                        </li>
+                        <li>
+                            <label>Team</label>
+                            <asp:DropDownList ID="ddlTeam" runat="server" class="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlTeam_SelectedIndexChanged"></asp:DropDownList>
 
-                                    </li>
-                                    <li>
-                                        <label>Allocated To</label>
-                                        <asp:DropDownList ID="ddlUser" runat="server" class="form-control"></asp:DropDownList>
-                                    </li>
-                                    <li>
-                                        <label>Priority</label>
-                                        <asp:DropDownList ID="ddlPriority" runat="server" class="form-control"></asp:DropDownList>
-                                    </li>
-                                    <li>
-                                        <label>Job Type</label>
-                                        <asp:DropDownList ID="ddlJobType" runat="server" class="form-control"></asp:DropDownList>
-                                    </li>
-                                    <li>
-                                        <div class="btn-style">
-                                            <asp:Button ID="btnCancel" runat="server" Text="Reset" class="btn btn-cancel" OnClick="btnCancel_Click" />
-                                            <asp:Button ID="btnFilter" runat="server" Text="Filter" class="btn btn-submit" OnClick="btnFilter_Click" />
-                                        </div>
-                                    </li>
-                                </ul>
+                        </li>
+                        <li>
+                            <label>Allocated To</label>
+                            <asp:DropDownList ID="ddlUser" runat="server" class="form-control"></asp:DropDownList>
+                        </li>
+                        <li>
+                            <label>Priority</label>
+                            <asp:DropDownList ID="ddlPriority" runat="server" class="form-control"></asp:DropDownList>
+                        </li>
+                        <li>
+                            <label>Job Type</label>
+                            <asp:DropDownList ID="ddlJobType" runat="server" class="form-control"></asp:DropDownList>
+                        </li>
+                        <li>
+                            <div class="btn-style">
+                                <asp:Button ID="btnCancel" runat="server" Text="Reset" class="btn btn-cancel" OnClick="btnCancel_Click" />
+                                <asp:Button ID="btnFilter" runat="server" Text="Filter" class="btn btn-submit" OnClick="btnFilter_Click" />
                             </div>
-                        </div>
+                        </li>
+                        </ul>
+                           
                     </div>
                 </div>
+                </div>
+                </div>
+
+               
 
                 <div class="table-responsive">
                     <asp:GridView ID="grdViewJobList" runat="server"
@@ -144,10 +153,14 @@
                     </asp:GridView>
                 </div>
             </ContentTemplate>
+            <Triggers>
+                <asp:PostBackTrigger ControlID="btnCancel" />
+                <asp:PostBackTrigger ControlID="btnFilter" />
+            </Triggers>
         </asp:UpdatePanel>
     </section>
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function () {            
             $('[id*=txtFromDate]').datepicker({
                 changeMonth: true,
                 changeYear: true,
@@ -165,6 +178,7 @@
             })
             $('.multiselect-selected-text').text('All selected (12)');
             $('[type="checkbox"]').prop('checked', true);
+
         });
         var parameter = Sys.WebForms.PageRequestManager.getInstance();
         parameter.add_endRequest(function () {
@@ -186,5 +200,19 @@
                 })
             });
         });
+
+        <%-- $('#<%= btnCancel.ClientID %>').click(function () {           
+                //$('.multiselect-selected-text').text('All selected (12)');
+                $('[type="checkbox"]').prop('checked', false);
+            });--%>
+
+        //function selectDeselect(listid, status) {
+        //    debugger;
+        //    var listb = document.getElementById(listid);
+        //    var len = listb.options.length;
+        //    for (var i = 0; i < len; i++) {
+        //        listb.options[i].selected = status;
+        //    }
+        //}
     </script>
 </asp:Content>

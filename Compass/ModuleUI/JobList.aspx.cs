@@ -14,7 +14,7 @@ namespace Compass.ModuleUI
     public partial class JobList : System.Web.UI.Page
     {
         CompassBAL compassBAL = new CompassBAL();
-
+        bool IsResetClicked = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -86,6 +86,20 @@ namespace Compass.ModuleUI
 
             DataTable dtTeam = compassBAL.GetTeamBAL();
             BindDropdown(ddlTeam, "Name", "Id", dtTeam, "All Teams");
+
+            int branchId = 0;
+            if (int.TryParse(Session["BranchId"].ToString(), out branchId))
+            {
+                if (ddlBranch.Items.FindByValue(branchId.ToString()) != null)
+                {
+                    ddlBranch.SelectedValue = branchId.ToString();
+                }
+            }
+
+            var clientid = Convert.ToInt32(Session["ClientId"]);
+
+            DataTable dtUserSubmittedBy = compassBAL.GetUserBAL(clientid, branchId : 0);
+            BindDropdown(ddlUserSubmittedBy, "UserName", "Id", dtUserSubmittedBy, "Select User");
         }
 
         #endregion
@@ -94,6 +108,7 @@ namespace Compass.ModuleUI
         public void BindMethods()
         {
             jobFiltersBE jobFilters = new jobFiltersBE();
+            jobFilters.jobDetails = new JobDetailsBE();
             jobFilters.Id = Convert.ToInt32(Session["UserId"]);
             jobFilters.TeamId = ddlTeam.SelectedValue != null ? Convert.ToInt32(ddlTeam.SelectedValue) : 0;
             jobFilters.PriorityID = ddlPriority.SelectedValue != null ? Convert.ToInt32(ddlPriority.SelectedValue) : 0;
@@ -103,21 +118,36 @@ namespace Compass.ModuleUI
             if (Convert.ToBoolean(Session["IsServiceCompanyUser"]))
                 jobFilters.AllocatedToUser = ddlUser.SelectedValue != null ? Convert.ToInt32(ddlUser.SelectedValue) : 0;
             jobFilters.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
-            jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;
+            jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;    
+            jobFilters.jobDetails.SubmitBy = ddlUserSubmittedBy.SelectedValue != null ? Convert.ToInt32(ddlUserSubmittedBy.SelectedValue) : 0;
+
 
             JobStatusColllection LstJobStatus = new JobStatusColllection();
 
-            foreach (ListItem item in lstStatus.Items)
+            if (IsResetClicked == false)
             {
-                if (item.Selected)
+                foreach (ListItem item in lstStatus.Items)
                 {
-                    JobStatusBE jobStatus = new JobStatusBE();
-                    jobStatus.JobStatusId = item.Value != null ? Convert.ToInt32(item.Value) : 0;
-                    LstJobStatus.Add(jobStatus);
-                }
+                    if (item.Selected)
+                    {
+                        JobStatusBE jobStatus = new JobStatusBE();
+                        jobStatus.JobStatusId = item.Value != null ? Convert.ToInt32(item.Value) : 0;
+                        LstJobStatus.Add(jobStatus);
+                    }
+                }               
+            }
+            else
+            {
+                foreach (ListItem item in lstStatus.Items)
+                {                  
+                        JobStatusBE jobStatus = new JobStatusBE();
+                        jobStatus.JobStatusId = item.Value != null ? Convert.ToInt32(item.Value) : 0;
+                        LstJobStatus.Add(jobStatus);
+                }               
             }
 
             jobFilters.JobStatus = LstJobStatus;
+
 
             DataTable dtJobList = compassBAL.GetJobListByFilterBAL(jobFilters);
             grdViewJobList.DataSource = dtJobList;
@@ -186,7 +216,10 @@ namespace Compass.ModuleUI
             ddlUser.SelectedValue = "0";
             ddlJobType.SelectedValue = "0";
             ddlBranch.SelectedValue = "0";
+            IsResetClicked = true;
             BindMethods();
+            
+            
         }
 
         protected void ddlTeam_SelectedIndexChanged(object sender, EventArgs e)

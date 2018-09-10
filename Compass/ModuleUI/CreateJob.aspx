@@ -101,15 +101,37 @@
         </div>
     </section>
 
-    <script type="text/javascript">
-        $(function () {
+    <script type="text/javascript">      
+
+        $(function () {            
+            //var date = new Date();
+            //date.setDate(date.getDate());
+            
             $('[id*=txtDate]').datepicker({
                 changeMonth: true,
                 changeYear: true,
                 format: "mm/dd/yyyy",
-                language: "tr"
+                language: "tr",                                          
             });
+            
+            $("#<%= txtDate.ClientID%>").datepicker('setDate', 'today');
         });
+
+        $('#<%= btnSubmit.ClientID %>').click(function () {         
+
+            if (document.getElementById('<%=ddlUsers.ClientID%>').selectedIndex == 0) {
+                alert("Please select Submitted By");
+                return false;
+            }
+            else if (document.getElementById('<%=ddlPriority.ClientID%>').selectedIndex == 0) {
+                alert("Please select Priority");
+                return false;
+            }
+            else {
+                return true;
+            }
+        });
+
     </script>
 </asp:Content>
 
