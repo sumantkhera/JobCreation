@@ -143,12 +143,12 @@ namespace Compass.BAL
             return dt;
         }
 
-        public DataTable GetUserBAL(int clientid, int branchId = 0)
+        public DataTable GetUserBAL(int clientid, int branchId = 0, bool isbranch = true)
         {
             DataTable dt = new DataTable();
             try
             {
-                dt = compassDAL.GetUserDAL(clientid, branchId);
+                dt = compassDAL.GetUserDAL(clientid, branchId, isbranch);
             }
             catch (Exception ex)
             {

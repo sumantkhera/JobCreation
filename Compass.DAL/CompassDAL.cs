@@ -260,7 +260,7 @@ namespace Compass.DAL
             }
             return dt;
         }
-        public DataTable GetUserDAL(int clientid, int branchId = 0)
+        public DataTable GetUserDAL(int clientid, int branchId = 0, bool isbranch = true)
         {
             DataTable dt = new DataTable();
             try
@@ -268,7 +268,8 @@ namespace Compass.DAL
                 SqlParameter[] param =
                 {
                     new SqlParameter("@ClientId",clientid),
-                    new SqlParameter("@BranchId",branchId)
+                    new SqlParameter("@BranchId",branchId),
+                    new SqlParameter("@IsBranch",isbranch),
                 };
                 DataSet ds = SqlHelper.ExecuteDataset(DBConnection.Connection.ToString(), CommandType.StoredProcedure, "spGetUserDetailsByClientId", param);
                 dt = ds.Tables[0];

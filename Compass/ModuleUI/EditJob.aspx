@@ -140,7 +140,7 @@
                                         <label for="email">Allocated to Team</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <asp:DropDownList ID="ddlTeam" runat="server" class="form-control">
+                                        <asp:DropDownList ID="ddlTeam" runat="server" class="form-control" OnSelectedIndexChanged="ddlTeam_SelectedIndexChanged" AutoPostBack="true">
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -285,7 +285,18 @@
         $('#attachment ').click(function () {
             $("span.minus-attach").toggleClass("plus-attach");
         });
+        $("#<%=btnUpdate.ClientID%>").click(function () {
 
+            if (document.getElementById('<%=ddlUser.ClientID%>').selectedIndex == 0) {
+                alert("Please select User");
+                return false;
+            }
+            else{
+                return true;
+            }
+
+        });
+        
     </script>
     <script type="text/javascript">
 

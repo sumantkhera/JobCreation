@@ -544,5 +544,35 @@ namespace Compass.ModuleUI
             }
         }
         #endregion
+
+        protected void ddlTeam_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlTeam.SelectedIndex == 1)
+            {
+                DataTable dtUsers = compassBAL.GetUserBAL(clientid : 1, branchId: 0, isbranch: false);
+                BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
+            }
+            else
+            {
+                if (Session["IsServiceCompanyUser"] != null)
+                {
+                    DataTable dtUsers = jobDetailsBAL.GetUserForServiceCompanyBAL("GetUserForServiceCompany", Convert.ToInt32(Session["ServiceCompanyId"]));
+                    BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
+
+                    //ddlUser.Items.Remove(ddlUser.Items.FindByText(Convert.ToString(Session["UserName"])));
+
+                    DataTable dtQAUsers = jobDetailsBAL.GetQAUserForServiceCompanyBAL("GetQAUserForServiceCompany", Convert.ToInt32(Session["ServiceCompanyId"]));
+                    BindDropdown(ddlQAUser, "UserName", "Id", dtQAUsers, "Select User");
+                }
+                else
+                {
+                    DataTable dtUsers = compassBAL.GetUserBAL();
+                    BindDropdown(ddlUser, "UserName", "Id", dtUsers, "Select User");
+
+                    DataTable dtQAUsers = jobDetailsBAL.GetQAUserBAL("GetQAUser");
+                    BindDropdown(ddlQAUser, "UserName", "Id", dtQAUsers, "Select QA User");
+                }
+            }
+        }
     }
 }
