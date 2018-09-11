@@ -25,7 +25,7 @@
                     </div>
                     <div class="row ">
                         <div class="col-sm-12">
-                            <div class="search-listing">
+                            <div class="search-listing search-listing-style">
                                 <ul>
                                     <li>
                                         <label>Job No.</label>

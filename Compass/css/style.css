@@ -79,7 +79,10 @@ html,body {height: 100%;font-family: 'arial', sans-serif;padding: 0px;}
   .search-listing>ul>li input[type="text"], .search-listing>ul>li select{height: 35px;border: 1px solid #c6c6c6;width: 140px;float: right;border-radius: 0px;font-size: 12px;padding: 6px;}
   .search-listing>ul>li .btn-style input.btn{width: 95px;height: 35px;;font-size: 15px;padding: 5px;float: right;margin-left: 5px;}
  .multiselect-native-select button.multiselect {height: 35px;width: 140px;border-radius:0;overflow: hidden;}
- 
+
+.search-listing-style.search-listing > ul > li label {
+     line-height: 15px;
+}
  
 .GridPager table td{border: 0}
 .GridPager table td a, .GridPager table td span {position: relative;float: left;padding: 6px 12px;margin-left: -1px;line-height: 1.42857143;color: #337ab7;text-decoration: none;background-color: #fff;border: 1px solid #ddd;}

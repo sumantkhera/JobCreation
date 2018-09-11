@@ -61,7 +61,8 @@ namespace Compass.ModuleUI
             BindDropdown(ddlPriority, "PriorityType", "Id", dtPriorityType, "All Priorities");
 
             DataTable dtBranch = compassBAL.GetBranchBAL();
-            BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "All Branches");
+            BindDropdown(ddlBranch, "BranchName", "Id", dtBranch, "All Branches");           
+
 
             bool IsServiceCompanyUser = Convert.ToBoolean(Session["IsServiceCompanyUser"]);
 
@@ -88,18 +89,35 @@ namespace Compass.ModuleUI
             BindDropdown(ddlTeam, "Name", "Id", dtTeam, "All Teams");
 
             int branchId = 0;
-            if (int.TryParse(Session["BranchId"].ToString(), out branchId))
+            if (Session["BranchId"] != null)
             {
-                if (ddlBranch.Items.FindByValue(branchId.ToString()) != null)
+                if (int.TryParse(Session["BranchId"].ToString(), out branchId))
                 {
-                    ddlBranch.SelectedValue = branchId.ToString();
+                    if (ddlBranch.Items.FindByValue(branchId.ToString()) != null)
+                    {
+                        ddlBranch.SelectedValue = branchId.ToString();
+                    }
                 }
             }
-
             var clientid = Convert.ToInt32(Session["ClientId"]);
 
             DataTable dtUserSubmittedBy = compassBAL.GetUserBAL(clientid, branchId : 0);
             BindDropdown(ddlUserSubmittedBy, "UserName", "Id", dtUserSubmittedBy, "Select User");
+
+
+            int UserTypeId = 0;
+            if (Session["UserTypeId"] != null)
+            {
+                if (int.TryParse(Session["UserTypeId"].ToString(), out UserTypeId))
+                {
+                    if (UserTypeId == 2) // User if of Branch Type
+                    {
+                        ddlBranch.Enabled = false;
+                        //ddlUserSubmittedBy.SelectedItem.Text =  Convert.ToString(Session["UserName"]);                    
+                        //ddlUserSubmittedBy.Enabled = false;
+                    }
+                }
+            }
         }
 
         #endregion
@@ -118,7 +136,29 @@ namespace Compass.ModuleUI
             if (Convert.ToBoolean(Session["IsServiceCompanyUser"]))
                 jobFilters.AllocatedToUser = ddlUser.SelectedValue != null ? Convert.ToInt32(ddlUser.SelectedValue) : 0;
             jobFilters.JobTypeId = ddlJobType.SelectedValue != null ? Convert.ToInt32(ddlJobType.SelectedValue) : 0;
-            jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;    
+
+            int UserTypeId = 0;
+            if (int.TryParse(Session["UserTypeId"].ToString(), out UserTypeId))
+            {
+                if (UserTypeId == 2) // User if of Branch Type
+                {
+                    int branchId = 0;
+                    if (int.TryParse(Session["BranchId"].ToString(), out branchId))
+                    {
+                        jobFilters.BranchId = branchId;
+                    }
+                }
+                else
+                {
+                    jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;
+                }
+            }
+            else
+            {
+                jobFilters.BranchId = ddlBranch.SelectedValue != null ? Convert.ToInt32(ddlBranch.SelectedValue) : 0;
+            }
+
+
             jobFilters.jobDetails.SubmitBy = ddlUserSubmittedBy.SelectedValue != null ? Convert.ToInt32(ddlUserSubmittedBy.SelectedValue) : 0;
 
 
@@ -217,9 +257,35 @@ namespace Compass.ModuleUI
             ddlJobType.SelectedValue = "0";
             ddlBranch.SelectedValue = "0";
             IsResetClicked = true;
+           // BindDropdowns();
             BindMethods();
-            
-            
+
+            int branchId = 0;
+            if (Session["BranchId"] != null)
+            {
+                if (int.TryParse(Session["BranchId"].ToString(), out branchId))
+                {
+                    if (ddlBranch.Items.FindByValue(branchId.ToString()) != null)
+                    {
+                        ddlBranch.SelectedValue = branchId.ToString();
+                    }
+                }
+            }
+
+            int UserTypeId = 0;
+            if (Session["UserTypeId"] != null)
+            {
+                if (int.TryParse(Session["UserTypeId"].ToString(), out UserTypeId))
+                {
+                    if (UserTypeId == 2) // User if of Branch Type
+                    {
+                        ddlBranch.Enabled = false;
+                        //ddlUserSubmittedBy.SelectedItem.Text = Convert.ToString(Session["UserName"]);
+                        //ddlUserSubmittedBy.Enabled = false;
+                    }
+                }
+            }
+
         }
 
         protected void ddlTeam_SelectedIndexChanged(object sender, EventArgs e)
